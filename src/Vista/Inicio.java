@@ -7,6 +7,7 @@ package Vista;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,8 +26,14 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() throws FileNotFoundException {
         initComponents();
         DefaultListModel modelo = new DefaultListModel();
-        File f = new File(".\\src\\Ficheros\\clan.csv");
-        Scanner lector = new Scanner(f);
+ //       File f = new File(".\\src\\Ficheros\\clan.csv");
+  //       Scanner lector = new Scanner(f);
+  
+  //Funciona cuando ejecuto en netbeans, pero no cuando solo está el jar
+        InputStream inputStream = Inicio.class.getResourceAsStream("Ficheros\\clan.csv");      
+        Scanner lector = new Scanner(inputStream);
+        
+
         String[] linea;
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
@@ -34,61 +41,35 @@ public class Inicio extends javax.swing.JFrame {
         }
         jProgressBar1.setValue(75);
         jListClanes.setModel(modelo);
- 
+        /* 
           try {
-
             //se carga la clase del Driver
-
             Class.forName("com.mysql.cj.jdbc.Driver");
-
             //datos de conexión
-
             String url = "jdbc:mysql://localhost:3306/padel";
-
             String user = "root";
-
             String pass = "1234";
-
             //Establezco
-
             Connection conn = DriverManager.getConnection(url, user, pass);
-
             //Saco por pantalla confirmación si OK
-
             System.out.println("La conexión se ha establecido");
-
             //Se establece la sesión a partir de la conexión anterior:
-
             Statement stmt = conn.createStatement();
-
             System.out.println("Generada la sesión: " + stmt);
-
             //AQUÍ SE REALIZARÁN OTRAS ACCIONES
- //Se introduce un valor en la tabla:
-
+        //Se introduce un valor en la tabla:
             int num = stmt.executeUpdate("INSERT INTO torneo VALUES ('Deltoya2',2);");
-
             System.out.println("Registros insertados: " + num);
-
             //Se selecciona el valor en la tabla para luego hacer más cosas:
-
             ResultSet rs = stmt.executeQuery("SELECT * FROM torneo");
-
             System.out.println("Se han seleccionado datos: " + rs);
             stmt.close(); //recordamos finalizar la sesión
-
             conn.close(); //recordamos finalizar la conexión
-
-            System.out.println("La conexión y sesión se han terminado");
-
-            
-
+            System.out.println("La conexión y sesión se han terminado");   
         } catch (Exception e) {
-
             System.out.println("Error: " + e);
-
         }
-
+         */
     }
 
     /**

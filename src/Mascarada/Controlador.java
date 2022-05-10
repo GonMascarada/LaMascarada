@@ -1,6 +1,7 @@
 package Mascarada;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Se encarga de abastecer a las interfaces con la información neceseria.
@@ -23,7 +24,7 @@ public final class Controlador {
      * @return lista de todos los clanes de vampiro jugables.
      */
     public Clan[] getListaClanes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bbdd.getListaClanes();
     }
 
     /**
@@ -33,7 +34,13 @@ public final class Controlador {
      * @return lista de títulos de habilidades.
      */
     public String[] getListaHabilidades(Clan clan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String, Boolean> habilidades = clan.getHabilidades();
+        String[] lista = new String[habilidades.size()];
+        Iterator<String> it = habilidades.keySet().iterator();
+        for (int i = 0; i < lista.length; i++) {
+            lista[i] = it.next();
+        }
+        return lista;
     }
 
     /**
@@ -51,8 +58,8 @@ public final class Controlador {
      * @param nombre a comprobar.
      * @return true si está disponible, false en otro caso.
      */
-    public boolean comprobarNombre(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean comprobarNombrePersonaje(String nombre) {
+        return bbdd.comprobarNombrePersonaje(nombre);
     }
 
     /**

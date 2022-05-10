@@ -25,7 +25,7 @@ public class BaseDeDatos {
 
     /**
      * Devuelve la escena por haber perido todos los puntos de vida.
-     * 
+     *
      * @return escena por muerte.
      */
     public Escena getEscenaMuerte() {
@@ -71,16 +71,35 @@ public class BaseDeDatos {
 
     /**
      * Devuelve, si hay, información extra de una escena por una habilidad.
-     * 
+     *
      * @param idEscena escena de la que se consulta si hay información extra.
      * @param clan habilidades que tiene el protagonista.
-     * @return 
+     * @return
      */
     String getInfoExtra(int idEscena, HashMap<String, Boolean> habilidades) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void sincronizar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Devuelve la lista de clanes disponible para jugar.
+     *
+     * @return lista de clanes.
+     */
+    public Clan[] getListaClanes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Comprueba si un nombre ya está siendo usado por otro personaje.
+     *
+     * @param nombre
+     * @return true si está disponible, false en otro caso.
+     */
+    public boolean comprobarNombrePersonaje(String nombre) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
