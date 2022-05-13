@@ -13,6 +13,9 @@ public class Persona {
     private ArrayList<Equipo> equipacion;
     private int estadoDeAnimo;
 
+    public Persona() {
+    }
+    
     /**
      * Para generar un humano básico.
      *

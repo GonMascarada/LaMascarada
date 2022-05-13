@@ -1,11 +1,15 @@
 package Mascarada;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Vampire extends Persona {
 
     private Clan clan;
 
+    public Vampire() {
+    }
 
     /**
      * Para generar un nuevo protagonista.
@@ -35,31 +39,31 @@ public class Vampire extends Persona {
 
     /**
      * Para cargar a un protagonista.
-     * 
+     *
      * @param clan
      * @param datos Nombre, Ataque, Defensa, VidaMax, VidaActual, Dinero
-     * @param equipacion  
+     * @param equipacion
      */
     public Vampire(Clan clan, String[] datos, ArrayList<Equipo> equipacion) {
         super(datos[0], Integer.parseInt(datos[1]), Integer.parseInt(datos[2]), Integer.parseInt(datos[3]), Integer.parseInt(datos[4]), Integer.parseInt(datos[5]), equipacion);
         this.clan = clan;
     }
-    
+
     /**
      * Para cargar un NPC.
-     * 
+     *
      * @param clan
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     * @param VidaActual
+     * @param nombre
+     * @param ataque
+     * @param defensa
+     * @param vidaMax
+     * @param vidaActual
      * @param dinero
-     * @param equipacion 
-     * @param estadoDeAnimo 
+     * @param equipacion
+     * @param estadoDeAnimo
      */
-    public Vampire(Clan clan, String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, Equipo[] equipacion, int estadoDeAnimo) {
-        super(Nombre, Ataque, Defensa, VidaMax, VidaActual, dinero, equipacion, estadoDeAnimo);
+    public Vampire(Clan clan, String nombre, int ataque, int defensa, int vidaMax, int vidaActual, int dinero, ArrayList<Equipo> equipacion, int estadoDeAnimo) {
+        super(nombre, ataque, defensa, vidaMax, vidaActual, dinero, equipacion, estadoDeAnimo);
         this.clan = clan;
     }
 
@@ -69,5 +73,18 @@ public class Vampire extends Persona {
     public Clan getClan() {
         return clan;
     }
-    
+
+    public String getHabilidades() {
+        String resultado = "";
+        HashMap<String, Boolean> habilidades = clan.getHabilidades();
+        Iterator<String> it = habilidades.keySet().iterator();
+        while (it.hasNext()) {
+            String clave = it.next();
+            if (habilidades.get(clave) == true) {
+                resultado += clave + ";";
+            }
+        }
+        return resultado;
+    }
+
 }

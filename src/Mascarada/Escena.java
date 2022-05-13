@@ -1,16 +1,21 @@
 package Mascarada;
 
+import java.util.ArrayList;
+
 
 public class Escena {
     private int idEscena;
     private String texto;
     private String imagen;
-    private Opcion[] opciones;
+    private ArrayList<Opcion> opciones;
 
-    public Escena(int idEscena, String texto, String imagen, Opcion[] opciones) {
-        this.idEscena = idEscena;
-        this.texto = texto;
-        this.imagen = imagen;
+    public Escena() {
+    }
+    
+    public Escena(String[] datos, ArrayList<Opcion> opciones) {
+        this.idEscena = Integer.valueOf(datos[0]);
+        this.texto = datos[1];
+        this.imagen = datos[2];
         this.opciones = opciones;
     }
 
@@ -38,7 +43,7 @@ public class Escena {
     /**
      * @return the opciones
      */
-    public Opcion[] getOpciones() {
+    public ArrayList<Opcion> getOpciones() {
         return opciones;
     }
     

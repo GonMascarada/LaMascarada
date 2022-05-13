@@ -5,21 +5,27 @@ public class Opcion {
     private int idOpcion;
     private String texto;
     private int accion;
-    private String clan;
-    private int tiempo;
     private String condiccion;
+    private int tiempo;
+    private String clan;
     private int idEscena;
     private int idEscenaSiguiente;
 
-    public Opcion(int idOpcion, String texto, int accion, String clan, int tiempo, String condiccion, int idEscena, int idEscenaSiguiente) {
-        this.idOpcion = idOpcion;
-        this.texto = texto;
-        this.accion = accion;
-        this.clan = clan;
-        this.tiempo = tiempo;
-        this.condiccion = condiccion;
-        this.idEscena = idEscena;
-        this.idEscenaSiguiente = idEscenaSiguiente;
+    /**
+     * Crea una opcion con los datos proporcionados ordenadamente en una lista.
+     *
+     * @param datos Por orden: idOpcion, texto, accion, condiccion, tiempo,
+     * clan, idEscena, idEscenaSiguiente.
+     */
+    public Opcion(String[] datos) {
+        this.idOpcion = Integer.parseInt(datos[0]);
+        this.texto = datos[1];
+        this.accion = Integer.parseInt(datos[2]);
+        this.condiccion = datos[3];
+        this.tiempo = Integer.parseInt(datos[4]);
+        this.clan = datos[5];
+        this.idEscena = Integer.parseInt(datos[6]);
+        this.idEscenaSiguiente = Integer.parseInt(datos[7]);
     }
 
     /**

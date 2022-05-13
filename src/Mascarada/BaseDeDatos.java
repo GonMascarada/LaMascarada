@@ -51,7 +51,43 @@ public class BaseDeDatos {
      * @return escena requerida.
      */
     public Escena getEscena(int idEscena) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/escena.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        Escena escena = new Escena();
+        ArrayList<Opcion> opciones;
+        boolean encontrado = false;
+        while ((lector.hasNext() && !encontrado)) {
+            linea = lector.nextLine().split(";");
+            if (Integer.parseInt(linea[0]) == idEscena) {
+                encontrado = true;
+                opciones = getOpciones(idEscena);
+                escena = new Escena(linea, opciones);
+            }
+        }
+        return escena;
+    }
+
+    /**
+     * Devuelve todas las opciones que tiene una escena.
+     *
+     * @param idEscena de la escena sobre la que se quieren las opciones.
+     * @return Arraylist de Opciones.
+     */
+    private ArrayList<Opcion> getOpciones(int idEscena) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        ArrayList<Opcion> opciones = new ArrayList<>();
+        Opcion opcion;
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            if (linea[6].equals(idEscena)) {
+                opcion = new Opcion(linea);
+                opciones.add(opcion);
+            }
+        }
+        return opciones;
     }
 
     /**
@@ -65,14 +101,63 @@ public class BaseDeDatos {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
-        Vampire vampire;
-        while (lector.hasNext()) {
+        Vampire vampire = new Vampire();
+        boolean encontrado = false;
+        while ((lector.hasNext() && !encontrado)) {
             linea = lector.nextLine().split(";");
             if (linea[0].equals(nombre)) {
+                encontrado = true;
                 Clan clan = getClan(linea[7]);
-                vampire = new Vampire(clan, linea,)
+                vampire = new Vampire(clan, linea, getEquipo(nombre, idPartida));
             }
         }
+        return vampire;
+    }
+
+    /**
+     * Devuelve todo el equipo de un personaje en una partida.
+     *
+     * @param nombre del personaje.
+     * @param idPartida de la partida en juego.
+     * @return
+     */
+    private ArrayList<Equipo> getEquipo(String nombrePersonaje, int idPartida) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        ArrayList<Equipo> equipos = new ArrayList<>();
+        Equipo equipo;
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            if ((linea[1].equals(idPartida) && (linea[2].equals(nombrePersonaje)))) {
+                equipo = getEquipo(linea[0]);
+                equipo.setEnUso(Boolean.valueOf(linea[3]));
+                equipos.add(equipo);
+            }
+        }
+        return equipos;
+    }
+
+    /**
+     * Devuelve un equipo dado por su nombre.
+     *
+     * @param string nombre del equipo.
+     * @return
+     */
+    private Equipo getEquipo(String nombre) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        Equipo equipo = new Equipo();
+        boolean encontrado = false;
+        while ((lector.hasNext() && !encontrado)) {
+            linea = lector.nextLine().split(";");
+            if (linea[0].equals(nombre)) {
+                encontrado = true;
+                equipo = new Equipo(linea);
+            }
+        }
+        return equipo;
     }
 
     /**
@@ -94,9 +179,10 @@ public class BaseDeDatos {
         Scanner lector = new Scanner(inputStream);
         ArrayList<Partida> partidas = new ArrayList<>();
         String[] linea;
-        Partida partida = new Partida();
+        Partida partida;
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
+            partida = new Partida();
             partida.setIdPartida(Integer.parseInt(linea[0]));
             partida.setFecha(new java.util.Date(linea[1])); //Revisar
             partida.setTiempo(Integer.parseInt(linea[2]));
@@ -161,14 +247,13 @@ public class BaseDeDatos {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         Clan clan = new Clan();
-        HashMap<String, Boolean> habilidades = new HashMap<>();
         String[] linea;
         boolean encontrado = false;
-        while ((lector.hasNext()&&!encontrado)) {
+        while ((lector.hasNext() && !encontrado)) {
             linea = lector.nextLine().split(";");
-            if(linea[0].equals(nombre)){
+            if (linea[0].equals(nombre)) {
                 clan = new Clan(linea);
-                encontrado=true;
+                encontrado = true;
             }
         }
         return clan;
@@ -234,4 +319,5 @@ public class BaseDeDatos {
     private void sincronizar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

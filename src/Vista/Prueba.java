@@ -3,7 +3,9 @@ package Vista;
 import Mascarada.BaseDeDatos;
 import Mascarada.Clan;
 import Mascarada.Controlador;
+import Mascarada.Partida;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Main para hacer pruebas
@@ -24,5 +26,12 @@ public class Prueba {
         for (int i = 0; i < clanes.size(); i++) {
             System.out.println(clanes.get(i).toString());
         }
+        
+        System.out.println("\n\ngetListaPartidas");
+        ArrayList<Partida> partidas = bd.getListaPartidas();
+        for (int i = 0; i < partidas.size(); i++) {
+            System.out.println(partidas.get(i).toString());
+        }  
+
     }
 }

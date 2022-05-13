@@ -19,8 +19,19 @@ public class Partida {
     private int sedDeSangre;
     private int sospecha;
     private String ultimaPista;
+    //Falta un arraylist de todas las personas a las que ha alterado. 
 
     public Partida() {
+    }
+
+    @Override
+    public String toString() {
+        String resultado;
+        resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso + ";";
+        resultado += sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
+        resultado += protagonista.getHabilidades() + ";" + escena.getIdEscena();
+        resultado += ";" + protagonista.getNombre();
+        return resultado;
     }
 
     /**
@@ -166,6 +177,5 @@ public class Partida {
     public void setUltimaPista(String ultimaPista) {
         this.ultimaPista = ultimaPista;
     }
-
 
 }

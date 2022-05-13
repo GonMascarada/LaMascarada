@@ -49,7 +49,7 @@ public final class Controlador {
      *
      * @return lista de todas las partidas.
      */
-    public Partida[] getListaPartidas() {
+    public ArrayList<Partida> getListaPartidas() {
         return bbdd.getListaPartidas();
     }
 
