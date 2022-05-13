@@ -1,5 +1,7 @@
 package Mascarada;
 
+import java.util.ArrayList;
+
 public class Vampire extends Persona {
 
     private Clan clan;
@@ -35,16 +37,11 @@ public class Vampire extends Persona {
      * Para cargar a un protagonista.
      * 
      * @param clan
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     * @param VidaActual
-     * @param dinero
+     * @param datos Nombre, Ataque, Defensa, VidaMax, VidaActual, Dinero
      * @param equipacion  
      */
-    public Vampire(Clan clan, String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, Equipo[] equipacion) {
-        super(Nombre, Ataque, Defensa, VidaMax, VidaActual, dinero, equipacion);
+    public Vampire(Clan clan, String[] datos, ArrayList<Equipo> equipacion) {
+        super(datos[0], Integer.parseInt(datos[1]), Integer.parseInt(datos[2]), Integer.parseInt(datos[3]), Integer.parseInt(datos[4]), Integer.parseInt(datos[5]), equipacion);
         this.clan = clan;
     }
     

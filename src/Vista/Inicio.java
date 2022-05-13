@@ -30,7 +30,7 @@ public class Inicio extends javax.swing.JFrame {
   //       Scanner lector = new Scanner(f);
   
   //Funciona cuando ejecuto en netbeans, pero no cuando solo está el jar
-        InputStream inputStream = Inicio.class.getResourceAsStream("Ficheros\\clan.csv");      
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         
 

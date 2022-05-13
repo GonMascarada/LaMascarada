@@ -1,5 +1,6 @@
 package Mascarada;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -23,7 +24,7 @@ public final class Controlador {
      *
      * @return lista de todos los clanes de vampiro jugables.
      */
-    public Clan[] getListaClanes() {
+    public ArrayList<Clan> getListaClanes() {
         return bbdd.getListaClanes();
     }
 

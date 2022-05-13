@@ -38,14 +38,14 @@ public class Partida {
      * @return true si tiene la habilidad, false en otro caso.
      */
     public HashMap getHabilidades() {
-        return protagonista.getClan().getHabilidades();
+        return getProtagonista().getClan().getHabilidades();
     }
 
     /**
-     * @return the escena
+     * @return the protagonista
      */
-    public Escena getEscena() {
-        return escena;
+    public Vampire getProtagonista() {
+        return protagonista;
     }
 
     /**
@@ -56,10 +56,24 @@ public class Partida {
     }
 
     /**
+     * @return the escena
+     */
+    public Escena getEscena() {
+        return escena;
+    }
+
+    /**
      * @param escena the escena to set
      */
     public void setEscena(Escena escena) {
         this.escena = escena;
+    }
+
+    /**
+     * @return the idPartida
+     */
+    public int getIdPartida() {
+        return idPartida;
     }
 
     /**
@@ -70,10 +84,24 @@ public class Partida {
     }
 
     /**
+     * @return the fecha
+     */
+    public Date getFecha() {
+        return fecha;
+    }
+
+    /**
      * @param fecha the fecha to set
      */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     * @return the tiempo
+     */
+    public int getTiempo() {
+        return tiempo;
     }
 
     /**
@@ -84,10 +112,24 @@ public class Partida {
     }
 
     /**
+     * @return the progreso
+     */
+    public int getProgreso() {
+        return progreso;
+    }
+
+    /**
      * @param progreso the progreso to set
      */
     public void setProgreso(int progreso) {
         this.progreso = progreso;
+    }
+
+    /**
+     * @return the sedDeSangre
+     */
+    public int getSedDeSangre() {
+        return sedDeSangre;
     }
 
     /**
@@ -98,10 +140,24 @@ public class Partida {
     }
 
     /**
+     * @return the sospecha
+     */
+    public int getSospecha() {
+        return sospecha;
+    }
+
+    /**
      * @param sospecha the sospecha to set
      */
     public void setSospecha(int sospecha) {
         this.sospecha = sospecha;
+    }
+
+    /**
+     * @return the ultimaPista
+     */
+    public String getUltimaPista() {
+        return ultimaPista;
     }
 
     /**
@@ -110,4 +166,6 @@ public class Partida {
     public void setUltimaPista(String ultimaPista) {
         this.ultimaPista = ultimaPista;
     }
+
+
 }

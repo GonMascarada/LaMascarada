@@ -1,5 +1,7 @@
 package Mascarada;
 
+import java.util.ArrayList;
+
 public class Persona {
 
     private String nombre;
@@ -8,7 +10,7 @@ public class Persona {
     private int vidaMax;
     private int vidaActual;
     private int dinero;
-    private Equipo[] equipacion;
+    private ArrayList<Equipo> equipacion;
     private int estadoDeAnimo;
 
     /**
@@ -55,7 +57,7 @@ public class Persona {
      * @param dinero
      * @param equipacion
      */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, Equipo[] equipacion) {
+    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, ArrayList<Equipo> equipacion) {
         this.nombre = Nombre;
         this.ataque = Ataque;
         this.defensa = Defensa;
@@ -77,7 +79,7 @@ public class Persona {
      * @param equipacion
      * @param estadoDeAnimo
      */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, Equipo[] equipacion, int estadoDeAnimo) {
+    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, ArrayList<Equipo> equipacion, int estadoDeAnimo) {
         this.nombre = Nombre;
         this.ataque = Ataque;
         this.defensa = Defensa;
@@ -133,7 +135,7 @@ public class Persona {
     /**
      * @return the equipacion
      */
-    public Equipo[] getEquipacion() {
+    public ArrayList<Equipo> getEquipacion() {
         return equipacion;
     }
 
