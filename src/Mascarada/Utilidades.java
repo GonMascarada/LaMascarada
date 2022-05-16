@@ -43,6 +43,8 @@ public abstract class Utilidades {
     public static final int ENFADAR = 7;
     public static final int COMPRAR = 8;
     public static final int VENDER = 9;
+    
+    // Condiciones
 
     // Estados de ánimo de los NPC´s
     public static final int NORMAL = 0;
