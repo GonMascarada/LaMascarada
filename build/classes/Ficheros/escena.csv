@@ -1,2 +1,13 @@
-1; En la habitación te encuentras con…; .\motel.jpg;
-2; Un lúgubre bar en el que…; .\bar.jpg; Vladimir
+0;Bienvenido a Bloodtown; .\cartel.jpg;
+1;Un lúgubre bar en el que…; .\bar.jpg;
+2;Dialogo con la camarera...;.\camarera.jpg;Camarera
+3;Dialogo con un cliente...;.\cliente.jpg;Cliente
+4;Dialogo dueño;.\Dueño.jpg;Dueño
+5;Dialogo con la dueña del Motel;.\dueñaMotel.jpg;DueñaMotel
+6;Llegar al pub;.\pub.jpg
+7;Dialogo con vidente;.\vidente;Vidente
+8;Dialogo con cliente;.\clientePub.jpg;ClientePub
+9;Llegar al periódico;.\periodico.jpg
+11;Llegar a la Casa de la Colina;.\CasaColina.jpg
+12;Pelea contra Ramonchu;.\Ramonchu.jpg;Ramonchu
+13;Fin;\Fin.jpg

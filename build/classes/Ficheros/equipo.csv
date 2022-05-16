@@ -1,2 +1,10 @@
-Pistola;Puedes disparar a distancia.;10;;;500
-Garrote; Puedes golpear cuerpo a cuerpo.; 4; ; ; 100
+﻿Pistola;Puedes disparar a distancia.;10;;;500
+Bate;Puedes golpear cuerpo a cuerpo.;5;;;250
+Navaja;Puedes rajar cuerpo a cuerpo.;4;;;250
+Puño Americano;Puedes golpear cuerpo a cuerpo.;4;;;250
+Botella;Puedes apuñalar cuerpo a cuerpo.;3;;;150
+Chaleco Antibalas;Aumenta tu defensa.;;9;;450
+Ropa Gruesa;Aumenta tu defensa un poco.;;4;;200
+Colgante;Aumenta tu vida.;;;9;450
+Brazalete;Aumenta un poco tu vida.;;;6;300
+Anillo;Aumenta muy poco tu vida.;;;3;150
