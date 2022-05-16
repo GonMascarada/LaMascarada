@@ -108,7 +108,7 @@ public class BaseDeDatos {
             if (linea[0].equals(nombre)) {
                 encontrado = true;
                 Clan clan = getClan(linea[7]);
-                vampire = new Vampire(clan, linea, getEquipo(nombre, idPartida));
+                vampire = new Vampire(clan, linea, getEquipos(nombre, idPartida));
             }
         }
         return vampire;
@@ -121,7 +121,7 @@ public class BaseDeDatos {
      * @param idPartida de la partida en juego.
      * @return
      */
-    private ArrayList<Equipo> getEquipo(String nombrePersonaje, int idPartida) {
+    private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
