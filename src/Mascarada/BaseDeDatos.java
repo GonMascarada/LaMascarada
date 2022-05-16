@@ -266,7 +266,7 @@ public class BaseDeDatos {
      * @return true si está disponible, false en otro caso.
      */
     public boolean comprobarNombrePersonaje(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     /**

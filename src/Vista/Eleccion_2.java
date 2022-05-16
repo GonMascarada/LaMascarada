@@ -15,6 +15,7 @@ public class Eleccion_2 extends javax.swing.JFrame {
      */
     public Eleccion_2() {
         initComponents();
+        
     }
 
     /**
@@ -28,9 +29,9 @@ public class Eleccion_2 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Foto = new javax.swing.JLabel();
-        Texto = new javax.swing.JLabel();
         Opcion2 = new javax.swing.JButton();
         Opcion1 = new javax.swing.JButton();
+        cabeceraImport2 = new Vista.CabeceraImport();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,19 +39,17 @@ public class Eleccion_2 extends javax.swing.JFrame {
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
-        Foto.setBounds(10, 10, 440, 380);
-
-        Texto.setText("Texto");
-        jPanel1.add(Texto);
-        Texto.setBounds(470, 10, 500, 380);
+        Foto.setBounds(10, 210, 440, 380);
 
         Opcion2.setText("Opcion2");
         jPanel1.add(Opcion2);
-        Opcion2.setBounds(560, 520, 350, 100);
+        Opcion2.setBounds(550, 620, 350, 50);
 
         Opcion1.setText("Opcion1");
         jPanel1.add(Opcion1);
-        Opcion1.setBounds(60, 520, 350, 100);
+        Opcion1.setBounds(60, 620, 350, 50);
+        jPanel1.add(cabeceraImport2);
+        cabeceraImport2.setBounds(0, 0, 1000, 224);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +105,7 @@ public class Eleccion_2 extends javax.swing.JFrame {
     private javax.swing.JLabel Foto;
     private javax.swing.JButton Opcion1;
     private javax.swing.JButton Opcion2;
-    private javax.swing.JLabel Texto;
+    private Vista.CabeceraImport cabeceraImport2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

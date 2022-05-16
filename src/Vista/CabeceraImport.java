@@ -1,19 +1,19 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista;
 
 /**
  *
- * @author Moru
+ * @author Alumno
  */
-public class Cabecera extends javax.swing.JFrame {
+public class CabeceraImport extends javax.swing.JPanel {
 
     /**
-     * Creates new form Cabecera
+     * Creates new form CabeceraImport
      */
-    public Cabecera() {
+    public CabeceraImport() {
         initComponents();
     }
 
@@ -44,8 +44,6 @@ public class Cabecera extends javax.swing.JFrame {
         barraProgreso = new javax.swing.JProgressBar();
         LugarActual = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setLayout(null);
 
         Foto.setText("Foto");
@@ -54,11 +52,11 @@ public class Cabecera extends javax.swing.JFrame {
 
         Nombre.setText("Nombre");
         jPanel1.add(Nombre);
-        Nombre.setBounds(23, 164, 194, 25);
+        Nombre.setBounds(20, 160, 194, 25);
 
         Clan.setText("Clan");
         jPanel1.add(Clan);
-        Clan.setBounds(23, 207, 194, 24);
+        Clan.setBounds(20, 190, 194, 24);
 
         Habilidad1.setText("Habilidad 1");
         jPanel1.add(Habilidad1);
@@ -94,65 +92,33 @@ public class Cabecera extends javax.swing.JFrame {
         jPanel1.add(barraVida);
         barraVida.setBounds(630, 100, 250, 30);
 
-        Progreso.setText("Progreso:");
+        Progreso.setText("Progreso3:");
         jPanel1.add(Progreso);
         Progreso.setBounds(520, 140, 120, 30);
+
+        barraProgreso.setValue(50);
         jPanel1.add(barraProgreso);
         barraProgreso.setBounds(630, 140, 250, 30);
 
         LugarActual.setText("Lugar en el que te encuentras:");
         jPanel1.add(LugarActual);
-        LugarActual.setBounds(280, 210, 600, 20);
+        LugarActual.setBounds(280, 190, 600, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cabecera().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar BarraSangre;

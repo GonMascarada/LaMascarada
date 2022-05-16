@@ -32,6 +32,7 @@ public class Eleccion_3 extends javax.swing.JFrame {
         Opcion2 = new javax.swing.JButton();
         Opcion1 = new javax.swing.JButton();
         Opcion3 = new javax.swing.JButton();
+        cabeceraImport1 = new Vista.CabeceraImport();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -40,19 +41,19 @@ public class Eleccion_3 extends javax.swing.JFrame {
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
-        Foto.setBounds(10, 10, 440, 380);
+        Foto.setBounds(10, 210, 440, 380);
 
         Texto.setText("Texto");
         jPanel1.add(Texto);
-        Texto.setBounds(470, 10, 500, 380);
+        Texto.setBounds(460, 210, 500, 380);
 
         Opcion2.setText("Opcion2");
         jPanel1.add(Opcion2);
-        Opcion2.setBounds(390, 520, 220, 100);
+        Opcion2.setBounds(380, 600, 220, 40);
 
         Opcion1.setText("Opcion1");
         jPanel1.add(Opcion1);
-        Opcion1.setBounds(60, 520, 220, 100);
+        Opcion1.setBounds(60, 600, 220, 40);
 
         Opcion3.setText("Opcion3");
         Opcion3.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +62,9 @@ public class Eleccion_3 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Opcion3);
-        Opcion3.setBounds(710, 520, 220, 100);
+        Opcion3.setBounds(710, 600, 220, 40);
+        jPanel1.add(cabeceraImport1);
+        cabeceraImport1.setBounds(0, 0, 1000, 224);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +128,7 @@ public class Eleccion_3 extends javax.swing.JFrame {
     private javax.swing.JButton Opcion2;
     private javax.swing.JButton Opcion3;
     private javax.swing.JLabel Texto;
+    private Vista.CabeceraImport cabeceraImport1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

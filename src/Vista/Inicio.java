@@ -4,17 +4,50 @@
  */
 package Vista;
 
+import Mascarada.Clan;
+import Mascarada.Controlador;
+import java.awt.Color;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import javax.swing.DefaultListModel;
+import jdk.jfr.Event;
+
 /**
  *
  * @author Moru
  */
 public class Inicio extends javax.swing.JFrame {
 
+    private Controlador controlador;
+
+    private ArrayList<Clan> clanes;
+
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
+        //Elementos del Jlist
+        //Elemento que me trae la info
+        controlador = new Controlador();
+        //Lista de la informacion de los clanes
+        clanes = controlador.getListaClanes();
+        //ArrayList para el Jlist
+        DefaultListModel modelo = new DefaultListModel();
+        //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
+
+        for (int i = 0; i < clanes.size(); i++) {
+            modelo.addElement(clanes.get(i).getNombre());
+
+        }
+        ListaClanes1.setModel(modelo);
+        //Elementos de 
+
     }
 
     /**
@@ -28,6 +61,21 @@ public class Inicio extends javax.swing.JFrame {
 
         FondoTotal = new javax.swing.JPanel();
         TabbedMain = new javax.swing.JTabbedPane();
+        CrearPartida = new javax.swing.JPanel();
+        LabelClanes = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        TextNombre = new javax.swing.JTextField();
+        Labeldificultad = new javax.swing.JLabel();
+        BoxDificultad = new javax.swing.JComboBox<>();
+        Crear = new javax.swing.JButton();
+        Eleccion = new javax.swing.JScrollPane();
+        ListaClanes1 = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DescripcionClan = new javax.swing.JTextPane();
+        Habilidad1 = new javax.swing.JCheckBox();
+        Habilidad2 = new javax.swing.JCheckBox();
+        Habilidad3 = new javax.swing.JCheckBox();
+        Habilidad4 = new javax.swing.JCheckBox();
         CargarPartida = new javax.swing.JPanel();
         PanelSeccionPartida = new javax.swing.JPanel();
         LabelFoto = new javax.swing.JLabel();
@@ -93,19 +141,141 @@ public class Inicio extends javax.swing.JFrame {
         NombreCarga5 = new javax.swing.JLabel();
         Foto5 = new javax.swing.JLabel();
         Borrar2 = new javax.swing.JButton();
-        CrearPartida = new javax.swing.JPanel();
-        LabelClanes = new javax.swing.JLabel();
-        labelNombre = new javax.swing.JLabel();
-        TextNombre = new javax.swing.JTextField();
-        Labeldificultad = new javax.swing.JLabel();
-        BoxDificultad = new javax.swing.JComboBox<>();
-        Crear = new javax.swing.JButton();
-        Descripcion = new javax.swing.JScrollPane();
-        DescripcionClanes = new javax.swing.JList<>();
-        Eleccion = new javax.swing.JScrollPane();
-        ListaClanes1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        LabelClanes.setText("Seleccione un clan:");
+
+        labelNombre.setText("introduzca un nombre");
+
+        TextNombre.setText("nombre......");
+        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNombreActionPerformed(evt);
+            }
+        });
+
+        Labeldificultad.setText("Seleccione la dificultad");
+
+        BoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
+        BoxDificultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxDificultadActionPerformed(evt);
+            }
+        });
+
+        Crear.setText("Crear");
+        Crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CrearMouseClicked(evt);
+            }
+        });
+        Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearActionPerformed(evt);
+            }
+        });
+
+        ListaClanes1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Brujah", "Ventru", "Tremere", "Nosferatu" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        ListaClanes1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListaClanes1MouseClicked(evt);
+            }
+        });
+        ListaClanes1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ListaClanes1ValueChanged(evt);
+            }
+        });
+        Eleccion.setViewportView(ListaClanes1);
+
+        jScrollPane1.setViewportView(DescripcionClan);
+
+        Habilidad1.setText("jCheckBox1");
+
+        Habilidad2.setText("jCheckBox1");
+
+        Habilidad3.setText("jCheckBox1");
+
+        Habilidad4.setText("jCheckBox1");
+
+        javax.swing.GroupLayout CrearPartidaLayout = new javax.swing.GroupLayout(CrearPartida);
+        CrearPartida.setLayout(CrearPartidaLayout);
+        CrearPartidaLayout.setHorizontalGroup(
+            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CrearPartidaLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(CrearPartidaLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CrearPartidaLayout.createSequentialGroup()
+                            .addGap(280, 280, 280)
+                            .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(354, Short.MAX_VALUE))
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(0, 110, Short.MAX_VALUE)
+                .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(353, 353, 353)
+                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(Habilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(Habilidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(Habilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(Habilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        CrearPartidaLayout.setVerticalGroup(
+            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Eleccion)
+                    .addComponent(jScrollPane1))
+                .addGap(39, 39, 39)
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Habilidad1)
+                    .addComponent(Habilidad2)
+                    .addComponent(Habilidad3)
+                    .addComponent(Habilidad4))
+                .addGap(42, 42, 42)
+                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+
+        TabbedMain.addTab("Crear Partida", CrearPartida);
 
         PanelSeccionPartida.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -632,104 +802,6 @@ public class Inicio extends javax.swing.JFrame {
 
         TabbedMain.addTab("Borrar Partida", BorrarPartida);
 
-        LabelClanes.setText("Seleccione un clan:");
-
-        labelNombre.setText("introduzca un nombre");
-
-        TextNombre.setText("nombre......");
-        TextNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNombreActionPerformed(evt);
-            }
-        });
-
-        Labeldificultad.setText("Seleccione la dificultad");
-
-        BoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
-        BoxDificultad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BoxDificultadActionPerformed(evt);
-            }
-        });
-
-        Crear.setText("Crear");
-        Crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearActionPerformed(evt);
-            }
-        });
-
-        DescripcionClanes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        Descripcion.setViewportView(DescripcionClanes);
-
-        ListaClanes1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Brujah", "Ventru", "Tremere", "Nosferatu" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        Eleccion.setViewportView(ListaClanes1);
-
-        javax.swing.GroupLayout CrearPartidaLayout = new javax.swing.GroupLayout(CrearPartida);
-        CrearPartida.setLayout(CrearPartidaLayout);
-        CrearPartidaLayout.setHorizontalGroup(
-            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CrearPartidaLayout.createSequentialGroup()
-                        .addGap(358, 358, 358)
-                        .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CrearPartidaLayout.createSequentialGroup()
-                        .addGap(359, 359, 359)
-                        .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CrearPartidaLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CrearPartidaLayout.createSequentialGroup()
-                        .addGap(348, 348, 348)
-                        .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(CrearPartidaLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CrearPartidaLayout.createSequentialGroup()
-                            .addGap(280, 280, 280)
-                            .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(342, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearPartidaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
-        );
-        CrearPartidaLayout.setVerticalGroup(
-            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
-
-        TabbedMain.addTab("Crear Partida", CrearPartida);
-
         javax.swing.GroupLayout FondoTotalLayout = new javax.swing.GroupLayout(FondoTotal);
         FondoTotal.setLayout(FondoTotalLayout);
         FondoTotalLayout.setHorizontalGroup(
@@ -778,6 +850,56 @@ public class Inicio extends javax.swing.JFrame {
     private void Borrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Borrar2ActionPerformed
+
+    private void ListaClanes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaClanes1MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_ListaClanes1MouseClicked
+
+    private void ListaClanes1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaClanes1ValueChanged
+
+        // TODO add your handling code here:
+        Clan clan;
+        String nombreClan = ListaClanes1.getSelectedValue();
+        int contador=0;
+        HashMap<String, Boolean>habilidades ;
+                Iterator<String> it ;
+                String[]nombres=new String[4];
+        for (int i = 0; i < clanes.size(); i++) {
+            clan = clanes.get(i);
+            if (clan.getNombre().equalsIgnoreCase(nombreClan)) {
+                DescripcionClan.setText(clanes.get(i).getDescripcion());
+                habilidades = clan.getHabilidades();
+                it = habilidades.keySet().iterator();
+
+                while (it.hasNext()) {
+                    String nombreHabilidad = it.next();
+                    nombres[contador]=nombreHabilidad;
+                    contador++;
+                   
+                }
+                
+
+            }
+        }Habilidad1.setText(nombres[0]);
+        Habilidad2.setText(nombres[1]);
+        Habilidad3.setText(nombres[2]);
+        Habilidad4.setText(nombres[3]);
+        
+
+    }//GEN-LAST:event_ListaClanes1ValueChanged
+
+    private void CrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearMouseClicked
+        // TODO add your handling code here:
+
+        if (controlador.comprobarNombrePersonaje(TextNombre.getText())) {
+
+        } else {
+            TextNombre.setBackground(Color.red);
+        }
+
+
+    }//GEN-LAST:event_CrearMouseClicked
 
     /**
      * @param args the command line arguments
@@ -836,8 +958,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel ClanCarga5;
     private javax.swing.JButton Crear;
     private javax.swing.JPanel CrearPartida;
-    private javax.swing.JScrollPane Descripcion;
-    private javax.swing.JList<String> DescripcionClanes;
+    private javax.swing.JTextPane DescripcionClan;
     private javax.swing.JScrollPane Eleccion;
     private javax.swing.JPanel FondoTotal;
     private javax.swing.JLabel Foto;
@@ -846,18 +967,22 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel Foto3;
     private javax.swing.JLabel Foto4;
     private javax.swing.JLabel Foto5;
+    private javax.swing.JCheckBox Habilidad1;
     private javax.swing.JLabel Habilidad1Carga;
     private javax.swing.JLabel Habilidad1Carga1;
     private javax.swing.JLabel Habilidad1Carga2;
     private javax.swing.JLabel Habilidad1Carga3;
     private javax.swing.JLabel Habilidad1Carga4;
     private javax.swing.JLabel Habilidad1Carga5;
+    private javax.swing.JCheckBox Habilidad2;
     private javax.swing.JLabel Habilidad2Carga;
     private javax.swing.JLabel Habilidad2Carga1;
     private javax.swing.JLabel Habilidad2Carga2;
     private javax.swing.JLabel Habilidad2Carga3;
     private javax.swing.JLabel Habilidad2Carga4;
     private javax.swing.JLabel Habilidad2Carga5;
+    private javax.swing.JCheckBox Habilidad3;
+    private javax.swing.JCheckBox Habilidad4;
     private javax.swing.JLabel HoraCarga;
     private javax.swing.JLabel HoraCarga1;
     private javax.swing.JLabel HoraCarga2;
@@ -893,6 +1018,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel ProgresoCarga5;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
 }
