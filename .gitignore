@@ -1,7 +1,4 @@
-
-*.class
-
-/nbproject/private/
 /build/
-/dist/
+/test/
+/nbproject/
 
