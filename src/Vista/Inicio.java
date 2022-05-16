@@ -4,72 +4,17 @@
  */
 package Vista;
 
-import java.awt.Color;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import java.sql.*;
-
 /**
  *
- * @author Gonzalo López Fernández
+ * @author Moru
  */
 public class Inicio extends javax.swing.JFrame {
 
     /**
      * Creates new form Inicio
      */
-    public Inicio() throws FileNotFoundException {
+    public Inicio() {
         initComponents();
-        DefaultListModel modelo = new DefaultListModel();
- //       File f = new File(".\\src\\Ficheros\\clan.csv");
-  //       Scanner lector = new Scanner(f);
-  
-  //Funciona cuando ejecuto en netbeans, pero no cuando solo está el jar
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
-        Scanner lector = new Scanner(inputStream);
-        
-
-        String[] linea;
-        while (lector.hasNext()) {
-            linea = lector.nextLine().split(";");
-            modelo.addElement(linea[0]);
-        }
-        jProgressBar1.setValue(75);
-        jListClanes.setModel(modelo);
-        /* 
-          try {
-            //se carga la clase del Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            //datos de conexión
-            String url = "jdbc:mysql://localhost:3306/padel";
-            String user = "root";
-            String pass = "1234";
-            //Establezco
-            Connection conn = DriverManager.getConnection(url, user, pass);
-            //Saco por pantalla confirmación si OK
-            System.out.println("La conexión se ha establecido");
-            //Se establece la sesión a partir de la conexión anterior:
-            Statement stmt = conn.createStatement();
-            System.out.println("Generada la sesión: " + stmt);
-            //AQUÍ SE REALIZARÁN OTRAS ACCIONES
-        //Se introduce un valor en la tabla:
-            int num = stmt.executeUpdate("INSERT INTO torneo VALUES ('Deltoya2',2);");
-            System.out.println("Registros insertados: " + num);
-            //Se selecciona el valor en la tabla para luego hacer más cosas:
-            ResultSet rs = stmt.executeQuery("SELECT * FROM torneo");
-            System.out.println("Se han seleccionado datos: " + rs);
-            stmt.close(); //recordamos finalizar la sesión
-            conn.close(); //recordamos finalizar la conexión
-            System.out.println("La conexión y sesión se han terminado");   
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-         */
     }
 
     /**
@@ -81,332 +26,758 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanelIniciar = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListClanes = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaInfoClan = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBoxHabilidad2 = new javax.swing.JCheckBox();
-        jCheckBoxHabilidad4 = new javax.swing.JCheckBox();
-        jCheckBoxHabilidad3 = new javax.swing.JCheckBox();
-        jCheckBoxHabilidad1 = new javax.swing.JCheckBox();
-        jLabelErrorHabilidad = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabelNombre = new javax.swing.JLabel();
-        jTextFieldNombre = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jButtonFinalizar = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jPanelCargar = new javax.swing.JPanel();
-        jPanelBorrar = new javax.swing.JPanel();
+        FondoTotal = new javax.swing.JPanel();
+        TabbedMain = new javax.swing.JTabbedPane();
+        CargarPartida = new javax.swing.JPanel();
+        PanelSeccionPartida = new javax.swing.JPanel();
+        LabelFoto = new javax.swing.JLabel();
+        Habilidad1Carga = new javax.swing.JLabel();
+        Habilidad2Carga = new javax.swing.JLabel();
+        ClanCarga = new javax.swing.JLabel();
+        HoraCarga = new javax.swing.JLabel();
+        BarraProgresoCarga = new javax.swing.JProgressBar();
+        ProgresoCarga = new javax.swing.JLabel();
+        NombreCarga = new javax.swing.JLabel();
+        Foto = new javax.swing.JLabel();
+        PanelSeccionPartida1 = new javax.swing.JPanel();
+        LabelFoto1 = new javax.swing.JLabel();
+        Habilidad1Carga1 = new javax.swing.JLabel();
+        Habilidad2Carga1 = new javax.swing.JLabel();
+        ClanCarga1 = new javax.swing.JLabel();
+        HoraCarga1 = new javax.swing.JLabel();
+        BarraProgresoCarga1 = new javax.swing.JProgressBar();
+        ProgresoCarga1 = new javax.swing.JLabel();
+        NombreCarga1 = new javax.swing.JLabel();
+        Foto1 = new javax.swing.JLabel();
+        PanelSeccionPartida2 = new javax.swing.JPanel();
+        LabelFoto2 = new javax.swing.JLabel();
+        Habilidad1Carga2 = new javax.swing.JLabel();
+        Habilidad2Carga2 = new javax.swing.JLabel();
+        ClanCarga2 = new javax.swing.JLabel();
+        HoraCarga2 = new javax.swing.JLabel();
+        BarraProgresoCarga2 = new javax.swing.JProgressBar();
+        ProgresoCarga2 = new javax.swing.JLabel();
+        NombreCarga2 = new javax.swing.JLabel();
+        Foto2 = new javax.swing.JLabel();
+        BorrarPartida = new javax.swing.JPanel();
+        PanelSeccionPartida3 = new javax.swing.JPanel();
+        LabelFoto3 = new javax.swing.JLabel();
+        Habilidad1Carga3 = new javax.swing.JLabel();
+        Habilidad2Carga3 = new javax.swing.JLabel();
+        ClanCarga3 = new javax.swing.JLabel();
+        HoraCarga3 = new javax.swing.JLabel();
+        BarraProgresoCarga3 = new javax.swing.JProgressBar();
+        ProgresoCarga3 = new javax.swing.JLabel();
+        NombreCarga3 = new javax.swing.JLabel();
+        Foto3 = new javax.swing.JLabel();
+        Borrar = new javax.swing.JButton();
+        PanelSeccionPartida4 = new javax.swing.JPanel();
+        LabelFoto4 = new javax.swing.JLabel();
+        Habilidad1Carga4 = new javax.swing.JLabel();
+        Habilidad2Carga4 = new javax.swing.JLabel();
+        ClanCarga4 = new javax.swing.JLabel();
+        HoraCarga4 = new javax.swing.JLabel();
+        BarraProgresoCarga4 = new javax.swing.JProgressBar();
+        ProgresoCarga4 = new javax.swing.JLabel();
+        NombreCarga4 = new javax.swing.JLabel();
+        Foto4 = new javax.swing.JLabel();
+        Borrar1 = new javax.swing.JButton();
+        PanelSeccionPartida5 = new javax.swing.JPanel();
+        LabelFoto5 = new javax.swing.JLabel();
+        Habilidad1Carga5 = new javax.swing.JLabel();
+        Habilidad2Carga5 = new javax.swing.JLabel();
+        ClanCarga5 = new javax.swing.JLabel();
+        HoraCarga5 = new javax.swing.JLabel();
+        BarraProgresoCarga5 = new javax.swing.JProgressBar();
+        ProgresoCarga5 = new javax.swing.JLabel();
+        NombreCarga5 = new javax.swing.JLabel();
+        Foto5 = new javax.swing.JLabel();
+        Borrar2 = new javax.swing.JButton();
+        CrearPartida = new javax.swing.JPanel();
+        LabelClanes = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        TextNombre = new javax.swing.JTextField();
+        Labeldificultad = new javax.swing.JLabel();
+        BoxDificultad = new javax.swing.JComboBox<>();
+        Crear = new javax.swing.JButton();
+        Descripcion = new javax.swing.JScrollPane();
+        DescripcionClanes = new javax.swing.JList<>();
+        Eleccion = new javax.swing.JScrollPane();
+        ListaClanes1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Escoge un clan");
+        PanelSeccionPartida.setBackground(new java.awt.Color(51, 51, 51));
 
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        LabelFoto.setText("Foto");
 
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+        Habilidad1Carga.setText("Habilidad 1");
+
+        Habilidad2Carga.setText("Habilidad 2");
+
+        ClanCarga.setText("Clan");
+
+        HoraCarga.setText("Hora");
+
+        ProgresoCarga.setText("Progreso");
+
+        NombreCarga.setText("Nombre");
+
+        Foto.setText("retrato");
+
+        javax.swing.GroupLayout PanelSeccionPartidaLayout = new javax.swing.GroupLayout(PanelSeccionPartida);
+        PanelSeccionPartida.setLayout(PanelSeccionPartidaLayout);
+        PanelSeccionPartidaLayout.setHorizontalGroup(
+            PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartidaLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Habilidad2Carga, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Habilidad1Carga, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addGroup(PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSeccionPartidaLayout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraProgresoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClanCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(Foto, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                    .addGroup(PanelSeccionPartidaLayout.createSequentialGroup()
+                        .addComponent(ProgresoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
+        );
+        PanelSeccionPartidaLayout.setVerticalGroup(
+            PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartidaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NombreCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Habilidad1Carga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(Habilidad2Carga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(PanelSeccionPartidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelSeccionPartidaLayout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProgresoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BarraProgresoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClanCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 44, Short.MAX_VALUE))
+        );
+
+        PanelSeccionPartida1.setBackground(new java.awt.Color(51, 51, 51));
+
+        LabelFoto1.setText("Foto");
+
+        Habilidad1Carga1.setText("Habilidad 1");
+
+        Habilidad2Carga1.setText("Habilidad 2");
+
+        ClanCarga1.setText("Clan");
+
+        HoraCarga1.setText("Hora");
+
+        ProgresoCarga1.setText("Progreso");
+
+        NombreCarga1.setText("Nombre");
+
+        Foto1.setText("retrato");
+
+        javax.swing.GroupLayout PanelSeccionPartida1Layout = new javax.swing.GroupLayout(PanelSeccionPartida1);
+        PanelSeccionPartida1.setLayout(PanelSeccionPartida1Layout);
+        PanelSeccionPartida1Layout.setHorizontalGroup(
+            PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Habilidad2Carga1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Habilidad1Carga1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addGroup(PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSeccionPartida1Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraProgresoCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClanCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(Foto1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                    .addGroup(PanelSeccionPartida1Layout.createSequentialGroup()
+                        .addComponent(ProgresoCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelFoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
+        );
+        PanelSeccionPartida1Layout.setVerticalGroup(
+            PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NombreCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Habilidad1Carga1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(Habilidad2Carga1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(PanelSeccionPartida1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Foto1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelSeccionPartida1Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProgresoCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelFoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BarraProgresoCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClanCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraCarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 32, Short.MAX_VALUE))
+        );
+
+        PanelSeccionPartida2.setBackground(new java.awt.Color(51, 51, 51));
+
+        LabelFoto2.setText("Foto");
+
+        Habilidad1Carga2.setText("Habilidad 1");
+
+        Habilidad2Carga2.setText("Habilidad 2");
+
+        ClanCarga2.setText("Clan");
+
+        HoraCarga2.setText("Hora");
+
+        ProgresoCarga2.setText("Progreso");
+
+        NombreCarga2.setText("Nombre");
+
+        Foto2.setText("retrato");
+
+        javax.swing.GroupLayout PanelSeccionPartida2Layout = new javax.swing.GroupLayout(PanelSeccionPartida2);
+        PanelSeccionPartida2.setLayout(PanelSeccionPartida2Layout);
+        PanelSeccionPartida2Layout.setHorizontalGroup(
+            PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Habilidad2Carga2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Habilidad1Carga2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addGroup(PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSeccionPartida2Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraProgresoCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClanCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(Foto2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                    .addGroup(PanelSeccionPartida2Layout.createSequentialGroup()
+                        .addComponent(ProgresoCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelFoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
+        );
+        PanelSeccionPartida2Layout.setVerticalGroup(
+            PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NombreCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Habilidad1Carga2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(Habilidad2Carga2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(PanelSeccionPartida2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Foto2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelSeccionPartida2Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProgresoCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelFoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BarraProgresoCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClanCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraCarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 32, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
+        CargarPartida.setLayout(CargarPartidaLayout);
+        CargarPartidaLayout.setHorizontalGroup(
+            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CargarPartidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PanelSeccionPartida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelSeccionPartida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CargarPartidaLayout.createSequentialGroup()
+                    .addGap(12, 12, 12)
+                    .addComponent(PanelSeccionPartida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(12, Short.MAX_VALUE)))
+        );
+        CargarPartidaLayout.setVerticalGroup(
+            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CargarPartidaLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(PanelSeccionPartida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                .addComponent(PanelSeccionPartida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+            .addGroup(CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CargarPartidaLayout.createSequentialGroup()
+                    .addGap(244, 244, 244)
+                    .addComponent(PanelSeccionPartida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(245, Short.MAX_VALUE)))
+        );
+
+        TabbedMain.addTab("Cargar Partida", CargarPartida);
+
+        PanelSeccionPartida3.setBackground(new java.awt.Color(51, 51, 51));
+
+        LabelFoto3.setText("Foto");
+
+        Habilidad1Carga3.setText("Habilidad 1");
+
+        Habilidad2Carga3.setText("Habilidad 2");
+
+        ClanCarga3.setText("Clan");
+
+        HoraCarga3.setText("Hora");
+
+        ProgresoCarga3.setText("Progreso");
+
+        NombreCarga3.setText("Nombre");
+
+        Foto3.setText("retrato");
+
+        Borrar.setText("Borrar");
+        Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelSeccionPartida3Layout = new javax.swing.GroupLayout(PanelSeccionPartida3);
+        PanelSeccionPartida3.setLayout(PanelSeccionPartida3Layout);
+        PanelSeccionPartida3Layout.setHorizontalGroup(
+            PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Habilidad2Carga3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Habilidad1Carga3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addGroup(PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraProgresoCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClanCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(Foto3, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                    .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
+                        .addComponent(ProgresoCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelFoto3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
+            .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
+                .addGap(337, 337, 337)
+                .addComponent(Borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+        PanelSeccionPartida3Layout.setVerticalGroup(
+            PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NombreCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Habilidad1Carga3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(Habilidad2Carga3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Foto3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelSeccionPartida3Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProgresoCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelFoto3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BarraProgresoCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClanCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraCarga3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Borrar)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jListClanes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Ventrue", "Brujah", "Nosferatu", "Tremere" };
+        PanelSeccionPartida4.setBackground(new java.awt.Color(51, 51, 51));
+
+        LabelFoto4.setText("Foto");
+
+        Habilidad1Carga4.setText("Habilidad 1");
+
+        Habilidad2Carga4.setText("Habilidad 2");
+
+        ClanCarga4.setText("Clan");
+
+        HoraCarga4.setText("Hora");
+
+        ProgresoCarga4.setText("Progreso");
+
+        NombreCarga4.setText("Nombre");
+
+        Foto4.setText("retrato");
+
+        Borrar1.setText("Borrar");
+        Borrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Borrar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelSeccionPartida4Layout = new javax.swing.GroupLayout(PanelSeccionPartida4);
+        PanelSeccionPartida4.setLayout(PanelSeccionPartida4Layout);
+        PanelSeccionPartida4Layout.setHorizontalGroup(
+            PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Habilidad2Carga4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Habilidad1Carga4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addGroup(PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraProgresoCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClanCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(Foto4, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                    .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                        .addComponent(ProgresoCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelFoto4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
+            .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                .addGap(337, 337, 337)
+                .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PanelSeccionPartida4Layout.setVerticalGroup(
+            PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NombreCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Habilidad1Carga4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(Habilidad2Carga4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Foto4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelSeccionPartida4Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProgresoCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelFoto4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BarraProgresoCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClanCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraCarga4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Borrar1)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        PanelSeccionPartida5.setBackground(new java.awt.Color(51, 51, 51));
+
+        LabelFoto5.setText("Foto");
+
+        Habilidad1Carga5.setText("Habilidad 1");
+
+        Habilidad2Carga5.setText("Habilidad 2");
+
+        ClanCarga5.setText("Clan");
+
+        HoraCarga5.setText("Hora");
+
+        ProgresoCarga5.setText("Progreso");
+
+        NombreCarga5.setText("Nombre");
+
+        Foto5.setText("retrato");
+
+        Borrar2.setText("Borrar");
+        Borrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Borrar2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelSeccionPartida5Layout = new javax.swing.GroupLayout(PanelSeccionPartida5);
+        PanelSeccionPartida5.setLayout(PanelSeccionPartida5Layout);
+        PanelSeccionPartida5Layout.setHorizontalGroup(
+            PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Habilidad2Carga5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Habilidad1Carga5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addGroup(PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraProgresoCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClanCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(Foto5, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                    .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                        .addComponent(ProgresoCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelFoto5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
+            .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                .addGap(337, 337, 337)
+                .addComponent(Borrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PanelSeccionPartida5Layout.setVerticalGroup(
+            PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NombreCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Habilidad1Carga5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(Habilidad2Carga5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Foto5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelSeccionPartida5Layout.createSequentialGroup()
+                        .addGroup(PanelSeccionPartida5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProgresoCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelFoto5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BarraProgresoCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClanCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraCarga5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Borrar2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout BorrarPartidaLayout = new javax.swing.GroupLayout(BorrarPartida);
+        BorrarPartida.setLayout(BorrarPartidaLayout);
+        BorrarPartidaLayout.setHorizontalGroup(
+            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelSeccionPartida5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelSeccionPartida3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(PanelSeccionPartida4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        BorrarPartidaLayout.setVerticalGroup(
+            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(PanelSeccionPartida3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
+                .addComponent(PanelSeccionPartida5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                    .addGap(238, 238, 238)
+                    .addComponent(PanelSeccionPartida4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(227, Short.MAX_VALUE)))
+        );
+
+        TabbedMain.addTab("Borrar Partida", BorrarPartida);
+
+        LabelClanes.setText("Seleccione un clan:");
+
+        labelNombre.setText("introduzca un nombre");
+
+        TextNombre.setText("nombre......");
+        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNombreActionPerformed(evt);
+            }
+        });
+
+        Labeldificultad.setText("Seleccione la dificultad");
+
+        BoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
+        BoxDificultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxDificultadActionPerformed(evt);
+            }
+        });
+
+        Crear.setText("Crear");
+        Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearActionPerformed(evt);
+            }
+        });
+
+        DescripcionClanes.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jListClanes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListClanes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListClanesValueChanged(evt);
-            }
+        Descripcion.setViewportView(DescripcionClanes);
+
+        ListaClanes1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Brujah", "Ventru", "Tremere", "Nosferatu" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jListClanes);
+        Eleccion.setViewportView(ListaClanes1);
 
-        jTextAreaInfoClan.setEditable(false);
-        jTextAreaInfoClan.setColumns(20);
-        jTextAreaInfoClan.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaInfoClan);
-
-        jLabel2.setText("Escoge dos habilidades");
-
-        jCheckBoxHabilidad2.setText("Habilidad2");
-        jCheckBoxHabilidad2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBoxHabilidad2ItemStateChanged(evt);
-            }
-        });
-
-        jCheckBoxHabilidad4.setText("Habilidad4");
-        jCheckBoxHabilidad4.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBoxHabilidad4ItemStateChanged(evt);
-            }
-        });
-
-        jCheckBoxHabilidad3.setText("Habilidad3");
-        jCheckBoxHabilidad3.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBoxHabilidad3ItemStateChanged(evt);
-            }
-        });
-
-        jCheckBoxHabilidad1.setText("Habilidad1");
-        jCheckBoxHabilidad1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBoxHabilidad1ItemStateChanged(evt);
-            }
-        });
-        jCheckBoxHabilidad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxHabilidad1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBoxHabilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBoxHabilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBoxHabilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBoxHabilidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxHabilidad1)
-                    .addComponent(jCheckBoxHabilidad2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxHabilidad3)
-                    .addComponent(jCheckBoxHabilidad4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabelErrorHabilidad.setText("Has seleccionado mas de dos habilidades");
-
-        jLabelNombre.setText("Escoge un nombre");
-
-        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNombreActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNombre)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelNombre)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jButtonFinalizar.setText("Finalizar");
-        jButtonFinalizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonFinalizarMouseClicked(evt);
-            }
-        });
-        jButtonFinalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFinalizarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonFinalizar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonFinalizar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jProgressBar1.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar1.setForeground(new java.awt.Color(51, 255, 51));
-        jProgressBar1.setValue(50);
-
-        javax.swing.GroupLayout jPanelIniciarLayout = new javax.swing.GroupLayout(jPanelIniciar);
-        jPanelIniciar.setLayout(jPanelIniciarLayout);
-        jPanelIniciarLayout.setHorizontalGroup(
-            jPanelIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanelIniciarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIniciarLayout.createSequentialGroup()
+        javax.swing.GroupLayout CrearPartidaLayout = new javax.swing.GroupLayout(CrearPartida);
+        CrearPartida.setLayout(CrearPartidaLayout);
+        CrearPartidaLayout.setHorizontalGroup(
+            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CrearPartidaLayout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CrearPartidaLayout.createSequentialGroup()
+                        .addGap(359, 359, 359)
+                        .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CrearPartidaLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CrearPartidaLayout.createSequentialGroup()
+                        .addGap(348, 348, 348)
+                        .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(CrearPartidaLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CrearPartidaLayout.createSequentialGroup()
+                            .addGap(280, 280, 280)
+                            .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(342, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearPartidaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelErrorHabilidad)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIniciarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
         );
-        jPanelIniciarLayout.setVerticalGroup(
-            jPanelIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelIniciarLayout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelErrorHabilidad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+        CrearPartidaLayout.setVerticalGroup(
+            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
+                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
-        jTabbedPane1.addTab("Iniciar partida", jPanelIniciar);
+        TabbedMain.addTab("Crear Partida", CrearPartida);
 
-        javax.swing.GroupLayout jPanelCargarLayout = new javax.swing.GroupLayout(jPanelCargar);
-        jPanelCargar.setLayout(jPanelCargarLayout);
-        jPanelCargarLayout.setHorizontalGroup(
-            jPanelCargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+        javax.swing.GroupLayout FondoTotalLayout = new javax.swing.GroupLayout(FondoTotal);
+        FondoTotal.setLayout(FondoTotalLayout);
+        FondoTotalLayout.setHorizontalGroup(
+            FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TabbedMain)
         );
-        jPanelCargarLayout.setVerticalGroup(
-            jPanelCargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
+        FondoTotalLayout.setVerticalGroup(
+            FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TabbedMain)
         );
-
-        jTabbedPane1.addTab("Cargar partida", jPanelCargar);
-
-        javax.swing.GroupLayout jPanelBorrarLayout = new javax.swing.GroupLayout(jPanelBorrar);
-        jPanelBorrar.setLayout(jPanelBorrarLayout);
-        jPanelBorrarLayout.setHorizontalGroup(
-            jPanelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
-        jPanelBorrarLayout.setVerticalGroup(
-            jPanelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Borrar partida", jPanelBorrar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(FondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(FondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBoxHabilidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxHabilidad1ActionPerformed
+    private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxHabilidad1ActionPerformed
+    }//GEN-LAST:event_TextNombreActionPerformed
 
-    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+    private void BoxDificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDificultadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+    }//GEN-LAST:event_BoxDificultadActionPerformed
 
-    private void jListClanesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClanesValueChanged
-        jTextAreaInfoClan.setText("Aparecería la info del clan: " + jListClanes.getSelectedValue());
-    }//GEN-LAST:event_jListClanesValueChanged
+    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearActionPerformed
 
-    private void jButtonFinalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFinalizarMouseClicked
+    private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BorrarActionPerformed
 
-    }//GEN-LAST:event_jButtonFinalizarMouseClicked
+    private void Borrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Borrar1ActionPerformed
 
-    private void jCheckBoxHabilidad1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxHabilidad1ItemStateChanged
-        comprobarHabilidades();
-    }//GEN-LAST:event_jCheckBoxHabilidad1ItemStateChanged
-
-    private void jCheckBoxHabilidad2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxHabilidad2ItemStateChanged
-        comprobarHabilidades();
-    }//GEN-LAST:event_jCheckBoxHabilidad2ItemStateChanged
-
-    private void jCheckBoxHabilidad3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxHabilidad3ItemStateChanged
-        comprobarHabilidades();
-    }//GEN-LAST:event_jCheckBoxHabilidad3ItemStateChanged
-
-    private void jCheckBoxHabilidad4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxHabilidad4ItemStateChanged
-        comprobarHabilidades();
-    }//GEN-LAST:event_jCheckBoxHabilidad4ItemStateChanged
-
-    private void jButtonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarActionPerformed
-        if (jTextFieldNombre.getText().isEmpty()) {
-            jTextFieldNombre.setText("Te falta el nombre");
-            jTextFieldNombre.setBackground(Color.red);
-        } else {
-            jTextFieldNombre.setBackground(Color.white);
-        }
-
-    }//GEN-LAST:event_jButtonFinalizarActionPerformed
+    private void Borrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Borrar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,9 +786,9 @@ public class Inicio extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
- /*        try {
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -432,73 +803,96 @@ public class Inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }*/
+        }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Inicio().setVisible(true);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new Inicio().setVisible(true);
             }
         });
     }
 
-    private int comprobarHabilidades() {
-        int contador = 0;
-        if (jCheckBoxHabilidad1.isSelected()) {
-            contador++;
-        }
-        if (jCheckBoxHabilidad2.isSelected()) {
-            contador++;
-        }
-        if (jCheckBoxHabilidad3.isSelected()) {
-            contador++;
-        }
-        if (jCheckBoxHabilidad4.isSelected()) {
-            contador++;
-        }
-        if (contador > 2) {
-            jLabelErrorHabilidad.setVisible(true);
-            jLabelErrorHabilidad.setText("Has seleccionado mas de dos habilidades");
-            jLabelErrorHabilidad.setForeground(Color.red);
-        } else if (contador < 2) {
-            jLabelErrorHabilidad.setVisible(true);
-            jLabelErrorHabilidad.setText("Has seleccionado menos de dos habilidades");
-            jLabelErrorHabilidad.setForeground(Color.red);
-        } else {
-            jLabelErrorHabilidad.setVisible(false);
-        }
-        return contador;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonFinalizar;
-    private javax.swing.JCheckBox jCheckBoxHabilidad1;
-    private javax.swing.JCheckBox jCheckBoxHabilidad2;
-    private javax.swing.JCheckBox jCheckBoxHabilidad3;
-    private javax.swing.JCheckBox jCheckBoxHabilidad4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelErrorHabilidad;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JList<String> jListClanes;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelBorrar;
-    private javax.swing.JPanel jPanelCargar;
-    private javax.swing.JPanel jPanelIniciar;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextAreaInfoClan;
-    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JProgressBar BarraProgresoCarga;
+    private javax.swing.JProgressBar BarraProgresoCarga1;
+    private javax.swing.JProgressBar BarraProgresoCarga2;
+    private javax.swing.JProgressBar BarraProgresoCarga3;
+    private javax.swing.JProgressBar BarraProgresoCarga4;
+    private javax.swing.JProgressBar BarraProgresoCarga5;
+    private javax.swing.JButton Borrar;
+    private javax.swing.JButton Borrar1;
+    private javax.swing.JButton Borrar2;
+    private javax.swing.JPanel BorrarPartida;
+    private javax.swing.JComboBox<String> BoxDificultad;
+    private javax.swing.JPanel CargarPartida;
+    private javax.swing.JLabel ClanCarga;
+    private javax.swing.JLabel ClanCarga1;
+    private javax.swing.JLabel ClanCarga2;
+    private javax.swing.JLabel ClanCarga3;
+    private javax.swing.JLabel ClanCarga4;
+    private javax.swing.JLabel ClanCarga5;
+    private javax.swing.JButton Crear;
+    private javax.swing.JPanel CrearPartida;
+    private javax.swing.JScrollPane Descripcion;
+    private javax.swing.JList<String> DescripcionClanes;
+    private javax.swing.JScrollPane Eleccion;
+    private javax.swing.JPanel FondoTotal;
+    private javax.swing.JLabel Foto;
+    private javax.swing.JLabel Foto1;
+    private javax.swing.JLabel Foto2;
+    private javax.swing.JLabel Foto3;
+    private javax.swing.JLabel Foto4;
+    private javax.swing.JLabel Foto5;
+    private javax.swing.JLabel Habilidad1Carga;
+    private javax.swing.JLabel Habilidad1Carga1;
+    private javax.swing.JLabel Habilidad1Carga2;
+    private javax.swing.JLabel Habilidad1Carga3;
+    private javax.swing.JLabel Habilidad1Carga4;
+    private javax.swing.JLabel Habilidad1Carga5;
+    private javax.swing.JLabel Habilidad2Carga;
+    private javax.swing.JLabel Habilidad2Carga1;
+    private javax.swing.JLabel Habilidad2Carga2;
+    private javax.swing.JLabel Habilidad2Carga3;
+    private javax.swing.JLabel Habilidad2Carga4;
+    private javax.swing.JLabel Habilidad2Carga5;
+    private javax.swing.JLabel HoraCarga;
+    private javax.swing.JLabel HoraCarga1;
+    private javax.swing.JLabel HoraCarga2;
+    private javax.swing.JLabel HoraCarga3;
+    private javax.swing.JLabel HoraCarga4;
+    private javax.swing.JLabel HoraCarga5;
+    private javax.swing.JLabel LabelClanes;
+    private javax.swing.JLabel LabelFoto;
+    private javax.swing.JLabel LabelFoto1;
+    private javax.swing.JLabel LabelFoto2;
+    private javax.swing.JLabel LabelFoto3;
+    private javax.swing.JLabel LabelFoto4;
+    private javax.swing.JLabel LabelFoto5;
+    private javax.swing.JLabel Labeldificultad;
+    private javax.swing.JList<String> ListaClanes1;
+    private javax.swing.JLabel NombreCarga;
+    private javax.swing.JLabel NombreCarga1;
+    private javax.swing.JLabel NombreCarga2;
+    private javax.swing.JLabel NombreCarga3;
+    private javax.swing.JLabel NombreCarga4;
+    private javax.swing.JLabel NombreCarga5;
+    private javax.swing.JPanel PanelSeccionPartida;
+    private javax.swing.JPanel PanelSeccionPartida1;
+    private javax.swing.JPanel PanelSeccionPartida2;
+    private javax.swing.JPanel PanelSeccionPartida3;
+    private javax.swing.JPanel PanelSeccionPartida4;
+    private javax.swing.JPanel PanelSeccionPartida5;
+    private javax.swing.JLabel ProgresoCarga;
+    private javax.swing.JLabel ProgresoCarga1;
+    private javax.swing.JLabel ProgresoCarga2;
+    private javax.swing.JLabel ProgresoCarga3;
+    private javax.swing.JLabel ProgresoCarga4;
+    private javax.swing.JLabel ProgresoCarga5;
+    private javax.swing.JTabbedPane TabbedMain;
+    private javax.swing.JTextField TextNombre;
+    private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
 }
