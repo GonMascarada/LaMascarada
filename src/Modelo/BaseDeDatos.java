@@ -1,5 +1,11 @@
-package Mascarada;
+package Modelo;
 
+import Mascarada.Clan;
+import Mascarada.Equipo;
+import Mascarada.Escena;
+import Mascarada.Opcion;
+import Mascarada.Partida;
+import Mascarada.Vampire;
 import Vista.Inicio;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -31,7 +37,7 @@ public class BaseDeDatos {
      * @return escena por muerte.
      */
     public Escena getEscenaMuerte() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getEscena(999999999); //Habrá que marcar cual es la escena de muerte.
     }
 
     /**
@@ -72,7 +78,7 @@ public class BaseDeDatos {
         Opcion opcion;
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
-            if (linea[6].equals(idEscena)) {
+            if (Integer.valueOf(linea[6]) == idEscena) {
                 opcion = new Opcion(linea);
                 opciones.add(opcion);
             }
@@ -182,10 +188,10 @@ public class BaseDeDatos {
      * Devuelve, si hay, información extra de una escena por una habilidad.
      *
      * @param idEscena escena de la que se consulta si hay información extra.
-     * @param clan habilidades que tiene el protagonista.
-     * @return
+     * @param habilidades lista de habilidades que tiene el protagonista.
+     * @return el texto con la info extra.
      */
-    String getInfoExtra(int idEscena, HashMap<String, Boolean> habilidades) {
+    public String getInfoExtra(int idEscena, HashMap<String, Boolean> habilidades) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -289,7 +295,7 @@ public class BaseDeDatos {
      *
      * @param partida
      */
-    void borrarPartida(Partida partida) {
+    public void borrarPartida(Partida partida) {
         System.out.println("Estamos trabajando en ello :(");
         sincronizar();
     }
