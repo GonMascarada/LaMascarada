@@ -20,7 +20,7 @@ public class Eleccion_2 extends javax.swing.JFrame {
 
     private Controlador controlador;
     private Escena escena;
-    private ArrayList<JButton> botones;
+    
 
     /**
      * Creates new form Eleccion_2
@@ -29,19 +29,15 @@ public class Eleccion_2 extends javax.swing.JFrame {
         initComponents();
         this.controlador = controlador;
         this.escena = escena;
-        botones = new ArrayList<>();
-        botones.add(opcion1);
-        botones.add(opcion2);
+       
         texto.setText(escena.getTexto());
         System.out.println("Texto: " + escena.getTexto());
         //Meter el cambio de foto
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(escena.getImagen()).getImage().getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_DEFAULT));
         foto.setIcon(imageIcon);
         // Cambia el texto de los botones por las diferentes opciones.
-        ArrayList<Opcion> opciones = escena.getOpciones();
-        for (int i = 0; i < botones.size(); i++) {
-            botones.get(i).setText(opciones.get(i).getTexto());
-        }
+      footer21.setOpciones(escena.getOpciones());
+        
 
         //Inicializo la cabecera
         Cabecera cabeceraImport2 = new Cabecera();
