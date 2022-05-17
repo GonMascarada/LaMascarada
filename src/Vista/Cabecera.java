@@ -16,10 +16,18 @@ public class Cabecera extends javax.swing.JPanel {
     
     /**
      * Creates new form CabeceraImport
-     */
+     
     public Cabecera(Partida partida) {
         initComponents();
         this.partida = partida;
+        
+    }
+    * */
+        /**
+     * Creates new form CabeceraImport
+     */
+    public Cabecera() {
+        initComponents();
         
     }
 
