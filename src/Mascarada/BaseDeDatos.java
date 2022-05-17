@@ -26,16 +26,6 @@ public class BaseDeDatos {
     }
 
     /**
-     * Devuelve la primera escena inicial de un clan.
-     *
-     * @param clan
-     * @return primera escena.
-     */
-    public Escena getPrimeraEscena(Clan clan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
      * Devuelve la escena por haber perido todos los puntos de vida.
      *
      * @return escena por muerte.
@@ -161,15 +151,6 @@ public class BaseDeDatos {
     }
 
     /**
-     * Guarda el estado actual de la partida.
-     *
-     * @param partida a guardar.
-     */
-    public void guardarPartida(Partida partida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
      * Devuelve lista de todas las partidas guardadas en la base de datos.
      *
      * @return lista de partidas guardadas.
@@ -195,15 +176,6 @@ public class BaseDeDatos {
             partidas.add(partida);
         }
         return partidas;
-    }
-
-    /**
-     * Elimina todos los datos de una partida.
-     *
-     * @param partida
-     */
-    void borrarPartida(Partida partida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -260,16 +232,6 @@ public class BaseDeDatos {
     }
 
     /**
-     * Comprueba si un nombre ya está siendo usado por otro personaje.
-     *
-     * @param nombre
-     * @return true si está disponible, false en otro caso.
-     */
-    public boolean comprobarNombrePersonaje(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
      * Crea la sesión con la base de datos.
      */
     private void conectar() {
@@ -313,11 +275,51 @@ public class BaseDeDatos {
     }
 
     /**
+     * Guarda el estado actual de la partida.
+     *
+     * @param partida a guardar.
+     */
+    public void guardarPartida(Partida partida) {
+        System.out.println("Estamos trabajando en ello :(");
+        sincronizar();
+    }
+
+    /**
+     * Elimina todos los datos de una partida.
+     *
+     * @param partida
+     */
+    void borrarPartida(Partida partida) {
+        System.out.println("Estamos trabajando en ello :(");
+        sincronizar();
+    }
+
+    /**
+     * Comprueba si un nombre ya está siendo usado por otro personaje.
+     *
+     * @param nombre
+     * @return true si está disponible, false en otro caso.
+     */
+    public boolean comprobarNombrePersonaje(String nombre) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        boolean disponible = true;
+        while ((lector.hasNext() && disponible)) {
+            linea = lector.nextLine().split(";");
+            if (linea[0].equals(nombre)) {
+                disponible = false;
+            }
+        }
+        return disponible;
+    }
+
+    /**
      * Comprueba que la copia local y la de la base de datos están actualizadas.
      * En caso de no estarlo, lo sincroniza.
      */
     private void sincronizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Estamos trabajando en ello :(");
     }
 
 }

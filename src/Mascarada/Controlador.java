@@ -72,7 +72,7 @@ public final class Controlador {
     public void crearNuevaPartida(Clan clan, String nombre) {
         Vampire vampire = new Vampire(clan, nombre);
         partida.setProtagonista(vampire);
-        Escena primera = bbdd.getPrimeraEscena(clan);
+        Escena primera = bbdd.getEscena(0); //Primera escena
         partida.setEscena(primera);
         // Lanzar una nueva ventana con la escena.
     }
@@ -97,7 +97,7 @@ public final class Controlador {
     /**
      * Guarda la partida en el estado actual.
      */
-    private void guardarPartida() {
+    public void guardarPartida() {
         bbdd.guardarPartida(partida);
     }
 
@@ -106,7 +106,7 @@ public final class Controlador {
      *
      * @param partida
      */
-    private void cargarPartida(Partida partida) {
+    public void cargarPartida(Partida partida) {
         this.partida = partida;
         Escena escena = partida.getEscena();
         lanzar(escena);
