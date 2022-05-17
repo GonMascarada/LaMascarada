@@ -35,7 +35,7 @@ public class Opcion {
      * @return true si causa progreso, false en otro caso.
      */
     public boolean causaProgreso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     /**

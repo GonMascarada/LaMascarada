@@ -1,5 +1,13 @@
-package Mascarada;
+package Controlador;
 
+import Modelo.BaseDeDatos;
+import Mascarada.Clan;
+import Mascarada.Escena;
+import Mascarada.Opcion;
+import Mascarada.Partida;
+import Mascarada.Persona;
+import Mascarada.Vampire;
+import Vista.Eleccion_2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,6 +25,7 @@ public final class Controlador {
 
     public Controlador() {
         bbdd = new BaseDeDatos();
+        partida = new Partida(); //Habrá que borrarlo
     }
 
     /**
@@ -71,9 +80,9 @@ public final class Controlador {
      */
     public void crearNuevaPartida(Clan clan, String nombre) {
         Vampire vampire = new Vampire(clan, nombre);
-        partida.setProtagonista(vampire);
+        getPartida().setProtagonista(vampire);
         Escena primera = bbdd.getEscena(0); //Primera escena
-        partida.setEscena(primera);
+        getPartida().setEscena(primera);
         // Lanzar una nueva ventana con la escena.
     }
 
@@ -84,13 +93,13 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
-        partida.setEscena(siguiente);
+        getPartida().setEscena(siguiente);
         if (opcion.causaProgreso()) {
-            bbdd.guardarPartida(partida);
+            bbdd.guardarPartida(getPartida());
         }
         lanzar(siguiente);
-        HashMap habilidades = partida.getHabilidades();
-        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
+//        HashMap habilidades = partida.getHabilidades();
+//        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
         // Si en extra hay algo, lanzar pop-up con esa info.
     }
 
@@ -98,7 +107,7 @@ public final class Controlador {
      * Guarda la partida en el estado actual.
      */
     public void guardarPartida() {
-        bbdd.guardarPartida(partida);
+        bbdd.guardarPartida(getPartida());
     }
 
     /**
@@ -129,7 +138,7 @@ public final class Controlador {
      */
     private boolean pelear(Persona enemigo) {
         //Pasan cosas.
-        if (partida.getVidaProtagonista() <= 0) {
+        if (getPartida().getVidaProtagonista() <= 0) {
             bbdd.getEscenaMuerte();
             return false;
         }
@@ -142,6 +151,14 @@ public final class Controlador {
      * @param escena a mostrar.
      */
     private void lanzar(Escena escena) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Eleccion_2 ventana = new Eleccion_2(this, escena);
+        ventana.setVisible(true);
+    }
+
+    /**
+     * @return the partida
+     */
+    public Partida getPartida() {
+        return partida;
     }
 }

@@ -1,8 +1,9 @@
 package Vista;
 
-import Mascarada.BaseDeDatos;
+import Modelo.BaseDeDatos;
 import Mascarada.Clan;
-import Mascarada.Controlador;
+import Controlador.Controlador;
+import Mascarada.Opcion;
 import Mascarada.Partida;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,8 +19,8 @@ public class Prueba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Controlador controlador = new Controlador();
-        BaseDeDatos bd = new BaseDeDatos();
+        Controlador controlador = new Controlador();
+        /*        BaseDeDatos bd = new BaseDeDatos();
 
         System.out.println("getListaClanes");
         ArrayList<Clan> clanes = bd.getListaClanes();
@@ -31,7 +32,12 @@ public class Prueba {
         ArrayList<Partida> partidas = bd.getListaPartidas();
         for (int i = 0; i < partidas.size(); i++) {
             System.out.println(partidas.get(i).toString());
-        }  
+        } 
+         */
+        String prueba = "0;Ir al pueblo;0;;0;;0;1";
+        String[] datos = prueba.split(";");
+        Opcion opcion = new Opcion(datos);
+        controlador.escoger(opcion);
 
     }
 }
