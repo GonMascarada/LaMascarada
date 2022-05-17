@@ -29,12 +29,8 @@ public class Eleccion_6 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Foto = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
-        Opcion1 = new javax.swing.JButton();
-        Opcion2 = new javax.swing.JButton();
-        Opcion3 = new javax.swing.JButton();
-        Opcion4 = new javax.swing.JButton();
-        Opcion5 = new javax.swing.JButton();
-        Opcion6 = new javax.swing.JButton();
+        cabecera1 = new Vista.Cabecera();
+        footer61 = new Vista.footer6();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,67 +38,29 @@ public class Eleccion_6 extends javax.swing.JFrame {
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
-        Foto.setBounds(10, 10, 440, 380);
+        Foto.setBounds(10, 210, 440, 380);
 
         Texto.setText("Texto");
         jPanel1.add(Texto);
-        Texto.setBounds(470, 10, 500, 380);
-
-        Opcion1.setText("Opcion1");
-        jPanel1.add(Opcion1);
-        Opcion1.setBounds(60, 470, 220, 60);
-
-        Opcion2.setText("Opcion2");
-        jPanel1.add(Opcion2);
-        Opcion2.setBounds(380, 470, 220, 60);
-
-        Opcion3.setText("Opcion3");
-        Opcion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Opcion3);
-        Opcion3.setBounds(710, 470, 220, 60);
-
-        Opcion4.setText("Opcion4");
-        jPanel1.add(Opcion4);
-        Opcion4.setBounds(60, 560, 220, 60);
-
-        Opcion5.setText("Opcion5");
-        Opcion5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Opcion5);
-        Opcion5.setBounds(380, 560, 220, 60);
-
-        Opcion6.setText("Opcion6");
-        jPanel1.add(Opcion6);
-        Opcion6.setBounds(710, 560, 220, 60);
+        Texto.setBounds(480, 210, 500, 380);
+        jPanel1.add(cabecera1);
+        cabecera1.setBounds(0, 0, 1000, 250);
+        jPanel1.add(footer61);
+        footer61.setBounds(0, 600, 1001, 101);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion3ActionPerformed
-
-    private void Opcion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,13 +106,9 @@ public class Eleccion_6 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Foto;
-    private javax.swing.JButton Opcion1;
-    private javax.swing.JButton Opcion2;
-    private javax.swing.JButton Opcion3;
-    private javax.swing.JButton Opcion4;
-    private javax.swing.JButton Opcion5;
-    private javax.swing.JButton Opcion6;
     private javax.swing.JLabel Texto;
+    private Vista.Cabecera cabecera1;
+    private Vista.footer6 footer61;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -30,10 +30,8 @@ public class Eleccion_4 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Foto = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
-        Opcion1 = new javax.swing.JButton();
-        Opcion2 = new javax.swing.JButton();
-        Opcion3 = new javax.swing.JButton();
-        Opcion4 = new javax.swing.JButton();
+        cabecera1 = new Vista.Cabecera();
+        footer41 = new Vista.footer4();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,32 +39,15 @@ public class Eleccion_4 extends javax.swing.JFrame {
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
-        Foto.setBounds(10, 10, 440, 380);
+        Foto.setBounds(10, 200, 440, 380);
 
         Texto.setText("Texto");
         jPanel1.add(Texto);
-        Texto.setBounds(470, 10, 500, 380);
-
-        Opcion1.setText("Opcion1");
-        Opcion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Opcion1);
-        Opcion1.setBounds(50, 440, 350, 80);
-
-        Opcion2.setText("Opcion2");
-        jPanel1.add(Opcion2);
-        Opcion2.setBounds(50, 550, 350, 80);
-
-        Opcion3.setText("Opcion3");
-        jPanel1.add(Opcion3);
-        Opcion3.setBounds(540, 440, 350, 80);
-
-        Opcion4.setText("Opcion4");
-        jPanel1.add(Opcion4);
-        Opcion4.setBounds(540, 550, 350, 80);
+        Texto.setBounds(490, 200, 500, 380);
+        jPanel1.add(cabecera1);
+        cabecera1.setBounds(0, 0, 1000, 250);
+        jPanel1.add(footer41);
+        footer41.setBounds(0, 600, 1001, 103);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,10 +62,6 @@ public class Eleccion_4 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,11 +103,9 @@ public class Eleccion_4 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Foto;
-    private javax.swing.JButton Opcion1;
-    private javax.swing.JButton Opcion2;
-    private javax.swing.JButton Opcion3;
-    private javax.swing.JButton Opcion4;
     private javax.swing.JLabel Texto;
+    private Vista.Cabecera cabecera1;
+    private Vista.footer4 footer41;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
