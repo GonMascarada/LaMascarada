@@ -39,7 +39,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Foto">
+        <Component class="javax.swing.JLabel" name="foto">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
@@ -49,30 +49,27 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="Opcion2">
+        <Component class="javax.swing.JLabel" name="texto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Opcion2"/>
+            <Property name="text" type="java.lang.String" value="Texto"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="550" y="620" width="350" height="50"/>
+              <AbsoluteConstraints x="460" y="210" width="500" height="380"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="Opcion1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Opcion1"/>
-          </Properties>
+        <Component class="Vista.Cabecera" name="cabecera1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="620" width="350" height="50"/>
+              <AbsoluteConstraints x="0" y="0" width="1000" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="Vista.CabeceraImport" name="cabeceraImport2">
+        <Component class="Vista.footer2" name="footer21">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+              <AbsoluteConstraints x="0" y="590" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
