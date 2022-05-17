@@ -1,12 +1,12 @@
 0;Bienvenido a Bloodtown; .\cartel.jpg;
 1;Un lúgubre bar en el que…; .\bar.jpg;
-2;Dialogo con la camarera...;.\camarera.jpg;Camarera
-3;Dialogo con un cliente...;.\cliente.jpg;Cliente
-4;Dialogo dueño;.\Dueño.jpg;Dueño
-5;Dialogo con la dueña del Motel;.\dueñaMotel.jpg;DueñaMotel
+2;Hola forastero, estas buscado..algo en particular?;.\camarera.jpg;Camarera
+3;Este pueblo cada vez está peor, al igual que el café!;.\cliente.jpg;Cliente
+4;No hagas caso a la camara...;.\Dueño.jpg;Dueño
+5;Hola forastero, un poco tarde para ir de visita al pueblo, por que no te quedas a pasar la noche?Puedes ir al Pub, es lo único abierto;.\dueñaMotel.jpg;DueñaMotel
 6;Llegar al pub;.\pub.jpg
-7;Dialogo con vidente;.\vidente;Vidente
-8;Dialogo con cliente;.\clientePub.jpg;ClientePub
+7;Oh, que curioso, estas manos no son...normales;.\vidente;Vidente
+8;Este sitio es un antro, lo unico que parece merecer la pena es el camarero;.\clientePub.jpg;ClientePub
 9;Llegar al periódico;.\periodico.jpg
 11;Llegar a la Casa de la Colina;.\CasaColina.jpg
 12;Pelea contra Ramonchu;.\Ramonchu.jpg;Ramonchu

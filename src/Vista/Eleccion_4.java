@@ -16,6 +16,7 @@ public class Eleccion_4 extends javax.swing.JFrame {
     public Eleccion_4() {
         initComponents();
     }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
