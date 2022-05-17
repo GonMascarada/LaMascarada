@@ -4,17 +4,31 @@
  */
 package Vista;
 
+import Mascarada.Opcion;
+import java.util.ArrayList;
+import javax.swing.JButton;
+
 /**
  *
  * @author Alumno
  */
 public class footer2 extends javax.swing.JPanel {
 
+    private ArrayList<JButton> botones;
     /**
      * Creates new form footer2
      */
     public footer2() {
         initComponents();
+        
+    }
+    public void setOpciones(ArrayList <Opcion> opciones){
+         botones = new ArrayList<>();
+        botones.add(opcion1);
+        botones.add(opcion2);
+        for (int i = 0; i < botones.size(); i++) {
+            botones.get(i).setText(opciones.get(i).getTexto());
+        }
     }
 
     /**
@@ -26,12 +40,12 @@ public class footer2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Opcion1 = new javax.swing.JButton();
-        Opcion2 = new javax.swing.JButton();
+        opcion1 = new javax.swing.JButton();
+        opcion2 = new javax.swing.JButton();
 
-        Opcion1.setText("jButton1");
+        opcion1.setText("jButton1");
 
-        Opcion2.setText("jButton1");
+        opcion2.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -39,9 +53,9 @@ public class footer2 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(Opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119)
-                .addComponent(Opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -49,15 +63,15 @@ public class footer2 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Opcion1;
-    private javax.swing.JButton Opcion2;
+    private javax.swing.JButton opcion1;
+    private javax.swing.JButton opcion2;
     // End of variables declaration//GEN-END:variables
 }
