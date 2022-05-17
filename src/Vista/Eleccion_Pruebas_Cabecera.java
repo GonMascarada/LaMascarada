@@ -8,12 +8,12 @@ package Vista;
  *
  * @author Moru
  */
-public class Eleccion_3 extends javax.swing.JFrame {
+public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
 
     /**
      * Creates new form Eleccion_2
      */
-    public Eleccion_3() {
+    public Eleccion_Pruebas_Cabecera() {
         initComponents();
     }
 
@@ -34,7 +34,6 @@ public class Eleccion_3 extends javax.swing.JFrame {
         Opcion3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanel1.setLayout(null);
 
@@ -98,14 +97,18 @@ public class Eleccion_3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -114,7 +117,7 @@ public class Eleccion_3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_3().setVisible(true);
+                new Eleccion_Pruebas_Cabecera().setVisible(true);
             }
         });
     }

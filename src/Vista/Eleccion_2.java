@@ -4,18 +4,46 @@
  */
 package Vista;
 
+import Controlador.Controlador;
+import Mascarada.Escena;
+import Mascarada.Opcion;
+import java.util.ArrayList;
+import javax.swing.JButton;
+
 /**
  *
  * @author Moru
  */
 public class Eleccion_2 extends javax.swing.JFrame {
 
+    private Controlador controlador;
+    private Escena escena;
+    private ArrayList<JButton> botones;
+
     /**
      * Creates new form Eleccion_2
      */
-    public Eleccion_2() {
+    public Eleccion_2(Controlador controlador, Escena escena) {
         initComponents();
-        
+        this.controlador = controlador;
+        this.escena = escena;
+        botones = new ArrayList<>();
+        botones.add(opcion1);
+        botones.add(opcion2);
+        texto.setText(escena.getTexto());
+        System.out.println("Texto: " + escena.getTexto());
+        //Meter el cambio de foto
+
+        // Cambia el texto de los botones por las diferentes opciones.
+        ArrayList<Opcion> opciones = escena.getOpciones();
+        for (int i = 0; i < botones.size(); i++) {
+            botones.get(i).setText(opciones.get(i).getTexto());
+        }
+
+        //Inicializo la cabecera
+        Cabecera cabeceraImport2 = new Vista.Cabecera(controlador.getPartida());
+        jPanel1.add(cabeceraImport2);
+        jPanel1.setVisible(true);
     }
 
     /**
@@ -28,38 +56,40 @@ public class Eleccion_2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Foto = new javax.swing.JLabel();
-        Opcion2 = new javax.swing.JButton();
-        Opcion1 = new javax.swing.JButton();
-        cabeceraImport2 = new Vista.CabeceraImport();
+        foto = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
+        opcion2 = new javax.swing.JButton();
+        opcion1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        Foto.setText("jLabel1");
-        jPanel1.add(Foto);
-        Foto.setBounds(10, 210, 440, 380);
+        foto.setText("jLabel1");
+        jPanel1.add(foto);
+        foto.setBounds(10, 210, 440, 380);
 
-        Opcion2.setText("Opcion2");
-        jPanel1.add(Opcion2);
-        Opcion2.setBounds(550, 620, 350, 50);
+        texto.setText("Texto");
+        jPanel1.add(texto);
+        texto.setBounds(460, 210, 500, 380);
 
-        Opcion1.setText("Opcion1");
-        jPanel1.add(Opcion1);
-        Opcion1.setBounds(60, 620, 350, 50);
-        jPanel1.add(cabeceraImport2);
-        cabeceraImport2.setBounds(0, 0, 1000, 224);
+        opcion2.setText("Opcion2");
+        jPanel1.add(opcion2);
+        opcion2.setBounds(380, 600, 220, 40);
+
+        opcion1.setText("Opcion1");
+        jPanel1.add(opcion1);
+        opcion1.setBounds(60, 600, 220, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
         );
 
         pack();
@@ -92,20 +122,25 @@ public class Eleccion_2 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Foto;
-    private javax.swing.JButton Opcion1;
-    private javax.swing.JButton Opcion2;
-    private Vista.CabeceraImport cabeceraImport2;
+    private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton opcion1;
+    private javax.swing.JButton opcion2;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

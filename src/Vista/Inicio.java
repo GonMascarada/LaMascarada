@@ -5,7 +5,7 @@
 package Vista;
 
 import Mascarada.Clan;
-import Mascarada.Controlador;
+import Controlador.Controlador;
 import java.awt.Color;
 import java.awt.List;
 import java.util.ArrayList;
