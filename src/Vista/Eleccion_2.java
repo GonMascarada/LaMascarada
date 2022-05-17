@@ -41,7 +41,7 @@ public class Eleccion_2 extends javax.swing.JFrame {
         }
 
         //Inicializo la cabecera
-        Cabecera cabeceraImport2 = new Vista.Cabecera(controlador.getPartida());
+        Cabecera cabeceraImport2 = new Cabecera();
         jPanel1.add(cabeceraImport2);
         jPanel1.setVisible(true);
     }
