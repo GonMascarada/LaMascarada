@@ -5,6 +5,7 @@
 package Vista;
 
 import Mascarada.Partida;
+import java.awt.Color;
 
 /**
  *
@@ -12,22 +13,36 @@ import Mascarada.Partida;
  */
 public class Cabecera extends javax.swing.JPanel {
 
-    private Partida partida;
     
-    /**
-     * Creates new form CabeceraImport
-     
-    public Cabecera(Partida partida) {
-        initComponents();
-        this.partida = partida;
-        
-    }
-    * */
+    
+    
+   
         /**
      * Creates new form CabeceraImport
      */
     public Cabecera() {
         initComponents();
+        barraProgreso.setForeground(Color.white);
+        barraSangre.setForeground(Color.red);
+        barraSospecha.setForeground(Color.blue);
+        barraVida.setForeground(Color.green);
+       
+        
+    }
+    
+    public void datosPartida( Partida partida){
+        nombre.setText(partida.getProtagonista().getNombre());
+        String[]hab1y2=partida.getProtagonista().getNombre().split(";");
+        habilidad1.setText(hab1y2[1]);
+        habilidad2.setText(hab1y2[2]);
+        clan.setText(partida.getProtagonista().getClan().getNombre());
+        hora.setText(partida.getFecha()+"");
+        barraSangre.setValue(partida.getSedDeSangre());
+        barraProgreso.setValue(partida.getProgreso());
+        barraSospecha.setValue(partida.getSospecha());
+        barraVida.setValue(partida.getVidaProtagonista());
+        tiempoJugadoDato.setText(partida.getTiempo()+"");
+        
         
     }
 
@@ -56,29 +71,30 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida = new javax.swing.JProgressBar();
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
-        lugarActual = new javax.swing.JLabel();
+        tiempoJugado = new javax.swing.JLabel();
+        tiempoJugadoDato = new javax.swing.JLabel();
 
         jPanel1.setLayout(null);
 
         foto.setText("Foto");
         jPanel1.add(foto);
-        foto.setBounds(23, 18, 149, 128);
+        foto.setBounds(0, 10, 210, 200);
 
         nombre.setText("Nombre");
         jPanel1.add(nombre);
-        nombre.setBounds(20, 160, 194, 25);
+        nombre.setBounds(270, 20, 194, 25);
 
         clan.setText("Clan");
         jPanel1.add(clan);
-        clan.setBounds(20, 190, 194, 24);
+        clan.setBounds(270, 50, 194, 24);
 
         habilidad1.setText("Habilidad 1");
         jPanel1.add(habilidad1);
-        habilidad1.setBounds(280, 30, 120, 30);
+        habilidad1.setBounds(270, 80, 120, 30);
 
         habilidad2.setText("Habilidad 2");
         jPanel1.add(habilidad2);
-        habilidad2.setBounds(280, 90, 120, 30);
+        habilidad2.setBounds(270, 110, 120, 30);
 
         hora.setText("xx:xx");
         jPanel1.add(hora);
@@ -86,27 +102,33 @@ public class Cabecera extends javax.swing.JPanel {
 
         horaActual.setText("Hora:");
         jPanel1.add(horaActual);
-        horaActual.setBounds(280, 140, 30, 30);
+        horaActual.setBounds(270, 140, 30, 30);
 
         sedSangre.setText("Sed de sangre:");
         jPanel1.add(sedSangre);
         sedSangre.setBounds(520, 20, 120, 30);
+
+        barraSangre.setValue(50);
         jPanel1.add(barraSangre);
         barraSangre.setBounds(630, 20, 250, 30);
 
         sospecha.setText("Sospecha:");
         jPanel1.add(sospecha);
         sospecha.setBounds(520, 60, 120, 30);
+
+        barraSospecha.setValue(50);
         jPanel1.add(barraSospecha);
         barraSospecha.setBounds(630, 60, 250, 30);
 
         vida.setText("Vida:");
         jPanel1.add(vida);
         vida.setBounds(520, 100, 120, 30);
+
+        barraVida.setValue(50);
         jPanel1.add(barraVida);
         barraVida.setBounds(630, 100, 250, 30);
 
-        progreso.setText("Progreso3:");
+        progreso.setText("Progreso:");
         jPanel1.add(progreso);
         progreso.setBounds(520, 140, 120, 30);
 
@@ -114,9 +136,13 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(barraProgreso);
         barraProgreso.setBounds(630, 140, 250, 30);
 
-        lugarActual.setText("Lugar en el que te encuentras:");
-        jPanel1.add(lugarActual);
-        lugarActual.setBounds(280, 190, 600, 20);
+        tiempoJugado.setText("Tiempo jugado");
+        jPanel1.add(tiempoJugado);
+        tiempoJugado.setBounds(270, 170, 120, 30);
+
+        tiempoJugadoDato.setText("xx:xx");
+        jPanel1.add(tiempoJugadoDato);
+        tiempoJugadoDato.setBounds(390, 160, 60, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,7 +155,7 @@ public class Cabecera extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,11 +172,12 @@ public class Cabecera extends javax.swing.JPanel {
     private javax.swing.JLabel hora;
     private javax.swing.JLabel horaActual;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lugarActual;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel progreso;
     private javax.swing.JLabel sedSangre;
     private javax.swing.JLabel sospecha;
+    private javax.swing.JLabel tiempoJugado;
+    private javax.swing.JLabel tiempoJugadoDato;
     private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 }
