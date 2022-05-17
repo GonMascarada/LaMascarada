@@ -43,6 +43,7 @@ public class CargaBorrar extends javax.swing.JPanel {
         Progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
         LugarActual = new javax.swing.JLabel();
+        Seleccionar = new javax.swing.JButton();
 
         jPanel1.setLayout(null);
 
@@ -102,7 +103,11 @@ public class CargaBorrar extends javax.swing.JPanel {
 
         LugarActual.setText("Lugar en el que te encuentras:");
         jPanel1.add(LugarActual);
-        LugarActual.setBounds(280, 190, 600, 20);
+        LugarActual.setBounds(280, 190, 470, 20);
+
+        Seleccionar.setText("Seleccionar");
+        jPanel1.add(Seleccionar);
+        Seleccionar.setBounds(830, 180, 140, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -110,8 +115,7 @@ public class CargaBorrar extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +136,7 @@ public class CargaBorrar extends javax.swing.JPanel {
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel Progreso;
     private javax.swing.JLabel SedSangre;
+    private javax.swing.JButton Seleccionar;
     private javax.swing.JLabel Sospecha;
     private javax.swing.JLabel Vida;
     private javax.swing.JProgressBar barraProgreso;

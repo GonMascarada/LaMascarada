@@ -1,7 +1,18 @@
 0;Bienvenido a Bloodtown; .\cartel.jpg;
 1;Un lúgubre bar en el que…; .\bar.jpg;
+Bar
 2;Hola forastero, estas buscado..algo en particular?;.\camarera.jpg;Camarera
+Si bueno, yo podria proporcionarte un mapa, pero solo aceptaré como pago tu número de habitación del hotel
+Bueno cuando sepas que habitación es ven y dímela, mientras toma, un mapa del pueblo.
+
 3;Este pueblo cada vez está peor, al igual que el café!;.\cliente.jpg;Cliente
+4;Oh! veo que eres nuevo, habla con "camarera" y que ella te diga los...lugares de interés del pueblo, si intenta ligar contigo no le hagas caso! lo hace con todo el mundo.
+Anda! una cara nueva! Bienvenido a Sally´s, yo soy "nombre del dueño", soy el dueño del bar, me gustaría ayudarte pero creo que la mas indicada es "camarera", habla con ella si tienes alguna duda.
+
+Motel
+5;Anda, una cada nueva a estas horas? Bueno, dime tu nombre y te daré una llave de una habitacion,
+Tonterias, no tienes donde ir a estas horas del pueblo
+
 4;No hagas caso a la camara...;.\Dueño.jpg;Dueño
 5;Hola forastero, un poco tarde para ir de visita al pueblo, por que no te quedas a pasar la noche?Puedes ir al Pub, es lo único abierto;.\dueñaMotel.jpg;DueñaMotel
 6;Llegar al pub;.\pub.jpg
