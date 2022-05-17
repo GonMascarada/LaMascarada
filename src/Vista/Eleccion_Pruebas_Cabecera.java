@@ -32,6 +32,7 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
         Opcion2 = new javax.swing.JButton();
         Opcion1 = new javax.swing.JButton();
         Opcion3 = new javax.swing.JButton();
+        cabecera1 = new Vista.Cabecera();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +62,8 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
         });
         jPanel1.add(Opcion3);
         Opcion3.setBounds(710, 600, 220, 40);
+        jPanel1.add(cabecera1);
+        cabecera1.setBounds(0, 0, 980, 224);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,6 +131,7 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
     private javax.swing.JButton Opcion2;
     private javax.swing.JButton Opcion3;
     private javax.swing.JLabel Texto;
+    private Vista.Cabecera cabecera1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
