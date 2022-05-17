@@ -3,6 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/equipo.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/partida.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/clan.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/habilidad.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/opcion.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/conexionBD.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/personaje.csv</file>
+=======
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Eleccion_Pruebas_Cabecera.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Eleccion_4.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Opcion.java</file>
@@ -13,6 +23,7 @@
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Cabecera.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Eleccion_2.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Eleccion_6.java</file>
+>>>>>>> fec8d14ccb0dbacee0cab844f7f81cc76dd988e4
         </group>
     </open-files>
 </project-private>
