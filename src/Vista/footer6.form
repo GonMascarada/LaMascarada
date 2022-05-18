@@ -19,18 +19,18 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Opcion1" min="-2" pref="279" max="-2" attributes="0"/>
-                  <Component id="Opcion2" min="-2" pref="279" max="-2" attributes="0"/>
+                  <Component id="opcion1" min="-2" pref="279" max="-2" attributes="0"/>
+                  <Component id="opcion2" min="-2" pref="279" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="47" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Opcion4" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                  <Component id="Opcion3" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                  <Component id="opcion4" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                  <Component id="opcion3" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Opcion5" pref="304" max="32767" attributes="0"/>
-                  <Component id="Opcion6" max="32767" attributes="0"/>
+                  <Component id="opcion5" pref="304" max="32767" attributes="0"/>
+                  <Component id="opcion6" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -41,20 +41,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Opcion1" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Opcion3" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="Opcion5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                  <Component id="opcion1" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="opcion3" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="opcion5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Opcion2" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="Opcion4" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="Opcion6" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="opcion2" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="opcion4" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="opcion6" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
@@ -62,35 +59,38 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="Opcion1">
+    <Component class="javax.swing.JButton" name="opcion1">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion2">
+    <Component class="javax.swing.JButton" name="opcion2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion3">
+    <Component class="javax.swing.JButton" name="opcion3">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion4">
+    <Component class="javax.swing.JButton" name="opcion4">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion5">
+    <Component class="javax.swing.JButton" name="opcion5">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion6">
+    <Component class="javax.swing.JButton" name="opcion6">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opcion6ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
