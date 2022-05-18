@@ -7,23 +7,20 @@ public class Clan {
 
     private String nombre;
     private String descripcion;
+    private String imagen;
     private HashMap<String, Boolean> habilidades = new HashMap<>();
 
     public Clan() {
-    }
-    
-    public Clan(String nombre, HashMap<String, Boolean> habilidades) {
-        this.nombre = nombre;
-        this.habilidades = habilidades;
     }
 
     public Clan(String[] datos) {
         nombre = datos[0];
         descripcion = datos[1];
-        habilidades.put(datos[2], false);
+        imagen = datos[2];
         habilidades.put(datos[3], false);
         habilidades.put(datos[4], false);
         habilidades.put(datos[5], false);
+        habilidades.put(datos[6], false);
     }
 
     /**
@@ -41,6 +38,13 @@ public class Clan {
     }
 
     /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
      * @return the habilidades
      */
     public HashMap<String, Boolean> getHabilidades() {
@@ -50,6 +54,7 @@ public class Clan {
     @Override
     public String toString() {
         String resultado = nombre + ";" + descripcion + ";";
+        resultado += imagen + ";";
         Iterator<String> it = habilidades.keySet().iterator();
         while (it.hasNext()) {
             resultado += it.next() + ";";
