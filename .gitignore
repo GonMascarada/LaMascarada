@@ -1,4 +1,4 @@
-/build/
+/build/*
 /test/
 /nbproject/
 /nbproject/private/private.properties
