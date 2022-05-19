@@ -43,12 +43,20 @@ public abstract class Utilidades {
     public static final int ENFADAR = 7;
     public static final int COMPRAR = 8;
     public static final int VENDER = 9;
+
+    // Condiciones de las escenas
+    public static final int ESTANDAR = 0; // El texto normal
+    public static final int SI_AGRADADO = 1; // Texto contento
+    public static final int SI_ENFADADO = 2; // Texto enfadado
     
-    // Condiciones
+    // Condiciones de las opciones
+    //public static final int ESTANDAR = 0; // Aparecerá siempre
+    public static final int SI_MAPA = 1; // Si se tiene un mapa.
 
     // Estados de ánimo de los NPC´s
-    public static final int NORMAL = 0;
-    public static final int AGRADECIDO = 1;
-    public static final int ENFADADO = 2;
-    public static final int MUERTO = 3;
+    public static final int PROTAGONISTA = 0;
+    public static final int NORMAL = 1;
+    public static final int AGRADECIDO = 2;
+    public static final int ENFADADO = 3;
+    public static final int MUERTO = 4;
 }
