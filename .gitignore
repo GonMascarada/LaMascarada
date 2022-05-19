@@ -3,4 +3,6 @@
 /nbproject/
 /nbproject/private/private.properties
 nbproject/private/private.xml
+/build/classes/Mascarada/*.class
+/build/classes/Vista/*.class
 *.class
