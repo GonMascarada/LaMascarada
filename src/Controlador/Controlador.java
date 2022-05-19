@@ -93,11 +93,18 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
-        getPartida().setEscena(siguiente);
-        if (opcion.causaProgreso()) {
-            bbdd.guardarPartida(getPartida());
-        }
+        partida.setEscena(siguiente);
+        //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
+        //2.Pedir a la base de datos todas las posibles condiciones.
+        //3.Comprobar si se cumple alguna de las condiciones.
+        //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
+        //4.Insertar a la escena el texto
+        //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
+        volver a añadir a opción condición
+                y cambiarlo a int
+
         lanzar(siguiente);
+        //6.Obtener info extra y mostrarla si hay.
 //        HashMap habilidades = partida.getHabilidades();
 //        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
         // Si en extra hay algo, lanzar pop-up con esa info.
