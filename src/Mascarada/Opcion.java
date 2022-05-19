@@ -2,14 +2,14 @@ package Mascarada;
 
 public class Opcion {
 
-    private int idOpcion;
-    private String texto;
-    private int accion;
-    private String condiccion;
-    private int tiempo;
-    private String clan;
-    private int idEscena;
-    private int idEscenaSiguiente;
+    private final int idOpcion;
+    private final String texto;
+    private final int accion;
+    private final int condiccion;
+    private final int tiempo;
+    private final String clan;
+    private final int idEscena;
+    private final int idEscenaSiguiente;
 
     /**
      * Crea una opcion con los datos proporcionados ordenadamente en una lista.
@@ -21,7 +21,7 @@ public class Opcion {
         this.idOpcion = Integer.parseInt(datos[0]);
         this.texto = datos[1];
         this.accion = Integer.parseInt(datos[2]);
-        this.condiccion = datos[3];
+        this.condiccion = Integer.parseInt(datos[3]);
         this.tiempo = Integer.parseInt(datos[4]);
         this.clan = datos[5];
         this.idEscena = Integer.parseInt(datos[6]);
@@ -76,7 +76,7 @@ public class Opcion {
     /**
      * @return the condiccion
      */
-    public String getCondiccion() {
+    public int getCondiccion() {
         return condiccion;
     }
 

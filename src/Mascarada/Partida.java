@@ -1,5 +1,6 @@
 package Mascarada;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -19,7 +20,7 @@ public class Partida {
     private int sedDeSangre;
     private int sospecha;
     private String ultimaPista;
-    //Falta un arraylist de todas las personas a las que ha alterado. 
+    private ArrayList<Persona> personajes;
 
     public Partida() {
     }
@@ -32,15 +33,6 @@ public class Partida {
         resultado += protagonista.getHabilidades() + ";" + escena.getIdEscena();
         resultado += ";" + protagonista.getNombre();
         return resultado;
-    }
-
-    /**
-     * Devuelve la vida actual del protagonista.
-     *
-     * @return
-     */
-    public int getVidaProtagonista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -178,4 +170,17 @@ public class Partida {
         this.ultimaPista = ultimaPista;
     }
 
+    /**
+     * @return the personajes
+     */
+    public ArrayList<Persona> getPersonajes() {
+        return personajes;
+    }
+
+    /**
+     * @param personajes the personajes to set
+     */
+    public void setPersonajes(ArrayList<Persona> personajes) {
+        this.personajes = personajes;
+    }
 }
