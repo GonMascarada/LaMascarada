@@ -74,6 +74,11 @@ public class Vampire extends Persona {
         return clan;
     }
 
+    /**
+     * Devuelve una cadena con las dos habilidades separadas por un ";".
+     * 
+     * @return 
+     */
     public String getHabilidades() {
         String resultado = "";
         HashMap<String, Boolean> habilidades = clan.getHabilidades();

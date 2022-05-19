@@ -18,13 +18,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="Opcion1" min="-2" pref="180" max="-2" attributes="0"/>
+              <Component id="opcion1" min="-2" pref="180" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-              <Component id="Opcion2" min="-2" pref="180" max="-2" attributes="0"/>
+              <Component id="opcion2" min="-2" pref="180" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-              <Component id="Opcion3" min="-2" pref="180" max="-2" attributes="0"/>
+              <Component id="opcion3" min="-2" pref="180" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="Opcion4" min="-2" pref="180" max="-2" attributes="0"/>
+              <Component id="opcion4" min="-2" pref="180" max="-2" attributes="0"/>
               <EmptySpace pref="66" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -34,10 +34,10 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Opcion2" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="Opcion1" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="Opcion3" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="Opcion4" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="opcion2" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="opcion1" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="opcion3" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="opcion4" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -45,22 +45,22 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="Opcion1">
+    <Component class="javax.swing.JButton" name="opcion1">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion2">
+    <Component class="javax.swing.JButton" name="opcion2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion3">
+    <Component class="javax.swing.JButton" name="opcion3">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Opcion4">
+    <Component class="javax.swing.JButton" name="opcion4">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
