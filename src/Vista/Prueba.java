@@ -34,7 +34,7 @@ public class Prueba {
             System.out.println(partidas.get(i).toString());
         } 
          */
-        String prueba = "0;Ir al pueblo;0;0;20;0;0;1;";
+        String prueba = "0;Ir al bar;0;0;20;0;0;1;";
         String[] datos = prueba.split(";");
         Opcion opcion = new Opcion(datos);
         controlador.escoger(opcion);
