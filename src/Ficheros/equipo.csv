@@ -1,3 +1,4 @@
+Nombre;Descripción;Ataque;Defensa;Vida;Precio
 Pistola;Puedes disparar a distancia.;10;0;0;500
 Bate;Puedes golpear cuerpo a cuerpo.;5;0;0;250
 Navaja;Puedes rajar cuerpo a cuerpo.;4;0;0;250
