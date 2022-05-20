@@ -15,15 +15,13 @@ public class Escena {
 
     public Escena(String[] datos, ArrayList<Opcion> opciones) {
         this.idEscena = Integer.valueOf(datos[0]);
-        this.texto = datos[1];
-        this.imagen = datos[2];
+        this.imagen = datos[1];
         this.opciones = opciones;
     }
 
     public Escena(String[] datos, ArrayList<Opcion> opciones, Persona pnj) {
         this.idEscena = Integer.valueOf(datos[0]);
-        this.texto = datos[1];
-        this.imagen = datos[2];
+        this.imagen = datos[1];
         this.opciones = opciones;
         this.pnj = pnj;
     }

@@ -72,9 +72,14 @@ public final class Controlador {
         String datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
         datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
         Vampire vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
-        getPartida().setProtagonista(vampire);
-        Escena primera = bbdd.getEscena(0); //Primera escena
-        getPartida().setEscena(primera);
+        ArrayList<String[]> textos;
+        String texto;
+        partida.setProtagonista(vampire);
+        Escena primera = bbdd.getEscena(0); //Primera escena        
+        partida.setEscena(primera);
+        textos = bbdd.getTextos(primera.getIdEscena());
+        texto = getTextoCorrecto(textos);
+        partida.getEscena().setTexto(texto);
         lanzar(primera);
     }
     /**
@@ -128,7 +133,7 @@ public final class Controlador {
      * Guarda la partida en el estado actual.
      */
     public void guardarPartida() {
-        bbdd.guardarPartida(getPartida());
+        bbdd.guardarPartida(partida);
     }
     /**
      * Carga una partida.
