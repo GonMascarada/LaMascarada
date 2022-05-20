@@ -15,82 +15,24 @@ public class Persona {
 
     public Persona() {
     }
-    
-    /**
-     * Para generar un humano básico.
-     *
-     * @param Nombre
-     */
-    public Persona(String Nombre) {
-        this.nombre = Nombre;
-        this.ataque = Utilidades.ATQ;
-        this.defensa = Utilidades.DEF;
-        this.vidaMax = Utilidades.VIDA;
-        this.vidaActual = vidaMax;
-        this.dinero = Utilidades.DINERO;
-        this.estadoDeAnimo = Utilidades.NORMAL;
-    }
 
     /**
-     * Para generar una persona nueva específica.
+     * Para cargar un personaje.
      *
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax) {
-        this.nombre = Nombre;
-        this.ataque = Ataque;
-        this.defensa = Defensa;
-        this.vidaMax = VidaMax;
-        this.vidaActual = VidaMax;
-        this.dinero = Utilidades.DINERO;
-        this.estadoDeAnimo = Utilidades.NORMAL;
-    }
-
-    /**
-     * Para cargar al protagonista.
-     *
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     * @param VidaActual
-     * @param dinero
-     * @param equipacion
-     */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, ArrayList<Equipo> equipacion) {
-        this.nombre = Nombre;
-        this.ataque = Ataque;
-        this.defensa = Defensa;
-        this.vidaMax = VidaMax;
-        this.vidaActual = VidaActual;
-        this.dinero = dinero;
-        this.equipacion = equipacion;
-    }
-
-    /**
-     * Para cargar una persona.
-     *
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     * @param VidaActual
-     * @param dinero
+     * @param datos 0-Nombre, 1-Ataque, 2-Defensa, 3-VidaMax, 4-VidaActual,
+     * 5-Dinero, 6-Estado de ánimo
      * @param equipacion
      * @param estadoDeAnimo
      */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, ArrayList<Equipo> equipacion, int estadoDeAnimo) {
-        this.nombre = Nombre;
-        this.ataque = Ataque;
-        this.defensa = Defensa;
-        this.vidaMax = VidaMax;
-        this.vidaActual = VidaActual;
-        this.dinero = dinero;
+    public Persona(String[] datos, ArrayList<Equipo> equipacion) {
+        this.nombre = datos[0];
+        this.ataque = Integer.parseInt(datos[1]);
+        this.defensa = Integer.parseInt(datos[2]);
+        this.vidaMax = Integer.parseInt(datos[3]);
+        this.vidaActual = Integer.parseInt(datos[4]);
+        this.dinero = Integer.parseInt(datos[5]);
         this.equipacion = equipacion;
-        this.estadoDeAnimo = estadoDeAnimo;
+        this.estadoDeAnimo = Integer.parseInt(datos[6]);
     }
 
     /**
@@ -148,7 +90,4 @@ public class Persona {
     public int getEstadoDeAnimo() {
         return estadoDeAnimo;
     }
-    
-    
-    
 }
