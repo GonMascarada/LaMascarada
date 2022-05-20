@@ -1,13 +1,6 @@
 package Modelo;
 
-import Mascarada.Clan;
-import Mascarada.Equipo;
-import Mascarada.Escena;
-import Mascarada.Opcion;
-import Mascarada.Partida;
-import Mascarada.Persona;
-import Mascarada.Utilidades;
-import Mascarada.Vampire;
+import Mascarada.*;
 import Vista.Inicio;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -40,6 +33,30 @@ public class BaseDeDatos {
      */
     public Escena getEscenaMuerte() {
         return getEscena(999999999); //Habrá que marcar cual es la escena de muerte.
+    }
+
+    /**
+     * Devuelve todos los textos posibles para una escena en concreto.
+     *
+     * @param idEscena de la escena.
+     * @return una lista de parejas [condición, texto]
+     */
+    public ArrayList<String[]> getTextos(int idEscena) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        ArrayList<String[]> textos = new ArrayList<>();
+        String[] texto = new String[2];
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            if (Integer.valueOf(linea[0]) == idEscena) {
+                texto[0] = linea[1];
+                texto[1] = linea[2];
+                textos.add(texto);
+            }
+        }
+        return textos;
     }
 
     /**
@@ -158,7 +175,7 @@ public class BaseDeDatos {
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
-            if (Integer.valueOf(linea[6]) == Utilidades.PROTAGONISTA) {
+            if (Integer.valueOf(linea[6]) == Utilidades.EA_PROTAGONISTA) {
                 clan = getClan(linea[7]);
                 idPartida = Integer.parseInt(linea[10]);
                 vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
