@@ -69,4 +69,25 @@ public class Escena {
     public void setTexto(String texto) {
         this.texto = texto;
     }
+
+    /**
+     * @param opciones the opciones to set
+     */
+    public void setOpciones(ArrayList<Opcion> opciones) {
+        this.opciones = opciones;
+    }
+
+    /**
+     * Comprueba que la escena tenga pnj.
+     *
+     * @return true si hay pnj, false en otro caso.
+     */
+    public boolean hayPnj() {
+        try {
+            pnj.getNombre();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
