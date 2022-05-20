@@ -21,6 +21,8 @@ public class Vampire extends Persona {
     public Vampire(Clan clan, String[] datos, ArrayList<Equipo> equipacion) {
         super(datos, equipacion);
         this.clan = clan;
+        clan.setHabilidad(datos[8]);
+        clan.setHabilidad(datos[9]);
     }
 
     /**

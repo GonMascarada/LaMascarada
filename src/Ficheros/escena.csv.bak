@@ -1,9 +1,9 @@
-﻿IdEscena;Imagen;NombrePersonaje;
+IdEscena;Imagen;NombrePersonaje;
 0; .\cartel.jpg;
 1; .\bar.jpg;
 2;.\camarera.jpg;Camarera;
 3;.\camarera.jpg;Camarera;
-4;\camarera.jpg;Camarera;
+4.\camarera.jpg;Camarera;
 5;.\camarera.jpg;Camarera;
 6;.\camarera.jpg;Camarera;
 7;.\camarera.jpg;Camarera;

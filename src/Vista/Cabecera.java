@@ -5,6 +5,7 @@
 package Vista;
 
 import Mascarada.Partida;
+import Mascarada.Utilidades;
 import java.awt.Color;
 
 /**
@@ -32,14 +33,17 @@ public class Cabecera extends javax.swing.JPanel {
      */
     public void insertarDatosPartida(Partida partida) {
         nombre.setText(partida.getProtagonista().getNombre());
-        String[] hab1y2 = partida.getProtagonista().getNombre().split(";");
-        habilidad1.setText(hab1y2[1]);
-        habilidad2.setText(hab1y2[2]);
+        String[] habiliades = partida.getProtagonista().getHabilidades().split(";");
+        habilidad1.setText(habiliades[0]);
+        habilidad2.setText(habiliades[1]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
         hora.setText(partida.getFecha() + "");
         barraSangre.setValue(partida.getSedDeSangre());
+        barraSangre.setMaximum(Utilidades.SED_MAX);
         barraProgreso.setValue(partida.getProgreso());
+        barraProgreso.setMaximum(Utilidades.PROGRESO_MAX);
         barraSospecha.setValue(partida.getSospecha());
+        barraSospecha.setMaximum(Utilidades.SOSPECHA_MAX);
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
