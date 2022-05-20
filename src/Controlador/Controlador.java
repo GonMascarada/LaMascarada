@@ -91,6 +91,7 @@ public final class Controlador {
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
         partida.setEscena(siguiente);
+        
         //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
         //2.Pedir a la base de datos todas las posibles condiciones.
         //3.Comprobar si se cumple alguna de las condiciones.

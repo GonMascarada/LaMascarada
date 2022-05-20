@@ -71,9 +71,13 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida = new javax.swing.JProgressBar();
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
+          fondoCabecera = new javax.swing.JLabel();
         tiempoJugado = new javax.swing.JLabel();
         tiempoJugadoDato = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
 
         foto.setText("Foto");
@@ -144,14 +148,15 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(tiempoJugadoDato);
         tiempoJugadoDato.setBounds(390, 160, 60, 30);
 
+        fondoCabecera.setText("jLabel1");
+        jPanel1.add(fondoCabecera);
+        fondoCabecera.setBounds(-10, 0, 1000, 250);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,6 +171,7 @@ public class Cabecera extends javax.swing.JPanel {
     private javax.swing.JProgressBar barraSospecha;
     private javax.swing.JProgressBar barraVida;
     private javax.swing.JLabel clan;
+    private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
     private javax.swing.JLabel habilidad2;
