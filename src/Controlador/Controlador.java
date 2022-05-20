@@ -80,7 +80,7 @@ public final class Controlador {
         textos = bbdd.getTextos(primera.getIdEscena());
         texto = getTextoCorrecto(textos);
         partida.getEscena().setTexto(texto);
-        lanzar(primera);
+        lanzar();
     }
     /**
      * Lanza la nueva escena de una opción.
@@ -117,7 +117,7 @@ public final class Controlador {
         partida.getEscena().setOpciones(opciones);
 
         // 6.Mostrar la escena.
-        lanzar(siguiente);
+        lanzar();
 
         // 7. Si se tiene dechercho, obtener info extra y mostrarla si hay.
         if (comprobarAnimalismo()) {
@@ -144,8 +144,7 @@ public final class Controlador {
         this.partida = partida;
         this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));       
 
-        Escena escena = partida.getEscena();
-        lanzar(escena);
+        lanzar();
     }
     /**
      * Borra de la base de datos una partida.
@@ -159,9 +158,8 @@ public final class Controlador {
     /**
      * Muestra la interfaz acorde a la escena.
      *
-     * @param escena a mostrar.
      */
-    private void lanzar(Escena escena) {
+    private void lanzar() {
         VistaEscena ventana = new VistaEscena(this);
         ventana.setVisible(true);
     }

@@ -52,6 +52,7 @@ public class VistaEscena extends javax.swing.JFrame {
         ArrayList<Opcion> opciones = escena.getOpciones();
 
         cabecera1.insertarDatosPartida(controlador.getPartida());
+        System.out.println("Lanzada footer" + opciones.size());
         switch (opciones.size()) {
             case 1 -> {
                 footer = new footer1();
