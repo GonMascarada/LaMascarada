@@ -26,8 +26,9 @@ public class Escena_Completa extends javax.swing.JFrame {
                 break;
             case 2:
                 footer =  new Vista.footer2();
+                
                 break;
-            case 3:
+                case 3:
                 footer = new Vista.footer3();
                 break;
             case 4:
@@ -37,7 +38,8 @@ public class Escena_Completa extends javax.swing.JFrame {
                 footer = new Vista.footer6();
                 break;
         }
-
+        
+        
         jPanel1.add(footer);
         footer.setBounds(0, 590, 1000, 115);
     }
@@ -51,14 +53,20 @@ public class Escena_Completa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        footer21 = new Vista.footer2();
+        footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
+        footer23 = new Vista.footer2();
         Foto = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
+        jPanel1.add(footer23);
+        footer23.setBounds(0, 590, 1000, 103);
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
@@ -68,7 +76,12 @@ public class Escena_Completa extends javax.swing.JFrame {
         jPanel1.add(Texto);
         Texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 994, 250);
+        cabecera1.setBounds(0, 0, 1000, 250);
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        fondo.setText("jLabel1");
+        jPanel1.add(fondo);
+        fondo.setBounds(0, 0, 1000, 700);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +128,10 @@ public class Escena_Completa extends javax.swing.JFrame {
     private javax.swing.JLabel Foto;
     private javax.swing.JLabel Texto;
     private Vista.Cabecera cabecera1;
+    private javax.swing.JLabel fondo;
+    private Vista.footer2 footer21;
+    private Vista.footer2 footer22;
+    private Vista.footer2 footer23;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
