@@ -1,15 +1,8 @@
 package Controlador;
 
 import Modelo.BaseDeDatos;
-import Mascarada.Clan;
-import Mascarada.Equipo;
-import Mascarada.Escena;
-import Mascarada.Opcion;
-import Mascarada.Partida;
-import Mascarada.Persona;
-import Mascarada.Utilidades;
-import Mascarada.Vampire;
-import Vista.Eleccion_2;
+import Mascarada.*;
+import Vista.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -98,6 +91,7 @@ public final class Controlador {
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
         partida.setEscena(siguiente);
+        
         //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
         //2.Pedir a la base de datos todas las posibles condiciones.
         //3.Comprobar si se cumple alguna de las condiciones.
@@ -162,7 +156,7 @@ public final class Controlador {
      * @param escena a mostrar.
      */
     private void lanzar(Escena escena) {
-        Eleccion_2 ventana = new Eleccion_2(this, escena);
+        VistaEscena ventana = new VistaEscena(this);
         ventana.setVisible(true);
     }
 

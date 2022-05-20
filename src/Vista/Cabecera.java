@@ -13,11 +13,7 @@ import java.awt.Color;
  */
 public class Cabecera extends javax.swing.JPanel {
 
-    
-    
-    
-   
-        /**
+    /**
      * Creates new form CabeceraImport
      */
     public Cabecera() {
@@ -26,24 +22,28 @@ public class Cabecera extends javax.swing.JPanel {
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);
         barraVida.setForeground(Color.green);
-       
-        
+
     }
-    
-    public void datosPartida( Partida partida){
+
+    /**
+     * Inserta y muestra los datos más relevantes de una partida.
+     *
+     * @param partida Objeto con la información sobre una partida.
+     */
+    public void insertarDatosPartida(Partida partida) {
         nombre.setText(partida.getProtagonista().getNombre());
-        String[]hab1y2=partida.getProtagonista().getNombre().split(";");
+        String[] hab1y2 = partida.getProtagonista().getNombre().split(";");
         habilidad1.setText(hab1y2[1]);
         habilidad2.setText(hab1y2[2]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
-        hora.setText(partida.getFecha()+"");
+        hora.setText(partida.getFecha() + "");
         barraSangre.setValue(partida.getSedDeSangre());
         barraProgreso.setValue(partida.getProgreso());
         barraSospecha.setValue(partida.getSospecha());
-        barraVida.setValue(partida.getVidaProtagonista());
-        tiempoJugadoDato.setText(partida.getTiempo()+"");
-        
-        
+        barraVida.setValue(partida.getProtagonista().getVidaActual());
+        barraVida.setMaximum(partida.getProtagonista().getVidaMax());
+        tiempoJugadoDato.setText(partida.getTiempo() + "");
+
     }
 
     /**
@@ -71,13 +71,9 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida = new javax.swing.JProgressBar();
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
-<<<<<<< HEAD
-        lugarActual = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-=======
+          fondoCabecera = new javax.swing.JLabel();
         tiempoJugado = new javax.swing.JLabel();
         tiempoJugadoDato = new javax.swing.JLabel();
->>>>>>> b6346c94968c22d46e1897a5d387d21d79a4d3a6
 
         setOpaque(false);
 

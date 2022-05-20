@@ -4,31 +4,33 @@
  */
 package Vista;
 
+import Controlador.Controlador;
+import Mascarada.Escena;
+import Mascarada.Opcion;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Moru
  */
-public class Escena_Completa extends javax.swing.JFrame {
+public class VistaEscena extends javax.swing.JFrame {
 
     private JPanel footer;
+    private Controlador controlador;
+    private Escena escena;
 
-    /**
-     * Creates new form Eleccion_2
-     */
-    public Escena_Completa() {
+    public VistaEscena() {
         initComponents();
         int opciones = 2;
         switch (opciones) {
             case 1:
-                footer =  new Vista.footer1();
+                footer = new Vista.footer1();
                 break;
             case 2:
-                footer =  new Vista.footer2();
-                
+                footer = new Vista.footer2();
                 break;
-                case 3:
+            case 3:
                 footer = new Vista.footer3();
                 break;
             case 4:
@@ -38,8 +40,45 @@ public class Escena_Completa extends javax.swing.JFrame {
                 footer = new Vista.footer6();
                 break;
         }
-        
-        
+
+        jPanel1.add(footer);
+        footer.setBounds(0, 590, 1000, 115);
+    }
+
+    public VistaEscena(Controlador controlador) {
+        initComponents();
+        this.controlador = controlador;
+        this.escena = controlador.getPartida().getEscena();
+        ArrayList<Opcion> opciones = escena.getOpciones();
+
+        cabecera1.insertarDatosPartida(controlador.getPartida());
+        switch (opciones.size()) {
+            case 1 -> {
+                footer = new footer1();
+                footer1 f = (footer1) footer;
+                f.setOpciones(opciones);
+            }
+            case 2 -> {
+                footer = new footer2();
+                footer2 f = (footer2) footer;
+                f.setOpciones(opciones);
+            }
+            case 3 -> {
+                footer = new footer3();
+                footer3 f = (footer3) footer;
+                f.setOpciones(opciones);
+            }
+            case 4 -> {
+                footer = new footer4();
+                footer4 f = (footer4) footer;
+                f.setOpciones(opciones);
+            }
+            case 6 -> {
+                footer = new footer6();
+                footer6 f = (footer6) footer;
+                f.setOpciones(opciones);
+            }
+        }
         jPanel1.add(footer);
         footer.setBounds(0, 590, 1000, 115);
     }
@@ -76,12 +115,14 @@ public class Escena_Completa extends javax.swing.JFrame {
         jPanel1.add(Texto);
         Texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
+        cabecera1.setBounds(0, 0, 994, 220);
+
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         fondo.setText("jLabel1");
         jPanel1.add(fondo);
         fondo.setBounds(0, 0, 1000, 700);
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +147,7 @@ public class Escena_Completa extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-       
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -119,7 +160,7 @@ public class Escena_Completa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Escena_Completa().setVisible(true);
+                new VistaEscena().setVisible(true);
             }
         });
     }

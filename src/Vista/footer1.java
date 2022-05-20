@@ -12,7 +12,7 @@ import javax.swing.JButton;
  *
  * @author Alumno
  */
-public class footer1 extends javax.swing.JPanel {
+public class footer1 extends javax.swing.JPanel{
 
     private ArrayList<JButton> botones;
     /**
@@ -22,6 +22,7 @@ public class footer1 extends javax.swing.JPanel {
         initComponents();
         
     }
+    
     public void setOpciones(ArrayList <Opcion> opciones){
          botones = new ArrayList<>();
         botones.add(opcion1);
