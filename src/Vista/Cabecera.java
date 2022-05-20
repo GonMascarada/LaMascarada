@@ -13,11 +13,7 @@ import java.awt.Color;
  */
 public class Cabecera extends javax.swing.JPanel {
 
-    
-    
-    
-   
-        /**
+    /**
      * Creates new form CabeceraImport
      */
     public Cabecera() {
@@ -26,24 +22,28 @@ public class Cabecera extends javax.swing.JPanel {
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);
         barraVida.setForeground(Color.green);
-       
-        
+
     }
-    
-    public void datosPartida( Partida partida){
+
+    /**
+     * Inserta y muestra los datos más relevantes de una partida.
+     *
+     * @param partida Objeto con la información sobre una partida.
+     */
+    public void insertarDatosPartida(Partida partida) {
         nombre.setText(partida.getProtagonista().getNombre());
-        String[]hab1y2=partida.getProtagonista().getNombre().split(";");
+        String[] hab1y2 = partida.getProtagonista().getNombre().split(";");
         habilidad1.setText(hab1y2[1]);
         habilidad2.setText(hab1y2[2]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
-        hora.setText(partida.getFecha()+"");
+        hora.setText(partida.getFecha() + "");
         barraSangre.setValue(partida.getSedDeSangre());
         barraProgreso.setValue(partida.getProgreso());
         barraSospecha.setValue(partida.getSospecha());
-        barraVida.setValue(partida.getVidaProtagonista());
-        tiempoJugadoDato.setText(partida.getTiempo()+"");
-        
-        
+        barraVida.setValue(partida.getProtagonista().getVidaActual());
+        barraVida.setMaximum(partida.getProtagonista().getVidaMax());
+        tiempoJugadoDato.setText(partida.getTiempo() + "");
+
     }
 
     /**
@@ -71,9 +71,13 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida = new javax.swing.JProgressBar();
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
+          fondoCabecera = new javax.swing.JLabel();
         tiempoJugado = new javax.swing.JLabel();
         tiempoJugadoDato = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
 
         foto.setText("Foto");
@@ -144,14 +148,15 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(tiempoJugadoDato);
         tiempoJugadoDato.setBounds(390, 160, 60, 30);
 
+        fondoCabecera.setText("jLabel1");
+        jPanel1.add(fondoCabecera);
+        fondoCabecera.setBounds(-10, 0, 1000, 250);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,6 +171,7 @@ public class Cabecera extends javax.swing.JPanel {
     private javax.swing.JProgressBar barraSospecha;
     private javax.swing.JProgressBar barraVida;
     private javax.swing.JLabel clan;
+    private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
     private javax.swing.JLabel habilidad2;

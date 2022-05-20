@@ -33,7 +33,7 @@ public class CargaBorrar extends javax.swing.JPanel {
         barraSangre.setValue(partida.getSedDeSangre());
         barraProgreso.setValue(partida.getProgreso());
         barraSospecha.setValue(partida.getSospecha());
-        barraVida.setValue(partida.getVidaProtagonista());
+        barraVida.setValue(partida.getProtagonista().getVidaActual());
         tiempoJugado.setText(partida.getTiempo()+"");
         
         

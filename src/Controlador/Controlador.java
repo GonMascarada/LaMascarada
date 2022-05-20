@@ -1,13 +1,8 @@
 package Controlador;
 
 import Modelo.BaseDeDatos;
-import Mascarada.Clan;
-import Mascarada.Escena;
-import Mascarada.Opcion;
-import Mascarada.Partida;
-import Mascarada.Persona;
-import Mascarada.Vampire;
-import Vista.Eleccion_2;
+import Mascarada.*;
+import Vista.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,10 +14,10 @@ import java.util.Iterator;
  * @author Gonzalo López Fernández
  */
 public final class Controlador {
-
-    private Partida partida;
+    
+    private Partida partida; 
     private BaseDeDatos bbdd;
-
+    
     public Controlador() {
         bbdd = new BaseDeDatos();
         partida = new Partida(); //Habrá que borrarlo
@@ -79,11 +74,13 @@ public final class Controlador {
      * @param nombre del nuevo personaje.
      */
     public void crearNuevaPartida(Clan clan, String nombre) {
-        Vampire vampire = new Vampire(clan, nombre);
+        String datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
+        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
+        Vampire vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
         getPartida().setProtagonista(vampire);
         Escena primera = bbdd.getEscena(0); //Primera escena
         getPartida().setEscena(primera);
-        // Lanzar una nueva ventana con la escena.
+        lanzar(primera);
     }
 
     /**
@@ -94,14 +91,18 @@ public final class Controlador {
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
         partida.setEscena(siguiente);
+        
         //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
         //2.Pedir a la base de datos todas las posibles condiciones.
         //3.Comprobar si se cumple alguna de las condiciones.
         //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
         //4.Insertar a la escena el texto
         //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
+<<<<<<< HEAD
         //volver a añadir a opción condición
        //         y cambiarlo a int
+=======
+>>>>>>> 06bd9f08cd4261c51d37d4235278a704a986df94
 
        // lanzar(siguiente);
         //6.Obtener info extra y mostrarla si hay.
@@ -124,6 +125,8 @@ public final class Controlador {
      */
     public void cargarPartida(Partida partida) {
         this.partida = partida;
+        this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));       
+        
         Escena escena = partida.getEscena();
         lanzar(escena);
     }
@@ -145,7 +148,7 @@ public final class Controlador {
      */
     private boolean pelear(Persona enemigo) {
         //Pasan cosas.
-        if (getPartida().getVidaProtagonista() <= 0) {
+        if (getPartida().getProtagonista().getVidaActual() <= 0) {
             bbdd.getEscenaMuerte();
             return false;
         }
@@ -158,7 +161,7 @@ public final class Controlador {
      * @param escena a mostrar.
      */
     private void lanzar(Escena escena) {
-        Eleccion_2 ventana = new Eleccion_2(this, escena);
+        VistaEscena ventana = new VistaEscena(this);
         ventana.setVisible(true);
     }
 
