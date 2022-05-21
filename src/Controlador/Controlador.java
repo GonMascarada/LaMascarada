@@ -109,7 +109,7 @@ public final class Controlador {
 
         //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
         opciones = partida.getEscena().getOpciones();
-        for (int i = opciones.size() - 1; i <= 0; i--) {
+        for (int i = opciones.size() - 1; i >= 0; i--) {
             if (!evaluarCondicionDeOpcion(opciones.get(i).getCondiccion())) {
                 opciones.remove(i);
             }
