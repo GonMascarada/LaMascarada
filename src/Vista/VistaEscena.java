@@ -7,6 +7,7 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Escena;
 import Mascarada.Opcion;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -51,7 +52,10 @@ public class VistaEscena extends javax.swing.JFrame {
         this.escena = controlador.getPartida().getEscena();
         ArrayList<Opcion> opciones = escena.getOpciones();
 
+        texto.setText(escena.getTexto());
+        texto.setBackground(Color.red);
         cabecera1.insertarDatosPartida(controlador.getPartida());
+        System.out.println("Opciones: "+ opciones.size());
         switch (opciones.size()) {
             case 1 -> {
                 footer = new footer1();
@@ -82,6 +86,7 @@ public class VistaEscena extends javax.swing.JFrame {
         }
         jPanel1.add(footer);
         footer.setBounds(0, 590, 1000, 115);
+        footer.setVisible(true);
     }
 
     /**
@@ -96,8 +101,8 @@ public class VistaEscena extends javax.swing.JFrame {
         footer21 = new Vista.footer2();
         footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
-        Foto = new javax.swing.JLabel();
-        Texto = new javax.swing.JLabel();
+        foto = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
         fondo = new javax.swing.JLabel();
 
@@ -105,13 +110,13 @@ public class VistaEscena extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        Foto.setText("jLabel1");
-        jPanel1.add(Foto);
-        Foto.setBounds(10, 210, 440, 380);
+        foto.setText("jLabel1");
+        jPanel1.add(foto);
+        foto.setBounds(10, 210, 440, 380);
 
-        Texto.setText("Texto");
-        jPanel1.add(Texto);
-        Texto.setBounds(460, 210, 500, 380);
+        texto.setText("Texto");
+        jPanel1.add(texto);
+        texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
         cabecera1.setBounds(0, 0, 1000, 220);
 
@@ -162,12 +167,12 @@ public class VistaEscena extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Foto;
-    private javax.swing.JLabel Texto;
     private Vista.Cabecera cabecera1;
     private javax.swing.JLabel fondo;
     private Vista.footer2 footer21;
     private Vista.footer2 footer22;
+    private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

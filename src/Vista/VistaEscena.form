@@ -45,7 +45,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Foto">
+        <Component class="javax.swing.JLabel" name="foto">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
@@ -55,7 +55,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="Texto">
+        <Component class="javax.swing.JLabel" name="texto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Texto"/>
           </Properties>

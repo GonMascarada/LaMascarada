@@ -35,12 +35,7 @@ public class Prueba {
         }
 */
         
-        Partida p = partidas.get(0);
-        
-        System.out.println(p.getProtagonista().getNombre());
-        System.out.println(p.getProtagonista().getClan().getNombre());
-        System.out.println(p.getProtagonista().getClan().getHabilidades());
-        System.out.println(p.getProtagonista().getClan().getHabilidadesObtenidas());
+        Partida p = partidas.get(0);     
         controlador.cargarPartida(p);
         //String prueba = "0;Ir al bar;0;0;20;0;0;1;";
         //String[] datos = prueba.split(";");
