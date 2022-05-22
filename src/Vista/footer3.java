@@ -106,6 +106,8 @@ public class footer3 extends javax.swing.JPanel {
     }//GEN-LAST:event_opcion2MouseClicked
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        System.out.println(opcion1.getText());
+        System.out.println("Escena siguiente: "+opciones.get(0).getIdEscenaSiguiente());
         controlador.escoger(opciones.get(0));
         vista.dispose();
     }//GEN-LAST:event_opcion1MouseClicked
