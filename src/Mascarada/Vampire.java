@@ -49,5 +49,4 @@ public class Vampire extends Persona {
         }
         return resultado;
     }
-
 }

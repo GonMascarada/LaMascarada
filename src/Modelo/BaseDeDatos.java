@@ -344,7 +344,18 @@ public class BaseDeDatos {
      * @param partida a guardar.
      */
     public void guardarPartida(Partida partida) {
-        System.out.println("Estamos trabajando en ello :(");
+        int id;
+        // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
+        // O si tiene mayor progreso, crear una partida nueva.
+        id = getIdGuardado(partida.getIdPartida(), partida.getProgreso());
+        
+        // 2.Guardar los datos de la partida.
+        
+        // 3.Guardar los datos de los personajes, protagonista incluido.
+        
+        // 4.Guardar los datos de los objetos de cada personaje.
+        
+        // 5.Sincronizar los datos locales con la base de datos.
         sincronizar();
     }
 
@@ -356,6 +367,14 @@ public class BaseDeDatos {
     public void borrarPartida(Partida partida) {
         System.out.println("Estamos trabajando en ello :(");
         sincronizar();
+    }
+
+    /**
+     * Comprueba que la copia local y la de la base de datos están actualizadas.
+     * En caso de no estarlo, lo sincroniza.
+     */
+    private void sincronizar() {
+        System.out.println("Estamos trabajando en ello :(");
     }
 
     /**
@@ -380,10 +399,31 @@ public class BaseDeDatos {
     }
 
     /**
-     * Comprueba que la copia local y la de la base de datos están actualizadas.
-     * En caso de no estarlo, lo sincroniza.
+     * Comprueba si se debe guardar en el id actual, o si se ha causado progreso
+     * en que id se debe hacer.
+     *
+     * @param idPartida actual.
+     * @param progreso actual
+     * @return el mismo idPartida si se deben sobreescribir esos datos, o un
+     * nuevo id donde hacerlo.
      */
-    private void sincronizar() {
-        System.out.println("Estamos trabajando en ello :(");
+    private int getIdGuardado(int idPartida, int progreso) {
+        int id = 0;
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            id = Integer.parseInt(linea[0]);
+            if (id == idPartida) {
+                if (Integer.parseInt(linea[3]) == progreso) {
+                    return idPartida;
+                }
+            }
+        }
+        id++;
+        return id;
     }
+
 }

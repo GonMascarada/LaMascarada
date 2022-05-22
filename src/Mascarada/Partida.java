@@ -25,6 +25,17 @@ public class Partida {
     public Partida() {
     }
 
+    /**
+     * Elimita todos los npc´s que no han sufrido cambios en sus atributos.
+     */
+    public void borrarNpcsInalterados() {
+        for (int i = personajes.size() - 1; i >= 0; i--) {
+            if (!personajes.get(i).isCambiado()) {
+                personajes.remove(i);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String resultado;

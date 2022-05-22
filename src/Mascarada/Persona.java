@@ -13,8 +13,7 @@ public class Persona {
     private ArrayList<Equipo> equipacion;
     private int estadoDeAnimoOriginal;
     private int estadoDeAnimoActual;
-
-    private boolean actualizado; //Controla si se ha cambiado algo en su ficha.
+    private boolean cambiado; //Controla si se ha cambiado algo en su ficha.
 
     public Persona() {
     }
@@ -36,7 +35,7 @@ public class Persona {
         this.equipacion = equipacion;
         this.estadoDeAnimoOriginal = Integer.parseInt(datos[6]);
         estadoDeAnimoActual = estadoDeAnimoOriginal;
-        actualizado = false;
+        cambiado = false;
     }
 
     /**
@@ -98,12 +97,12 @@ public class Persona {
     /**
      * @return the actualizado
      */
-    public boolean isActualizado() {
+    public boolean isCambiado() {
         // Si el estado de ánimo se ha actualizado, hay que actualizar el pnj
         if (estadoDeAnimoActual != estadoDeAnimoOriginal) {
             return true;
         }
-        return actualizado;
+        return cambiado;
     }
 
     /**
@@ -118,7 +117,7 @@ public class Persona {
      */
     public void setVidaActual(int vidaActual) {
         this.vidaActual = vidaActual;
-        actualizado = true;
+        cambiado = true;
     }
 
     /**
@@ -126,7 +125,7 @@ public class Persona {
      */
     public void setDinero(int dinero) {
         this.dinero = dinero;
-        actualizado = true;
+        cambiado = true;
     }
 
     /**
@@ -134,6 +133,6 @@ public class Persona {
      */
     public void setEquipacion(ArrayList<Equipo> equipacion) {
         this.equipacion = equipacion;
-        actualizado = true;
+        cambiado = true;
     }
 }

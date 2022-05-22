@@ -133,6 +133,10 @@ public final class Controlador {
      * Guarda la partida en el estado actual.
      */
     public void guardarPartida() {
+        // 1. Se eliminan los pnc´s que no han sufrido cambios.
+        partida.borrarNpcsInalterados();
+        
+        // 2. Se almacena todos los datos de la partida en la base de datos.
         bbdd.guardarPartida(partida);
     }
     /**
