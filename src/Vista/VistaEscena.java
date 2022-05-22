@@ -7,6 +7,7 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Escena;
 import Mascarada.Opcion;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -51,12 +52,16 @@ public class VistaEscena extends javax.swing.JFrame {
         this.escena = controlador.getPartida().getEscena();
         ArrayList<Opcion> opciones = escena.getOpciones();
 
+        texto.setText(escena.getTexto());
+        texto.setBackground(Color.red);
         cabecera1.insertarDatosPartida(controlador.getPartida());
+        System.out.println("Opciones: "+ opciones.size());
         switch (opciones.size()) {
             case 1 -> {
                 footer = new footer1();
                 footer1 f = (footer1) footer;
                 f.setOpciones(opciones);
+                f.setVisible(true);
             }
             case 2 -> {
                 footer = new footer2();
@@ -66,7 +71,7 @@ public class VistaEscena extends javax.swing.JFrame {
             case 3 -> {
                 footer = new footer3();
                 footer3 f = (footer3) footer;
-                f.setOpciones(opciones);
+                f.setOpciones(controlador, this);
             }
             case 4 -> {
                 footer = new footer4();
@@ -81,6 +86,7 @@ public class VistaEscena extends javax.swing.JFrame {
         }
         jPanel1.add(footer);
         footer.setBounds(0, 590, 1000, 115);
+        footer.setVisible(true);
     }
 
     /**
@@ -95,34 +101,29 @@ public class VistaEscena extends javax.swing.JFrame {
         footer21 = new Vista.footer2();
         footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
-        footer23 = new Vista.footer2();
-        Foto = new javax.swing.JLabel();
-        Texto = new javax.swing.JLabel();
+        foto = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
-        jPanel1.add(footer23);
-        footer23.setBounds(0, 590, 1000, 103);
 
-        Foto.setText("jLabel1");
-        jPanel1.add(Foto);
-        Foto.setBounds(10, 210, 440, 380);
+        foto.setText("jLabel1");
+        jPanel1.add(foto);
+        foto.setBounds(10, 210, 440, 380);
 
-        Texto.setText("Texto");
-        jPanel1.add(Texto);
-        Texto.setBounds(460, 210, 500, 380);
+        texto.setText("Texto");
+        jPanel1.add(texto);
+        texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 994, 220);
-
+        cabecera1.setBounds(0, 0, 1000, 220);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         fondo.setText("jLabel1");
         jPanel1.add(fondo);
         fondo.setBounds(0, 0, 1000, 700);
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,13 +167,12 @@ public class VistaEscena extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Foto;
-    private javax.swing.JLabel Texto;
     private Vista.Cabecera cabecera1;
     private javax.swing.JLabel fondo;
     private Vista.footer2 footer21;
     private Vista.footer2 footer22;
-    private Vista.footer2 footer23;
+    private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

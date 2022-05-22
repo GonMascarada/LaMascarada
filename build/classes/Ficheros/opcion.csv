@@ -1,8 +1,8 @@
-IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente;
+﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente;
 0;Ir al bar;0;0;20;0;0;1;
 1;Hablar con la camarera;0;0;20;0;1;2;
 2;Respuesta normal;0;0;20;0;2;3;
-3;No tengo habitación de Motel aún;0;0;20;0;3;4;
+3;No tengo habitación de Motel aún;0;12;20;0;3;4;
 2;Hablar sobre Antiguo;0;0;20;0;4;5;
 3;Mentir;0;0;20;0;4;6;
 4;Irse;0;0;20;0;4;5;

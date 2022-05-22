@@ -22,7 +22,6 @@ public class Persona {
      * @param datos 0-Nombre, 1-Ataque, 2-Defensa, 3-VidaMax, 4-VidaActual,
      * 5-Dinero, 6-Estado de ánimo
      * @param equipacion
-     * @param estadoDeAnimo
      */
     public Persona(String[] datos, ArrayList<Equipo> equipacion) {
         this.nombre = datos[0];
@@ -89,5 +88,12 @@ public class Persona {
      */
     public int getEstadoDeAnimo() {
         return estadoDeAnimo;
+    }
+
+    /**
+     * @param estadoDeAnimo the estadoDeAnimo to set
+     */
+    public void setEstadoDeAnimo(int estadoDeAnimo) {
+        this.estadoDeAnimo = estadoDeAnimo;
     }
 }

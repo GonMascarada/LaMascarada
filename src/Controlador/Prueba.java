@@ -1,4 +1,4 @@
-package Vista;
+package Controlador;
 
 import Modelo.BaseDeDatos;
 import Mascarada.Clan;
@@ -20,24 +20,27 @@ public class Prueba {
      */
     public static void main(String[] args) {
         Controlador controlador = new Controlador();
-        /*        BaseDeDatos bd = new BaseDeDatos();
-
+        BaseDeDatos bd = new BaseDeDatos();
+/*
         System.out.println("getListaClanes");
         ArrayList<Clan> clanes = bd.getListaClanes();
         for (int i = 0; i < clanes.size(); i++) {
             System.out.println(clanes.get(i).toString());
         }
-        
+
         System.out.println("\n\ngetListaPartidas");
-        ArrayList<Partida> partidas = bd.getListaPartidas();
-        for (int i = 0; i < partidas.size(); i++) {
+ */       ArrayList<Partida> partidas = bd.getListaPartidas();
+ /*       for (int i = 0; i < partidas.size(); i++) {
             System.out.println(partidas.get(i).toString());
-        } 
-         */
-        String prueba = "0;Ir al pueblo;0;0;20;0;0;1;";
-        String[] datos = prueba.split(";");
-        Opcion opcion = new Opcion(datos);
-        controlador.escoger(opcion);
+        }
+*/
+        
+        Partida p = partidas.get(0);     
+        controlador.cargarPartida(p);
+        //String prueba = "0;Ir al bar;0;0;20;0;0;1;";
+        //String[] datos = prueba.split(";");
+        //Opcion opcion = new Opcion(datos);
+        //controlador.escoger(opcion);
 
     }
 }

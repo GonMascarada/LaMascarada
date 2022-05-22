@@ -51,6 +51,23 @@ public class Clan {
         return habilidades;
     }
 
+    /**
+     * Devuelve en una frase las dos habilidades deparadas por un ;
+     *
+     * @return
+     */
+    public String getHabilidadesObtenidas() {
+        String resultado = "";
+        Iterator<String> it = habilidades.keySet().iterator();
+        while (it.hasNext()) {
+            String clave = it.next();
+            if (habilidades.get(clave)) {
+                resultado += clave + ";";
+            }
+        }
+        return resultado;
+    }
+
     @Override
     public String toString() {
         String resultado = nombre + ";" + descripcion + ";";
@@ -60,5 +77,14 @@ public class Clan {
             resultado += it.next() + ";";
         }
         return resultado;
+    }
+
+    /**
+     * Dada una habilidad la marca como obtenida con un true en el hashmap.
+     *
+     * @param habilidad nombre de la habilidad
+     */
+    void setHabilidad(String habilidad) {
+        habilidades.put(habilidad, true);
     }
 }
