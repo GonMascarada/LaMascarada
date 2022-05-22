@@ -1,3 +1,3 @@
-﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena
-1;04/06/2022;80;1;2;3;Ve al callejón.;4
-2;05/06/2022;240;2;3;4;Habla con Abby.;4
+﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;
+1;04/06/2022;80;1;2;3;Ve al callejón.;4;
+2;05/06/2022;240;2;3;4;Habla con Abby.;4;
