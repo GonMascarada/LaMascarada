@@ -1,10 +1,12 @@
 package Controlador;
+
 import Modelo.BaseDeDatos;
 import Mascarada.*;
 import Vista.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+
 /**
  * Se encarga de abastecer a las interfaces con la información neceseria.
  * Gestiona todos los recursos.
@@ -12,16 +14,16 @@ import java.util.Iterator;
  * @author Gonzalo López Fernández
  */
 public final class Controlador {
-    
-    private Partida partida; 
+
+    private Partida partida;
 
     private BaseDeDatos bbdd;
-    
 
     public Controlador() {
         bbdd = new BaseDeDatos();
         partida = new Partida(); //Habrá que borrarlo
     }
+
     /**
      * Devuelve la lista de todos los clanes disponibles.
      *
@@ -30,6 +32,7 @@ public final class Controlador {
     public ArrayList<Clan> getListaClanes() {
         return bbdd.getListaClanes();
     }
+
     /**
      * Lista de habilidades de un clan en concreto.
      *
@@ -45,6 +48,7 @@ public final class Controlador {
         }
         return lista;
     }
+
     /**
      * Lista de todas las partidas que se han guardado.
      *
@@ -53,6 +57,7 @@ public final class Controlador {
     public ArrayList<Partida> getListaPartidas() {
         return bbdd.getListaPartidas();
     }
+
     /**
      * Comprueba que el nombre no le pertenezca ya a otro vampiro.
      *
@@ -62,6 +67,7 @@ public final class Controlador {
     public boolean comprobarNombrePersonaje(String nombre) {
         return bbdd.comprobarNombrePersonaje(nombre);
     }
+
     /**
      * Inicia una nueva partida.
      *
@@ -82,6 +88,7 @@ public final class Controlador {
         partida.getEscena().setTexto(texto);
         lanzar();
     }
+
     /**
      * Lanza la nueva escena de una opción.
      *
@@ -135,10 +142,11 @@ public final class Controlador {
     public void guardarPartida() {
         // 1. Se eliminan los pnc´s que no han sufrido cambios.
         partida.borrarNpcsInalterados();
-        
+
         // 2. Se almacena todos los datos de la partida en la base de datos.
         bbdd.guardarPartida(partida);
     }
+
     /**
      * Carga una partida.
      *
@@ -146,10 +154,11 @@ public final class Controlador {
      */
     public void cargarPartida(Partida partida) {
         this.partida = partida;
-        this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));       
+        this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
 
         lanzar();
     }
+
     /**
      * Borra de la base de datos una partida.
      *
@@ -167,6 +176,7 @@ public final class Controlador {
         VistaEscena ventana = new VistaEscena(this);
         ventana.setVisible(true);
     }
+
     /**
      * @return the partida
      */
@@ -292,6 +302,9 @@ public final class Controlador {
         boolean cumplida = false;
         Escena escena = partida.getEscena();
         switch (condicion) {
+            case Utilidades.SI_ESTANDAR -> {
+                cumplida = true;
+            }
             case Utilidades.SI_AGRADADO -> {
                 if (escena.hayPnj()) {
                     if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_AGRADECIDO) {
