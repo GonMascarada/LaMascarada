@@ -1,7 +1,7 @@
 ﻿IdEscena;Condición;Texto;
 0;0;Bienvenido a Bloodtown, tu mision es acabar con el Antiguo llamado Norman "matador" Nash que vive en la Casa de la Colina, pero para ello tienes que encontrarla primero...;
 1;0;El primer lugar que visitas es un bar con un cartel que dice "Sallys" en grande, cerca de la puerta hay otro que pone "Se busca personal", ves que no esta muy concurrido...;
-2;0;--;Hola forastero, estás buscando..algo en particular?;
+2;0;--;Hola forastero, estás buscando..algo en particular?
 3;0;++Soy nuevo en el pueblo y no se donde ir, ¿me podrias ayudar?.--Si bueno, yo podría proporcionarte un mapa, pero solo aceptaré como pago tu número de habitación del Motel.;
 4;0;++Aun no tengo habitación en el Motel.--Bueno cuando sepas qué habitación es ven y dímela, mientras toma, un mapa del pueblo.(Da mapa).Que te trae por BloodTown? aqui no suelen venir muchos forasteros tan guapos.;
 5;0;++Un..contacto me ha hablado sobre una persona que está en este pueblo, un tal Norman “matador” Nash, te suena?--Oh, pues ni idea, no conozco a ningún Norman de por aquí, y eso que el pueblo es pequeño.;
@@ -49,4 +49,5 @@
 47;0;--Vaya, ¿qué tenemos por aquí?.;
 48;0;++Vengo a por ti.--Entonces no creo que tengas posibilidad ninguna(Empieza pelea).;
 49;0;++Vengo de parte de “Nosferatu”, pero vengo a pelear.--Jeje, decidido! Asi se hara.;
-50;﻿0;++Vengo de parte de “Nosferatu”, vengo a unirme a tu decadente séquito.--Hmm un Brujah en estos momentos no nos vendría mal, pero por supuesto me estas mintiendo, tus actos tendrán consecuencias (pelea).;
+50;0;++Vengo de parte de “Nosferatu”, vengo a unirme a tu decadente séquito.--Hmm un Brujah en estos momentos no nos vendría mal, pero por supuesto me estas mintiendo, tus actos tendrán consecuencias (pelea).;
+51;2;--Por cierto, en el fondo tenemos un reservado, la contraseña es "contraseña", deberias poder…saciar tu hambre alli.;
