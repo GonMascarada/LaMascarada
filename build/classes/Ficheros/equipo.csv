@@ -10,6 +10,7 @@ Colgante;Aumenta tu vida.;0;0;9;450;
 Brazalete;Aumenta un poco tu vida.;0;0;6;300;
 Anillo;Aumenta muy poco tu vida.;0;0;3;150;
 Mapa;Te permite moverte por el pueblo;0;0;0;0;
-Contraseña;Te permite entrar al Pub;0;0;0;0;
+Contraseña;Te permite entrar al reservado del Pub;0;0;0;0;
 Llave;Te permite guardar partida;0;0;0;0;
 Nota;Te permite entrar en la puerta oculta de la Casa de la Colina;0;0;0;0;
+Bolsa de Sangre fresca;Una bolsa de sangre extraida hace poco, alimentarte de ella añade 10 puntos de vida al Vampiro;0;0;10;0;
