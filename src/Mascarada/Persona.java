@@ -11,7 +11,9 @@ public class Persona {
     private int vidaActual;
     private int dinero;
     private ArrayList<Equipo> equipacion;
-    private int estadoDeAnimo;
+    private int estadoDeAnimoOriginal;
+    private int estadoDeAnimoActual;
+    private boolean cambiado; //Controla si se ha cambiado algo en su ficha.
 
     public Persona() {
     }
@@ -31,7 +33,9 @@ public class Persona {
         this.vidaActual = Integer.parseInt(datos[4]);
         this.dinero = Integer.parseInt(datos[5]);
         this.equipacion = equipacion;
-        this.estadoDeAnimo = Integer.parseInt(datos[6]);
+        this.estadoDeAnimoOriginal = Integer.parseInt(datos[6]);
+        estadoDeAnimoActual = estadoDeAnimoOriginal;
+        cambiado = false;
     }
 
     /**
@@ -87,13 +91,48 @@ public class Persona {
      * @return the estadoDeAnimo
      */
     public int getEstadoDeAnimo() {
-        return estadoDeAnimo;
+        return estadoDeAnimoActual;
+    }
+
+    /**
+     * @return the actualizado
+     */
+    public boolean isCambiado() {
+        // Si el estado de ánimo se ha actualizado, hay que actualizar el pnj
+        if (estadoDeAnimoActual != estadoDeAnimoOriginal) {
+            return true;
+        }
+        return cambiado;
     }
 
     /**
      * @param estadoDeAnimo the estadoDeAnimo to set
      */
     public void setEstadoDeAnimo(int estadoDeAnimo) {
-        this.estadoDeAnimo = estadoDeAnimo;
+        this.estadoDeAnimoActual = estadoDeAnimo;
+    }
+
+    /**
+     * @param vidaActual the vidaActual to set
+     */
+    public void setVidaActual(int vidaActual) {
+        this.vidaActual = vidaActual;
+        cambiado = true;
+    }
+
+    /**
+     * @param dinero the dinero to set
+     */
+    public void setDinero(int dinero) {
+        this.dinero = dinero;
+        cambiado = true;
+    }
+
+    /**
+     * @param equipacion the equipacion to set
+     */
+    public void setEquipacion(ArrayList<Equipo> equipacion) {
+        this.equipacion = equipacion;
+        cambiado = true;
     }
 }
