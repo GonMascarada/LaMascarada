@@ -100,6 +100,7 @@ public class BaseDeDatos {
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if (Integer.valueOf(linea[6]) == idEscena) {
+                System.out.println("Añadida opcion: "+ linea[0]+ " de la escena "+idEscena);
                 opcion = new Opcion(linea);
                 opciones.add(opcion);
             }
