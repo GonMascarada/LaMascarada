@@ -30,10 +30,10 @@ public class Prueba {
 
         System.out.println("\n\ngetListaPartidas");
  */       ArrayList<Partida> partidas = bd.getListaPartidas();
- /*       for (int i = 0; i < partidas.size(); i++) {
+        for (int i = 0; i < partidas.size(); i++) {
             System.out.println(partidas.get(i).toString());
         }
-*/
+
         
         Partida p = partidas.get(0);     
         controlador.cargarPartida(p);
