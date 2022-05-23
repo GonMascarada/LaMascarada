@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Controlador"},{"l":"Mascarada"},{"l":"Modelo"},{"l":"Vista"}];updateSearchResults();

@@ -96,8 +96,8 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
-<<<<<<< HEAD
-        partida.setEscena(siguiente);
+
+        //partida.setEscena(siguiente);
         //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
         //2.Pedir a la base de datos todas las posibles condiciones.
         //3.Comprobar si se cumple alguna de las condiciones.
@@ -112,7 +112,7 @@ public final class Controlador {
 //        HashMap habilidades = partida.getHabilidades();
 //        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
         // Si en extra hay algo, lanzar pop-up con esa info.
-=======
+
         ArrayList<String[]> textos;
         ArrayList<Opcion> opciones;
         String texto;
@@ -151,7 +151,7 @@ public final class Controlador {
                 ventana.setVisible(true);
             }
         }
->>>>>>> 9cea0c64d5d58163fdeb4091f20fb321fa52c576
+
     }
 
     /**
