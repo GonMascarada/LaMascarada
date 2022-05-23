@@ -11,86 +11,31 @@ public class Persona {
     private int vidaActual;
     private int dinero;
     private ArrayList<Equipo> equipacion;
-    private int estadoDeAnimo;
+    private int estadoDeAnimoOriginal;
+    private int estadoDeAnimoActual;
+    private boolean cambiado; //Controla si se ha cambiado algo en su ficha.
 
     public Persona() {
     }
-    
-    /**
-     * Para generar un humano básico.
-     *
-     * @param Nombre
-     */
-    public Persona(String Nombre) {
-        this.nombre = Nombre;
-        this.ataque = Utilidades.ATQ;
-        this.defensa = Utilidades.DEF;
-        this.vidaMax = Utilidades.VIDA;
-        this.vidaActual = vidaMax;
-        this.dinero = Utilidades.DINERO;
-        this.estadoDeAnimo = Utilidades.NORMAL;
-    }
 
     /**
-     * Para generar una persona nueva específica.
+     * Para cargar un personaje.
      *
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax) {
-        this.nombre = Nombre;
-        this.ataque = Ataque;
-        this.defensa = Defensa;
-        this.vidaMax = VidaMax;
-        this.vidaActual = VidaMax;
-        this.dinero = Utilidades.DINERO;
-        this.estadoDeAnimo = Utilidades.NORMAL;
-    }
-
-    /**
-     * Para cargar al protagonista.
-     *
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     * @param VidaActual
-     * @param dinero
+     * @param datos 0-Nombre, 1-Ataque, 2-Defensa, 3-VidaMax, 4-VidaActual,
+     * 5-Dinero, 6-Estado de ánimo
      * @param equipacion
      */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, ArrayList<Equipo> equipacion) {
-        this.nombre = Nombre;
-        this.ataque = Ataque;
-        this.defensa = Defensa;
-        this.vidaMax = VidaMax;
-        this.vidaActual = VidaActual;
-        this.dinero = dinero;
+    public Persona(String[] datos, ArrayList<Equipo> equipacion) {
+        this.nombre = datos[0];
+        this.ataque = Integer.parseInt(datos[1]);
+        this.defensa = Integer.parseInt(datos[2]);
+        this.vidaMax = Integer.parseInt(datos[3]);
+        this.vidaActual = Integer.parseInt(datos[4]);
+        this.dinero = Integer.parseInt(datos[5]);
         this.equipacion = equipacion;
-    }
-
-    /**
-     * Para cargar una persona.
-     *
-     * @param Nombre
-     * @param Ataque
-     * @param Defensa
-     * @param VidaMax
-     * @param VidaActual
-     * @param dinero
-     * @param equipacion
-     * @param estadoDeAnimo
-     */
-    public Persona(String Nombre, int Ataque, int Defensa, int VidaMax, int VidaActual, int dinero, ArrayList<Equipo> equipacion, int estadoDeAnimo) {
-        this.nombre = Nombre;
-        this.ataque = Ataque;
-        this.defensa = Defensa;
-        this.vidaMax = VidaMax;
-        this.vidaActual = VidaActual;
-        this.dinero = dinero;
-        this.equipacion = equipacion;
-        this.estadoDeAnimo = estadoDeAnimo;
+        this.estadoDeAnimoOriginal = Integer.parseInt(datos[6]);
+        estadoDeAnimoActual = estadoDeAnimoOriginal;
+        cambiado = false;
     }
 
     /**
@@ -146,9 +91,48 @@ public class Persona {
      * @return the estadoDeAnimo
      */
     public int getEstadoDeAnimo() {
-        return estadoDeAnimo;
+        return estadoDeAnimoActual;
     }
-    
-    
-    
+
+    /**
+     * @return the actualizado
+     */
+    public boolean isCambiado() {
+        // Si el estado de ánimo se ha actualizado, hay que actualizar el pnj
+        if (estadoDeAnimoActual != estadoDeAnimoOriginal) {
+            return true;
+        }
+        return cambiado;
+    }
+
+    /**
+     * @param estadoDeAnimo the estadoDeAnimo to set
+     */
+    public void setEstadoDeAnimo(int estadoDeAnimo) {
+        this.estadoDeAnimoActual = estadoDeAnimo;
+    }
+
+    /**
+     * @param vidaActual the vidaActual to set
+     */
+    public void setVidaActual(int vidaActual) {
+        this.vidaActual = vidaActual;
+        cambiado = true;
+    }
+
+    /**
+     * @param dinero the dinero to set
+     */
+    public void setDinero(int dinero) {
+        this.dinero = dinero;
+        cambiado = true;
+    }
+
+    /**
+     * @param equipacion the equipacion to set
+     */
+    public void setEquipacion(ArrayList<Equipo> equipacion) {
+        this.equipacion = equipacion;
+        cambiado = true;
+    }
 }

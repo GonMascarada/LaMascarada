@@ -15,15 +15,13 @@ public class Escena {
 
     public Escena(String[] datos, ArrayList<Opcion> opciones) {
         this.idEscena = Integer.valueOf(datos[0]);
-        this.texto = datos[1];
-        this.imagen = datos[2];
+        this.imagen = datos[1];
         this.opciones = opciones;
     }
 
     public Escena(String[] datos, ArrayList<Opcion> opciones, Persona pnj) {
         this.idEscena = Integer.valueOf(datos[0]);
-        this.texto = datos[1];
-        this.imagen = datos[2];
+        this.imagen = datos[1];
         this.opciones = opciones;
         this.pnj = pnj;
     }
@@ -68,5 +66,26 @@ public class Escena {
      */
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    /**
+     * @param opciones the opciones to set
+     */
+    public void setOpciones(ArrayList<Opcion> opciones) {
+        this.opciones = opciones;
+    }
+
+    /**
+     * Comprueba que la escena tenga pnj.
+     *
+     * @return true si hay pnj, false en otro caso.
+     */
+    public boolean hayPnj() {
+        try {
+            pnj.getNombre();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

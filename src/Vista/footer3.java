@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -14,19 +15,27 @@ import javax.swing.JButton;
  */
 public class footer3 extends javax.swing.JPanel {
 
+    private Controlador controlador;
+    private VistaEscena vista;
+    private ArrayList<Opcion> opciones;
     private ArrayList<JButton> botones;
+
     /**
      * Creates new form footer2
      */
     public footer3() {
         initComponents();
     }
-       public void setOpciones(ArrayList <Opcion> opciones){
-         botones = new ArrayList<>();
+
+    public void setOpciones(Controlador controlador, VistaEscena vista) {
+        this.controlador = controlador;
+        this.vista = vista;
+        this.opciones = controlador.getPartida().getEscena().getOpciones();
+        botones = new ArrayList<>();
         botones.add(opcion1);
         botones.add(opcion2);
         botones.add(opcion3);
-        
+
         for (int i = 0; i < botones.size(); i++) {
             botones.get(i).setText(opciones.get(i).getTexto());
         }
@@ -46,10 +55,25 @@ public class footer3 extends javax.swing.JPanel {
         opcion3 = new javax.swing.JButton();
 
         opcion1.setText("jButton1");
+        opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion1MouseClicked(evt);
+            }
+        });
 
         opcion2.setText("jButton1");
+        opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion2MouseClicked(evt);
+            }
+        });
 
         opcion3.setText("jButton1");
+        opcion3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,6 +99,23 @@ public class footer3 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
+        controlador.escoger(opciones.get(1));
+        vista.dispose();
+    }//GEN-LAST:event_opcion2MouseClicked
+
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        System.out.println(opcion1.getText());
+        System.out.println("Escena siguiente: "+opciones.get(0).getIdEscenaSiguiente());
+        controlador.escoger(opciones.get(0));
+        vista.dispose();
+    }//GEN-LAST:event_opcion1MouseClicked
+
+    private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
+        controlador.escoger(opciones.get(2));
+        vista.dispose();
+    }//GEN-LAST:event_opcion3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

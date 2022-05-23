@@ -1,13 +1,8 @@
 package Controlador;
 
 import Modelo.BaseDeDatos;
-import Mascarada.Clan;
-import Mascarada.Escena;
-import Mascarada.Opcion;
-import Mascarada.Partida;
-import Mascarada.Persona;
-import Mascarada.Vampire;
-import Vista.Eleccion_2;
+import Mascarada.*;
+import Vista.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,6 +16,7 @@ import java.util.Iterator;
 public final class Controlador {
 
     private Partida partida;
+
     private BaseDeDatos bbdd;
 
     public Controlador() {
@@ -79,11 +75,18 @@ public final class Controlador {
      * @param nombre del nuevo personaje.
      */
     public void crearNuevaPartida(Clan clan, String nombre) {
-        Vampire vampire = new Vampire(clan, nombre);
-        getPartida().setProtagonista(vampire);
-        Escena primera = bbdd.getEscena(0); //Primera escena
-        getPartida().setEscena(primera);
-        // Lanzar una nueva ventana con la escena.
+        String datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
+        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
+        Vampire vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
+        ArrayList<String[]> textos;
+        String texto;
+        partida.setProtagonista(vampire);
+        Escena primera = bbdd.getEscena(0); //Primera escena        
+        partida.setEscena(primera);
+        textos = bbdd.getTextos(primera.getIdEscena());
+        texto = getTextoCorrecto(textos);
+        partida.getEscena().setTexto(texto);
+        lanzar();
     }
 
     /**
@@ -93,6 +96,7 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
+<<<<<<< HEAD
         partida.setEscena(siguiente);
         //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
         //2.Pedir a la base de datos todas las posibles condiciones.
@@ -108,13 +112,57 @@ public final class Controlador {
 //        HashMap habilidades = partida.getHabilidades();
 //        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
         // Si en extra hay algo, lanzar pop-up con esa info.
+=======
+        ArrayList<String[]> textos;
+        ArrayList<Opcion> opciones;
+        String texto;
+
+        //1.Evaluar la opción que se acaba de tomar.
+        evaluarOpcion(opcion);
+
+        partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
+        //2.Pedir a la base de datos todos los posibles textos.
+        textos = bbdd.getTextos(siguiente.getIdEscena());
+
+        //3.Comprobar si se cumple alguna de las condiciones de los textos.
+        //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
+        texto = getTextoCorrecto(textos);
+
+        //4.Insertar a la escena el texto
+        partida.getEscena().setTexto(texto);
+
+        //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
+        opciones = partida.getEscena().getOpciones();
+        for (int i = opciones.size() - 1; i >= 0; i--) {
+            if (!evaluarCondicionDeOpcion(opciones.get(i).getCondiccion())) {
+                opciones.remove(i);
+            }
+        }
+        partida.getEscena().setOpciones(opciones);
+
+        // 6.Mostrar la escena.
+        lanzar();
+
+        // 7. Si se tiene dechercho, obtener info extra y mostrarla si hay.
+        if (comprobarAnimalismo()) {
+            texto = getTextoExtra(textos);
+            if (!texto.equals("")) {
+                PopUpInfoExtra ventana = new PopUpInfoExtra(texto);
+                ventana.setVisible(true);
+            }
+        }
+>>>>>>> 9cea0c64d5d58163fdeb4091f20fb321fa52c576
     }
 
     /**
      * Guarda la partida en el estado actual.
      */
     public void guardarPartida() {
-        bbdd.guardarPartida(getPartida());
+        // 1. Se eliminan los pnc´s que no han sufrido cambios.
+        partida.borrarNpcsInalterados();
+
+        // 2. Se almacena todos los datos de la partida en la base de datos.
+        bbdd.guardarPartida(partida);
     }
 
     /**
@@ -124,8 +172,9 @@ public final class Controlador {
      */
     public void cargarPartida(Partida partida) {
         this.partida = partida;
-        Escena escena = partida.getEscena();
-        lanzar(escena);
+        this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
+
+        lanzar();
     }
 
     /**
@@ -138,27 +187,11 @@ public final class Controlador {
     }
 
     /**
-     * Resuelve un combate entre el protagonista y un enemigo.
-     *
-     * @param enemigo
-     * @return true si se vence, false en otro caso.
-     */
-    private boolean pelear(Persona enemigo) {
-        //Pasan cosas.
-        if (getPartida().getVidaProtagonista() <= 0) {
-            bbdd.getEscenaMuerte();
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Muestra la interfaz acorde a la escena.
      *
-     * @param escena a mostrar.
      */
-    private void lanzar(Escena escena) {
-        Eleccion_2 ventana = new Eleccion_2(this, escena);
+    private void lanzar() {
+        VistaEscena ventana = new VistaEscena(this);
         ventana.setVisible(true);
     }
 
@@ -167,5 +200,186 @@ public final class Controlador {
      */
     public Partida getPartida() {
         return partida;
+    }
+
+    /**
+     * Evalua las consecuencias de haber tomado una decisión.
+     *
+     * Si cambia el estado de animo de alguien, si causa progreso, si aumenta la
+     * sed de sangre, la sospecha...
+     *
+     * @param opcion la opción tomada.
+     */
+    private void evaluarOpcion(Opcion opcion) {
+        switch (opcion.getAccion()) {
+            case Utilidades.OP_PROGRESO -> {
+                partida.setProgreso(partida.getProgreso() + 1);
+                bbdd.guardarPartida(partida);
+            }
+            case Utilidades.OP_SOSPECHA -> {
+                partida.setSospecha(partida.getSospecha() + 1);
+            }
+            case Utilidades.OP_SEDSANGRE -> {
+                partida.setSedDeSangre(partida.getSedDeSangre() + 1);
+            }
+            case Utilidades.OP_AGRADAR -> {
+                if (partida.getEscena().hayPnj()) {
+                    partida.getEscena().getPnj().setEstadoDeAnimo(Utilidades.EA_AGRADECIDO);
+                }
+            }
+            case Utilidades.OP_ENFADAR -> {
+                if (partida.getEscena().hayPnj()) {
+                    partida.getEscena().getPnj().setEstadoDeAnimo(Utilidades.EA_ENFADADO);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Evalua las condicones para ver qué texto se debe mostrar.
+     *
+     * @param textos lista cuyos campos son [condición, texto]
+     * @return el texto oportuno.
+     */
+    private String getTextoCorrecto(ArrayList<String[]> textos) {
+        String texto = "";
+        boolean encontrado = false;
+        int indice = 0;
+        int condicion;
+        do {
+            condicion = Integer.parseInt(textos.get(indice)[0]);
+            if (condicion == Utilidades.SI_ESTANDAR) {
+                texto = textos.get(indice)[1];
+            } else if (evaluarCondicionDeTexto(condicion)) {
+                texto = textos.get(indice)[1];
+                encontrado = true;
+            }
+            indice++;
+        } while ((!encontrado) && (indice < textos.size()));
+        return texto;
+    }
+
+    /**
+     * Si hay info extra en la escena devuelve su texto.
+     *
+     * @param textos lista cuyos campos son [condición, texto]
+     * @return el texto oportuno.
+     */
+    private String getTextoExtra(ArrayList<String[]> textos) {
+        String texto = "";
+        boolean encontrado = false;
+        int indice = 0;
+        int condicion;
+        do {
+            condicion = Integer.parseInt(textos.get(indice)[0]);
+            if (condicion == Utilidades.SI_EXTRA) {
+                texto = textos.get(indice)[1];
+                encontrado = true;
+            }
+            indice++;
+        } while ((!encontrado) && (indice < textos.size()));
+        return texto;
+    }
+
+    /**
+     * Comprueba si se cumple la condición de un texto para ser mostrado.
+     *
+     * @param condicion a comprobar.
+     * @return true si se cumple la condición, false en otro caso.
+     */
+    private boolean evaluarCondicionDeTexto(int condicion) {
+        boolean cumplida = false;
+        Escena escena = partida.getEscena();
+        switch (condicion) {
+            case Utilidades.SI_AGRADADO -> {
+                if (escena.hayPnj()) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_AGRADECIDO) {
+                        cumplida = true;
+                    }
+                }
+            }
+            case Utilidades.SI_ENFADADO -> {
+                if (escena.hayPnj()) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_ENFADADO) {
+                        cumplida = true;
+                    }
+                }
+            }
+        }
+        return cumplida;
+    }
+
+    /**
+     * Comprueba si se cumple la condición de un texto para ser mostrado.
+     *
+     * @param condicion a comprobar.
+     * @return true si se cumple la condición, false en otro caso.
+     */
+    private boolean evaluarCondicionDeOpcion(int condicion) {
+        boolean cumplida = false;
+        Escena escena = partida.getEscena();
+        switch (condicion) {
+            case Utilidades.SI_ESTANDAR -> {
+                cumplida = true;
+            }
+            case Utilidades.SI_AGRADADO -> {
+                if (escena.hayPnj()) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_AGRADECIDO) {
+                        cumplida = true;
+                    }
+                }
+            }
+            case Utilidades.SI_ENFADADO -> {
+                if (escena.hayPnj()) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_ENFADADO) {
+                        cumplida = true;
+                    }
+                }
+            }
+            case Utilidades.SI_MAPA -> {
+                cumplida = buscarEquipo("Mapa");
+            }
+        }
+        return cumplida;
+    }
+
+    /**
+     * Busca en el inventario del protagonista un objeto.
+     *
+     * @param equipo nombre del objeto.
+     * @return true si lo tiene, false en otro caso.
+     */
+    private boolean buscarEquipo(String equipo) {
+        ArrayList<Equipo> equipos = partida.getProtagonista().getEquipacion();
+        boolean encontrado = false;
+        int indice = 0;
+        while ((!encontrado) && (indice < equipos.size())) {
+            if (equipos.get(indice).getNombre().equals(equipo)) {
+                encontrado = true;
+            }
+            indice++;
+        }
+        return encontrado;
+    }
+
+    /**
+     * Comprueba si el protagonista tiene la habilidad de animalismo.
+     *
+     * @return true si tiene la habilidad, false en otro caso.
+     */
+    private boolean comprobarAnimalismo() {
+        Clan clan = partida.getProtagonista().getClan();
+        HashMap<String, Boolean> habilidades;
+        boolean derecho = false;
+        if (clan.getNombre().equals("Nosferatu")) {
+            habilidades = clan.getHabilidades();
+            if (habilidades.containsKey("Animalismo")) {
+                if (habilidades.get("Animalismo")) {
+                    return true;
+                }
+            }
+        }
+        return derecho;
     }
 }

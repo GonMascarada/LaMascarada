@@ -1,11 +1,6 @@
 package Modelo;
 
-import Mascarada.Clan;
-import Mascarada.Equipo;
-import Mascarada.Escena;
-import Mascarada.Opcion;
-import Mascarada.Partida;
-import Mascarada.Vampire;
+import Mascarada.*;
 import Vista.Inicio;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -41,6 +36,30 @@ public class BaseDeDatos {
     }
 
     /**
+     * Devuelve todos los textos posibles para una escena en concreto.
+     *
+     * @param idEscena de la escena.
+     * @return una lista de parejas [condición, texto]
+     */
+    public ArrayList<String[]> getTextos(int idEscena) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        ArrayList<String[]> textos = new ArrayList<>();
+        String[] texto = new String[2];
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            if (Integer.valueOf(linea[0]) == idEscena) {
+                texto[0] = linea[1];
+                texto[1] = linea[2];
+                textos.add(texto);
+            }
+        }
+        return textos;
+    }
+
+    /**
      * Devuleve una escena concreta.
      *
      * @param idEscena identificador de la escena.
@@ -53,6 +72,7 @@ public class BaseDeDatos {
         Escena escena = new Escena();
         ArrayList<Opcion> opciones;
         boolean encontrado = false;
+        lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && !encontrado)) {
             linea = lector.nextLine().split(";");
             if (Integer.parseInt(linea[0]) == idEscena) {
@@ -76,38 +96,16 @@ public class BaseDeDatos {
         String[] linea;
         ArrayList<Opcion> opciones = new ArrayList<>();
         Opcion opcion;
+        lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if (Integer.valueOf(linea[6]) == idEscena) {
+                System.out.println("Añadida opcion: "+ linea[0]+ " de la escena "+idEscena);
                 opcion = new Opcion(linea);
                 opciones.add(opcion);
             }
         }
         return opciones;
-    }
-
-    /**
-     * Devuelve toda la información de un protagonista.
-     *
-     * @param nombre del protagonista.
-     * @param idPartida
-     * @return vampire protagonista.
-     */
-    public Vampire getProtagonista(String nombre, int idPartida) {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
-        Scanner lector = new Scanner(inputStream);
-        String[] linea;
-        Vampire vampire = new Vampire();
-        boolean encontrado = false;
-        while ((lector.hasNext() && !encontrado)) {
-            linea = lector.nextLine().split(";");
-            if (linea[0].equals(nombre)) {
-                encontrado = true;
-                Clan clan = getClan(linea[7]);
-                vampire = new Vampire(clan, linea, getEquipos(nombre, idPartida));
-            }
-        }
-        return vampire;
     }
 
     /**
@@ -123,6 +121,7 @@ public class BaseDeDatos {
         String[] linea;
         ArrayList<Equipo> equipos = new ArrayList<>();
         Equipo equipo;
+        lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if ((linea[1].equals(idPartida) && (linea[2].equals(nombrePersonaje)))) {
@@ -146,6 +145,7 @@ public class BaseDeDatos {
         String[] linea;
         Equipo equipo = new Equipo();
         boolean encontrado = false;
+        lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && !encontrado)) {
             linea = lector.nextLine().split(";");
             if (linea[0].equals(nombre)) {
@@ -157,31 +157,89 @@ public class BaseDeDatos {
     }
 
     /**
-     * Devuelve lista de todas las partidas guardadas en la base de datos.
+     * Devuelve lista de todas las partidas guardadas en la base de datos de los
+     * protagonistas.
      *
      * @return lista de partidas guardadas.
      */
     public ArrayList<Partida> getListaPartidas() {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Partida> partidas = new ArrayList<>();
         String[] linea;
+        int idPartida;
+        Vampire vampire;
+        Clan clan;
         Partida partida;
+        lector.nextLine(); //Salta la cabecera del documento
+        //Buscamos en personaje.csv todos los personajes que sean protagonistas.
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
-            partida = new Partida();
-            partida.setIdPartida(Integer.parseInt(linea[0]));
-            partida.setFecha(new java.util.Date(linea[1])); //Revisar
-            partida.setTiempo(Integer.parseInt(linea[2]));
-            partida.setProgreso(Integer.parseInt(linea[3]));
-            partida.setSedDeSangre(Integer.parseInt(linea[4]));
-            partida.setSospecha(Integer.parseInt(linea[5]));
-            partida.setUltimaPista(linea[6]);
-            partida.setEscena(getEscena(Integer.parseInt(linea[7])));
-            partida.setProtagonista(getProtagonista(linea[8], partida.getIdPartida()));
-            partidas.add(partida);
+            // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
+            if (Integer.valueOf(linea[6]) == Utilidades.EA_PROTAGONISTA) {
+                clan = getClan(linea[7]);
+                idPartida = Integer.parseInt(linea[10]);
+                vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
+                partida = getPartida(idPartida); //Nos devuelve la partida sin el vampiro protagonista.
+                partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.                
+                partidas.add(partida); //Se añade la partida al listado.
+            }
         }
         return partidas;
+    }
+
+    public ArrayList<Persona> getPNJs(int idPartida) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
+        Scanner lector = new Scanner(inputStream);
+        ArrayList<Persona> pnjs = new ArrayList<>();
+        String[] linea;
+        Clan clan;
+        lector.nextLine(); //Salta la cabecera del documento
+        //Buscamos en personaje.csv todos los personajes que pertenezcan a la partida.
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
+            if (Integer.parseInt(linea[10]) == idPartida) {
+                ArrayList<Equipo> equipos = getEquipos(linea[0], idPartida);
+                if (linea[7].equals("Humano")) {
+                    pnjs.add(new Persona(linea, equipos));
+                } else {
+                    clan = getClan(linea[7]);
+                    pnjs.add(new Vampire(clan, linea, equipos));
+                }
+            }
+        }
+        return pnjs;
+    }
+
+    /**
+     * Devuelve una partida en concreto sin el protagonista.
+     *
+     * @param idPartida identifiador de la partida.
+     * @return una partida.
+     */
+    public Partida getPartida(int idPartida) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        Partida partida = new Partida();
+        boolean encontrado = false;
+        lector.nextLine(); //Salta la cabecera del documento
+        while ((lector.hasNext() && (!encontrado))) {
+            linea = lector.nextLine().split(";");
+            if (Integer.parseInt(linea[0]) == idPartida) {
+                partida.setIdPartida(Integer.parseInt(linea[0]));
+                partida.setFecha(new java.util.Date(linea[1])); //Revisar
+                partida.setTiempo(Integer.parseInt(linea[2]));
+                partida.setProgreso(Integer.parseInt(linea[3]));
+                partida.setSedDeSangre(Integer.parseInt(linea[4]));
+                partida.setSospecha(Integer.parseInt(linea[5]));
+                partida.setUltimaPista(linea[6]);
+                partida.setEscena(getEscena(Integer.parseInt(linea[7])));
+                encontrado = true;
+            }
+        }
+        return partida;
     }
 
     /**
@@ -204,9 +262,9 @@ public class BaseDeDatos {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Clan> clanes = new ArrayList<>();
-        HashMap<String, Boolean> habilidades = new HashMap<>();
         String[] linea;
         Clan clan;
+        lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             clan = new Clan(linea);
@@ -227,6 +285,7 @@ public class BaseDeDatos {
         Clan clan = new Clan();
         String[] linea;
         boolean encontrado = false;
+        lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && !encontrado)) {
             linea = lector.nextLine().split(";");
             if (linea[0].equals(nombre)) {
@@ -286,7 +345,18 @@ public class BaseDeDatos {
      * @param partida a guardar.
      */
     public void guardarPartida(Partida partida) {
-        System.out.println("Estamos trabajando en ello :(");
+        int id;
+        // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
+        // O si tiene mayor progreso, crear una partida nueva.
+        id = getIdGuardado(partida.getIdPartida(), partida.getProgreso());
+        
+        // 2.Guardar los datos de la partida.
+        
+        // 3.Guardar los datos de los personajes, protagonista incluido.
+        
+        // 4.Guardar los datos de los objetos de cada personaje.
+        
+        // 5.Sincronizar los datos locales con la base de datos.
         sincronizar();
     }
 
@@ -301,6 +371,14 @@ public class BaseDeDatos {
     }
 
     /**
+     * Comprueba que la copia local y la de la base de datos están actualizadas.
+     * En caso de no estarlo, lo sincroniza.
+     */
+    private void sincronizar() {
+        System.out.println("Estamos trabajando en ello :(");
+    }
+
+    /**
      * Comprueba si un nombre ya está siendo usado por otro personaje.
      *
      * @param nombre
@@ -311,6 +389,7 @@ public class BaseDeDatos {
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         boolean disponible = true;
+        lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && disponible)) {
             linea = lector.nextLine().split(";");
             if (linea[0].equals(nombre)) {
@@ -321,11 +400,31 @@ public class BaseDeDatos {
     }
 
     /**
-     * Comprueba que la copia local y la de la base de datos están actualizadas.
-     * En caso de no estarlo, lo sincroniza.
+     * Comprueba si se debe guardar en el id actual, o si se ha causado progreso
+     * en que id se debe hacer.
+     *
+     * @param idPartida actual.
+     * @param progreso actual
+     * @return el mismo idPartida si se deben sobreescribir esos datos, o un
+     * nuevo id donde hacerlo.
      */
-    private void sincronizar() {
-        System.out.println("Estamos trabajando en ello :(");
+    private int getIdGuardado(int idPartida, int progreso) {
+        int id = 0;
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            id = Integer.parseInt(linea[0]);
+            if (id == idPartida) {
+                if (Integer.parseInt(linea[3]) == progreso) {
+                    return idPartida;
+                }
+            }
+        }
+        id++;
+        return id;
     }
 
 }
