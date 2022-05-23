@@ -1,2 +1,3 @@
-Lestat;10;8;30;30;1000;;Tremere;Dominación;Presencia
-Abby;5;4;15;10;500;2;;;
+Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida;
+Lestat;10;8;30;30;1000;0;Tremere;Dominación;Celeridad;idpartida;
+Abby;5;4;15;10;500;2;;;idpartida;

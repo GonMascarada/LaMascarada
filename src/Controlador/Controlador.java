@@ -100,10 +100,10 @@ public final class Controlador {
         //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
         //4.Insertar a la escena el texto
         //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
-        volver a añadir a opción condición
-                y cambiarlo a int
+        //volver a añadir a opción condición
+       //         y cambiarlo a int
 
-        lanzar(siguiente);
+       // lanzar(siguiente);
         //6.Obtener info extra y mostrarla si hay.
 //        HashMap habilidades = partida.getHabilidades();
 //        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
