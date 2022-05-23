@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+Nombre;Descripción;Ataque;Defensa;Vida;Precio
+Pistola;Puedes disparar a distancia.;10;0;0;500
+Bate;Puedes golpear cuerpo a cuerpo.;5;0;0;250
+Navaja;Puedes rajar cuerpo a cuerpo.;4;0;0;250
+Puño Americano;Puedes golpear cuerpo a cuerpo.;4;0;0;250
+Botella;Puedes apuñalar cuerpo a cuerpo.;3;0;0;150
+Chaleco Antibalas;Aumenta tu defensa.;0;9;0;450
+Ropa Gruesa;Aumenta tu defensa un poco.;0;4;0;200
+Colgante;Aumenta tu vida.;0;0;9;450
+Brazalete;Aumenta un poco tu vida.;0;0;6;300
+Anillo;Aumenta muy poco tu vida.;0;0;3;150
+=======
 Nombre;Descripción;Ataque;Defensa;Vida;Precio;
 Pistola;Puedes disparar a distancia.;10;0;0;500;
 Bate;Puedes golpear cuerpo a cuerpo.;5;0;0;250;
@@ -14,3 +27,4 @@ Contraseña;Te permite entrar al reservado del Pub;0;0;0;0;
 Llave;Te permite guardar partida;0;0;0;0;
 Nota;Te permite entrar en la puerta oculta de la Casa de la Colina;0;0;0;0;
 Bolsa de Sangre fresca;Una bolsa de sangre extraida hace poco, alimentarte de ella añade 10 puntos de vida al Vampiro;0;0;10;0;
+>>>>>>> 9cea0c64d5d58163fdeb4091f20fb321fa52c576

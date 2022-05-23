@@ -6,58 +6,54 @@
 4;Hablar sobre Antiguo;0;0;20;0;4;5
 5;Mentir;0;0;20;0;4;6
 6;Irse;0;0;20;0;4;2
-7;Respuesta amable;0;0;20;0;2;7
-8;Respuesta agresiva;11;0;20;0;2;8
-9;Hablar con un cliente;0;0;20;0;1;9
-10;Respuesta normal;0;0;20;0;9;10
-11;Respuesta amable;10;0;20;0;9;11
-12;Respuesta agresiva;11;0;20;0;9;12
-13;hablar con el dueño;0;0;20;0;1;13
-14;Respuesta normal;0;0;20;0;13;14
-15;Decir la verdad;0;0;20;0;14;15
-16;Aceptar quedarse a dormir aquí;15;0;20;0;15;16
-17;Negarse;0;0;20;0;15;17
-18;Mentir;0;0;20;0;15;18
-19;Respuesta amable;0;0;20;0;13;19
-20;Usar el mapa;0;4;20;0;1;50
-21;Respuesta normal;0;0;20;0;20;21
-22;respuesta amable;10;0;20;0;20;22
-23;Respuesta agresiva;0;11;20;0;20;23
-24;Usar el mapa;0;5;20;0;20;50
-25;Hablar con el camarero;0;0;20;0;24;25
-26;Respuesta normal;0;0;20;0;25;26
-27;Respuesta amable;14;0;20;0;25;51
-28;Hablar con Vidente;0;0;20;0;24;27
-29;Respuesta normal;0;0;20;0;27;28
-30;Respuesta amable;10;0;20;0;27;29
-31;Respueta agresiva;11;0;20;0;27;30
-32;Hablar con cliente;0;0;20;0;24;31
-33;Ir al reservado;0;5;20;0;24;51
-34;Coger bolsas de sangre fresca;0;0;20;0;51;51
-35;Salir del reservado;0;0;20;0;51;52
-36;Usar mapa;0;0;20;0;24;50
-37;Respuseta normal;0;0;20;0;32;33
-38;Respuesta amable;0;0;20;0;32;34
-39;Mentir;0;0;20;0;32;35
-40;Ir al Periodico;0;0;20;0;35;36
-41;Buscar en las mesas;0;0;20;0;36;37
-42;Buscar en los escritorios;0;0;20;0;36;38
-43;Buscar en la oficina del Jefe;16;0;20;0;36;39
-44;Usar mapa;0;7;20;0;36;50
-45;Ir a la puerta principal;0;0;20;0;40;41
-46;Ir al jardin;0;0;20;0;40;42
-47;Ir al jardin trasero;0;0;20;0;40;43
-48;Abrir puerta escondida;0;7;20;0;40;44
-49;Entrar en la mansion;0;7;20;0;41;45
-50;Si;0;0;20;0;45;46
-51;No;0;0;20;0;45;41
-52;Respuesta normal;0;0;20;0;46;47
-53;Respuesta agresiva;11;0;20;0;46;48
-54;Mentir;0;0;20;0;46;49
-55;Continuar…;0;0;20;0;5;1
-56;Ir al bar;0;0;20;0;0;1
-57;Ir al Motel;0;0;20;50;20;
-58;Ir al Pub;0;0;20;50;24;
-59;Seguir pista Nosferatu;0;0;20;50;32;
-60;Ir al Periodico;0;0;20;50;36;
-61;Ir a la Casa de la Colina;0;0;20;50;40;
+7;Respuesta amable;7;0;20;0;2;7
+8;Respuesta agresiva;11;0;20;0;2;9
+9;Hablar con un cliente;0;0;20;0;1;10
+10;Respuesta normal;0;0;20;0;10;11
+11;Respuesta amable;7;0;20;0;10;12
+12;Respuesta agresiva;11;0;20;0;10;13
+13;hablar con el dueño;0;0;20;0;1;15
+14;Respuesta normal;0;0;20;0;15;16
+15;Decir la verdad;7;0;20;0;16;17
+16;Aceptar quedarse a dormir aquí;15;0;20;0;17;18
+17;Negarse;0;0;20;0;17;19
+18;Mentir;11;0;20;0;17;20
+19;Respuesta amable;7;0;20;0;15;21
+20;Guardar azucarillo;0;2;20;0;21;22;
+21;Respuesta agresiva;8;0;20;0;15;23;
+22;Usar el mapa;0;4;20;0;1;50
+23;Decir tu nombre;0;0;24;25;
+23;Respuesta normal;0;0;20;0;25;26
+24;respuesta amable;7;0;20;0;25;27
+25;Respuesta agresiva;11;0;20;0;25;28
+26;Usar el mapa;0;5;20;0;20;50
+27;Hablar con el camarero;0;0;20;0;29;30
+28;Respuesta normal;0;0;20;0;30;31
+29;Respuesta amable;7;0;20;0;30;33
+30;Preguntar por el reservado;14;0;20;0;30;32;
+31;Hablar con Vidente;0;18;20;0;30;34
+32;Respuesta normal;0;0;20;0;34;35
+33;Respuesta amable;10;0;20;0;34;36
+34;Respueta agresiva;11;0;20;0;34;37
+35;Hablar con cliente;0;0;20;0;30;38
+36;Ir al reservado;0;5;20;0;30;37
+37;Coger bolsas de sangre fresca;0;0;20;0;37;30
+39;Usar mapa;0;8;20;0;30;63
+40;Respuseta normal;0;0;20;0;40;41
+41;Dar bolsa de sangre;7;17;20;40;43;
+42;Respuesta amable;0;0;20;0;40;42
+44;Ir al Periodico;0;0;20;0;40;44
+45;Buscar en las mesas;0;0;20;0;44;45
+46;Buscar en los escritorios;0;0;20;0;44;46
+47;Buscar en la oficina del Jefe;16;0;20;0;44;47
+48;Ir a la Casa de la Colina;0;7;20;0;44;48
+49;Ir a la puerta principal;0;0;20;0;48;49
+50;Ir al jardin;0;0;20;0;48;50
+51;Ir al jardin trasero;0;0;20;0;48;51
+52;Abrir puerta escondida;0;7;20;0;51;52
+53;Entrar en la mansion;0;7;20;0;52;53
+54;Si;0;0;20;0;53;54
+55;No;0;0;20;0;53;44
+56;Respuesta normal;0;0;20;0;54;55
+57;Respuesta agresiva;11;0;20;0;54;56
+58;Mentir;0;0;20;0;54;57

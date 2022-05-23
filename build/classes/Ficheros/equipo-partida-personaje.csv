@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+NombreEquipo;IdPartida;NombrePersonaje;EnUso
+=======
 ﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso
+>>>>>>> 9cea0c64d5d58163fdeb4091f20fb321fa52c576
 Pistola;1;Lestat;true
 Garrote;1;Abby;true

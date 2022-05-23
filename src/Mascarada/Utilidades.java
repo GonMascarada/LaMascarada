@@ -55,6 +55,8 @@ public abstract class Utilidades {
     public static final int OP_OBTENER_PASS = 14;
     public static final int OP_OBTENER_LLAVE = 15;
     public static final int OP_OBTENER_NOTA = 16;
+    public static final int OP_OBTENER_COLGANTE = 17;
+    public static final int OP_OBTENER_PISTA= 18;
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal
@@ -65,6 +67,8 @@ public abstract class Utilidades {
     public static final int SI_PASS = 5; // Si se tiene una contraseña.  
     public static final int SI_LLAVE = 6;
     public static final int SI_NOTA = 7;
+    public static final int SI_AZUCARILLO = 8;
+    public static final int SI_PISTA = 9;
 
     // Estados de ánimo de los NPC´s
     public static final int EA_PROTAGONISTA = 0;

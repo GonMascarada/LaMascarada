@@ -43,7 +43,7 @@ public class BaseDeDatos {
      */
     public ArrayList<String[]> getTextos(int idEscena) {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
-        Inicio.class.
+       
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         ArrayList<String[]> textos = new ArrayList<>();

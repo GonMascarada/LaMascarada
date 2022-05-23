@@ -1,3 +1,41 @@
+<<<<<<< HEAD
+IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente;
+0;Ir al bar;0;0;20;0;0;1;
+1;Hablar con la camarera;0;0;20;0;1;2;
+2;Respuesta normal;0;0;20;0;2;3;
+3;No tengo habitación de Motel aún;0;0;20;0;3;4;
+2;Hablar sobre Antiguo;0;0;20;0;4;5;
+3;Mentir;0;0;20;0;4;6;
+4;Irse;0;0;20;0;4;5;
+5;Respuesta amable;0;0;20;0;2;7;
+6;Respuesta agresiva;0;0;20;0;2;8;
+7;Hablar con un cliente;0;0;20;0;1;9;
+8;Respuesta normal;0;0;20;0;9;10;
+9;Respuesta amable;0;0;20;0;9;11;
+10;Respuesta agresiva;0;0;20;0;9;12;
+11;hablar con el dueño;0;0;20;0;1;13;
+12;Respuesta normal;0;0;20;0;13;14;
+13;Decir la verdad;0;0;20;0;14;15;
+14;Aceptar quedarse a dormir aquí;0;0;20;0;15;16;
+15;Negarse;0;0;20;0;15;17;
+16;Mentir;0;0;20;0;15;18;
+17;Respuesta amable;0;0;20;0;13;19;
+18;Usar el mapa;0;0;20;0;1;20;
+19;Respuesta normal;0;0;20;0;20;21;
+20;respuesta amable;0;0;20;0;20;22;
+21;Respuesta agresiva;0;0;20;0;20;23;
+22;Usar el mapa;0;0;20;0;20;24;
+23;Hablar con el camarero;0;0;20;0;24;25;
+24;Respuesta normal;0;0;20;0;25;26;
+25;Hablar con Vidente;0;0;20;0;24;27;
+26;Respuesta normal;0;0;20;0;27;28;
+27;Respuesta amable;0;0;20;0;27;29;
+28;Respueta agresiva;0;0;20;0;27;30;
+29;Hablar con cliente;0;0;20;0;24;31;
+30;Usar mapa;0;0;20;0;24;32;
+31;Respuseta normal;0;0;20;0;24;33;
+32;Respuesta amable;0;0;20;0;24;34;
+=======
 ﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente
 0;Ir al bar;0;0;20;0;0;1
 1;Hablar con la camarera;13;0;20;0;1;2
@@ -61,3 +99,4 @@
 59;Seguir pista Nosferatu;0;0;20;50;32;
 60;Ir al Periodico;0;0;20;50;36;
 61;Ir a la Casa de la Colina;0;0;20;50;40;
+>>>>>>> 9cea0c64d5d58163fdeb4091f20fb321fa52c576
