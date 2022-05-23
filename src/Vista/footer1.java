@@ -6,6 +6,7 @@ package Vista;
 
 import Mascarada.Opcion;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -13,6 +14,8 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer1 extends javax.swing.JPanel{
+     ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     private ArrayList<JButton> botones;
     /**
@@ -20,6 +23,10 @@ public class footer1 extends javax.swing.JPanel{
      */
     public footer1() {
         initComponents();
+         
+        opcion1.setRolloverEnabled(true);
+        opcion1.setIcon(botonRojo1);
+        opcion1.setPressedIcon(botonRojo2);
         
     }
     
@@ -42,7 +49,18 @@ public class footer1 extends javax.swing.JPanel{
 
         opcion1 = new javax.swing.JButton();
 
+        setOpaque(false);
+
         opcion1.setText("jButton1");
+        opcion1.setBorderPainted(false);
+        opcion1.setContentAreaFilled(false);
+        opcion1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -55,12 +73,16 @@ public class footer1 extends javax.swing.JPanel{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(opcion1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opcion1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

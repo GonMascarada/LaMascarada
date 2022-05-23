@@ -22,7 +22,7 @@ public class VistaEscena extends javax.swing.JFrame {
 
     public VistaEscena() {
         initComponents();
-        int opciones = 2;
+        int opciones = 1;
         switch (opciones) {
             case 1:
                 footer = new Vista.footer1();
@@ -43,6 +43,7 @@ public class VistaEscena extends javax.swing.JFrame {
 
         jPanel1.add(footer);
         footer.setBounds(0, 590, 1000, 115);
+        
     }
 
     public VistaEscena(Controlador controlador) {
@@ -95,7 +96,6 @@ public class VistaEscena extends javax.swing.JFrame {
         footer21 = new Vista.footer2();
         footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
-        footer23 = new Vista.footer2();
         Foto = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
@@ -104,8 +104,6 @@ public class VistaEscena extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
-        jPanel1.add(footer23);
-        footer23.setBounds(0, 590, 1000, 103);
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
@@ -115,14 +113,12 @@ public class VistaEscena extends javax.swing.JFrame {
         jPanel1.add(Texto);
         Texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 994, 220);
-
+        cabecera1.setBounds(0, 0, 1000, 220);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         fondo.setText("jLabel1");
         jPanel1.add(fondo);
         fondo.setBounds(0, 0, 1000, 700);
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +168,6 @@ public class VistaEscena extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private Vista.footer2 footer21;
     private Vista.footer2 footer22;
-    private Vista.footer2 footer23;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

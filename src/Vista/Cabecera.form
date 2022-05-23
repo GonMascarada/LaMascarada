@@ -39,9 +39,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="foto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Foto"/>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="10" width="210" height="200"/>

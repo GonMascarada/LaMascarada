@@ -63,7 +63,7 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
         jPanel1.add(Opcion3);
         Opcion3.setBounds(710, 600, 220, 40);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 980, 224);
+        cabecera1.setBounds(0, 0, 980, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

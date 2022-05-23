@@ -6,6 +6,7 @@ package Vista;
 
 import Mascarada.Opcion;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -13,6 +14,8 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer3 extends javax.swing.JPanel {
+     ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-estrecho.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-estrecho.png"));
 
     private ArrayList<JButton> botones;
     /**
@@ -20,11 +23,20 @@ public class footer3 extends javax.swing.JPanel {
      */
     public footer3() {
         initComponents();
+        opcion1.setRolloverEnabled(true);
+        opcion1.setIcon(botonRojo1);
+        opcion1.setPressedIcon(botonRojo2);
+        opcion2.setRolloverEnabled(true);
+        opcion2.setIcon(botonRojo1);
+        opcion2.setPressedIcon(botonRojo2);
+        opcion3.setRolloverEnabled(true);
+        opcion3.setIcon(botonRojo1);
+        opcion3.setPressedIcon(botonRojo2);
     }
        public void setOpciones(ArrayList <Opcion> opciones){
          botones = new ArrayList<>();
         botones.add(opcion1);
-        botones.add(opcion2);
+        botones.add(opcion1);
         botones.add(opcion3);
         
         for (int i = 0; i < botones.size(); i++) {
@@ -45,11 +57,25 @@ public class footer3 extends javax.swing.JPanel {
         opcion2 = new javax.swing.JButton();
         opcion3 = new javax.swing.JButton();
 
+        setOpaque(false);
+
         opcion1.setText("jButton1");
+        opcion1.setBorderPainted(false);
+        opcion1.setContentAreaFilled(false);
+        opcion1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         opcion2.setText("jButton1");
+        opcion2.setBorderPainted(false);
+        opcion2.setContentAreaFilled(false);
+        opcion2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         opcion3.setText("jButton1");
+        opcion3.setBorderPainted(false);
+        opcion3.setContentAreaFilled(false);
+        opcion3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -57,21 +83,21 @@ public class footer3 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
                 .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
                 .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents

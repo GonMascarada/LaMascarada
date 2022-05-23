@@ -5,7 +5,9 @@
 package Vista;
 
 import Mascarada.Opcion;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -13,6 +15,11 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer2 extends javax.swing.JPanel{
+    
+    
+    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+    
 
     private ArrayList<JButton> botones;
     /**
@@ -20,8 +27,12 @@ public class footer2 extends javax.swing.JPanel{
      */
     public footer2() {
         initComponents();
-        opcion1.revalidate();
-        opcion1.repaint();
+        opcion1.setRolloverEnabled(true);
+        opcion2.setRolloverEnabled(true);
+        opcion2.setIcon(botonRojo1);
+        opcion2.setPressedIcon(botonRojo2);
+        
+        
         
     }
     
@@ -48,13 +59,35 @@ public class footer2 extends javax.swing.JPanel{
 
         setOpaque(false);
 
-        opcion1.setText("jButton1");
+        opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion1.setBorderPainted(false);
+        opcion1.setContentAreaFilled(false);
+        opcion1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion1MouseClicked(evt);
+            }
+        });
 
-        opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Sin título-1.png"))); // NOI18N
-        opcion2.setText("jButton1");
+        opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
         opcion2.setBorderPainted(false);
         opcion2.setContentAreaFilled(false);
+        opcion2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        opcion2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                opcion2MouseEntered(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                opcion2MouseReleased(evt);
+            }
+        });
         opcion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcion2ActionPerformed(evt);
@@ -65,30 +98,48 @@ public class footer2 extends javax.swing.JPanel{
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(opcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opcion2)
+                    .addComponent(opcion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_opcion2ActionPerformed
+
+    private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_opcion2MouseClicked
+
+    private void opcion2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseReleased
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_opcion2MouseReleased
+
+    private void opcion2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_opcion2MouseEntered
+
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_opcion1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
