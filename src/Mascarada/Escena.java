@@ -2,21 +2,30 @@ package Mascarada;
 
 import java.util.ArrayList;
 
-
 public class Escena {
+
     private int idEscena;
     private String texto;
     private String imagen;
     private ArrayList<Opcion> opciones;
+    private Persona pnj;
 
     public Escena() {
     }
-    
+
     public Escena(String[] datos, ArrayList<Opcion> opciones) {
         this.idEscena = Integer.valueOf(datos[0]);
         this.texto = datos[1];
         this.imagen = datos[2];
         this.opciones = opciones;
+    }
+
+    public Escena(String[] datos, ArrayList<Opcion> opciones, Persona pnj) {
+        this.idEscena = Integer.valueOf(datos[0]);
+        this.texto = datos[1];
+        this.imagen = datos[2];
+        this.opciones = opciones;
+        this.pnj = pnj;
     }
 
     /**
@@ -46,6 +55,18 @@ public class Escena {
     public ArrayList<Opcion> getOpciones() {
         return opciones;
     }
-    
-    
+
+    /**
+     * @return the pnj
+     */
+    public Persona getPnj() {
+        return pnj;
+    }
+
+    /**
+     * @param texto the texto to set
+     */
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
 }
