@@ -89,9 +89,9 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida = new javax.swing.JProgressBar();
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
-          fondoCabecera = new javax.swing.JLabel();
         tiempoJugado = new javax.swing.JLabel();
         tiempoJugadoDato = new javax.swing.JLabel();
+        fondoCabecera = new javax.swing.JLabel();
 
         setOpaque(false);
 
@@ -130,6 +130,7 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(sedSangre);
         sedSangre.setBounds(520, 20, 120, 30);
 
+        barraSangre.setBackground(new java.awt.Color(0, 0, 0));
         barraSangre.setValue(50);
         jPanel1.add(barraSangre);
         barraSangre.setBounds(630, 20, 250, 30);
@@ -138,6 +139,7 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(sospecha);
         sospecha.setBounds(520, 60, 120, 30);
 
+        barraSospecha.setBackground(new java.awt.Color(0, 0, 0));
         barraSospecha.setValue(50);
         jPanel1.add(barraSospecha);
         barraSospecha.setBounds(630, 60, 250, 30);
@@ -146,6 +148,7 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(vida);
         vida.setBounds(520, 100, 120, 30);
 
+        barraVida.setBackground(new java.awt.Color(0, 0, 0));
         barraVida.setValue(50);
         jPanel1.add(barraVida);
         barraVida.setBounds(630, 100, 250, 30);
@@ -154,17 +157,18 @@ public class Cabecera extends javax.swing.JPanel {
         jPanel1.add(progreso);
         progreso.setBounds(520, 140, 120, 30);
 
+        barraProgreso.setBackground(new java.awt.Color(0, 0, 0));
         barraProgreso.setValue(50);
         jPanel1.add(barraProgreso);
         barraProgreso.setBounds(630, 140, 250, 30);
 
-        tiempoJugado.setText("Tiempo jugado");
+        tiempoJugado.setText("Tiempo jugado:");
         jPanel1.add(tiempoJugado);
-        tiempoJugado.setBounds(270, 170, 120, 30);
+        tiempoJugado.setBounds(270, 170, 90, 30);
 
         tiempoJugadoDato.setText("xx:xx");
         jPanel1.add(tiempoJugadoDato);
-        tiempoJugadoDato.setBounds(390, 160, 60, 30);
+        tiempoJugadoDato.setBounds(370, 170, 60, 30);
 
         fondoCabecera.setText("jLabel1");
         jPanel1.add(fondoCabecera);
