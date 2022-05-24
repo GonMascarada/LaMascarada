@@ -481,7 +481,6 @@ public class BaseDeDatos {
         partida.setSospecha(0);
         // Insercción de los npc´s
         ArrayList<Persona> pnjs = getPNJsIniciales();
-
         return partida;
     }
 

@@ -103,8 +103,10 @@ public final class Controlador {
         partida.getEscena().setTexto(texto);
         partida.setUltimaPista(texto);
         
+        //Guardado incial de la partida.
+        guardarPartida();
+        // Mostramos la primera escena.
         lanzar();
-        //falta inicilizar sospecha, darle un id, traer npc´s...
     }
 
     /**
