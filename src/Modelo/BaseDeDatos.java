@@ -43,7 +43,6 @@ public class BaseDeDatos {
      */
     public ArrayList<String[]> getTextos(int idEscena) {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
-        Inicio.class.
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         ArrayList<String[]> textos = new ArrayList<>();
@@ -426,6 +425,15 @@ public class BaseDeDatos {
         }
         id++;
         return id;
+    }
+
+    /**
+     * Almacena los datos de de una partida recién creada.
+     * 
+     * @param partida 
+     */
+    public void crearNuevaPartida(Partida partida) {
+        
     }
 
 }
