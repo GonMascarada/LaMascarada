@@ -7,6 +7,7 @@ package Vista;
 import Mascarada.Partida;
 import Mascarada.Utilidades;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -60,7 +61,9 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
-        foto.setIcon(new javax.swing.ImageIcon(partida.getProtagonista().getClan().getImagen()));
+        System.out.println(partida.getProtagonista().getClan().getImagen());
+        ImageIcon imagen =  new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
+        foto.setIcon(imagen);
 
     }
 
