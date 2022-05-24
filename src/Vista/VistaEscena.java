@@ -103,20 +103,16 @@ public class VistaEscena extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        footer21 = new Vista.footer2();
-        footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
-        footer31 = new Vista.footer3();
         foto = new javax.swing.JLabel();
         texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
         fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
-        jPanel1.add(footer31);
-        footer31.setBounds(10, 590, 1000, 104);
 
         foto.setText("jLabel1");
         jPanel1.add(foto);
@@ -132,6 +128,20 @@ public class VistaEscena extends javax.swing.JFrame {
         fondo.setText("jLabel1");
         jPanel1.add(fondo);
         fondo.setBounds(0, 0, 1000, 700);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 590, 1000, 110);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,11 +174,9 @@ public class VistaEscena extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.Cabecera cabecera1;
     private javax.swing.JLabel fondo;
-    private Vista.footer2 footer21;
-    private Vista.footer2 footer22;
-    private Vista.footer3 footer31;
     private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }
