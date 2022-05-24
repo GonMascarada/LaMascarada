@@ -2,47 +2,91 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package VistaOriginal;
 
 import Controlador.Controlador;
 import Mascarada.Escena;
 import Mascarada.Opcion;
-import java.awt.Image;
+import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Moru
  */
-public class Eleccion_2 extends javax.swing.JFrame {
+public class VistaEscena extends javax.swing.JFrame {
 
+    private JPanel footer;
     private Controlador controlador;
     private Escena escena;
-    
 
-    /**
-     * Creates new form Eleccion_2
-     */
-    public Eleccion_2(Controlador controlador, Escena escena) {
+    public VistaEscena() {
+        initComponents();
+        int opciones = 2;
+        switch (opciones) {
+            case 1:
+                footer = new Vista.footer1();
+                break;
+            case 2:
+                footer = new Vista.footer2();
+                break;
+            case 3:
+                footer = new Vista.footer3();
+                break;
+            case 4:
+                footer = new Vista.footer4();
+                break;
+            case 6:
+                footer = new Vista.footer6();
+                break;
+        }
+
+        jPanel1.add(footer);
+        footer.setBounds(0, 590, 1000, 115);
+    }
+
+    public VistaEscena(Controlador controlador) {
         initComponents();
         this.controlador = controlador;
-        this.escena = escena;
-       
-        texto.setText(escena.getTexto());
-        System.out.println("Texto: " + escena.getTexto());
-        //Meter el cambio de foto
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(escena.getImagen()).getImage().getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_DEFAULT));
-        foto.setIcon(imageIcon);
-        // Cambia el texto de los botones por las diferentes opciones.
-      footer21.setOpciones(escena.getOpciones());
-        
+        this.escena = controlador.getPartida().getEscena();
+        ArrayList<Opcion> opciones = escena.getOpciones();
 
-        //Inicializo la cabecera
-        Cabecera cabeceraImport2 = new Cabecera();
-        jPanel1.add(cabeceraImport2);
-        jPanel1.setVisible(true);
+        texto.setText(escena.getTexto());
+        texto.setBackground(Color.red);
+        cabecera1.insertarDatosPartida(controlador.getPartida());
+        System.out.println("Opciones: "+ opciones.size());
+        switch (opciones.size()) {
+            case 1 -> {
+                footer = new footer1();
+                footer1 f = (footer1) footer;
+                f.setOpciones(opciones);
+                f.setVisible(true);
+            }
+            case 2 -> {
+                footer = new footer2();
+                footer2 f = (footer2) footer;
+                f.setOpciones(opciones);
+            }
+            case 3 -> {
+                footer = new footer3();
+                footer3 f = (footer3) footer;
+                f.setOpciones(controlador, this);
+            }
+            case 4 -> {
+                footer = new footer4();
+                footer4 f = (footer4) footer;
+                f.setOpciones(opciones);
+            }
+            case 6 -> {
+                footer = new footer6();
+                footer6 f = (footer6) footer;
+                f.setOpciones(opciones);
+            }
+        }
+        jPanel1.add(footer);
+        footer.setBounds(0, 590, 1000, 115);
+        footer.setVisible(true);
     }
 
     /**
@@ -58,7 +102,7 @@ public class Eleccion_2 extends javax.swing.JFrame {
         foto = new javax.swing.JLabel();
         texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
-        footer21 = new Vista.footer2();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,9 +116,12 @@ public class Eleccion_2 extends javax.swing.JFrame {
         jPanel1.add(texto);
         texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
-        jPanel1.add(footer21);
-        footer21.setBounds(0, 590, 1000, 115);
+        cabecera1.setBounds(0, 0, 1000, 220);
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        fondo.setText("jLabel1");
+        jPanel1.add(fondo);
+        fondo.setBounds(0, 0, 1000, 700);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,22 +146,7 @@ public class Eleccion_2 extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -127,13 +159,14 @@ public class Eleccion_2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new VistaEscena().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.Cabecera cabecera1;
-    private Vista.footer2 footer21;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel texto;

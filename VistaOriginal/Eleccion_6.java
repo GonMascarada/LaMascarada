@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package VistaOriginal;
 
 /**
  *
@@ -44,9 +44,9 @@ public class Eleccion_6 extends javax.swing.JFrame {
         jPanel1.add(Texto);
         Texto.setBounds(480, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
+        cabecera1.setBounds(0, 0, 1000, 220);
         jPanel1.add(footer61);
-        footer61.setBounds(0, 600, 1001, 101);
+        footer61.setBounds(0, 600, 1001, 98);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

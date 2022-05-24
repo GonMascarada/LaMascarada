@@ -192,15 +192,15 @@ public class FichaAuspex extends javax.swing.JFrame {
         jPanel1.add(nombre);
         nombre.setBounds(230, 40, 60, 20);
         jPanel1.add(vidaBarra);
-        vidaBarra.setBounds(70, 210, 220, 19);
+        vidaBarra.setBounds(70, 210, 220, 4);
         jPanel1.add(animoBarra);
-        animoBarra.setBounds(700, 210, 270, 19);
+        animoBarra.setBounds(700, 210, 270, 4);
 
         vida1.setText("Vida");
         jPanel1.add(vida1);
         vida1.setBounds(310, 210, 50, 20);
         jPanel1.add(ataqueBarra1);
-        ataqueBarra1.setBounds(350, 210, 230, 19);
+        ataqueBarra1.setBounds(350, 210, 230, 4);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1000, 700);
