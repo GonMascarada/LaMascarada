@@ -27,12 +27,14 @@ public class VistaEscena extends javax.swing.JFrame {
         switch (opciones) {
             case 1:
                 footer = new Vista.footer1();
+                
                 break;
             case 2:
                 footer = new Vista.footer2();
                 break;
             case 3:
                 footer = new Vista.footer3();
+                
                 break;
             case 4:
                 footer = new Vista.footer4();
@@ -87,6 +89,10 @@ public class VistaEscena extends javax.swing.JFrame {
         jPanel1.add(footer);
         footer.setBounds(0, 590, 1000, 115);
         footer.setVisible(true);
+        footer.setLayout(null);
+        footer.setVisible(true);
+        
+        
     }
 
     /**
@@ -101,6 +107,7 @@ public class VistaEscena extends javax.swing.JFrame {
         footer21 = new Vista.footer2();
         footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
+        footer31 = new Vista.footer3();
         foto = new javax.swing.JLabel();
         texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
@@ -109,10 +116,12 @@ public class VistaEscena extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
+        jPanel1.add(footer31);
+        footer31.setBounds(10, 590, 1000, 104);
 
         foto.setText("jLabel1");
         jPanel1.add(foto);
-        foto.setBounds(10, 210, 440, 380);
+        foto.setBounds(0, 200, 440, 380);
 
         texto.setText("Texto");
         jPanel1.add(texto);
@@ -143,21 +152,8 @@ public class VistaEscena extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -171,6 +167,7 @@ public class VistaEscena extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private Vista.footer2 footer21;
     private Vista.footer2 footer22;
+    private Vista.footer3 footer31;
     private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel texto;

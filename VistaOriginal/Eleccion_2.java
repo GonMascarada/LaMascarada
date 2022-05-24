@@ -2,19 +2,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package VistaOriginal;
+
+import Controlador.Controlador;
+import Mascarada.Escena;
+import Mascarada.Opcion;
+import java.awt.Image;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
  * @author Moru
  */
-public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
+public class Eleccion_2 extends javax.swing.JFrame {
+
+    private Controlador controlador;
+    private Escena escena;
+    
 
     /**
      * Creates new form Eleccion_2
      */
-    public Eleccion_Pruebas_Cabecera() {
+    public Eleccion_2(Controlador controlador, Escena escena) {
         initComponents();
+        this.controlador = controlador;
+        this.escena = escena;
+       
+        texto.setText(escena.getTexto());
+        System.out.println("Texto: " + escena.getTexto());
+        //Meter el cambio de foto
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(escena.getImagen()).getImage().getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_DEFAULT));
+        foto.setIcon(imageIcon);
+        // Cambia el texto de los botones por las diferentes opciones.
+      footer21.setOpciones(escena.getOpciones());
+        
+
+        //Inicializo la cabecera
+        Cabecera cabeceraImport2 = new Cabecera();
+        jPanel1.add(cabeceraImport2);
+        jPanel1.setVisible(true);
     }
 
     /**
@@ -27,61 +55,37 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Foto = new javax.swing.JLabel();
-        Texto = new javax.swing.JLabel();
-        Opcion2 = new javax.swing.JButton();
-        Opcion1 = new javax.swing.JButton();
-        Opcion3 = new javax.swing.JButton();
+        foto = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        Foto.setText("jLabel1");
-        jPanel1.add(Foto);
-        Foto.setBounds(10, 210, 440, 380);
+        foto.setText("jLabel1");
+        jPanel1.add(foto);
+        foto.setBounds(10, 210, 440, 380);
 
-        Texto.setText("Texto");
-        jPanel1.add(Texto);
-        Texto.setBounds(460, 210, 500, 380);
-
-        Opcion2.setText("Opcion2");
-        jPanel1.add(Opcion2);
-        Opcion2.setBounds(380, 600, 220, 40);
-
-        Opcion1.setText("Opcion1");
-        jPanel1.add(Opcion1);
-        Opcion1.setBounds(60, 600, 220, 40);
-
-        Opcion3.setText("Opcion3");
-        Opcion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Opcion3);
-        Opcion3.setBounds(710, 600, 220, 40);
+        texto.setText("Texto");
+        jPanel1.add(texto);
+        texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 980, 224);
+        cabecera1.setBounds(0, 0, 1000, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,13 +104,13 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_Pruebas_Cabecera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -120,18 +124,14 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_Pruebas_Cabecera().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Foto;
-    private javax.swing.JButton Opcion1;
-    private javax.swing.JButton Opcion2;
-    private javax.swing.JButton Opcion3;
-    private javax.swing.JLabel Texto;
     private Vista.Cabecera cabecera1;
+    private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

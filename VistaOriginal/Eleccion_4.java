@@ -2,20 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package VistaOriginal;
 
 /**
  *
  * @author Moru
  */
-public class Eleccion_3 extends javax.swing.JFrame {
+public class Eleccion_4 extends javax.swing.JFrame {
 
     /**
      * Creates new form Eleccion_2
      */
-    public Eleccion_3() {
+    public Eleccion_4() {
         initComponents();
     }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +31,7 @@ public class Eleccion_3 extends javax.swing.JFrame {
         Foto = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
-        footer31 = new Vista.footer3();
+        footer41 = new Vista.footer4();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,15 +39,15 @@ public class Eleccion_3 extends javax.swing.JFrame {
 
         Foto.setText("jLabel1");
         jPanel1.add(Foto);
-        Foto.setBounds(10, 210, 440, 380);
+        Foto.setBounds(10, 200, 440, 380);
 
         Texto.setText("Texto");
         jPanel1.add(Texto);
-        Texto.setBounds(460, 210, 500, 380);
+        Texto.setBounds(490, 200, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
-        jPanel1.add(footer31);
-        footer31.setBounds(0, 600, 1000, 103);
+        cabecera1.setBounds(0, 0, 1000, 220);
+        jPanel1.add(footer41);
+        footer41.setBounds(0, 600, 1001, 98);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,13 +80,13 @@ public class Eleccion_3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -95,7 +96,7 @@ public class Eleccion_3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_3().setVisible(true);
+                new Eleccion_4().setVisible(true);
             }
         });
     }
@@ -104,7 +105,7 @@ public class Eleccion_3 extends javax.swing.JFrame {
     private javax.swing.JLabel Foto;
     private javax.swing.JLabel Texto;
     private Vista.Cabecera cabecera1;
-    private Vista.footer3 footer31;
+    private Vista.footer4 footer41;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

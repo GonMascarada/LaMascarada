@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Vista;
+package VistaOrigina;
 
 import Mascarada.Partida;
 import Mascarada.Utilidades;
@@ -23,19 +23,6 @@ public class Cabecera extends javax.swing.JPanel {
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);
         barraVida.setForeground(Color.green);
-        nombre.setForeground(Color.white);
-        clan.setForeground(Color.white);
-        habilidad1.setForeground(Color.white);
-        habilidad2.setForeground(Color.white);
-        hora.setForeground(Color.white);
-        horaActual.setForeground(Color.white);
-        sospecha.setForeground(Color.white);
-        sedSangre.setForeground(Color.white);
-        progreso.setForeground(Color.white);
-        tiempoJugado.setForeground(Color.white);
-        tiempoJugadoDato.setForeground(Color.white);
-        vida.setForeground(Color.white);
-       
 
     }
 
@@ -60,7 +47,6 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
-        foto.setIcon(new javax.swing.ImageIcon(partida.getProtagonista().getClan().getImagen()));
 
     }
 
@@ -89,9 +75,9 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida = new javax.swing.JProgressBar();
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
-          fondoCabecera = new javax.swing.JLabel();
         tiempoJugado = new javax.swing.JLabel();
         tiempoJugadoDato = new javax.swing.JLabel();
+        fondoCabecera = new javax.swing.JLabel();
 
         setOpaque(false);
 

@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Vista;
+package VistaOriginal;
 
 import Mascarada.Opcion;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -14,9 +13,6 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer1 extends javax.swing.JPanel{
-    
-    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
-    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     private ArrayList<JButton> botones;
     /**
@@ -24,10 +20,7 @@ public class footer1 extends javax.swing.JPanel{
      */
     public footer1() {
         initComponents();
-        opcion1.setRolloverEnabled(true);
-        opcion1.setIcon(botonRojo1);
-        opcion1.setPressedIcon(botonRojo2);
-
+        
     }
     
     public void setOpciones(ArrayList <Opcion> opciones){
@@ -49,11 +42,7 @@ public class footer1 extends javax.swing.JPanel{
 
         opcion1 = new javax.swing.JButton();
 
-        setOpaque(false);
-
-        opcion1.setBorderPainted(false);
-        opcion1.setContentAreaFilled(false);
-        opcion1.setOpaque(false);
+        opcion1.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
