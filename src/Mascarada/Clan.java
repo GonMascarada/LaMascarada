@@ -84,7 +84,7 @@ public class Clan {
      *
      * @param habilidad nombre de la habilidad
      */
-    void setHabilidad(String habilidad) {
+    public void setHabilidad(String habilidad) {
         habilidades.put(habilidad, true);
     }
 }
