@@ -72,21 +72,37 @@ public final class Controlador {
      * Inicia una nueva partida.
      *
      * @param clan del nuevo personaje.
+     * @param hab1 Nombre de la 1ª habilidad.
+     * @param hab2 Nombre de la 2ª habilidad.
      * @param nombre del nuevo personaje.
+     * @param dificultad de la partida.
      */
-    public void crearNuevaPartida(Clan clan, String nombre) {
-        String datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
-        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
-        Vampire vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
+    public void crearNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) {
+        String datos;
+        Vampire vampire;
         ArrayList<String[]> textos;
         String texto;
+        
+        //Datos del nuevo protagonista
+        datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
+        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
+        
+        //Asignamos sus dos habilidades
+        clan.setHabilidad(hab1);
+        clan.setHabilidad(hab2);
+        
+        //Creamos al protagonista
+        vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
+        
         partida.setProtagonista(vampire);
         Escena primera = bbdd.getEscena(0); //Primera escena        
         partida.setEscena(primera);
         textos = bbdd.getTextos(primera.getIdEscena());
         texto = getTextoCorrecto(textos);
         partida.getEscena().setTexto(texto);
+        bbdd.crearNuevaPartida(partida);
         lanzar();
+        //falta inicilizar sospecha, darle un id, traer npc´s...
     }
 
     /**
