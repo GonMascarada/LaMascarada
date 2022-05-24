@@ -24,28 +24,7 @@ public class VistaEscena extends javax.swing.JFrame {
     public VistaEscena() {
         initComponents();
         int opciones = 2;
-        switch (opciones) {
-            case 1:
-                footer = new Vista.footer1();
-                
-                break;
-            case 2:
-                footer = new Vista.footer2();
-                break;
-            case 3:
-                footer = new Vista.footer3();
-                
-                break;
-            case 4:
-                footer = new Vista.footer4();
-                break;
-            case 6:
-                footer = new Vista.footer6();
-                break;
-        }
-
-        jPanel1.add(footer);
-        footer.setBounds(0, 590, 1000, 115);
+       
     }
 
     public VistaEscena(Controlador controlador) {
@@ -60,37 +39,29 @@ public class VistaEscena extends javax.swing.JFrame {
         System.out.println("Opciones: "+ opciones.size());
         switch (opciones.size()) {
             case 1 -> {
-                footer = new footer1();
-                footer1 f = (footer1) footer;
-                f.setOpciones(opciones);
-                f.setVisible(true);
+                
+                jPanel1.add(new footer1(controlador,this)).setBounds(0, 590, 1000, 115);
             }
             case 2 -> {
-                footer = new footer2();
-                footer2 f = (footer2) footer;
-                f.setOpciones(opciones);
+                
+                jPanel1.add(new footer2(controlador,this)).setBounds(0, 590, 1000, 115);
             }
             case 3 -> {
-                footer = new footer3();
-                footer3 f = (footer3) footer;
-                f.setOpciones(controlador, this);
+              
+                jPanel1.add(new footer3(controlador,this)).setBounds(0, 590, 1000, 115);
+                
             }
             case 4 -> {
-                footer = new footer4();
-                footer4 f = (footer4) footer;
-                f.setOpciones(opciones);
+                
+                jPanel1.add(new footer4(controlador,this)).setBounds(0, 590, 1000, 115);
             }
             case 6 -> {
-                footer = new footer6();
-                footer6 f = (footer6) footer;
-                f.setOpciones(opciones);
+                
+                jPanel1.add(new footer6(controlador,this)).setBounds(0, 590, 1000, 115);
             }
         }
-        jPanel1.add(footer);
-        footer.setBounds(0, 590, 1000, 115);
-        footer.setVisible(true);
-        footer.setLayout(null);
-        footer.setVisible(true);
+      
+        
         
         
     }
@@ -104,10 +75,7 @@ public class VistaEscena extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        footer21 = new Vista.footer2();
-        footer22 = new Vista.footer2();
         jPanel1 = new javax.swing.JPanel();
-        footer31 = new Vista.footer3();
         foto = new javax.swing.JLabel();
         texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
@@ -116,8 +84,6 @@ public class VistaEscena extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
-        jPanel1.add(footer31);
-        footer31.setBounds(10, 590, 1000, 104);
 
         foto.setText("jLabel1");
         jPanel1.add(foto);
@@ -165,9 +131,6 @@ public class VistaEscena extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.Cabecera cabecera1;
     private javax.swing.JLabel fondo;
-    private Vista.footer2 footer21;
-    private Vista.footer2 footer22;
-    private Vista.footer3 footer31;
     private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel texto;
