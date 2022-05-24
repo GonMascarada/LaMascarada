@@ -14,17 +14,16 @@ import javax.swing.JPanel;
 /**
  *
  * @author Moru
+ * @author Gonzalo López Fernández
  */
 public class VistaEscena extends javax.swing.JFrame {
 
-    private JPanel footer;
     private Controlador controlador;
     private Escena escena;
 
     public VistaEscena() {
         initComponents();
-        int opciones = 2;
-       
+
     }
 
     public VistaEscena(Controlador controlador) {
@@ -35,34 +34,26 @@ public class VistaEscena extends javax.swing.JFrame {
 
         texto.setText(escena.getTexto());
         texto.setBackground(Color.red);
+        texto.setForeground(Color.white);
         cabecera1.insertarDatosPartida(controlador.getPartida());
         switch (opciones.size()) {
             case 1 -> {
-                
-                jPanel1.add(new footer1(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 2 -> {
-                
-                jPanel1.add(new footer2(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer2(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 3 -> {
-              
-                jPanel1.add(new footer3(controlador,this)).setBounds(0, 590, 1000, 115);
-                
+                jPanel1.add(new footer3(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 4 -> {
-                
-                jPanel1.add(new footer4(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer4(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 6 -> {
-                
-                jPanel1.add(new footer6(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer6(controlador, this)).setBounds(0, 590, 1000, 115);
             }
         }
-      
-        
-        
-        
+
     }
 
     /**
@@ -132,8 +123,7 @@ public class VistaEscena extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-       
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
