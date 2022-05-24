@@ -103,7 +103,6 @@ public class BaseDeDatos {
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if (Integer.valueOf(linea[6]) == idEscena) {
-                System.out.println("Añadida opcion: " + linea[0] + " de la escena " + idEscena);
                 opcion = new Opcion(linea);
                 opciones.add(opcion);
             }
@@ -335,7 +334,6 @@ public class BaseDeDatos {
         //Se extraen los datos para la conexión de conexionBD.csv
         for (int i = 0; i < conexion.length; i++) {
             linea = lector.nextLine().split(";");
-            System.out.println("Obtenido: " + linea[0]);
             conexion[i] = linea[0]; //Primer campo valor, segundo clave.
         }
 

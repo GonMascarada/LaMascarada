@@ -57,7 +57,6 @@ public class VistaEscena extends javax.swing.JFrame {
         texto.setText(escena.getTexto());
         texto.setBackground(Color.red);
         cabecera1.insertarDatosPartida(controlador.getPartida());
-        System.out.println("Opciones: "+ opciones.size());
         switch (opciones.size()) {
             case 1 -> {
                 footer = new footer1();
