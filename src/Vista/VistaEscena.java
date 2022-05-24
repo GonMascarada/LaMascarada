@@ -24,28 +24,7 @@ public class VistaEscena extends javax.swing.JFrame {
     public VistaEscena() {
         initComponents();
         int opciones = 2;
-        switch (opciones) {
-            case 1:
-                footer = new Vista.footer1();
-                
-                break;
-            case 2:
-                footer = new Vista.footer2();
-                break;
-            case 3:
-                footer = new Vista.footer3();
-                
-                break;
-            case 4:
-                footer = new Vista.footer4();
-                break;
-            case 6:
-                footer = new Vista.footer6();
-                break;
-        }
-
-        jPanel1.add(footer);
-        footer.setBounds(0, 590, 1000, 115);
+       
     }
 
     public VistaEscena(Controlador controlador) {
@@ -59,37 +38,29 @@ public class VistaEscena extends javax.swing.JFrame {
         cabecera1.insertarDatosPartida(controlador.getPartida());
         switch (opciones.size()) {
             case 1 -> {
-                footer = new footer1();
-                footer1 f = (footer1) footer;
-                f.setOpciones(opciones);
-                f.setVisible(true);
+                
+                jPanel1.add(new footer1(controlador,this)).setBounds(0, 590, 1000, 115);
             }
             case 2 -> {
-                footer = new footer2();
-                footer2 f = (footer2) footer;
-                f.setOpciones(opciones);
+                
+                jPanel1.add(new footer2(controlador,this)).setBounds(0, 590, 1000, 115);
             }
             case 3 -> {
-                footer = new footer3();
-                footer3 f = (footer3) footer;
-                f.setOpciones(controlador, this);
+              
+                jPanel1.add(new footer3(controlador,this)).setBounds(0, 590, 1000, 115);
+                
             }
             case 4 -> {
-                footer = new footer4();
-                footer4 f = (footer4) footer;
-                f.setOpciones(opciones);
+                
+                jPanel1.add(new footer4(controlador,this)).setBounds(0, 590, 1000, 115);
             }
             case 6 -> {
-                footer = new footer6();
-                footer6 f = (footer6) footer;
-                f.setOpciones(opciones);
+                
+                jPanel1.add(new footer6(controlador,this)).setBounds(0, 590, 1000, 115);
             }
         }
-        jPanel1.add(footer);
-        footer.setBounds(0, 590, 1000, 115);
-        footer.setVisible(true);
-        footer.setLayout(null);
-        footer.setVisible(true);
+      
+        
         
         
     }
