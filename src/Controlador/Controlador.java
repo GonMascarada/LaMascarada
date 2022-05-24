@@ -77,30 +77,32 @@ public final class Controlador {
      * @param nombre del nuevo personaje.
      * @param dificultad de la partida.
      */
-    public void crearNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) {
+    public void iniciarNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) {
         String datos;
         Vampire vampire;
         ArrayList<String[]> textos;
         String texto;
-        
+
         //Datos del nuevo protagonista
         datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
         datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
-        
+
         //Asignamos sus dos habilidades
         clan.setHabilidad(hab1);
         clan.setHabilidad(hab2);
-        
+
         //Creamos al protagonista
         vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
-        
-        partida.setProtagonista(vampire);
-        Escena primera = bbdd.getEscena(0); //Primera escena        
-        partida.setEscena(primera);
-        textos = bbdd.getTextos(primera.getIdEscena());
+
+        //Pedimos a la base de datos una partida con todos los datos iniciales.
+        partida = bbdd.iniciarNuevaPartida(vampire);
+
+        //Insertamos el texto correcto para esa escena.
+        textos = bbdd.getTextos(partida.getEscena().getIdEscena());
         texto = getTextoCorrecto(textos);
         partida.getEscena().setTexto(texto);
-        bbdd.crearNuevaPartida(partida);
+        partida.setUltimaPista(texto);
+        
         lanzar();
         //falta inicilizar sospecha, darle un id, traer npc´s...
     }
@@ -112,23 +114,6 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
-
-        //partida.setEscena(siguiente);
-        //1.Evaluar la opción que se acaba de tomar. (Si cambia el estado de animo de alguien, si causa progreso, si aumenta la sed de sangre, la sospecha...)
-        //2.Pedir a la base de datos todas las posibles condiciones.
-        //3.Comprobar si se cumple alguna de las condiciones.
-        //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
-        //4.Insertar a la escena el texto
-        //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
-        //volver a añadir a opción condición
-       //         y cambiarlo a int
-
-       // lanzar(siguiente);
-        //6.Obtener info extra y mostrarla si hay.
-//        HashMap habilidades = partida.getHabilidades();
-//        String extra = bbdd.getInfoExtra(siguiente.getIdEscena(), habilidades);
-        // Si en extra hay algo, lanzar pop-up con esa info.
-
         ArrayList<String[]> textos;
         ArrayList<Opcion> opciones;
         String texto;
