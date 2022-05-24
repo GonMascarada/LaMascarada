@@ -7,87 +7,54 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Insets;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.border.Border;
+
 
 /**
  *
  * @author Alumno
  */
 public class footer3 extends javax.swing.JPanel {
-     ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
     ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     private Controlador controlador;
     private VistaEscena vista;
     private ArrayList<Opcion> opciones;
-    private ArrayList<JButton> botones;
+    
 
     /**
-     * Creates new form footer2
+     * Creates new form footer3
      */
-    public footer3() {
+    public footer3(Controlador controlador, VistaEscena vista) {
         initComponents();
+        this.controlador = controlador;
+        this.vista = vista;
+        this.opciones = controlador.getPartida().getEscena().getOpciones();
         
         opcion1.setRolloverEnabled(true);
         opcion1.setIcon(botonRojo1);
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setForeground(Color.white);
-        opcion1.setBorder(new RoundBtn(150));   
+        opcion1.setText(opciones.get(0).getTexto());
         
-
-       
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
         opcion2.setForeground(Color.white);
-        
+        opcion2.setText(opciones.get(1).getTexto());
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
         opcion3.setForeground(Color.white);
-        
-       
-        
-
-        
+        opcion3.setText(opciones.get(2).getTexto());
     }
 
-    public void setOpciones(Controlador controlador, VistaEscena vista) {
-        this.controlador = controlador;
-        this.vista = vista;
-        this.opciones = controlador.getPartida().getEscena().getOpciones();
-        botones = new ArrayList<>();
-        botones.add(opcion1);
-        botones.add(opcion1);
-        botones.add(opcion3);
-
-        for (int i = 0; i < botones.size(); i++) {
-            botones.get(i).setText(opciones.get(i).getTexto());
-        }
-    }
-    class RoundBtn implements Border 
-{
-    private int r;
-    RoundBtn(int r) {
-        this.r = r;
-    }
-    public Insets getBorderInsets(Component c) {
-        return new Insets(this.r+1, this.r+1, this.r+2, this.r);
-    }
-    public boolean isBorderOpaque() {
-        return true;
-    }
-    public void paintBorder(Component c, Graphics g, int x, int y, 
-    int width, int height) {
-        g.drawRoundRect(x, y, width-1, height-1, r, r);
-    }
-}
+   
+   
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
