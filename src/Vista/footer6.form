@@ -53,21 +53,15 @@
                   </Group>
                   <Component id="opcion2" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="opcion3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="opcion3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="opcion5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="opcion6" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="opcion5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="opcion6" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,43 +71,55 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion2MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion3">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion3MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion4">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion4MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion5">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion5MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion6">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion6MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
