@@ -57,6 +57,7 @@ public abstract class Utilidades {
     public static final int OP_OBTENER_NOTA = 16;
     public static final int OP_OBTENER_COLGANTE = 17;
     public static final int OP_OBTENER_PISTA= 18;
+    public static final int OP_FIN= 19; 
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal
