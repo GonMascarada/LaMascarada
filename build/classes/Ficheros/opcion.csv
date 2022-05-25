@@ -4,8 +4,9 @@
 2;Respuesta normal;0;0;20;0;2;3
 3;No tengo habitación de Motel aún;0;12;20;0;3;4
 4;Hablar sobre Antiguo;0;0;20;0;4;5
-5;Atras...;0;0;20;0;4;2
+5;Atras...;0;0;20;0;5;2
 6;Mentir;0;0;20;0;4;6
+5;Atras...;0;0;20;0;6;2
 7;Irse;0;0;20;0;4;2
 8;Respuesta amable;7;0;20;0;2;7
 9;Atras...;0;0;20;0;7;1
@@ -28,13 +29,14 @@
 26;Atras...;0;0;20;0;18;15
 27;Negarse;0;0;20;0;17;15
 28;Mentir;11;0;20;0;17;20
+5;Atras...;0;0;20;0;20;18
 29;Respuesta amable;7;0;20;0;15;21
 30;Guardar azucarillo;0;2;20;0;21;22
 31;Atras...;0;0;20;0;22;15
 32;Respuesta agresiva;8;0;20;0;15;23
 33;Atras...;0;0;20;0;23;15
 34;Usar el mapa;0;4;20;0;1;24
-35;Decir tu nombre;0;0;24;25;;
+35;Decir tu nombre;0;0;20;0;24;25
 36;Respuesta normal;0;0;20;0;25;26
 37;Atras...;0;0;20;0;26;25
 38;respuesta amable;7;0;20;0;25;27
@@ -65,7 +67,7 @@
 63;Usar mapa;0;8;20;0;30;40
 64;Respuseta normal;0;0;20;0;40;41
 65;Atras...;0;0;20;0;41;40
-66;Dar bolsa de sangre;7;17;20;40;43;
+66;Dar bolsa de sangre;7;17;20;0;40;43
 67;Atras...;0;0;20;0;43;40
 68;Respuesta amable;0;0;20;0;40;42
 69;Atras...;0;0;20;0;42;40
@@ -88,6 +90,7 @@
 86;Entrar en la mansion;0;7;20;0;52;53
 87;Si;0;0;20;0;53;54
 88;No;0;0;20;0;53;44
-89;Respuesta normal;0;0;20;0;54;5
-90;Respuesta agresiva;11;0;20;0;54;56
-91;Mentir;0;0;20;0;54;57
+89;Respuesta normal;0;0;20;0;54;58
+90;Respuesta agresiva;11;0;20;0;54;58
+91;Mentir;0;0;20;0;54;58
+92;Aceptar;19;0;20;0;58;58
