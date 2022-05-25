@@ -8,15 +8,24 @@ package Vista;
  *
  * @author Moru
  */
-public class Eleccion_4 extends javax.swing.JFrame {
+public class PopUpInfoExtra extends javax.swing.JFrame {
 
     /**
-     * Creates new form Eleccion_2
+     * Creates new form PopUpCombate
      */
-    public Eleccion_4() {
+    public PopUpInfoExtra() {
         initComponents();
     }
- 
+
+    /**
+     * Constructor con el texto a mostrar en el popup.
+     *
+     * @param texto a mostrar.
+     */
+    public PopUpInfoExtra(String texto) {
+        initComponents();
+        InfoExtra.setText(texto);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,36 +37,25 @@ public class Eleccion_4 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Foto = new javax.swing.JLabel();
-        Texto = new javax.swing.JLabel();
-        cabecera1 = new Vista.Cabecera();
-        footer41 = new Vista.footer4();
+        InfoExtra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        Foto.setText("jLabel1");
-        jPanel1.add(Foto);
-        Foto.setBounds(10, 200, 440, 380);
-
-        Texto.setText("Texto");
-        jPanel1.add(Texto);
-        Texto.setBounds(490, 200, 500, 380);
-        jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
-        jPanel1.add(footer41);
-        footer41.setBounds(0, 600, 1001, 103);
+        InfoExtra.setText("jLabel1");
+        jPanel1.add(InfoExtra);
+        InfoExtra.setBounds(130, 130, 290, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
         );
 
         pack();
@@ -80,32 +78,27 @@ public class Eleccion_4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpInfoExtra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpInfoExtra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpInfoExtra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpInfoExtra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_4().setVisible(true);
+                new PopUpInfoExtra().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Foto;
-    private javax.swing.JLabel Texto;
-    private Vista.Cabecera cabecera1;
-    private Vista.footer4 footer41;
+    private javax.swing.JLabel InfoExtra;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

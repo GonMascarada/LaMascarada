@@ -44,41 +44,8 @@ public class Prueba {
  /*       for (int i = 0; i < partidas.size(); i++) {
             System.out.println(partidas.get(i).toString());
         }
-*/
-         File f = new File("/Ficheros/prueba.txt"); //se define el fichero a crear
-System.out.println(f.getAbsolutePath());
-        try {
-
-            f.createNewFile(); //lo creo, no existía
-
-            FileWriter fw = new FileWriter(f); //defino escritura
-
-            int valor = 1;
-
-            for (int i = 1; i <= 20; i++) {
-
-                fw.write("" + valor); // escribimos valor
-
-                fw.write("\n");       // escribimos nueva línea
-
-                valor = valor * 2;    // calculamos próximo valor
-
-            }
-
-            fw.close(); // cerramos el FileWriter 
-
-            System.out.println("Fichero escrito correctamente");
-
-        } catch (Exception e) {
-
-            System.out.println(e);
-
-        }
-        
-        
-        
-        
-        
+*/        
+          
         Partida p = partidas.get(0);     
         controlador.cargarPartida(p);
         //String prueba = "0;Ir al bar;0;0;20;0;0;1;";

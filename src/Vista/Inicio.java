@@ -6,6 +6,7 @@ package Vista;
 
 import Mascarada.Clan;
 import Controlador.Controlador;
+import Mascarada.Partida;
 import java.awt.Color;
 import java.awt.List;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 import jdk.jfr.Event;
 
 /**
@@ -24,8 +26,13 @@ import jdk.jfr.Event;
 public class Inicio extends javax.swing.JFrame {
 
     private Controlador controlador;
+    
 
     private ArrayList<Clan> clanes;
+    
+    private ArrayList<Partida>partida;
+    
+    private JPanel carga;
 
     /**
      * Creates new form Inicio
@@ -37,16 +44,23 @@ public class Inicio extends javax.swing.JFrame {
         controlador = new Controlador();
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
+        //Lista de partidas para borrar y cargar
+        partida = controlador.getListaPartidas();
+        //ArrayLista para la carga y el borrado de partidas
+        DefaultListModel cargarBorrar = new DefaultListModel();
         //ArrayList para el Jlist
         DefaultListModel modelo = new DefaultListModel();
         //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
-
+        for (int i = 0; i < partida.size(); i++) {
+            carga = new Vista.CargaBorrar();
+            cargarBorrar.addElement(carga);
+        }
         for (int i = 0; i < clanes.size(); i++) {
             modelo.addElement(clanes.get(i).getNombre());
-
         }
         ListaClanes1.setModel(modelo);
-        //Elementos de 
+        ListaBorrar.setModel(cargarBorrar);
+        LisjtaCargar.setModel(cargarBorrar);
 
     }
 
@@ -77,13 +91,11 @@ public class Inicio extends javax.swing.JFrame {
         Habilidad3 = new javax.swing.JCheckBox();
         Habilidad4 = new javax.swing.JCheckBox();
         BorrarPartida = new javax.swing.JPanel();
-        cargaBorrar4 = new Vista.CargaBorrar();
-        cargaBorrar5 = new Vista.CargaBorrar();
-        cargaBorrar6 = new Vista.CargaBorrar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListaBorrar = new javax.swing.JList<>();
         CargarPartida = new javax.swing.JPanel();
-        cargaBorrar1 = new Vista.CargaBorrar();
-        cargaBorrar2 = new Vista.CargaBorrar();
-        cargaBorrar3 = new Vista.CargaBorrar();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        LisjtaCargar = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,50 +232,42 @@ public class Inicio extends javax.swing.JFrame {
 
         TabbedMain.addTab("Crear Partida", CrearPartida);
 
+        ListaBorrar.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(ListaBorrar);
+
         javax.swing.GroupLayout BorrarPartidaLayout = new javax.swing.GroupLayout(BorrarPartida);
         BorrarPartida.setLayout(BorrarPartidaLayout);
         BorrarPartidaLayout.setHorizontalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BorrarPartidaLayout.createSequentialGroup()
-                .addGroup(BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cargaBorrar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cargaBorrar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cargaBorrar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 28, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
         );
         BorrarPartidaLayout.setVerticalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BorrarPartidaLayout.createSequentialGroup()
-                .addComponent(cargaBorrar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cargaBorrar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cargaBorrar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
         );
 
         TabbedMain.addTab("Borrar Partida", BorrarPartida);
+
+        LisjtaCargar.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(LisjtaCargar);
 
         javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
         CargarPartida.setLayout(CargarPartidaLayout);
         CargarPartidaLayout.setHorizontalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CargarPartidaLayout.createSequentialGroup()
-                .addGroup(CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cargaBorrar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cargaBorrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cargaBorrar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 28, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
         );
         CargarPartidaLayout.setVerticalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CargarPartidaLayout.createSequentialGroup()
-                .addComponent(cargaBorrar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cargaBorrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cargaBorrar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
         );
 
         TabbedMain.addTab("Cargar Partida", CargarPartida);
@@ -276,7 +280,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         FondoTotalLayout.setVerticalGroup(
             FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedMain, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(TabbedMain, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,16 +410,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JCheckBox Habilidad4;
     private javax.swing.JLabel LabelClanes;
     private javax.swing.JLabel Labeldificultad;
+    private javax.swing.JList<String> LisjtaCargar;
+    private javax.swing.JList<String> ListaBorrar;
     private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
-    private Vista.CargaBorrar cargaBorrar1;
-    private Vista.CargaBorrar cargaBorrar2;
-    private Vista.CargaBorrar cargaBorrar3;
-    private Vista.CargaBorrar cargaBorrar4;
-    private Vista.CargaBorrar cargaBorrar5;
-    private Vista.CargaBorrar cargaBorrar6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
 }

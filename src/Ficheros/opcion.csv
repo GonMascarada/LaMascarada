@@ -19,10 +19,10 @@
 17;Negarse;0;0;20;0;17;19
 18;Mentir;11;0;20;0;17;20
 19;Respuesta amable;7;0;20;0;15;21
-20;Guardar azucarillo;0;2;20;0;21;22;
-21;Respuesta agresiva;8;0;20;0;15;23;
+20;Guardar azucarillo;0;2;20;0;21;22
+21;Respuesta agresiva;8;0;20;0;15;23
 22;Usar el mapa;0;4;20;0;1;50
-23;Decir tu nombre;0;0;20;0;24;25;
+23;Decir tu nombre;0;0;20;0;24;25
 23;Respuesta normal;0;0;20;0;25;26
 24;respuesta amable;7;0;20;0;25;27
 25;Respuesta agresiva;11;0;20;0;25;28
@@ -30,7 +30,7 @@
 27;Hablar con el camarero;0;0;20;0;29;30
 28;Respuesta normal;0;0;20;0;30;31
 29;Respuesta amable;7;0;20;0;30;33
-30;Preguntar por el reservado;14;0;20;0;30;32;
+30;Preguntar por el reservado;14;0;20;0;30;32
 31;Hablar con Vidente;0;18;20;0;30;34
 32;Respuesta normal;0;0;20;0;34;35
 33;Respuesta amable;10;0;20;0;34;36
@@ -40,7 +40,7 @@
 37;Coger bolsas de sangre fresca;0;0;20;0;37;30
 39;Usar mapa;0;8;20;0;30;63
 40;Respuseta normal;0;0;20;0;40;41
-41;Dar bolsa de sangre;7;17;20;0;40;43;
+41;Dar bolsa de sangre;7;17;20;0;40;43
 42;Respuesta amable;0;0;20;0;40;42
 44;Ir al Periodico;0;0;20;0;40;44
 45;Buscar en las mesas;0;0;20;0;44;45

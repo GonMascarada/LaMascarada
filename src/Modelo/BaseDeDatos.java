@@ -5,7 +5,10 @@ import Vista.Inicio;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -43,7 +46,6 @@ public class BaseDeDatos {
      */
     public ArrayList<String[]> getTextos(int idEscena) {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
-       
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         ArrayList<String[]> textos = new ArrayList<>();
@@ -101,7 +103,6 @@ public class BaseDeDatos {
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if (Integer.valueOf(linea[6]) == idEscena) {
-                System.out.println("Añadida opcion: "+ linea[0]+ " de la escena "+idEscena);
                 opcion = new Opcion(linea);
                 opciones.add(opcion);
             }
@@ -128,6 +129,30 @@ public class BaseDeDatos {
             if ((linea[1].equals(idPartida) && (linea[2].equals(nombrePersonaje)))) {
                 equipo = getEquipo(linea[0]);
                 equipo.setEnUso(Boolean.valueOf(linea[3]));
+                equipos.add(equipo);
+            }
+        }
+        return equipos;
+    }
+
+    /**
+     * Extrae del jar el equipo inicial de un personaje.
+     *
+     * @param nombre del personaje.
+     * @return lista de su inventario.
+     */
+    private ArrayList<Equipo> getEquiposIniciales(String nombre) {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        ArrayList<Equipo> equipos = new ArrayList<>();
+        Equipo equipo;
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            if (linea[1].equals(nombre)) {
+                equipo = getEquipo(linea[0]);
+                equipo.setEnUso(Boolean.valueOf(linea[2]));
                 equipos.add(equipo);
             }
         }
@@ -309,7 +334,6 @@ public class BaseDeDatos {
         //Se extraen los datos para la conexión de conexionBD.csv
         for (int i = 0; i < conexion.length; i++) {
             linea = lector.nextLine().split(";");
-            System.out.println("Obtenido: " + linea[0]);
             conexion[i] = linea[0]; //Primer campo valor, segundo clave.
         }
 
@@ -350,13 +374,10 @@ public class BaseDeDatos {
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
         id = getIdGuardado(partida.getIdPartida(), partida.getProgreso());
-        
+
         // 2.Guardar los datos de la partida.
-        
         // 3.Guardar los datos de los personajes, protagonista incluido.
-        
         // 4.Guardar los datos de los objetos de cada personaje.
-        
         // 5.Sincronizar los datos locales con la base de datos.
         sincronizar();
     }
@@ -426,6 +447,96 @@ public class BaseDeDatos {
         }
         id++;
         return id;
+    }
+
+    /**
+     * Devuelve una Partida con todos los datos iniciales para poder jugar. Y
+     * almacena los datos de la nueva partida.
+     *
+     * @return Partida.
+     */
+    public Partida iniciarNuevaPartida(Vampire protagonista) {
+        Partida partida = new Partida();
+        Escena primera;
+        SimpleDateFormat dtf;
+        Calendar calendar;
+
+        // Insercción protagonista, primera escena e id.
+        partida.setProtagonista(protagonista);
+        primera = getEscena(0); //Primera escena        
+        partida.setEscena(primera);
+        partida.setIdPartida(getNuevoIdPartida());
+        // Insercción de la hora actual.
+        dtf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+        calendar = Calendar.getInstance();
+        java.util.Date dateObj = calendar.getTime();
+        dtf.format(dateObj);
+        partida.setFecha(dateObj);
+        // Insercción del tiempo, progreso, sed de sangre y sospecha.
+        partida.setTiempo(0);
+        partida.setProgreso(0);
+        partida.setSedDeSangre(0);
+        partida.setSospecha(0);
+        // Insercción de los npc´s
+        ArrayList<Persona> pnjs = getPNJsIniciales();
+        return partida;
+    }
+
+    /**
+     * Devuelve un id de partida en desuso, si no hay, devuelve el siguiente
+     * libre.
+     *
+     * @return un número de id libre.
+     */
+    private int getNuevoIdPartida() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        int id;
+
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            ids.add(Integer.parseInt(linea[0]));
+        }
+        Collections.sort(ids);
+        id = 0;
+        for (int i = 0; i < ids.size(); i++) {
+            if (ids.get(i) == id) {
+                id++;
+            } else {
+                return id;
+            }
+        }
+        return id;
+    }
+
+    /**
+     * Extrae del jar los pnjs en su estado básico para el juego.
+     *
+     * @return lista de personas o vampiros
+     */
+    private ArrayList<Persona> getPNJsIniciales() {
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
+        Scanner lector = new Scanner(inputStream);
+        ArrayList<Persona> pnjs = new ArrayList<>();
+        String[] linea;
+        Clan clan;
+        lector.nextLine(); //Salta la cabecera del documento
+
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            ArrayList<Equipo> equipos = getEquiposIniciales(linea[0]);
+            if (linea[7].equals("Humano")) {
+                pnjs.add(new Persona(linea, equipos));
+            } else {
+                clan = getClan(linea[7]);
+                pnjs.add(new Vampire(clan, linea, equipos));
+            }
+
+        }
+        return pnjs;
     }
 
 }

@@ -4,8 +4,10 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -13,23 +15,32 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer1 extends javax.swing.JPanel{
+    
+    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+    
+    private Controlador controlador;
+    private VistaEscena vista;
+    private ArrayList<Opcion> opciones;
 
-    private ArrayList<JButton> botones;
+
     /**
      * Creates new form footer2
      */
-    public footer1() {
+    public footer1(Controlador controlador, VistaEscena vista) {
         initComponents();
+        this.controlador = controlador;
+        this.vista = vista;
+        this.opciones = controlador.getPartida().getEscena().getOpciones();
         
+        opcion1.setRolloverEnabled(true);
+        opcion1.setIcon(botonRojo1);
+        opcion1.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(0).getTexto());
+
     }
     
-    public void setOpciones(ArrayList <Opcion> opciones){
-         botones = new ArrayList<>();
-        botones.add(opcion1);
-        for (int i = 0; i < botones.size(); i++) {
-            botones.get(i).setText(opciones.get(i).getTexto());
-        }
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +53,11 @@ public class footer1 extends javax.swing.JPanel{
 
         opcion1 = new javax.swing.JButton();
 
-        opcion1.setText("jButton1");
+        setOpaque(false);
+
+        opcion1.setBorderPainted(false);
+        opcion1.setContentAreaFilled(false);
+        opcion1.setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

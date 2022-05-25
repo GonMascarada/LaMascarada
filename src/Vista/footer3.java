@@ -6,40 +6,55 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Opcion;
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 
 /**
  *
  * @author Alumno
  */
 public class footer3 extends javax.swing.JPanel {
+    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     private Controlador controlador;
     private VistaEscena vista;
     private ArrayList<Opcion> opciones;
-    private ArrayList<JButton> botones;
+    
 
     /**
-     * Creates new form footer2
+     * Creates new form footer3
      */
-    public footer3() {
+    public footer3(Controlador controlador, VistaEscena vista) {
         initComponents();
-    }
-
-    public void setOpciones(Controlador controlador, VistaEscena vista) {
         this.controlador = controlador;
         this.vista = vista;
         this.opciones = controlador.getPartida().getEscena().getOpciones();
-        botones = new ArrayList<>();
-        botones.add(opcion1);
-        botones.add(opcion2);
-        botones.add(opcion3);
-
-        for (int i = 0; i < botones.size(); i++) {
-            botones.get(i).setText(opciones.get(i).getTexto());
-        }
+        
+        opcion1.setRolloverEnabled(true);
+        opcion1.setIcon(botonRojo1);
+        opcion1.setPressedIcon(botonRojo2);
+        opcion1.setForeground(Color.white);
+        opcion1.setText(opciones.get(0).getTexto());
+        
+        opcion2.setIcon(botonRojo1);
+        opcion2.setPressedIcon(botonRojo2);
+        opcion2.setForeground(Color.white);
+        opcion2.setText(opciones.get(1).getTexto());
+        
+        opcion3.setRolloverEnabled(true);
+        opcion3.setIcon(botonRojo1);
+        opcion3.setPressedIcon(botonRojo2);
+        opcion3.setForeground(Color.white);
+        opcion3.setText(opciones.get(2).getTexto());
     }
+
+   
+   
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,24 +69,58 @@ public class footer3 extends javax.swing.JPanel {
         opcion2 = new javax.swing.JButton();
         opcion3 = new javax.swing.JButton();
 
-        opcion1.setText("jButton1");
+        setOpaque(false);
+
+        opcion1.setBackground(new java.awt.Color(0, 0, 0));
+        opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion1.setBorderPainted(false);
+        opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                opcion1ComponentAdded(evt);
+            }
+        });
         opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 opcion1MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                opcion1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                opcion1MouseExited(evt);
+            }
+        });
+        opcion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion1ActionPerformed(evt);
+            }
         });
 
-        opcion2.setText("jButton1");
+        opcion2.setBackground(new java.awt.Color(0, 0, 0));
+        opcion2.setForeground(new java.awt.Color(0, 0, 0));
+        opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion2.setBorderPainted(false);
+        opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 opcion2MouseClicked(evt);
             }
         });
 
-        opcion3.setText("jButton1");
+        opcion3.setBackground(new java.awt.Color(51, 51, 51));
+        opcion3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        opcion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion3.setBorderPainted(false);
+        opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 opcion3MouseClicked(evt);
+            }
+        });
+        opcion3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion3ActionPerformed(evt);
             }
         });
 
@@ -80,42 +129,66 @@ public class footer3 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addContainerGap()
+                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        controlador.escoger(opciones.get(0));
+        vista.dispose();
+    }//GEN-LAST:event_opcion1MouseClicked
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
         controlador.escoger(opciones.get(1));
         vista.dispose();
     }//GEN-LAST:event_opcion2MouseClicked
 
-    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
-        System.out.println(opcion1.getText());
-        System.out.println("Escena siguiente: "+opciones.get(0).getIdEscenaSiguiente());
-        controlador.escoger(opciones.get(0));
-        vista.dispose();
-    }//GEN-LAST:event_opcion1MouseClicked
-
     private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
         controlador.escoger(opciones.get(2));
         vista.dispose();
     }//GEN-LAST:event_opcion3MouseClicked
+
+    private void opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opcion3ActionPerformed
+
+    private void opcion1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_opcion1ComponentAdded
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_opcion1ComponentAdded
+
+    private void opcion1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_opcion1MouseEntered
+
+    private void opcion1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseExited
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_opcion1MouseExited
+
+    private void opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_opcion1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

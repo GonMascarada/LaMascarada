@@ -8,12 +8,12 @@ package Vista;
  *
  * @author Moru
  */
-public class Eleccion_3 extends javax.swing.JFrame {
+public class PopUpCombate extends javax.swing.JFrame {
 
     /**
-     * Creates new form Eleccion_2
+     * Creates new form PopUpCombate
      */
-    public Eleccion_3() {
+    public PopUpCombate() {
         initComponents();
     }
 
@@ -27,36 +27,25 @@ public class Eleccion_3 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Foto = new javax.swing.JLabel();
-        Texto = new javax.swing.JLabel();
-        cabecera1 = new Vista.Cabecera();
-        footer31 = new Vista.footer3();
+        combate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        Foto.setText("jLabel1");
-        jPanel1.add(Foto);
-        Foto.setBounds(10, 210, 440, 380);
-
-        Texto.setText("Texto");
-        jPanel1.add(Texto);
-        Texto.setBounds(460, 210, 500, 380);
-        jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
-        jPanel1.add(footer31);
-        footer31.setBounds(0, 600, 1000, 103);
+        combate.setText("jLabel1");
+        jPanel1.add(combate);
+        combate.setBounds(130, 130, 290, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,32 +68,26 @@ public class Eleccion_3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpCombate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpCombate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpCombate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpCombate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_3().setVisible(true);
+                new PopUpCombate().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Foto;
-    private javax.swing.JLabel Texto;
-    private Vista.Cabecera cabecera1;
-    private Vista.footer3 footer31;
+    private javax.swing.JLabel combate;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

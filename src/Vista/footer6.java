@@ -4,8 +4,10 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -13,27 +15,56 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer6 extends javax.swing.JPanel {
-    private ArrayList<JButton> botones;
+     ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-6.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-6.png"));
+    
+    private Controlador controlador;
+    private VistaEscena vista;
+    private ArrayList<Opcion> opciones;
+    
 
     /**
      * Creates new form footer2
      */
-    public footer6() {
+    public footer6(Controlador controlador, VistaEscena vista) {
         initComponents();
-    }
-      public void setOpciones(ArrayList <Opcion> opciones){
-         botones = new ArrayList<>();
-        botones.add(opcion1);
-        botones.add(opcion2);
-        botones.add(opcion3);
-        botones.add(opcion4);
-        botones.add(opcion5);
-        botones.add(opcion6);
-        for (int i = 0; i < botones.size(); i++) {
-            botones.get(i).setText(opciones.get(i).getTexto());
-        }
-    }
+        
+             this.controlador = controlador;
+        this.vista = vista;
+        this.opciones = controlador.getPartida().getEscena().getOpciones();
+        opcion1.setRolloverEnabled(true);
+        opcion1.setIcon(botonRojo1);
+        opcion1.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(0).getTexto());
 
+        opcion2.setRolloverEnabled(true);
+        opcion2.setIcon(botonRojo1);
+        opcion2.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(1).getTexto());
+        
+        opcion3.setRolloverEnabled(true);
+        opcion3.setIcon(botonRojo1);
+        opcion3.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(2).getTexto());
+        
+        opcion4.setRolloverEnabled(true);
+        opcion4.setIcon(botonRojo1);
+        opcion4.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(3).getTexto());
+        
+        opcion5.setRolloverEnabled(true);
+        opcion5.setIcon(botonRojo1);
+        opcion5.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(4).getTexto());
+
+        opcion6.setRolloverEnabled(true);
+        opcion6.setIcon(botonRojo1);
+        opcion6.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(5).getTexto());
+        
+       
+    }
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,63 +81,75 @@ public class footer6 extends javax.swing.JPanel {
         opcion5 = new javax.swing.JButton();
         opcion6 = new javax.swing.JButton();
 
+        setOpaque(false);
+
         opcion1.setText("jButton1");
+        opcion1.setBorderPainted(false);
+        opcion1.setContentAreaFilled(false);
 
         opcion2.setText("jButton1");
+        opcion2.setBorderPainted(false);
+        opcion2.setContentAreaFilled(false);
 
         opcion3.setText("jButton1");
+        opcion3.setBorderPainted(false);
+        opcion3.setContentAreaFilled(false);
 
         opcion4.setText("jButton1");
+        opcion4.setBorderPainted(false);
+        opcion4.setContentAreaFilled(false);
 
         opcion5.setText("jButton1");
+        opcion5.setBorderPainted(false);
+        opcion5.setContentAreaFilled(false);
 
         opcion6.setText("jButton1");
-        opcion6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcion6ActionPerformed(evt);
-            }
-        });
+        opcion6.setBorderPainted(false);
+        opcion6.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(opcion5, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opcion4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(opcion5, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(opcion6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(opcion6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(opcion5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5)
+                        .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opcion2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(opcion6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(opcion5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void opcion6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opcion6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

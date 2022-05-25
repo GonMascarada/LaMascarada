@@ -8,12 +8,12 @@ package Vista;
  *
  * @author Moru
  */
-public class Eleccion_6 extends javax.swing.JFrame {
+public class Eleccion_3 extends javax.swing.JFrame {
 
     /**
      * Creates new form Eleccion_2
      */
-    public Eleccion_6() {
+    public Eleccion_3() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class Eleccion_6 extends javax.swing.JFrame {
         Foto = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
-        footer61 = new Vista.footer6();
+        footer31 = new Vista.footer3();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,11 +42,11 @@ public class Eleccion_6 extends javax.swing.JFrame {
 
         Texto.setText("Texto");
         jPanel1.add(Texto);
-        Texto.setBounds(480, 210, 500, 380);
+        Texto.setBounds(460, 210, 500, 380);
         jPanel1.add(cabecera1);
-        cabecera1.setBounds(0, 0, 1000, 250);
-        jPanel1.add(footer61);
-        footer61.setBounds(0, 600, 1001, 101);
+        cabecera1.setBounds(0, 0, 1000, 220);
+        jPanel1.add(footer31);
+        footer31.setBounds(0, 600, 994, 98);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,18 +79,14 @@ public class Eleccion_6 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Eleccion_6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Eleccion_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -99,7 +95,7 @@ public class Eleccion_6 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion_6().setVisible(true);
+                new Eleccion_3().setVisible(true);
             }
         });
     }
@@ -108,7 +104,7 @@ public class Eleccion_6 extends javax.swing.JFrame {
     private javax.swing.JLabel Foto;
     private javax.swing.JLabel Texto;
     private Vista.Cabecera cabecera1;
-    private Vista.footer6 footer61;
+    private Vista.footer3 footer31;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
