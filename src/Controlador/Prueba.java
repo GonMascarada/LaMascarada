@@ -46,7 +46,7 @@ public class Prueba {
         }
 */        
           
-  //   bd.comprobarConsistencia();
+        bd.comprobarConsistencia();
  
         Partida p = partidas.get(0);     
         controlador.cargarPartida(p);
