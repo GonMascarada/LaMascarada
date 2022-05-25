@@ -2,18 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Clan.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/footer3.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Cabecera.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Partida.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
+            <file>file:/C:/Users/Undefinided/OneDrive/NETBEANS/LaMascarada/LaMascarada/src/Ficheros/escena.csv</file>
+            <file>file:/C:/Users/Undefinided/OneDrive/NETBEANS/LaMascarada/LaMascarada/src/Ficheros/opcion.csv</file>
+            <file>file:/C:/Users/Undefinided/OneDrive/NETBEANS/LaMascarada/LaMascarada/src/Ficheros/texto-escena.csv</file>
+            <file>file:/C:/Users/Undefinided/OneDrive/NETBEANS/LaMascarada/LaMascarada/src/Controlador/Prueba.java</file>
         </group>
->>>>>>> bb57d319d557e9666c9e6a1f2c24f2928ea77a39
     </open-files>
 </project-private>
