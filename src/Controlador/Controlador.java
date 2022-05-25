@@ -30,7 +30,7 @@ public final class Controlador {
      *
      * @return lista de todos los clanes de vampiro jugables.
      */
-    public ArrayList<Clan> getListaClanes() {
+    public ArrayList<Clan> getListaClanes() throws IOException {
         return bbdd.getListaClanes();
     }
 
@@ -55,7 +55,7 @@ public final class Controlador {
      *
      * @return lista de todas las partidas.
      */
-    public ArrayList<Partida> getListaPartidas() {
+    public ArrayList<Partida> getListaPartidas() throws IOException {
         return bbdd.getListaPartidas();
     }
 
@@ -78,7 +78,7 @@ public final class Controlador {
      * @param nombre del nuevo personaje.
      * @param dificultad de la partida.
      */
-    public void iniciarNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) {
+    public void iniciarNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) throws IOException {
         String datos;
         Vampire vampire;
         ArrayList<String[]> textos;
@@ -115,7 +115,7 @@ public final class Controlador {
      *
      * @param opcion marca cuál será la nueva escena.
      */
-    public void escoger(Opcion opcion) {
+    public void escoger(Opcion opcion) throws IOException {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
         ArrayList<String[]> textos;
         ArrayList<Opcion> opciones;
@@ -180,7 +180,7 @@ public final class Controlador {
      *
      * @param partida
      */
-    public void cargarPartida(Partida partida) {
+    public void cargarPartida(Partida partida) throws IOException {
         this.partida = partida;
         this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
         System.out.println("Opciones" + partida.getEscena().getOpciones().size());
