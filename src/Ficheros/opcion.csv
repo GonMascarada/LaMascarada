@@ -4,40 +4,62 @@
 2;Respuesta normal;0;0;20;0;2;3
 3;No tengo habitación de Motel aún;0;12;20;0;3;4
 4;Hablar sobre Antiguo;0;0;20;0;4;5
+5;;Atras...;0;0;20;0;5;1
 5;Mentir;0;0;20;0;4;6
 6;Irse;0;0;20;0;4;2
 7;Respuesta amable;7;0;20;0;2;7
+8;Atras...;0;0;20;0;7;2
 8;Respuesta agresiva;11;0;20;0;2;9
+9;Atras...;0;0;20;0;9;1
 9;Hablar con un cliente;0;0;20;0;1;10
 10;Respuesta normal;0;0;20;0;10;11
+;Atras...;0;0;20;0;11;1
 11;Respuesta amable;7;0;20;0;10;12
+;Atras...;0;0;20;0;12;1
 12;Respuesta agresiva;11;0;20;0;10;13
+;Atras...;0;0;20;0;13;1
 13;hablar con el dueño;0;0;20;0;1;15
 14;Respuesta normal;0;0;20;0;15;16
 15;Decir la verdad;7;0;20;0;16;17
 16;Aceptar quedarse a dormir aquí;15;0;20;0;17;18
+;Atras...;0;0;20;0;17;1
 17;Negarse;0;0;20;0;17;19
 18;Mentir;11;0;20;0;17;20
+;Atras...;0;0;20;0;20;1
 19;Respuesta amable;7;0;20;0;15;21
+;Atras...;0;0;20;0;21;1
 20;Guardar azucarillo;0;2;20;0;21;22
 21;Respuesta agresiva;8;0;20;0;15;23
-22;Usar el mapa;0;4;20;0;1;50
+;Atras...;0;0;20;0;23;1
+22;Usar el mapa;0;4;20;0;1;20
 23;Decir tu nombre;0;0;20;0;24;25
 23;Respuesta normal;0;0;20;0;25;26
+;Atras...;0;0;20;0;26;24
 24;respuesta amable;7;0;20;0;25;27
+;Atras...;0;0;20;0;27;24
 25;Respuesta agresiva;11;0;20;0;25;28
+;Atras...;0;0;20;0;28;24
 26;Usar el mapa;0;5;20;0;20;50
 27;Hablar con el camarero;0;0;20;0;29;30
 28;Respuesta normal;0;0;20;0;30;31
+;Atras...;0;0;20;0;31;29
 29;Respuesta amable;7;0;20;0;30;33
+;Atras...;0;0;20;0;33;29
 30;Preguntar por el reservado;14;0;20;0;30;32
+;Atras...;0;0;20;0;32;29
 31;Hablar con Vidente;0;18;20;0;30;34
+
 32;Respuesta normal;0;0;20;0;34;35
+;Atras...;0;0;20;0;35;29
 33;Respuesta amable;10;0;20;0;34;36
+;Atras...;0;0;20;0;35;29
 34;Respueta agresiva;11;0;20;0;34;37
-35;Hablar con cliente;0;0;20;0;30;38
+;Atras...;0;0;20;0;37;29
+35;Hablar con cliente;0;0;20;0;29;38
+;Atras...;0;0;20;0;38;29
 36;Ir al reservado;0;5;20;0;30;37
-37;Coger bolsas de sangre fresca;0;0;20;0;37;30
+37;Coger bolsas de sangre fresca;0;0;20;0;37;29
+;Salir del reservado;0;0;20;0;;
 39;Usar mapa;0;8;20;0;30;63
 40;Respuseta normal;0;0;20;0;40;41
 41;Dar bolsa de sangre;7;17;20;0;40;43

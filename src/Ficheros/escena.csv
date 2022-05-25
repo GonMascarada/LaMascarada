@@ -1,29 +1,29 @@
 ﻿IdEscena;Imagen;NombrePersonaje
 0; .\cartel.jpg;
 1; .\bar.jpg;
-2;.\camarera.jpg;Camarera
+2;.\bar.jpg;
 3;.\camarera.jpg;Camarera
 4;\camarera.jpg;Camarera
 5;.\camarera.jpg;Camarera
 6;.\camarera.jpg;Camarera
 7;.\camarera.jpg;Camarera
 8;.\camarera.jpg;Camarera
-9;.\camarera.jpg;Camarera
+9;.\bar.jpg;
 10;.\cliente.jpg;Cliente
 11;.\cliente.jpg;Cliente
 12;.\cliente.jpg;Cliente
-13;.\cliente.jpg;Cliente
-14;.\cliente.jpg;Cliente
-15;.\cliente.jpg;Cliente
+13;.\bar.jpg;
+14;.\Dueño.jpg;Dueño
+15;.\Dueño.jpg;Dueño
 16;.\Dueño.jpg;Dueño
 17;.\Dueño.jpg;Dueño
 18;.\Dueño.jpg;Dueño
 19;.\Dueño.jpg;Dueño
 20;.\Dueño.jpg;Dueño
 21;.\Dueño.jpg;Dueño
-22;.\Dueño.jpg;Dueño
-23;.\Dueño.jpg;Dueño
-24;.\Dueño.jpg;Dueño
+22;f\MapaPueblo;
+23;.\dueñaMotel.jpg;DueñaMotel
+24;.\dueñaMotel.jpg;DueñaMotel
 25;.\dueñaMotel.jpg;DueñaMotel
 26;.\dueñaMotel.jpg;DueñaMotel
 27;.\dueñaMotel.jpg;DueñaMotel
