@@ -22,7 +22,7 @@
 20;Guardar azucarillo;0;2;20;0;21;22;
 21;Respuesta agresiva;8;0;20;0;15;23;
 22;Usar el mapa;0;4;20;0;1;50
-23;Decir tu nombre;0;0;24;25;
+23;Decir tu nombre;0;0;20;0;24;25;
 23;Respuesta normal;0;0;20;0;25;26
 24;respuesta amable;7;0;20;0;25;27
 25;Respuesta agresiva;11;0;20;0;25;28
@@ -40,7 +40,7 @@
 37;Coger bolsas de sangre fresca;0;0;20;0;37;30
 39;Usar mapa;0;8;20;0;30;63
 40;Respuseta normal;0;0;20;0;40;41
-41;Dar bolsa de sangre;7;17;20;40;43;
+41;Dar bolsa de sangre;7;17;20;0;40;43;
 42;Respuesta amable;0;0;20;0;40;42
 44;Ir al Periodico;0;0;20;0;40;44
 45;Buscar en las mesas;0;0;20;0;44;45
