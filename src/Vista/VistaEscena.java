@@ -14,17 +14,16 @@ import javax.swing.JPanel;
 /**
  *
  * @author Moru
+ * @author Gonzalo López Fernández
  */
 public class VistaEscena extends javax.swing.JFrame {
 
-    private JPanel footer;
     private Controlador controlador;
     private Escena escena;
 
     public VistaEscena() {
         initComponents();
-        int opciones = 2;
-       
+
     }
 
     public VistaEscena(Controlador controlador) {
@@ -35,35 +34,26 @@ public class VistaEscena extends javax.swing.JFrame {
 
         texto.setText(escena.getTexto());
         texto.setBackground(Color.red);
+        texto.setForeground(Color.white);
         cabecera1.insertarDatosPartida(controlador.getPartida());
-        System.out.println("Opciones: "+ opciones.size());
         switch (opciones.size()) {
             case 1 -> {
-                
-                jPanel1.add(new footer1(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 2 -> {
-                
-                jPanel1.add(new footer2(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer2(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 3 -> {
-              
-                jPanel1.add(new footer3(controlador,this)).setBounds(0, 590, 1000, 115);
-                
+                jPanel1.add(new footer3(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 4 -> {
-                
-                jPanel1.add(new footer4(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer4(controlador, this)).setBounds(0, 590, 1000, 115);
             }
             case 6 -> {
-                
-                jPanel1.add(new footer6(controlador,this)).setBounds(0, 590, 1000, 115);
+                jPanel1.add(new footer6(controlador, this)).setBounds(0, 590, 1000, 115);
             }
         }
-      
-        
-        
-        
+
     }
 
     /**
@@ -80,6 +70,7 @@ public class VistaEscena extends javax.swing.JFrame {
         texto = new javax.swing.JLabel();
         cabecera1 = new Vista.Cabecera();
         fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +91,20 @@ public class VistaEscena extends javax.swing.JFrame {
         jPanel1.add(fondo);
         fondo.setBounds(0, 0, 1000, 700);
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 590, 1000, 110);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,8 +123,7 @@ public class VistaEscena extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-       
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -133,6 +137,7 @@ public class VistaEscena extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }
