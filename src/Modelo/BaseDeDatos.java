@@ -2,6 +2,7 @@ package Modelo;
 
 import Mascarada.*;
 import Vista.Inicio;
+import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.sql.*;
@@ -24,7 +25,19 @@ public class BaseDeDatos {
     private Statement stmt;
 
     public BaseDeDatos() {
+<<<<<<< HEAD
       //conectar();
+=======
+        File directorio = new File("C:\\Users\\Public\\Documents\\LaMascarada");
+          if (!directorio.exists()) {
+            if (directorio.mkdirs()) {
+                System.out.println("Multiples directorios fueron creados");
+            } else {
+                System.out.println("Error al crear directorios");
+            }
+        }
+        //  conectar();
+>>>>>>> 065a31eac22ab1d3bf25fc893b1ab8995a380e24
         if (conectado) {
             //           sincronizar();
         }
@@ -567,7 +580,7 @@ public class BaseDeDatos {
         Iterator<Integer> it = opcionesesenas.keySet().iterator();
         while (it.hasNext()) {
             aux = it.next();
-            if (opcionesesenas.get(aux)== 0) {
+            if (opcionesesenas.get(aux) == 0) {
                 System.out.println("No hay opciones para: " + aux);
             }
         }
