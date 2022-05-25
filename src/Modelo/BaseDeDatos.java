@@ -37,10 +37,10 @@ public class BaseDeDatos {
                 System.out.println("Error al crear directorios");
             }
         }
-         conectar();
-        if (conectado) {
+      //   conectar();
+   //     if (conectado) {
             //           sincronizar();
-        }
+   //     }
     }
 
     /**
