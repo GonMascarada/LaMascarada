@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Clan.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Prueba.java</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/partida.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Mascarada/Partida.java</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/texto-escena.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/personaje.csv</file>
         </group>
     </open-files>
 </project-private>
