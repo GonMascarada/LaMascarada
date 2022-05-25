@@ -2,12 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/partida.csv</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Mascarada/Partida.java</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/texto-escena.csv</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/personaje.csv</file>
+=======
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Clan.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/footer3.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Cabecera.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Partida.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
+>>>>>>> 5eab4920144c311c5feafb5db18e82d3fa5e67a0
         </group>
+>>>>>>> bb57d319d557e9666c9e6a1f2c24f2928ea77a39
     </open-files>
 </project-private>

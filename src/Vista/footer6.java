@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -16,52 +17,54 @@ import javax.swing.JButton;
 public class footer6 extends javax.swing.JPanel {
      ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-6.png"));
     ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-6.png"));
-    private ArrayList<JButton> botones;
+    
+    private Controlador controlador;
+    private VistaEscena vista;
+    private ArrayList<Opcion> opciones;
+    
 
     /**
      * Creates new form footer2
      */
-    public footer6() {
+    public footer6(Controlador controlador, VistaEscena vista) {
         initComponents();
+        
+             this.controlador = controlador;
+        this.vista = vista;
+        this.opciones = controlador.getPartida().getEscena().getOpciones();
         opcion1.setRolloverEnabled(true);
         opcion1.setIcon(botonRojo1);
         opcion1.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(0).getTexto());
 
         opcion2.setRolloverEnabled(true);
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(1).getTexto());
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(2).getTexto());
         
         opcion4.setRolloverEnabled(true);
         opcion4.setIcon(botonRojo1);
         opcion4.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(3).getTexto());
         
         opcion5.setRolloverEnabled(true);
         opcion5.setIcon(botonRojo1);
         opcion5.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(4).getTexto());
 
         opcion6.setRolloverEnabled(true);
         opcion6.setIcon(botonRojo1);
         opcion6.setPressedIcon(botonRojo2);
+        opcion1.setText(opciones.get(5).getTexto());
         
        
     }
-      public void setOpciones(ArrayList <Opcion> opciones){
-         botones = new ArrayList<>();
-        botones.add(opcion1);
-        botones.add(opcion2);
-        botones.add(opcion3);
-        botones.add(opcion4);
-        botones.add(opcion5);
-        botones.add(opcion6);
-        for (int i = 0; i < botones.size(); i++) {
-            botones.get(i).setText(opciones.get(i).getTexto());
-        }
-    }
-
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

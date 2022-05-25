@@ -46,6 +46,8 @@ public class Prueba {
         }
 */        
           
+  //   bd.comprobarConsistencia();
+ 
         Partida p = partidas.get(0);     
         controlador.cargarPartida(p);
         //String prueba = "0;Ir al bar;0;0;20;0;0;1;";

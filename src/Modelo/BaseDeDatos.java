@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -23,7 +24,7 @@ public class BaseDeDatos {
     private Statement stmt;
 
     public BaseDeDatos() {
-        conectar();
+       conectar();
         if (conectado) {
             //           sincronizar();
         }
@@ -103,7 +104,6 @@ public class BaseDeDatos {
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if (Integer.valueOf(linea[6]) == idEscena) {
-                System.out.println("Añadida opcion: " + linea[0] + " de la escena " + idEscena);
                 opcion = new Opcion(linea);
                 opciones.add(opcion);
             }
@@ -335,7 +335,6 @@ public class BaseDeDatos {
         //Se extraen los datos para la conexión de conexionBD.csv
         for (int i = 0; i < conexion.length; i++) {
             linea = lector.nextLine().split(";");
-            System.out.println("Obtenido: " + linea[0]);
             conexion[i] = linea[0]; //Primer campo valor, segundo clave.
         }
 
@@ -541,4 +540,36 @@ public class BaseDeDatos {
         return pnjs;
     }
 
+    /**
+     * Muestra por pantalla incoherencias en las escenas.
+     *
+     */
+    public void comprobarConsistencia() {
+        HashMap<Integer, Integer> opcionesesenas = new HashMap<>();
+        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
+        Scanner lector = new Scanner(inputStream);
+        String[] linea;
+        int actual, siguente, aux;
+        lector.nextLine(); //Salta la cabecera del documento
+        while (lector.hasNext()) {
+            linea = lector.nextLine().split(";");
+            actual = Integer.parseInt(linea[6]);
+            siguente = Integer.parseInt(linea[7]);
+            if (!opcionesesenas.containsKey(siguente)) {
+                opcionesesenas.put(siguente, 0);
+            }
+            if (!opcionesesenas.containsKey(actual)) {
+                opcionesesenas.put(actual, 1);
+            } else {
+                opcionesesenas.put(actual, opcionesesenas.get(actual) + 1);
+            }
+        }
+        Iterator<Integer> it = opcionesesenas.keySet().iterator();
+        while (it.hasNext()) {
+            aux = it.next();
+            if (opcionesesenas.get(aux)== 0) {
+                System.out.println("No hay opciones para: " + aux);
+            }
+        }
+    }
 }
