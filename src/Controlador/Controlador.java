@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.BaseDeDatos;
 import Mascarada.*;
 import Vista.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,7 +20,7 @@ public final class Controlador {
 
     private BaseDeDatos bbdd;
 
-    public Controlador() {
+    public Controlador() throws IOException {
         bbdd = new BaseDeDatos();
         partida = new Partida(); //Habrá que borrarlo
     }
@@ -176,7 +177,7 @@ public final class Controlador {
     public void cargarPartida(Partida partida) {
         this.partida = partida;
         this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
-
+        System.out.println("Opciones" + partida.getEscena().getOpciones().size());
         lanzar();
     }
 
