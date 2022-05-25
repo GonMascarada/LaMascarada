@@ -24,7 +24,7 @@ public class BaseDeDatos {
     private Statement stmt;
 
     public BaseDeDatos() {
-        //wconectar();
+      //  conectar();
         if (conectado) {
             //           sincronizar();
         }
