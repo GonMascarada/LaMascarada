@@ -22,16 +22,16 @@ public class footer4 extends javax.swing.JPanel {
     private VistaEscena vista;
     private ArrayList<Opcion> opciones;
 
-    private ArrayList<JButton> botones;
+    
     /**
      * Creates new form footer2
      */
     public footer4(Controlador controlador, VistaEscena vista) {
         initComponents();
-        
-         this.controlador = controlador;
+        this.controlador = controlador;
         this.vista = vista;
         this.opciones = controlador.getPartida().getEscena().getOpciones();
+        
         opcion1.setRolloverEnabled(true);
         opcion1.setIcon(botonRojo1);
         opcion1.setPressedIcon(botonRojo2);
@@ -40,17 +40,17 @@ public class footer4 extends javax.swing.JPanel {
         opcion2.setRolloverEnabled(true);
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
-        opcion1.setText(opciones.get(1).getTexto());
+        opcion2.setText(opciones.get(1).getTexto());
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
-        opcion1.setText(opciones.get(2).getTexto());
+        opcion3.setText(opciones.get(2).getTexto());
         
         opcion4.setRolloverEnabled(true);
         opcion4.setIcon(botonRojo1);
         opcion4.setPressedIcon(botonRojo2);
-        opcion1.setText(opciones.get(3).getTexto());
+        opcion4.setText(opciones.get(3).getTexto());
 
         
     }
@@ -75,19 +75,38 @@ public class footer4 extends javax.swing.JPanel {
         opcion1.setText("jButton1");
         opcion1.setContentAreaFilled(false);
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        opcion1.setOpaque(false);
+        opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion1MouseClicked(evt);
+            }
+        });
 
         opcion2.setText("jButton1");
         opcion2.setContentAreaFilled(false);
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion2MouseClicked(evt);
+            }
+        });
 
         opcion3.setText("jButton1");
         opcion3.setContentAreaFilled(false);
         opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion3MouseClicked(evt);
+            }
+        });
 
         opcion4.setText("jButton1");
         opcion4.setContentAreaFilled(false);
         opcion4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,6 +135,31 @@ public class footer4 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(0));
+        vista.dispose();
+        
+    }//GEN-LAST:event_opcion1MouseClicked
+
+    private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(1));
+        vista.dispose();
+    }//GEN-LAST:event_opcion2MouseClicked
+
+    private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(2));
+        vista.dispose();
+    }//GEN-LAST:event_opcion3MouseClicked
+
+    private void opcion4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion4MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(3));
+        vista.dispose();
+    }//GEN-LAST:event_opcion4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
