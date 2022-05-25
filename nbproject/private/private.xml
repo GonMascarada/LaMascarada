@@ -2,35 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Controlador/Prueba.java</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/equipo.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv.bak</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/clan.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/habilidad.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/conexionBD.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/opcion.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/texto-escena.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Modelo/BaseDeDatos.java</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/partida.csv</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Mascarada/Partida.java</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/texto-escena.csv.bak</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Mascarada/Escena.java</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/texto-escena.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Mascarada/Vampire.java</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/personaje.csv</file>
-=======
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Clan.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/footer3.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Cabecera.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Partida.java</file>
-            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
->>>>>>> 5eab4920144c311c5feafb5db18e82d3fa5e67a0
-=======
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Clan.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Partida.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Prueba.java</file>
->>>>>>> 065a31eac22ab1d3bf25fc893b1ab8995a380e24
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/equipo-partida-personaje.csv</file>
         </group>
->>>>>>> bb57d319d557e9666c9e6a1f2c24f2928ea77a39
     </open-files>
 </project-private>

@@ -25,9 +25,10 @@ public class BaseDeDatos {
     private Statement stmt;
 
     public BaseDeDatos() {
-<<<<<<< HEAD
-      //conectar();
-=======
+
+      conectar();
+
+
         File directorio = new File("C:\\Users\\Public\\Documents\\LaMascarada");
           if (!directorio.exists()) {
             if (directorio.mkdirs()) {
@@ -36,8 +37,7 @@ public class BaseDeDatos {
                 System.out.println("Error al crear directorios");
             }
         }
-        //  conectar();
->>>>>>> 065a31eac22ab1d3bf25fc893b1ab8995a380e24
+         conectar();
         if (conectado) {
             //           sincronizar();
         }
