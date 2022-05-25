@@ -57,7 +57,11 @@ public class footer1 extends javax.swing.JPanel{
 
         opcion1.setBorderPainted(false);
         opcion1.setContentAreaFilled(false);
-        opcion1.setOpaque(false);
+        opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,6 +80,12 @@ public class footer1 extends javax.swing.JPanel{
                 .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(0));
+        vista.dispose();
+    }//GEN-LAST:event_opcion1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
