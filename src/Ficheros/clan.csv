@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+Nombre;Descripción;Imagen;Habilidad1;Habilidad2;Habilidad3;Habilidad4;
+Brujah;Individualistas, locuaces y turbulentos, violentos, sienten mucho afecto por la idea del cambio social.;0;Potencia;Fortaleza;Celeridad;Presencia;
+Tremere;Son arrogantes, cerrados, inteligentes y organizados.;0;Celeridad;Dominación;Presencia;Auspex;
+Nosferatu;Su olor y aspecto son repulsivos, uno podría llegar a decir monstruosos, "No busco problemas, pero si vienen, me escondo de ellos.";0;Potencia;Fortaleza;Protean;Animalismo;
+Ventrue;Arrogantes, líderes, gozan de gran influencia tanto en el mundo de los mortales como en el de los no-muertos.;0;Protean;Celeridad;Potencia;Auspex;
+=======
 ﻿Nombre;Descripción;Imagen;Habilidad1;Habilidad2;Habilidad3;Habilidad4
-Brujah;Individualistas, locuaces y turbulentos, violentos, sienten mucho afecto por la idea del cambio social.;/Imagenes/a.jpg;Potencia;Fortaleza;Celeridad;Presencia
-Tremere;Son arrogantes, cerrados, inteligentes y organizados.;/Imagenes/a.jpg;Celeridad;Dominación;Presencia;Auspex
-Nosferatu;"Su olor y aspecto son repulsivos, uno podría llegar a decir monstruosos, ""No busco problemas, pero si vienen, me escondo de ellos.""";/Imagenes/a.jpg;Potencia;Fortaleza;Protean;Animalismo
-Ventrue;Arrogantes, líderes, gozan de gran influencia tanto en el mundo de los mortales como en el de los no-muertos.;/Imagenes/a.jpg;Protean;Celeridad;Potencia;Auspex
+Brujah;Individualistas, locuaces y turbulentos, violentos, sienten mucho afecto por la idea del cambio social.;a.jpg;Potencia;Fortaleza;Celeridad;Presencia
+Tremere;Son arrogantes, cerrados, inteligentes y organizados.;a.jpg;Celeridad;Dominación;Presencia;Auspex
+Nosferatu;"Su olor y aspecto son repulsivos, uno podría llegar a decir monstruosos, ""No busco problemas, pero si vienen, me escondo de ellos.""";a.jpg;Potencia;Fortaleza;Protean;Animalismo
+Ventrue;Arrogantes, líderes, gozan de gran influencia tanto en el mundo de los mortales como en el de los no-muertos.;a.jpg;Protean;Celeridad;Potencia;Auspex
+>>>>>>> 9cea0c64d5d58163fdeb4091f20fb321fa52c576
