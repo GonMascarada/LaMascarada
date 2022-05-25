@@ -103,7 +103,7 @@ public final class Controlador {
         texto = getTextoCorrecto(textos);
         partida.getEscena().setTexto(texto);
         partida.setUltimaPista(texto);
-        
+
         //Guardado incial de la partida.
         guardarPartida();
         // Mostramos la primera escena.
@@ -132,6 +132,12 @@ public final class Controlador {
         //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
         texto = getTextoCorrecto(textos);
 
+        //3.1 Cambiamos -- por nombre del npc y ++ por el del protagonista.
+        texto = texto.replace("++", partida.getProtagonista().getNombre() + ": ");
+        if (partida.getEscena().hayPnj()) {
+            texto = texto.replace("--", partida.getEscena().getPnj().getNombre() + ": ");
+        }
+
         //4.Insertar a la escena el texto
         partida.getEscena().setTexto(texto);
 
@@ -143,7 +149,7 @@ public final class Controlador {
             }
         }
         partida.getEscena().setOpciones(opciones);
-
+        System.out.println("Escena: " + partida.getEscena().getIdEscena() + " tiene " + partida.getEscena().getOpciones().size() + " opciones.");
         // 6.Mostrar la escena.
         lanzar();
 
