@@ -42,7 +42,7 @@ public class footer2 extends javax.swing.JPanel{
         opcion2.setRolloverEnabled(true);
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
-        opcion1.setText(opciones.get(1).getTexto());
+        opcion2.setText(opciones.get(1).getTexto());
 
         
     }
@@ -68,6 +68,11 @@ public class footer2 extends javax.swing.JPanel{
         opcion2.setBorderPainted(false);
         opcion2.setContentAreaFilled(false);
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion2MouseClicked(evt);
+            }
+        });
         opcion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcion2ActionPerformed(evt);
@@ -78,6 +83,11 @@ public class footer2 extends javax.swing.JPanel{
         opcion1.setText("jButton1");
         opcion1.setContentAreaFilled(false);
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcion1MouseClicked(evt);
+            }
+        });
         opcion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcion1ActionPerformed(evt);
@@ -113,6 +123,18 @@ public class footer2 extends javax.swing.JPanel{
     private void opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_opcion1ActionPerformed
+
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(0));
+        vista.dispose();
+    }//GEN-LAST:event_opcion1MouseClicked
+
+    private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
+        // TODO add your handling code here:
+        controlador.escoger(opciones.get(1));
+        vista.dispose();
+    }//GEN-LAST:event_opcion2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

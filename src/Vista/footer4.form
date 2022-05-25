@@ -54,6 +54,9 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion2">
       <Properties>
@@ -61,6 +64,9 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion2MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion3">
       <Properties>
@@ -68,6 +74,9 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion3MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcion4">
       <Properties>
@@ -75,6 +84,9 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="opcion4MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
