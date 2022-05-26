@@ -4,20 +4,31 @@
  */
 package Vista;
 
-import Mascarada.Clan;
 import Controlador.Controlador;
+import Mascarada.Clan;
 import Mascarada.Partida;
 import java.awt.Color;
-import java.awt.List;
+
+
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
+import javax.swing.JList;
+
 import javax.swing.JPanel;
-import jdk.jfr.Event;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+
 
 /**
  *
@@ -25,19 +36,18 @@ import jdk.jfr.Event;
  */
 public class Inicio extends javax.swing.JFrame {
 
-    private Controlador controlador;
-    
+    private final Controlador controlador;
 
-    private ArrayList<Clan> clanes;
-    
-    private ArrayList<Partida>partida;
-    
-    private JPanel carga;
+    private final ArrayList<Clan> clanes;
+
+    private final ArrayList<Partida> partidas;
 
     /**
      * Creates new form Inicio
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
-    public Inicio() {
+    public Inicio() throws IOException, ParseException {
         initComponents();
         //Elementos del Jlist
         //Elemento que me trae la info
@@ -45,22 +55,53 @@ public class Inicio extends javax.swing.JFrame {
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
         //Lista de partidas para borrar y cargar
-        partida = controlador.getListaPartidas();
-        //ArrayLista para la carga y el borrado de partidas
-        DefaultListModel cargarBorrar = new DefaultListModel();
+        partidas = controlador.getListaPartidas();
+        //Hago invisible el label de errores.
+        jLabelError.setVisible(false);
+
         //ArrayList para el Jlist
         DefaultListModel modelo = new DefaultListModel();
         //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
-        for (int i = 0; i < partida.size(); i++) {
-            carga = new Vista.CargaBorrar();
-            cargarBorrar.addElement(carga);
-        }
+
         for (int i = 0; i < clanes.size(); i++) {
             modelo.addElement(clanes.get(i).getNombre());
         }
         ListaClanes1.setModel(modelo);
-        ListaBorrar.setModel(cargarBorrar);
-        LisjtaCargar.setModel(cargarBorrar);
+        ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        modelo = new DefaultListModel();
+
+        //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
+        Cabecera cabecera;
+        for (int i = 0; i < partidas.size(); i++) {
+            cabecera = new Cabecera();
+            cabecera.insertarDatosPartida(partidas.get(i));
+            modelo.addElement(cabecera);
+        }
+        ListaCargar.setModel(modelo);
+    }
+
+    public void ShowItemList(List<JPanel> paneList, JPanel container) {
+
+        DefaultListModel model = new DefaultListModel();
+
+        for (JPanel pane : paneList) {
+            model.addElement(pane);
+        }
+        final JList list = new JList(model);
+        list.setFixedCellHeight(40);
+        list.setSelectedIndex(-1);
+
+        list.setCellRenderer(new Cabecera());
+        JScrollPane scroll1 = new JScrollPane(list);
+        final JScrollBar scrollBar = scroll1.getVerticalScrollBar();
+        scrollBar.addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                System.out.println("JScrollBar's current value = " + scrollBar.getValue());
+            }
+        });
+
+        container.add(scroll1);
 
     }
 
@@ -90,26 +131,29 @@ public class Inicio extends javax.swing.JFrame {
         Habilidad2 = new javax.swing.JCheckBox();
         Habilidad3 = new javax.swing.JCheckBox();
         Habilidad4 = new javax.swing.JCheckBox();
+        jLabelError = new javax.swing.JLabel();
+        CargarPartida = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ListaCargar = new javax.swing.JList<>();
         BorrarPartida = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaBorrar = new javax.swing.JList<>();
-        CargarPartida = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        LisjtaCargar = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LabelClanes.setText("Seleccione un clan:");
 
-        labelNombre.setText("introduzca un nombre");
+        labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNombre.setText("Introduzca un nombre");
 
-        TextNombre.setText("nombre......");
+        TextNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextNombreActionPerformed(evt);
             }
         });
 
+        Labeldificultad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Labeldificultad.setText("Seleccione la dificultad");
 
         BoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
@@ -150,31 +194,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(DescripcionClan);
 
-        Habilidad1.setText("jCheckBox1");
-
-        Habilidad2.setText("jCheckBox1");
-
-        Habilidad3.setText("jCheckBox1");
-
-        Habilidad4.setText("jCheckBox1");
+        jLabelError.setText("jLabel1");
 
         javax.swing.GroupLayout CrearPartidaLayout = new javax.swing.GroupLayout(CrearPartida);
         CrearPartida.setLayout(CrearPartidaLayout);
         CrearPartidaLayout.setHorizontalGroup(
             CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CrearPartidaLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(CrearPartidaLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CrearPartidaLayout.createSequentialGroup()
-                            .addGap(280, 280, 280)
-                            .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(354, Short.MAX_VALUE))
             .addGroup(CrearPartidaLayout.createSequentialGroup()
                 .addGap(0, 110, Short.MAX_VALUE)
                 .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,14 +209,6 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(353, 353, 353)
-                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(Habilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
@@ -200,6 +217,16 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(Habilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addComponent(Habilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(356, 356, 356)
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Labeldificultad, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                    .addComponent(BoxDificultad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TextNombre)
+                    .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CrearPartidaLayout.setVerticalGroup(
@@ -217,20 +244,42 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(Habilidad2)
                     .addComponent(Habilidad3)
                     .addComponent(Habilidad4))
-                .addGap(42, 42, 42)
+                .addGap(50, 50, 50)
                 .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jLabelError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(56, 56, 56))
         );
 
         TabbedMain.addTab("Crear Partida", CrearPartida);
+
+        ListaCargar.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(ListaCargar);
+
+        javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
+        CargarPartida.setLayout(CargarPartidaLayout);
+        CargarPartidaLayout.setHorizontalGroup(
+            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
+        );
+        CargarPartidaLayout.setVerticalGroup(
+            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+        );
+
+        TabbedMain.addTab("Cargar Partida", CargarPartida);
 
         ListaBorrar.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -247,30 +296,10 @@ public class Inicio extends javax.swing.JFrame {
         );
         BorrarPartidaLayout.setVerticalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
         );
 
         TabbedMain.addTab("Borrar Partida", BorrarPartida);
-
-        LisjtaCargar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(LisjtaCargar);
-
-        javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
-        CargarPartida.setLayout(CargarPartidaLayout);
-        CargarPartidaLayout.setHorizontalGroup(
-            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
-        );
-        CargarPartidaLayout.setVerticalGroup(
-            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
-        );
-
-        TabbedMain.addTab("Cargar Partida", CargarPartida);
 
         javax.swing.GroupLayout FondoTotalLayout = new javax.swing.GroupLayout(FondoTotal);
         FondoTotal.setLayout(FondoTotalLayout);
@@ -280,7 +309,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         FondoTotalLayout.setVerticalGroup(
             FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedMain, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(TabbedMain)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,14 +344,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_ListaClanes1MouseClicked
 
     private void ListaClanes1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaClanes1ValueChanged
-
-        // TODO add your handling code here:
         Clan clan;
         String nombreClan = ListaClanes1.getSelectedValue();
-        int contador=0;
-        HashMap<String, Boolean>habilidades ;
-                Iterator<String> it ;
-                String[]nombres=new String[4];
+        int contador = 0;
+        HashMap<String, Boolean> habilidades;
+        Iterator<String> it;
+        String[] nombres = new String[4];
         for (int i = 0; i < clanes.size(); i++) {
             clan = clanes.get(i);
             if (clan.getNombre().equalsIgnoreCase(nombreClan)) {
@@ -332,28 +359,70 @@ public class Inicio extends javax.swing.JFrame {
 
                 while (it.hasNext()) {
                     String nombreHabilidad = it.next();
-                    nombres[contador]=nombreHabilidad;
+                    nombres[contador] = nombreHabilidad;
                     contador++;
-                   
                 }
-                
-
             }
-        }Habilidad1.setText(nombres[0]);
+        }
+        Habilidad1.setText(nombres[0]);
         Habilidad2.setText(nombres[1]);
         Habilidad3.setText(nombres[2]);
         Habilidad4.setText(nombres[3]);
-        
-
     }//GEN-LAST:event_ListaClanes1ValueChanged
 
     private void CrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearMouseClicked
-        // TODO add your handling code here:
-
-        if (controlador.comprobarNombrePersonaje(TextNombre.getText())) {
-
-        } else {
-            TextNombre.setBackground(Color.red);
+        int indice, contador;
+        String error = "";
+        try {
+            if (controlador.comprobarNombrePersonaje(TextNombre.getText())) {
+                indice = ListaClanes1.getSelectedIndex();
+                contador = 0;
+                if (indice != -1) {
+                    if (Habilidad1.isSelected()) {
+                        contador++;
+                    }
+                    if (Habilidad2.isSelected()) {
+                        contador++;
+                    }
+                    if (Habilidad3.isSelected()) {
+                        contador++;
+                    }
+                    if (Habilidad4.isSelected()) {
+                        contador++;
+                    }
+                    if (contador == 2) {
+                        if (Habilidad1.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad1.getText());
+                        }
+                        if (Habilidad2.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad2.getText());
+                        }
+                        if (Habilidad3.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad3.getText());
+                        }
+                        if (Habilidad4.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad4.getText());
+                        }
+                        try {
+                            controlador.iniciarNuevaPartida(clanes.get(indice), TextNombre.getText(), BoxDificultad.getSelectedItem().toString());
+                            this.dispose();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        error = "Selecciona dos habilidades.";
+                    }
+                } else {
+                    error = "Selecciona un clan.";
+                }
+            } else {
+                error = "El nombre no está disponible.";
+            }
+            jLabelError.setText(error);
+            jLabelError.setVisible(true);
+            jLabelError.setForeground(Color.red);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -390,7 +459,15 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                try {
+                    try {
+                        new Inicio().setVisible(true);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -410,11 +487,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JCheckBox Habilidad4;
     private javax.swing.JLabel LabelClanes;
     private javax.swing.JLabel Labeldificultad;
-    private javax.swing.JList<String> LisjtaCargar;
     private javax.swing.JList<String> ListaBorrar;
+    private javax.swing.JList<String> ListaCargar;
     private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

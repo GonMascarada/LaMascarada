@@ -3,14 +3,17 @@ package Modelo;
 import Mascarada.*;
 import Vista.Inicio;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.sql.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -25,6 +28,8 @@ public class BaseDeDatos {
     private static final String URL_PERSONAJE = "C:\\Users\\Public\\Documents\\La Mascarada\\personaje.csv";
     private static final String URL_EQ_PA_PE = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje.csv";
     private static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
+    private static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
+
     private boolean conectado;
     private Connection conn;
     private Statement stmt;
@@ -32,8 +37,6 @@ public class BaseDeDatos {
 
     public BaseDeDatos() throws IOException {
         File directorio = new File("C:\\Users\\Public\\Documents\\La Mascarada");
-        SimpleDateFormat dtf;
-        Calendar calendar;
 
         if (!directorio.exists()) {
             directorio.mkdirs();
@@ -44,19 +47,10 @@ public class BaseDeDatos {
                 "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso");
         guardarEnFichero(URL_PARTIDA,
                 "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena");
-        dtf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
-        calendar = Calendar.getInstance();
-        java.util.Date dateObj = calendar.getTime();
-        java.util.Date dateObj2 = calendar.getTime();
-        dtf.format(dateObj);
-        dtf.format(dateObj2);
-        dateObj.setTime(0);
-        //System.out.println("0 contra ahora: " + dateObj.compareTo(dateObj2));
-        //System.out.println("ahora contra ahora: " + dateObj2.compareTo(dateObj2));
-        //System.out.println("ahora contra 0: " + dateObj2.compareTo(dateObj));
 
-        guardarEnFichero("C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv",
-                dateObj.toString()
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+        guardarEnFichero(URL_ULTMA_MODIFICACION,
+                dtf.format(LocalDateTime.now())
         );
 
         conectar();
@@ -78,7 +72,7 @@ public class BaseDeDatos {
             archivo.createNewFile();
             try {
                 FileWriter fw = new FileWriter(archivo); // Escritor
-                fw.write(texto + "\n");
+                fw.write(texto);
                 fw.close(); // Cerramos el escritor.
             } catch (IOException e) {
                 System.out.println(e);
@@ -91,7 +85,7 @@ public class BaseDeDatos {
      *
      * @return escena por muerte.
      */
-    public Escena getEscenaMuerte() {
+    public Escena getEscenaMuerte() throws IOException {
         return getEscena(999999999); //Habrá que marcar cual es la escena de muerte.
     }
 
@@ -101,7 +95,7 @@ public class BaseDeDatos {
      * @param idEscena de la escena.
      * @return una lista de parejas [condición, texto]
      */
-    public ArrayList<String[]> getTextos(int idEscena) {
+    public ArrayList<String[]> getTextos(int idEscena) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -116,6 +110,8 @@ public class BaseDeDatos {
                 textos.add(texto);
             }
         }
+        lector.close();
+        inputStream.close();
         return textos;
     }
 
@@ -125,7 +121,7 @@ public class BaseDeDatos {
      * @param idEscena identificador de la escena.
      * @return escena requerida.
      */
-    public Escena getEscena(int idEscena) {
+    public Escena getEscena(int idEscena) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/escena.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -141,6 +137,8 @@ public class BaseDeDatos {
                 escena = new Escena(linea, opciones);
             }
         }
+        lector.close();
+        inputStream.close();
         return escena;
     }
 
@@ -150,7 +148,7 @@ public class BaseDeDatos {
      * @param idEscena de la escena sobre la que se quieren las opciones.
      * @return Arraylist de Opciones.
      */
-    private ArrayList<Opcion> getOpciones(int idEscena) {
+    private ArrayList<Opcion> getOpciones(int idEscena) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -164,6 +162,8 @@ public class BaseDeDatos {
                 opciones.add(opcion);
             }
         }
+        lector.close();
+        inputStream.close();
         return opciones;
     }
 
@@ -174,8 +174,9 @@ public class BaseDeDatos {
      * @param idPartida de la partida en juego.
      * @return
      */
-    private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) {
-        Scanner lector = new Scanner(URL_EQ_PA_PE);
+    private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) throws IOException {
+        File file = new File(URL_EQ_PA_PE);
+        Scanner lector = new Scanner(file);
         String[] linea;
         ArrayList<Equipo> equipos = new ArrayList<>();
         Equipo equipo;
@@ -188,6 +189,7 @@ public class BaseDeDatos {
                 equipos.add(equipo);
             }
         }
+        lector.close();
         return equipos;
     }
 
@@ -197,7 +199,7 @@ public class BaseDeDatos {
      * @param nombre del personaje.
      * @return lista de su inventario.
      */
-    private ArrayList<Equipo> getEquiposIniciales(String nombre) {
+    private ArrayList<Equipo> getEquiposIniciales(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -212,6 +214,8 @@ public class BaseDeDatos {
                 equipos.add(equipo);
             }
         }
+        lector.close();
+        inputStream.close();
         return equipos;
     }
 
@@ -221,7 +225,7 @@ public class BaseDeDatos {
      * @param string nombre del equipo.
      * @return
      */
-    private Equipo getEquipo(String nombre) {
+    private Equipo getEquipo(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -235,6 +239,8 @@ public class BaseDeDatos {
                 equipo = new Equipo(linea);
             }
         }
+        lector.close();
+        inputStream.close();
         return equipo;
     }
 
@@ -244,9 +250,9 @@ public class BaseDeDatos {
      *
      * @return lista de partidas guardadas.
      */
-    public ArrayList<Partida> getListaPartidas() {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
-        Scanner lector = new Scanner(inputStream);
+    public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
+        File file = new File(URL_PERSONAJE);
+        Scanner lector = new Scanner(file);
         ArrayList<Partida> partidas = new ArrayList<>();
         String[] linea;
         int idPartida;
@@ -256,7 +262,8 @@ public class BaseDeDatos {
         lector.nextLine(); //Salta la cabecera del documento
         //Buscamos en personaje.csv todos los personajes que sean protagonistas.
         while (lector.hasNext()) {
-            linea = lector.nextLine().split(";");
+            String aux = lector.nextLine();
+            linea = aux.split(";");
             // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
             if (Integer.valueOf(linea[6]) == Utilidades.EA_PROTAGONISTA) {
                 clan = getClan(linea[7]);
@@ -267,12 +274,13 @@ public class BaseDeDatos {
                 partidas.add(partida); //Se añade la partida al listado.
             }
         }
+        lector.close();
         return partidas;
     }
 
-    public ArrayList<Persona> getPNJs(int idPartida) {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
-        Scanner lector = new Scanner(inputStream);
+    public ArrayList<Persona> getPNJs(int idPartida) throws IOException {
+        File file = new File(URL_PERSONAJE);
+        Scanner lector = new Scanner(file);
         ArrayList<Persona> pnjs = new ArrayList<>();
         String[] linea;
         Clan clan;
@@ -291,6 +299,7 @@ public class BaseDeDatos {
                 }
             }
         }
+        lector.close();
         return pnjs;
     }
 
@@ -300,18 +309,19 @@ public class BaseDeDatos {
      * @param idPartida identifiador de la partida.
      * @return una partida.
      */
-    public Partida getPartida(int idPartida) {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
-        Scanner lector = new Scanner(inputStream);
+    public Partida getPartida(int idPartida) throws IOException, ParseException {
+        File file = new File(URL_PARTIDA);
+        Scanner lector = new Scanner(file);
         String[] linea;
         Partida partida = new Partida();
         boolean encontrado = false;
+
         lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && (!encontrado))) {
             linea = lector.nextLine().split(";");
             if (Integer.parseInt(linea[0]) == idPartida) {
                 partida.setIdPartida(Integer.parseInt(linea[0]));
-                partida.setFecha(new java.util.Date(linea[1])); //Revisar
+                partida.setFecha(linea[1]); //Revisar
                 partida.setTiempo(Integer.parseInt(linea[2]));
                 partida.setProgreso(Integer.parseInt(linea[3]));
                 partida.setSedDeSangre(Integer.parseInt(linea[4]));
@@ -321,6 +331,7 @@ public class BaseDeDatos {
                 encontrado = true;
             }
         }
+        lector.close();
         return partida;
     }
 
@@ -340,7 +351,7 @@ public class BaseDeDatos {
      *
      * @return lista de clanes.
      */
-    public ArrayList<Clan> getListaClanes() {
+    public ArrayList<Clan> getListaClanes() throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Clan> clanes = new ArrayList<>();
@@ -352,6 +363,8 @@ public class BaseDeDatos {
             clan = new Clan(linea);
             clanes.add(clan);
         }
+        lector.close();
+        inputStream.close();
         return clanes;
     }
 
@@ -361,7 +374,7 @@ public class BaseDeDatos {
      * @param nombre
      * @return lista de clanes.
      */
-    public Clan getClan(String nombre) {
+    public Clan getClan(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         Clan clan = new Clan();
@@ -375,13 +388,15 @@ public class BaseDeDatos {
                 encontrado = true;
             }
         }
+        lector.close();
+        inputStream.close();
         return clan;
     }
 
     /**
      * Crea la sesión con la base de datos.
      */
-    private void conectar() {
+    private void conectar() throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/conexionBD.csv");
         Scanner lector = new Scanner(inputStream);
         String[] conexion = new String[3];// url, user y pass en ese orden.
@@ -408,6 +423,8 @@ public class BaseDeDatos {
             System.out.println("Error: " + e);
             conectado = false;
         }
+        lector.close();
+        inputStream.close();
     }
 
     /**
@@ -425,17 +442,71 @@ public class BaseDeDatos {
      *
      * @param partida a guardar.
      */
-    public void guardarPartida(Partida partida) {
+    public void guardarPartida(Partida partida) throws FileNotFoundException {
         int id;
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
         id = getIdGuardado(partida.getIdPartida(), partida.getProgreso());
+        partida.setIdPartida(id);
 
         // 2.Guardar los datos de la partida.
+        escribirPartida(partida.getInfoPartida());
+
         // 3.Guardar los datos de los personajes, protagonista incluido.
+        escribirPersonajes(partida.getInfoPersonajes());
+
         // 4.Guardar los datos de los objetos de cada personaje.
+        escribirObjetos(partida.getInfoObjetos());
         // 5.Sincronizar los datos locales con la base de datos.
         sincronizar();
+    }
+
+    /**
+     * Almacena los datos de una partida en el fichero correspondiente.
+     *
+     * @param partida
+     */
+    private void escribirPartida(String info) {
+        File f = new File(URL_PARTIDA);
+        try {
+            FileWriter fw = new FileWriter(f, true); // Escritor
+            fw.write("\n" + info);
+            fw.close(); // Cerramos el escritor.
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * Almacena los datos de todos los personajes involucrados en una partida en
+     * el fichero correspondiente.
+     *
+     * @param infoPersonajes
+     */
+    private void escribirPersonajes(String[] infoPersonajes) {
+        File f = new File(URL_PERSONAJE);
+        try {
+            FileWriter fw = new FileWriter(f, true); // Escritor
+            for (int i = 0; i < infoPersonajes.length; i++) {
+                fw.write("\n" + infoPersonajes[i]);
+            }
+            fw.close(); // Cerramos el escritor.
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void escribirObjetos(ArrayList<String> infoObjetos) {
+                File f = new File(URL_EQ_PA_PE);
+        try {
+            FileWriter fw = new FileWriter(f, true); // Escritor
+            for (int i = 0; i < infoObjetos.size(); i++) {
+                fw.write("\n" + infoObjetos.get(i));
+            }
+            fw.close(); // Cerramos el escritor.
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -462,18 +533,24 @@ public class BaseDeDatos {
      * @param nombre
      * @return true si está disponible, false en otro caso.
      */
-    public boolean comprobarNombrePersonaje(String nombre) {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
-        Scanner lector = new Scanner(inputStream);
+    public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
+        File file = new File(URL_PERSONAJE);
+        Scanner lector = new Scanner(file);
         String[] linea;
         boolean disponible = true;
-        lector.nextLine(); //Salta la cabecera del documento
-        while ((lector.hasNext() && disponible)) {
-            linea = lector.nextLine().split(";");
-            if (linea[0].equals(nombre)) {
-                disponible = false;
+
+        if (nombre.contains(";")) {
+            return false;
+        } else {
+            lector.nextLine(); //Salta la cabecera del documento
+            while ((lector.hasNext() && disponible)) {
+                linea = lector.nextLine().split(";");
+                if (linea[0].equals(nombre)) {
+                    disponible = false;
+                }
             }
         }
+        lector.close();
         return disponible;
     }
 
@@ -486,10 +563,10 @@ public class BaseDeDatos {
      * @return el mismo idPartida si se deben sobreescribir esos datos, o un
      * nuevo id donde hacerlo.
      */
-    private int getIdGuardado(int idPartida, int progreso) {
+    private int getIdGuardado(int idPartida, int progreso) throws FileNotFoundException {
         int id = 0;
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
-        Scanner lector = new Scanner(inputStream);
+        File file = new File(URL_PARTIDA);
+        Scanner lector = new Scanner(file);
         String[] linea;
         lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
@@ -502,20 +579,22 @@ public class BaseDeDatos {
             }
         }
         id++;
+        lector.close();
         return id;
     }
 
     /**
-     * Devuelve una Partida con todos los datos iniciales para poder jugar. Y
+     * Devuelve una Partida con todos los datos iniciales para poder jugar.Y
      * almacena los datos de la nueva partida.
      *
+     * @param protagonista
      * @return Partida.
+     * @throws java.io.IOException
      */
-    public Partida iniciarNuevaPartida(Vampire protagonista) {
+    public Partida iniciarNuevaPartida(Vampire protagonista) throws IOException {
         Partida partida = new Partida();
         Escena primera;
-        SimpleDateFormat dtf;
-        Calendar calendar;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
 
         // Insercción protagonista, primera escena e id.
         partida.setProtagonista(protagonista);
@@ -523,11 +602,7 @@ public class BaseDeDatos {
         partida.setEscena(primera);
         partida.setIdPartida(getNuevoIdPartida());
         // Insercción de la hora actual.
-        dtf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
-        calendar = Calendar.getInstance();
-        java.util.Date dateObj = calendar.getTime();
-        dtf.format(dateObj);
-        partida.setFecha(dateObj);
+        partida.setFecha(dtf.format(LocalDateTime.now()));
         // Insercción del tiempo, progreso, sed de sangre y sospecha.
         partida.setTiempo(0);
         partida.setProgreso(0);
@@ -535,6 +610,7 @@ public class BaseDeDatos {
         partida.setSospecha(0);
         // Insercción de los npc´s
         ArrayList<Persona> pnjs = getPNJsIniciales();
+        partida.setPersonajes(pnjs);
         return partida;
     }
 
@@ -544,10 +620,10 @@ public class BaseDeDatos {
      *
      * @return un número de id libre.
      */
-    private int getNuevoIdPartida() {
+    private int getNuevoIdPartida() throws IOException {
         ArrayList<Integer> ids = new ArrayList<>();
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/partida.csv");
-        Scanner lector = new Scanner(inputStream);
+        File file = new File(URL_PARTIDA);
+        Scanner lector = new Scanner(file);
         String[] linea;
         int id;
 
@@ -559,21 +635,24 @@ public class BaseDeDatos {
         Collections.sort(ids);
         id = 0;
         for (int i = 0; i < ids.size(); i++) {
+            System.out.println("Id: " + ids.get(id));
             if (ids.get(i) == id) {
                 id++;
             } else {
                 return id;
             }
         }
+        lector.close();
         return id;
     }
 
     /**
-     * Extrae del jar los pnjs en su estado básico para el juego.
+     * Extrae del jar los pnjs en su estado básico para el juego. A todos se les
+     * trata como modificados.
      *
      * @return lista de personas o vampiros
      */
-    private ArrayList<Persona> getPNJsIniciales() {
+    private ArrayList<Persona> getPNJsIniciales() throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Persona> pnjs = new ArrayList<>();
@@ -585,13 +664,20 @@ public class BaseDeDatos {
             linea = lector.nextLine().split(";");
             ArrayList<Equipo> equipos = getEquiposIniciales(linea[0]);
             if (linea[7].equals("Humano")) {
-                pnjs.add(new Persona(linea, equipos));
+                Persona p = new Persona(linea, equipos);
+                //Fuerzo que hayan sido modificados
+                p.setVidaActual(p.getVidaActual());
+                pnjs.add(p);
             } else {
                 clan = getClan(linea[7]);
-                pnjs.add(new Vampire(clan, linea, equipos));
+                Vampire v = new Vampire(clan, linea, equipos);
+                v.setVidaActual(v.getVidaActual());
+                pnjs.add(v);
             }
 
         }
+        lector.close();
+        inputStream.close();
         return pnjs;
     }
 
@@ -599,7 +685,7 @@ public class BaseDeDatos {
      * Muestra por pantalla incoherencias en las escenas.
      *
      */
-    public void comprobarConsistencia() {
+    public void comprobarConsistencia() throws IOException {
         HashMap<Integer, Integer> opcionesesenas = new HashMap<>();
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
         Scanner lector = new Scanner(inputStream);
@@ -626,5 +712,7 @@ public class BaseDeDatos {
                 System.out.println("No hay opciones para: " + aux);
             }
         }
+        lector.close();
+        inputStream.close();
     }
 }

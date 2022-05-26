@@ -1,23 +1,10 @@
 package Controlador;
 
 import Modelo.BaseDeDatos;
-import Mascarada.Clan;
-import Controlador.Controlador;
-import Mascarada.Opcion;
 import Mascarada.Partida;
-import Vista.Inicio;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.jar.JarEntry;
-import java.util.jar.JarOutputStream;
-import java.util.zip.Deflater;
+
 
 /**
  * Main para hacer pruebas

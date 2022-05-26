@@ -7,7 +7,10 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -16,8 +19,8 @@ import javax.swing.JButton;
  * @author Alumno
  */
 public class footer4 extends javax.swing.JPanel {
-     ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-muyestrecho.png"));
-    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-muyestrecho.png"));
+     ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-4.png"));
     
     private Controlador controlador;
     private VistaEscena vista;
@@ -77,7 +80,7 @@ public class footer4 extends javax.swing.JPanel {
 
         setOpaque(false);
 
-        opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-muyestrecho.png"))); // NOI18N
+        opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion1.setText("jButton1");
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,7 +89,7 @@ public class footer4 extends javax.swing.JPanel {
             }
         });
 
-        opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-muyestrecho.png"))); // NOI18N
+        opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion2.setText("jButton1");
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,7 +98,7 @@ public class footer4 extends javax.swing.JPanel {
             }
         });
 
-        opcion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-muyestrecho.png"))); // NOI18N
+        opcion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion3.setText("jButton1");
         opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,7 +107,7 @@ public class footer4 extends javax.swing.JPanel {
             }
         });
 
-        opcion4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-muyestrecho.png"))); // NOI18N
+        opcion4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion4.setText("jButton1");
         opcion4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,51 +121,69 @@ public class footer4 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
-                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
-                .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
-        // TODO add your handling code here:
-        controlador.escoger(opciones.get(0));
-        vista.dispose();
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(0));
+             vista.dispose();
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
         
     }//GEN-LAST:event_opcion1MouseClicked
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
-        // TODO add your handling code here:
-        controlador.escoger(opciones.get(1));
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(1));
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
         vista.dispose();
     }//GEN-LAST:event_opcion2MouseClicked
 
     private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
-        // TODO add your handling code here:
-        controlador.escoger(opciones.get(2));
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(2));
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
         vista.dispose();
     }//GEN-LAST:event_opcion3MouseClicked
 
     private void opcion4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion4MouseClicked
-        // TODO add your handling code here:
-        controlador.escoger(opciones.get(3));
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(3));
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
         vista.dispose();
     }//GEN-LAST:event_opcion4MouseClicked
 

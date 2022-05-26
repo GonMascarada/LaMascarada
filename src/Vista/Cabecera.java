@@ -7,14 +7,25 @@ package Vista;
 import Mascarada.Partida;
 import Mascarada.Utilidades;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.ImageIcon;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
+
+  
 /**
  *
  * @author Alumno
  */
-public class Cabecera extends javax.swing.JPanel {
-
+public class Cabecera extends javax.swing.JPanel implements ListCellRenderer{
+@Override
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        JPanel renderer = (JPanel) value;
+        renderer.setBackground(isSelected ? Color.red : list.getBackground());
+        return renderer;
+    }
     /**
      * Creates new form CabeceraImport
      */
@@ -35,10 +46,21 @@ public class Cabecera extends javax.swing.JPanel {
         progreso.setForeground(Color.white);
         tiempoJugado.setForeground(Color.white);
         tiempoJugadoDato.setForeground(Color.white);
-        vida.setForeground(Color.white);
-       
+        vida.setForeground(Color.white);   
 
     }
+
+ 
+ 
+   
+    
+
+
+
+
+   
+    
+
 
     /**
      * Inserta y muestra los datos más relevantes de una partida.
@@ -211,4 +233,5 @@ public class Cabecera extends javax.swing.JPanel {
     private javax.swing.JLabel tiempoJugadoDato;
     private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
+
 }
