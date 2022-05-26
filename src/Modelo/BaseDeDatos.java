@@ -501,7 +501,7 @@ public class BaseDeDatos {
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             for (int i = 0; i < infoObjetos.size(); i++) {
-                fw.write("\n" + infoObjetos.get(i));
+                fw.write(infoObjetos.get(i));
             }
             fw.close(); // Cerramos el escritor.
         } catch (IOException e) {
@@ -538,8 +538,8 @@ public class BaseDeDatos {
         Scanner lector = new Scanner(file);
         String[] linea;
         boolean disponible = true;
-
-        if (nombre.contains(";")) {
+        String aux = nombre.replace(" ", "");
+        if ((nombre.contains(";"))||(aux.equals(""))) {
             return false;
         } else {
             lector.nextLine(); //Salta la cabecera del documento

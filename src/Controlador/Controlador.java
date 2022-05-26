@@ -240,12 +240,14 @@ public final class Controlador {
                 }
             }
             case Utilidades.OP_OBTENER_MAPA -> {
+                System.out.println("Vamos a obtener el mapa");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
                     if (e.getNombre().equals("")){
                         System.out.println("Error al obtener el mapa, el npc no lo tiene.");
                     }
                     partida.getProtagonista().addObjeto(e);
+                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
 
@@ -354,7 +356,9 @@ public final class Controlador {
                 }
             }
             case Utilidades.SI_MAPA -> {
+                System.out.println("Compruebo si tiene mapa.");
                 if (buscarEquipo("Mapa")) {
+                    System.out.println("Mapa encontrado.");
                     cumplida = true;
                 }
             }

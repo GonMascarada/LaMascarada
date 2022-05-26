@@ -15,8 +15,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-
-  
 /**
  *
  * @author Alumno
@@ -24,6 +22,7 @@ import javax.swing.ListCellRenderer;
 public class Cabecera extends javax.swing.JPanel {
 
     private Partida partida;
+
     /** origin 
      * Creates new form CabeceraImport
      */
@@ -44,27 +43,10 @@ public class Cabecera extends javax.swing.JPanel {
         progreso.setForeground(Color.white);
         tiempoJugado.setForeground(Color.white);
         tiempoJugadoDato.setForeground(Color.white);
-        vida.setForeground(Color.white); 
+        vida.setForeground(Color.white);
+
         
-        ImageIcon ImagenEscena=new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
-        Image image = ImagenEscena.getImage();
-        Image newimg = image.getScaledInstance( foto.getWidth(),foto.getHeight(),  java.awt.Image.SCALE_SMOOTH); 
-        ImagenEscena = new ImageIcon(newimg);
-        foto.setIcon(ImagenEscena);
-
     }
-
- 
- 
-   
-    
-
-
-
-
-   
-    
-
 
     /**
      * Inserta y muestra los datos más relevantes de una partida.
@@ -88,8 +70,13 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
         System.out.println(partida.getProtagonista().getClan().getImagen());
-        ImageIcon imagen =  new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
-        foto.setIcon(imagen);
+        //ImageIcon imagen = new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
+       // foto.setIcon(imagen);
+        ImageIcon ImagenEscena = new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
+        Image image = ImagenEscena.getImage();
+        Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+        ImagenEscena = new ImageIcon(newimg);
+        foto.setIcon(ImagenEscena);
 
     }
 
