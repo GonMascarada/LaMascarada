@@ -9,9 +9,6 @@ import Mascarada.Clan;
 import Mascarada.Partida;
 import java.awt.Color;
 
-
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -23,12 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
-import javax.swing.JList;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,8 +34,11 @@ public class Inicio extends javax.swing.JFrame {
 
     private final ArrayList<Partida> partidas;
 
+    private Partida partida;
+
     /**
      * Creates new form Inicio
+     *
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
@@ -68,22 +63,32 @@ public class Inicio extends javax.swing.JFrame {
         }
         ListaClanes1.setModel(modelo);
         ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-        modelo = new DefaultListModel();
-
-       /* //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
-        Cabecera cabecera;
-        for (int i = 0; i < partidas.size(); i++) {
-            cabecera = new Cabecera();
-            cabecera.insertarDatosPartida(partidas.get(i));
-            modelo.addElement(cabecera);
-        }
-        ListaCargar.setModel(modelo);*/
        
-       
-       
-       
+       cargarDatosPartidas();
+        
     }
 
+    public void cargarDatosPartidas() {
+
+        String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Teimpo Jugado", "Fecha"};
+        DefaultTableModel model = new DefaultTableModel(null, columnNames);
+        Partida parti = new Partida();
+        List<Partida> listadatos = parti.getDatos();
+        for (Partida prod : listadatos) {
+
+            Object[] data = new Object[columnNames.length];
+            
+            data[0]= prod.getProtagonista().getNombre();
+            data[0]= prod.getProtagonista().getClan();
+            data[0]= prod.getProtagonista().getHabilidades();
+            data[0]= prod.getProtagonista().getHabilidades();
+            data[0]= prod.getTiempo();
+            data[0]= prod.getFecha();
+            
+            model.addRow(data);
+        }
+        jTable1.setModel(model);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
