@@ -8,7 +8,10 @@ import Controlador.Controlador;
 import Mascarada.Equipo;
 import Mascarada.Partida;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -23,7 +26,7 @@ public class FichaAuspex extends javax.swing.JFrame {
     /**
      * Creates new form FichaAuspex
      */
-    public FichaAuspex() {
+    public FichaAuspex() throws IOException {
         initComponents();
         controlador = new Controlador();
         //Lista de la informacion de los clanes
@@ -238,7 +241,11 @@ public class FichaAuspex extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FichaAuspex().setVisible(true);
+                try {
+                    new FichaAuspex().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(FichaAuspex.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

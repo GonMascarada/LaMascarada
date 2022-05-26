@@ -46,8 +46,7 @@ public class Cabecera extends javax.swing.JPanel implements ListCellRenderer{
         progreso.setForeground(Color.white);
         tiempoJugado.setForeground(Color.white);
         tiempoJugadoDato.setForeground(Color.white);
-        vida.setForeground(Color.white);
-       
+        vida.setForeground(Color.white);   
 
     }
 

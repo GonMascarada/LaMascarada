@@ -135,4 +135,40 @@ public class Persona {
         this.equipacion = equipacion;
         cambiado = true;
     }
+
+    /**
+     * Devuelve la información más básica sobre un personaje.
+     *
+     * @return
+     */
+    public String getInfoBasica() {
+        String resultado;
+        resultado = nombre + ";" + ataque + ";" + defensa + ";" + vidaMax + ";";
+        resultado += vidaActual + ";" + dinero + ";" + estadoDeAnimoActual + ";";
+        return resultado;
+    }
+
+    /**
+     * Devuelve una lista de todos los equipos del personaje con el formato
+     * adecuado para poder ser escritos en equipo-partida-personaje.csv
+     *
+     * @return
+     */
+    public String getInfoEquipo(int idPartida) {
+        String resultado = "";
+        Equipo e;
+        for (int i = 0; i < equipacion.size(); i++) {
+            e = equipacion.get(i);
+            resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
+            resultado += nombre + ";" + e.isEnUso();
+        }
+        return resultado;
+    }
+
+    @Override
+    public String toString() {
+        String resultado = getInfoBasica();
+        resultado += "Humano" + ";" + ";" + ";";
+        return resultado;
+    }
 }

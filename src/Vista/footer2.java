@@ -7,7 +7,10 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -124,15 +127,23 @@ public class footer2 extends javax.swing.JPanel{
     }//GEN-LAST:event_opcion1ActionPerformed
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
-        // TODO add your handling code here:
-        controlador.escoger(opciones.get(0));
-        vista.dispose();
+        try {
+            // TODO add your handling code here:
+            controlador.escoger(opciones.get(0));
+            vista.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(footer2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_opcion1MouseClicked
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
-        // TODO add your handling code here:
-        controlador.escoger(opciones.get(1));
-        vista.dispose();
+        try {
+            // TODO add your handling code here:
+            controlador.escoger(opciones.get(1));
+            vista.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(footer2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_opcion2MouseClicked
 
 

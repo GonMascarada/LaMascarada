@@ -14,7 +14,7 @@ public class Partida {
     private Vampire protagonista;
     private Escena escena;
     private int idPartida;
-    private Date fecha;
+    private String fecha;
     private int tiempo; //Se almacena en minutos
     private int progreso;
     private int sedDeSangre;
@@ -100,14 +100,14 @@ public class Partida {
     /**
      * @return the fecha
      */
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -193,5 +193,51 @@ public class Partida {
      */
     public void setPersonajes(ArrayList<Persona> personajes) {
         this.personajes = personajes;
+    }
+
+    /**
+     * Devuelve la información sobre una partida con el formato correcto para
+     * ser almacenado en partida.csv
+     *
+     * @return
+     */
+    public String getInfoPartida() {
+        String resultado;
+        resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso;
+        resultado += ";" + sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
+        resultado += escena.getIdEscena();
+        return resultado;
+    }
+
+    public String[] getInfoPersonajes() {
+        String[] pjs = new String[this.personajes.size() + 1];
+        //El primero será el protagonista
+        pjs[0] = protagonista.toString() + idPartida;
+        //Tras él, el resto de pnj´s
+        for (int i = 0; i < personajes.size(); i++) {
+            if (personajes.get(i) instanceof Persona) {
+                pjs[i + 1] = personajes.get(i).toString() + idPartida;
+            } else {
+                Vampire v = (Vampire) personajes.get(i);
+                pjs[i + 1] = v.toString() + idPartida;
+            }
+        }
+        return pjs;
+    }
+
+    /**
+     * Devuelve una lista en la que cada registro contiene la información de
+     * todo el equipo de un personaje, con el formato adecuado para ser escrito
+     * en equipo-partida-personaje.csv
+     *
+     * @return
+     */
+    public ArrayList<String> getInfoObjetos() {
+        ArrayList<String> resultado = new ArrayList<>();
+        resultado.add(protagonista.getInfoEquipo(idPartida));
+        for (int i = 0; i < personajes.size(); i++) {
+            resultado.add(personajes.get(i).getInfoEquipo(idPartida));
+        }
+        return resultado;
     }
 }
