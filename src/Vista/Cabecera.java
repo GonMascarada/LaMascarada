@@ -19,13 +19,8 @@ import javax.swing.ListCellRenderer;
  *
  * @author Alumno
  */
-public class Cabecera extends javax.swing.JPanel implements ListCellRenderer{
-@Override
-    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        JPanel renderer = (JPanel) value;
-        renderer.setBackground(isSelected ? Color.red : list.getBackground());
-        return renderer;
-    }
+public class Cabecera extends javax.swing.JPanel {
+
     /**
      * Creates new form CabeceraImport
      */

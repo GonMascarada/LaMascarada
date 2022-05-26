@@ -10,24 +10,18 @@ import Mascarada.Partida;
 import java.awt.Color;
 
 
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
-import javax.swing.JList;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 
 
 /**
@@ -80,30 +74,7 @@ public class Inicio extends javax.swing.JFrame {
         ListaCargar.setModel(modelo);
     }
 
-    public void ShowItemList(List<JPanel> paneList, JPanel container) {
-
-        DefaultListModel model = new DefaultListModel();
-
-        for (JPanel pane : paneList) {
-            model.addElement(pane);
-        }
-        final JList list = new JList(model);
-        list.setFixedCellHeight(40);
-        list.setSelectedIndex(-1);
-
-        list.setCellRenderer(new Cabecera());
-        JScrollPane scroll1 = new JScrollPane(list);
-        final JScrollBar scrollBar = scroll1.getVerticalScrollBar();
-        scrollBar.addAdjustmentListener(new AdjustmentListener() {
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent e) {
-                System.out.println("JScrollBar's current value = " + scrollBar.getValue());
-            }
-        });
-
-        container.add(scroll1);
-
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
