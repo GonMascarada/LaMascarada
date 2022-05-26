@@ -4,10 +4,12 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Partida;
 import Mascarada.Utilidades;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -19,13 +21,9 @@ import javax.swing.ListCellRenderer;
  *
  * @author Alumno
  */
-public class Cabecera extends javax.swing.JPanel implements ListCellRenderer{
-@Override
-    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        JPanel renderer = (JPanel) value;
-        renderer.setBackground(isSelected ? Color.red : list.getBackground());
-        return renderer;
-    }
+public class Cabecera extends javax.swing.JPanel {
+
+    private Partida partida;
     /**
      * Creates new form CabeceraImport
      */
@@ -46,7 +44,13 @@ public class Cabecera extends javax.swing.JPanel implements ListCellRenderer{
         progreso.setForeground(Color.white);
         tiempoJugado.setForeground(Color.white);
         tiempoJugadoDato.setForeground(Color.white);
-        vida.setForeground(Color.white);   
+        vida.setForeground(Color.white); 
+        
+        ImageIcon ImagenEscena=new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
+        Image image = ImagenEscena.getImage();
+        Image newimg = image.getScaledInstance( foto.getWidth(),foto.getHeight(),  java.awt.Image.SCALE_SMOOTH); 
+        ImagenEscena = new ImageIcon(newimg);
+        foto.setIcon(ImagenEscena);
 
     }
 

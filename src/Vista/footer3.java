@@ -43,16 +43,19 @@ public class footer3 extends javax.swing.JPanel {
         opcion1.setForeground(Color.white);
         opcion1.setText(opciones.get(0).getTexto());
         
+        
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
         opcion2.setForeground(Color.white);
         opcion2.setText(opciones.get(1).getTexto());
+        opcion1.setVisible(true);
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
         opcion3.setForeground(Color.white);
         opcion3.setText(opciones.get(2).getTexto());
+        opcion1.setVisible(true);
     }
 
    
