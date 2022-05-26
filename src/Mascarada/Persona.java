@@ -171,4 +171,31 @@ public class Persona {
         resultado += "Humano" + ";" + ";" + ";";
         return resultado;
     }
+
+    /**
+     * Quita un objeto al personaje, y lo retorna.
+     *
+     * @param nombre del objeto
+     * @return objeto pedido
+     */
+    public Equipo delObjeto(String nombre) {
+        Equipo e = new Equipo();
+        for (int i = 0; i < equipacion.size(); i++) {
+            if (equipacion.get(i).getNombre().equals(nombre)) {
+                cambiado = true;
+                return equipacion.remove(i);
+            }
+        }
+        return e;
+    }
+
+    /**
+     * Añade un objeto al iventario del personaje.
+     *
+     * @param equipo
+     */
+    public void addObjeto(Equipo equipo) {
+        equipacion.add(equipo);
+        cambiado = true;
+    }
 }

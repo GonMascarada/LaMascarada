@@ -15,6 +15,7 @@ public class Equipo {
     private int precio;
 
     public Equipo() {
+        nombre = "";
     }
 
     /**
