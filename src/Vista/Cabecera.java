@@ -4,16 +4,11 @@
  */
 package Vista;
 
-import Controlador.Controlador;
 import Mascarada.Partida;
 import Mascarada.Utilidades;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -21,9 +16,11 @@ import javax.swing.ListCellRenderer;
  */
 public class Cabecera extends javax.swing.JPanel {
 
-    private Partida partida;
+
+
 
     /** origin 
+
      * Creates new form CabeceraImport
      */
     public Cabecera() {
