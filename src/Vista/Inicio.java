@@ -79,11 +79,11 @@ public class Inicio extends javax.swing.JFrame {
             Object[] data = new Object[columnNames.length];
             
             data[0]= prod.getProtagonista().getNombre();
-            data[0]= prod.getProtagonista().getClan();
-            data[0]= prod.getProtagonista().getHabilidades();
-            data[0]= prod.getProtagonista().getHabilidades();
-            data[0]= prod.getTiempo();
-            data[0]= prod.getFecha();
+            data[1]= prod.getProtagonista().getClan();
+            data[2]= prod.getProtagonista().getHabilidades();
+            data[3]= prod.getProtagonista().getHabilidades();
+            data[4]= prod.getTiempo();
+            data[5]= prod.getFecha();
             
             model.addRow(data);
         }
