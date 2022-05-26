@@ -3,7 +3,9 @@ package Controlador;
 import Modelo.BaseDeDatos;
 import Mascarada.*;
 import Vista.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -55,7 +57,7 @@ public final class Controlador {
      *
      * @return lista de todas las partidas.
      */
-    public ArrayList<Partida> getListaPartidas() throws IOException {
+    public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
         return bbdd.getListaPartidas();
     }
 
@@ -65,7 +67,7 @@ public final class Controlador {
      * @param nombre a comprobar.
      * @return true si está disponible, false en otro caso.
      */
-    public boolean comprobarNombrePersonaje(String nombre) {
+    public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
         return bbdd.comprobarNombrePersonaje(nombre);
     }
 
@@ -73,12 +75,10 @@ public final class Controlador {
      * Inicia una nueva partida.
      *
      * @param clan del nuevo personaje.
-     * @param hab1 Nombre de la 1ª habilidad.
-     * @param hab2 Nombre de la 2ª habilidad.
      * @param nombre del nuevo personaje.
      * @param dificultad de la partida.
      */
-    public void iniciarNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) throws IOException {
+    public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad) throws IOException {
         String datos;
         Vampire vampire;
         ArrayList<String[]> textos;
@@ -86,12 +86,9 @@ public final class Controlador {
 
         //Datos del nuevo protagonista
         datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
-        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
-
-        //Asignamos sus dos habilidades
-        clan.setHabilidad(hab1);
-        clan.setHabilidad(hab2);
-
+        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";";
+        datos += Utilidades.DINERO + ";" + Utilidades.EA_PROTAGONISTA+ ";"+ ";";
+        datos += clan.getHabilidadesObtenidas();
         //Creamos al protagonista
         vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
 
@@ -167,7 +164,7 @@ public final class Controlador {
     /**
      * Guarda la partida en el estado actual.
      */
-    public void guardarPartida() {
+    public void guardarPartida() throws FileNotFoundException {
         // 1. Se eliminan los pnc´s que no han sufrido cambios.
         partida.borrarNpcsInalterados();
 
@@ -220,7 +217,7 @@ public final class Controlador {
      *
      * @param opcion la opción tomada.
      */
-    private void evaluarOpcion(Opcion opcion) {
+    private void evaluarOpcion(Opcion opcion) throws FileNotFoundException {
         switch (opcion.getAccion()) {
             case Utilidades.OP_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);

@@ -49,4 +49,11 @@ public class Vampire extends Persona {
         }
         return resultado;
     }
+
+    @Override
+    public String toString() {
+        String resultado = super.getInfoBasica();
+        resultado += clan.getNombre() + ";" + clan.getHabilidadesObtenidas();
+        return resultado;
+    }
 }
