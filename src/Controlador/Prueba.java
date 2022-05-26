@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.BaseDeDatos;
 import Mascarada.Partida;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 
@@ -16,7 +17,7 @@ public class Prueba {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         Controlador controlador = new Controlador();
         BaseDeDatos bd = new BaseDeDatos();
 /*
