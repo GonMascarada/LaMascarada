@@ -25,11 +25,9 @@ public class Tienda extends javax.swing.JFrame {
         this.controlador = controlador;
     }
     
-     public void cargarDatosPartidas(List<Equipo> equipos) {
-
+     public void cargarDatos(List<Equipo> equipos) {
         String[] columnNames = {"Nombre", "Atributo", "Precio"};
         DefaultTableModel model = new DefaultTableModel(null, columnNames);
-        Partida parti = new Partida();
         
         for (Equipo prod : equipos) {
 
@@ -153,7 +151,7 @@ public class Tienda extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         jButton3.setText("Vender");
-        cargarDatosPartidas(controlador.getPartida().getProtagonista().getEquipacion());
+        cargarDatos(controlador.getPartida().getProtagonista().getEquipacion());
         
         
     }//GEN-LAST:event_jButton1MouseClicked
@@ -161,7 +159,7 @@ public class Tienda extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         jButton3.setText("Comprar");
-        cargarDatosPartidas(controlador.getPartida().getEscena().getPnj().getEquipacion());
+        cargarDatos(controlador.getPartida().getEscena().getPnj().getEquipacion());
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
@@ -194,7 +192,7 @@ public class Tienda extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tienda().setVisible(true);
+                //new Tienda(controlador).setVisible(true);
             }
         });
     }

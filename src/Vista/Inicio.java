@@ -63,13 +63,13 @@ public class Inicio extends javax.swing.JFrame {
         }
         ListaClanes1.setModel(modelo);
         ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-       
-       cargarDatosPartidas();
-        
+        if (partidas.size() > 1) {
+            cargarDatosPartidas();
+        }
+
     }
 
     public void cargarDatosPartidas() {
-
         String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Teimpo Jugado", "Fecha"};
         DefaultTableModel model = new DefaultTableModel(null, columnNames);
         Partida parti = new Partida();
@@ -77,14 +77,14 @@ public class Inicio extends javax.swing.JFrame {
         for (Partida prod : listadatos) {
 
             Object[] data = new Object[columnNames.length];
-            
-            data[0]= prod.getProtagonista().getNombre();
-            data[1]= prod.getProtagonista().getClan();
-            data[2]= prod.getProtagonista().getHabilidades();
-            data[3]= prod.getProtagonista().getHabilidades();
-            data[4]= prod.getTiempo();
-            data[5]= prod.getFecha();
-            
+
+            data[0] = prod.getProtagonista().getNombre();
+            data[1] = prod.getProtagonista().getClan();
+            data[2] = prod.getProtagonista().getHabilidades();
+            data[3] = prod.getProtagonista().getHabilidades();
+            data[4] = prod.getTiempo();
+            data[5] = prod.getFecha();
+
             model.addRow(data);
         }
         jTable1.setModel(model);

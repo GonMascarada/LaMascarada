@@ -113,7 +113,7 @@ public final class Controlador {
      * @param opcion marca cuál será la nueva escena.
      */
     public void escoger(Opcion opcion) throws IOException {
-        Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
+        Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida());
         ArrayList<String[]> textos;
         ArrayList<Opcion> opciones;
         String texto;
@@ -243,7 +243,7 @@ public final class Controlador {
                 System.out.println("Vamos a obtener el mapa");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
-                    if (e.getNombre().equals("")){
+                    if (e.getNombre().equals("")) {
                         System.out.println("Error al obtener el mapa, el npc no lo tiene.");
                     }
                     partida.getProtagonista().addObjeto(e);
