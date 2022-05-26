@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.sql.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class BaseDeDatos {
                 dtf.format(LocalDateTime.now())
         );
 
-        conectar();
+        //conectar();
         if (conectado) {
             //           sincronizar();
         }
