@@ -9,9 +9,6 @@ import Mascarada.Clan;
 import Mascarada.Partida;
 import java.awt.Color;
 
-
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -23,12 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
-import javax.swing.JList;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,8 +34,11 @@ public class Inicio extends javax.swing.JFrame {
 
     private final ArrayList<Partida> partidas;
 
+    private Partida partida;
+
     /**
      * Creates new form Inicio
+     *
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
@@ -68,18 +63,32 @@ public class Inicio extends javax.swing.JFrame {
         }
         ListaClanes1.setModel(modelo);
         ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-        modelo = new DefaultListModel();
-
-        //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
-        Cabecera cabecera;
-        for (int i = 0; i < partidas.size(); i++) {
-            cabecera = new Cabecera();
-            cabecera.insertarDatosPartida(partidas.get(i));
-            modelo.addElement(cabecera);
-        }
-        ListaCargar.setModel(modelo);
+       
+       cargarDatosPartidas();
+        
     }
 
+    public void cargarDatosPartidas() {
+
+        String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Teimpo Jugado", "Fecha"};
+        DefaultTableModel model = new DefaultTableModel(null, columnNames);
+        Partida parti = new Partida();
+        List<Partida> listadatos = parti.getDatos();
+        for (Partida prod : listadatos) {
+
+            Object[] data = new Object[columnNames.length];
+            
+            data[0]= prod.getProtagonista().getNombre();
+            data[0]= prod.getProtagonista().getClan();
+            data[0]= prod.getProtagonista().getHabilidades();
+            data[0]= prod.getProtagonista().getHabilidades();
+            data[0]= prod.getTiempo();
+            data[0]= prod.getFecha();
+            
+            model.addRow(data);
+        }
+        jTable1.setModel(model);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,8 +118,9 @@ public class Inicio extends javax.swing.JFrame {
         Habilidad4 = new javax.swing.JCheckBox();
         jLabelError = new javax.swing.JLabel();
         CargarPartida = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ListaCargar = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         BorrarPartida = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaBorrar = new javax.swing.JList<>();
@@ -177,13 +187,13 @@ public class Inicio extends javax.swing.JFrame {
         CrearPartidaLayout.setHorizontalGroup(
             CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(0, 110, Short.MAX_VALUE)
+                .addGap(0, 90, Short.MAX_VALUE)
                 .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(CrearPartidaLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(Habilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,22 +247,38 @@ public class Inicio extends javax.swing.JFrame {
 
         TabbedMain.addTab("Crear Partida", CrearPartida);
 
-        ListaCargar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(ListaCargar);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable1);
+
+        jButton1.setText("Borrar seleccionados");
 
         javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
         CargarPartida.setLayout(CargarPartidaLayout);
         CargarPartidaLayout.setHorizontalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
+            .addComponent(jScrollPane4)
+            .addGroup(CargarPartidaLayout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         CargarPartidaLayout.setVerticalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addGroup(CargarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         TabbedMain.addTab("Cargar Partida", CargarPartida);
@@ -268,7 +294,7 @@ public class Inicio extends javax.swing.JFrame {
         BorrarPartida.setLayout(BorrarPartidaLayout);
         BorrarPartidaLayout.setHorizontalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
         );
         BorrarPartidaLayout.setVerticalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,14 +490,15 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel LabelClanes;
     private javax.swing.JLabel Labeldificultad;
     private javax.swing.JList<String> ListaBorrar;
-    private javax.swing.JList<String> ListaCargar;
     private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelError;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
 }
