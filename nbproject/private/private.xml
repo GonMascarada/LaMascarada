@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Controlador/Prueba.java</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/partida.csv</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Vista/botonMapa.png</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv.bak</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/escena.csv</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Vista/Mapa.java</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/opcion.csv</file>
+            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/texto-escena.csv</file>
             <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Modelo/BaseDeDatos.java</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/personaje.csv</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Imagenes/botonMapa.png</file>
-            <file>file:/C:/Users/admin/OneDrive/NETBEANS/VAMPIROMASCARADA/LaMascarada/src/Ficheros/equipo.csv.bak</file>
         </group>
     </open-files>
-=======
->>>>>>> 00a18f9a0c1415f0633fb8897b632df52682639e
 </project-private>

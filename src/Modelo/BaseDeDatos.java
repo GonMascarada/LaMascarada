@@ -30,22 +30,6 @@ public class BaseDeDatos {
     private Statement stmt;
 
 
-    public BaseDeDatos() {
-
-      conectar();
-
-
-        File directorio = new File("C:\\Users\\Public\\Documents\\LaMascarada");
-          if (!directorio.exists()) {
-            if (directorio.mkdirs()) {
-                System.out.println("Multiples directorios fueron creados");
-            } else {
-                System.out.println("Error al crear directorios");
-            }
-        }
-      //   conectar();
-   //     if (conectado) {
-
     public BaseDeDatos() throws IOException {
         File directorio = new File("C:\\Users\\Public\\Documents\\La Mascarada");
         SimpleDateFormat dtf;
@@ -78,7 +62,7 @@ public class BaseDeDatos {
         conectar();
         if (conectado) {
             //           sincronizar();
-   //     }
+        }
     }
 
     /**
