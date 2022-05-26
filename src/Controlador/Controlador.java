@@ -332,7 +332,7 @@ public final class Controlador {
      * @param condicion a comprobar.
      * @return true si se cumple la condición, false en otro caso.
      */
-    private boolean evaluarCondicionDeOpcion(int condicion) {
+    private boolean evaluarCondicionDeOpciona(int condicion) {
         boolean cumplida = false;
         Escena escena = partida.getEscena();
         switch (condicion) {
@@ -355,6 +355,7 @@ public final class Controlador {
             }
             case Utilidades.SI_MAPA -> {
                 if (buscarEquipo("Mapa")) {
+                    System.out.println("Mapa encontrado.");
                     cumplida = true;
                 }
             }
