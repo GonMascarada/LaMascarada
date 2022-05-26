@@ -3,6 +3,7 @@ package Mascarada;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Almacena todos los datos relevantes de una partida.
@@ -209,6 +210,11 @@ public class Partida {
         return resultado;
     }
 
+    /**
+     * Devuelve la información de los npcs con el formato adecuado.
+     *
+     * @return
+     */
     public String[] getInfoPersonajes() {
         String[] pjs = new String[this.personajes.size() + 1];
         //El primero será el protagonista
@@ -239,5 +245,22 @@ public class Partida {
             resultado.add(personajes.get(i).getInfoEquipo(idPartida));
         }
         return resultado;
+    }
+
+    /**
+     * Devuelve una lista con los datos de la partida.
+     *
+     * @return
+     */
+    public java.util.List getDatos() {
+        java.util.List<String> lista = new ArrayList<>();
+        lista.add(protagonista.getNombre());
+        lista.add(protagonista.getClan().getNombre());
+        String[] hab = protagonista.getHabilidades().split(";");
+        lista.add(hab[0]);
+        lista.add(hab[1]);
+        lista.add(String.valueOf(tiempo));
+        lista.add(String.valueOf(fecha));
+        return lista;
     }
 }
