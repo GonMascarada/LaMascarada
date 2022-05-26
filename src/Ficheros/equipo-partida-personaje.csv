@@ -1,3 +1,5 @@
-﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso
-Pistola;1;Vidente;true
-Garrote;1;Camarero;true
+﻿NombreEquipo;NombrePersonaje;EnUso
+Pistola;Vidente;true
+Garrote;Camarero;true
+Mapa;Camarera;true
+Azucarillo;Dueño;true

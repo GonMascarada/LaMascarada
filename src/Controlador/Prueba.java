@@ -28,7 +28,7 @@ public class Prueba {
         }
 
         System.out.println("\n\ngetListaPartidas");
- */       ArrayList<Partida> partidas = bd.getListaPartidas();
+// */       ArrayList<Partida> partidas = bd.getListaPartidas();
  /*       for (int i = 0; i < partidas.size(); i++) {
             System.out.println(partidas.get(i).toString());
         }

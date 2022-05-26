@@ -34,6 +34,7 @@ public class BaseDeDatos {
     private Connection conn;
     private Statement stmt;
 
+
     public BaseDeDatos() throws IOException {
         File directorio = new File("C:\\Users\\Public\\Documents\\La Mascarada");
 
