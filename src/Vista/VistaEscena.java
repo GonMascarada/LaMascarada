@@ -8,7 +8,9 @@ import Controlador.Controlador;
 import Mascarada.Escena;
 import Mascarada.Opcion;
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -17,7 +19,8 @@ import javax.swing.JPanel;
  * @author Gonzalo López Fernández
  */
 public class VistaEscena extends javax.swing.JFrame {
-
+    
+    ImageIcon FondoTexto=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo texto.png"));
     private Controlador controlador;
     private Escena escena;
 
@@ -31,9 +34,15 @@ public class VistaEscena extends javax.swing.JFrame {
         this.controlador = controlador;
         this.escena = controlador.getPartida().getEscena();
         ArrayList<Opcion> opciones = escena.getOpciones();
-
+        
+        ImageIcon ImagenEscena=new javax.swing.ImageIcon(getClass().getResource(controlador.getPartida().getEscena().getImagen()));
+        Image image = ImagenEscena.getImage();
+        Image newimg = image.getScaledInstance( foto.getWidth(),foto.getHeight(),  java.awt.Image.SCALE_SMOOTH); 
+        ImagenEscena = new ImageIcon(newimg);
+        foto.setIcon(ImagenEscena);
+                
         texto.setText(escena.getTexto());
-        texto.setBackground(Color.red);
+        texto.setIcon(FondoTexto);
         texto.setForeground(Color.white);
         cabecera1.insertarDatosPartida(controlador.getPartida());
         switch (opciones.size()) {
@@ -55,6 +64,8 @@ public class VistaEscena extends javax.swing.JFrame {
         }
 
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,11 +88,14 @@ public class VistaEscena extends javax.swing.JFrame {
 
         foto.setText("jLabel1");
         jPanel1.add(foto);
-        foto.setBounds(0, 200, 440, 380);
+        foto.setBounds(0, 260, 440, 300);
 
+        texto.setBackground(new java.awt.Color(0, 0, 0));
+        texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        texto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Fondo texto.png"))); // NOI18N
         texto.setText("Texto");
         jPanel1.add(texto);
-        texto.setBounds(460, 210, 500, 380);
+        texto.setBounds(460, 260, 500, 300);
         jPanel1.add(cabecera1);
         cabecera1.setBounds(0, 0, 1000, 220);
 

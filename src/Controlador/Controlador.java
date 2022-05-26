@@ -87,7 +87,7 @@ public final class Controlador {
         //Datos del nuevo protagonista
         datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
         datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";";
-        datos += Utilidades.DINERO + ";" + Utilidades.EA_PROTAGONISTA+ ";"+ ";";
+        datos += Utilidades.DINERO + ";" + Utilidades.EA_PROTAGONISTA + ";" + ";";
         datos += clan.getHabilidadesObtenidas();
         //Creamos al protagonista
         vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
@@ -119,7 +119,7 @@ public final class Controlador {
         String texto;
 
         //1.Evaluar la opción que se acaba de tomar.
-        evaluarOpcion(opcion);
+        evaluarAccion(opcion);
 
         partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
         //2.Pedir a la base de datos todos los posibles textos.
@@ -217,7 +217,7 @@ public final class Controlador {
      *
      * @param opcion la opción tomada.
      */
-    private void evaluarOpcion(Opcion opcion) throws FileNotFoundException {
+    private void evaluarAccion(Opcion opcion) throws FileNotFoundException {
         switch (opcion.getAccion()) {
             case Utilidades.OP_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);
@@ -237,6 +237,17 @@ public final class Controlador {
             case Utilidades.OP_ENFADAR -> {
                 if (partida.getEscena().hayPnj()) {
                     partida.getEscena().getPnj().setEstadoDeAnimo(Utilidades.EA_ENFADADO);
+                }
+            }
+            case Utilidades.OP_OBTENER_MAPA -> {
+                System.out.println("Vamos a obtener el mapa");
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
+                    if (e.getNombre().equals("")){
+                        System.out.println("Error al obtener el mapa, el npc no lo tiene.");
+                    }
+                    partida.getProtagonista().addObjeto(e);
+                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
 
@@ -345,7 +356,11 @@ public final class Controlador {
                 }
             }
             case Utilidades.SI_MAPA -> {
-                cumplida = buscarEquipo("Mapa");
+                System.out.println("Compruebo si tiene mapa.");
+                if (buscarEquipo("Mapa")) {
+                    System.out.println("Mapa encontrado.");
+                    cumplida = true;
+                }
             }
         }
         return cumplida;
