@@ -332,7 +332,7 @@ public final class Controlador {
      * @param condicion a comprobar.
      * @return true si se cumple la condición, false en otro caso.
      */
-    private boolean evaluarCondicionDeOpciona(int condicion) {
+    private boolean evaluarCondicionDeOpcion(int condicion) {
         boolean cumplida = false;
         Escena escena = partida.getEscena();
         switch (condicion) {
