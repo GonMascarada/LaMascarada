@@ -8,6 +8,7 @@ import Controlador.Controlador;
 import Mascarada.Clan;
 import Mascarada.Partida;
 import java.awt.Color;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -15,13 +16,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -47,7 +46,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         //Elementos del Jlist
         //Elemento que me trae la info
-        controlador=new Controlador();
+        controlador = new Controlador();
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
         //Lista de partidas para borrar y cargar
@@ -64,37 +63,32 @@ public class Inicio extends javax.swing.JFrame {
         }
         ListaClanes1.setModel(modelo);
         ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-       
-       cargarDatosPartidas();
-        
+        if (partidas.size() > 1) {
+            cargarDatosPartidas();
+        }
+
     }
 
-
     public void cargarDatosPartidas() {
-
-        
         String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Teimpo Jugado", "Fecha"};
         DefaultTableModel model = new DefaultTableModel(null, columnNames);
         Partida parti = new Partida();
         List<Partida> listadatos = parti.getDatos();
         for (Partida prod : listadatos) {
-            if (partida.getProtagonista().getNombre()==null) {
-            break;
-        }
+
             Object[] data = new Object[columnNames.length];
-            
-            data[0]= prod.getProtagonista().getNombre();
-            data[1]= prod.getProtagonista().getClan();
-            data[2]= prod.getProtagonista().getHabilidades();
-            data[3]= prod.getProtagonista().getHabilidades();
-            data[4]= prod.getTiempo();
-            data[5]= prod.getFecha();
-            
+
+            data[0] = prod.getProtagonista().getNombre();
+            data[1] = prod.getProtagonista().getClan();
+            data[2] = prod.getProtagonista().getHabilidades();
+            data[3] = prod.getProtagonista().getHabilidades();
+            data[4] = prod.getTiempo();
+            data[5] = prod.getFecha();
+
             model.addRow(data);
         }
         jTable1.setModel(model);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.BaseDeDatos;
 import Mascarada.Partida;
+import Vista.Tienda;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -38,6 +39,12 @@ public class Prueba {
  
         Partida p = partidas.get(0);     
         controlador.cargarPartida(p);
+        System.out.print("Objetos pnj "+ controlador.getPartida().getEscena().getPnj().getNombre()+": ");
+        //System.out.print(controlador.getPartida().getEscena().getPnj().getInfoEquipo(1));
+        
+         Tienda tienda = new Tienda(controlador);
+        tienda.setVisible(true);
+        
         //String prueba = "0;Ir al bar;0;0;20;0;0;1;";
         //String[] datos = prueba.split(";");
         //Opcion opcion = new Opcion(datos);
