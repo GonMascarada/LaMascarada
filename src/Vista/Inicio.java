@@ -4,20 +4,30 @@
  */
 package Vista;
 
-import Mascarada.Clan;
 import Controlador.Controlador;
+import Mascarada.Clan;
 import Mascarada.Partida;
 import java.awt.Color;
-import java.awt.List;
+import java.awt.Component;
+
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
+
 import javax.swing.JPanel;
-import jdk.jfr.Event;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
+
+
 
 /**
  *
@@ -32,12 +42,13 @@ public class Inicio extends javax.swing.JFrame {
     
     private ArrayList<Partida>partida;
     
-    private JPanel carga;
 
+   
+    
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public Inicio() throws IOException {
         initComponents();
         //Elementos del Jlist
         //Elemento que me trae la info
@@ -46,23 +57,52 @@ public class Inicio extends javax.swing.JFrame {
         clanes = controlador.getListaClanes();
         //Lista de partidas para borrar y cargar
         partida = controlador.getListaPartidas();
-        //ArrayLista para la carga y el borrado de partidas
-        DefaultListModel cargarBorrar = new DefaultListModel();
+        
+        
+        
         //ArrayList para el Jlist
         DefaultListModel modelo = new DefaultListModel();
         //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
-        for (int i = 0; i < partida.size(); i++) {
-            carga = new Vista.CargaBorrar();
-            cargarBorrar.addElement(carga);
-        }
+        
         for (int i = 0; i < clanes.size(); i++) {
             modelo.addElement(clanes.get(i).getNombre());
         }
         ListaClanes1.setModel(modelo);
-        ListaBorrar.setModel(cargarBorrar);
-        LisjtaCargar.setModel(cargarBorrar);
+        
+       
+      
 
     }
+          
+    public void ShowItemList(List<JPanel> paneList, JPanel container) {
+
+
+        DefaultListModel model = new DefaultListModel();
+
+        for (JPanel pane:paneList) {
+
+                model.addElement(pane);
+
+        }
+        final JList list = new JList(model);
+        list.setFixedCellHeight(40);
+        list.setSelectedIndex(-1);
+
+        list.setCellRenderer(new Cabecera());
+        JScrollPane scroll1 = new JScrollPane(list);
+        final JScrollBar scrollBar = scroll1.getVerticalScrollBar();
+        scrollBar.addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                System.out.println("JScrollBar's current value = " + scrollBar.getValue());
+            }
+        });
+
+
+        container.add(scroll1);
+
+
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -390,7 +430,11 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                try {
+                    new Inicio().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
