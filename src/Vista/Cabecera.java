@@ -24,7 +24,7 @@ import javax.swing.ListCellRenderer;
 public class Cabecera extends javax.swing.JPanel {
 
     private Partida partida;
-    /**
+    /** origin 
      * Creates new form CabeceraImport
      */
     public Cabecera() {
@@ -201,7 +201,7 @@ public class Cabecera extends javax.swing.JPanel {
 
         fondoCabecera.setText("jLabel1");
         jPanel1.add(fondoCabecera);
-        fondoCabecera.setBounds(-10, 0, 1000, 250);
+        fondoCabecera.setBounds(0, 0, 1000, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
