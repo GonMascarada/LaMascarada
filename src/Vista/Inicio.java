@@ -47,7 +47,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         //Elementos del Jlist
         //Elemento que me trae la info
-        controlador = new Controlador();
+        controlador=new Controlador();
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
         //Lista de partidas para borrar y cargar
@@ -72,12 +72,15 @@ public class Inicio extends javax.swing.JFrame {
 
     public void cargarDatosPartidas() {
 
+        
         String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Teimpo Jugado", "Fecha"};
         DefaultTableModel model = new DefaultTableModel(null, columnNames);
         Partida parti = new Partida();
         List<Partida> listadatos = parti.getDatos();
         for (Partida prod : listadatos) {
-
+            if (partida.getProtagonista().getNombre()==null) {
+            break;
+        }
             Object[] data = new Object[columnNames.length];
             
             data[0]= prod.getProtagonista().getNombre();
