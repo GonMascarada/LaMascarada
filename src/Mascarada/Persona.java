@@ -152,13 +152,13 @@ public class Persona {
      * Devuelve una lista de todos los equipos del personaje con el formato
      * adecuado para poder ser escritos en equipo-partida-personaje.csv
      *
+     * @param idPartida
      * @return
      */
     public String getInfoEquipo(int idPartida) {
         String resultado = "";
         Equipo e;
         for (int i = 0; i < equipacion.size(); i++) {
-            System.out.println("Escribo equipo "+ nombre);
             e = equipacion.get(i);
             resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
             resultado += nombre + ";" + e.isEnUso();
