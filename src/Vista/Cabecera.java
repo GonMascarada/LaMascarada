@@ -4,16 +4,14 @@
  */
 package Vista;
 
-import Controlador.Controlador;
 import Mascarada.Partida;
 import Mascarada.Utilidades;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -22,12 +20,19 @@ import javax.swing.ListCellRenderer;
 public class Cabecera extends javax.swing.JPanel {
 
     private Partida partida;
+    
+    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-4.png"));
+    
+    
 
     /** origin 
      * Creates new form CabeceraImport
      */
     public Cabecera() {
         initComponents();
+        
+        
         barraProgreso.setForeground(Color.white);
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);
@@ -44,7 +49,10 @@ public class Cabecera extends javax.swing.JPanel {
         tiempoJugado.setForeground(Color.white);
         tiempoJugadoDato.setForeground(Color.white);
         vida.setForeground(Color.white);
-
+        fichapersonaje.setForeground(Color.white);
+        fichapersonaje.setBackground(Color.black);
+        fichapersonaje.setIcon(botonRojo1);
+        fichapersonaje.setPressedIcon(botonRojo2);
         
     }
 
@@ -74,6 +82,7 @@ public class Cabecera extends javax.swing.JPanel {
         Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
         ImagenEscena = new ImageIcon(newimg);
         foto.setIcon(ImagenEscena);
+        
 
     }
 
@@ -87,6 +96,7 @@ public class Cabecera extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        fichapersonaje = new javax.swing.JButton();
         foto = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         clan = new javax.swing.JLabel();
@@ -110,6 +120,18 @@ public class Cabecera extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
+
+        fichapersonaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo2-4.png"))); // NOI18N
+        fichapersonaje.setText("Ficha del personaje");
+        fichapersonaje.setBorderPainted(false);
+        fichapersonaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        fichapersonaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fichapersonajeMouseClicked(evt);
+            }
+        });
+        jPanel1.add(fichapersonaje);
+        fichapersonaje.setBounds(520, 180, 360, 40);
 
         foto.setText("Foto");
         jPanel1.add(foto);
@@ -199,6 +221,19 @@ public class Cabecera extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fichapersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fichapersonajeMouseClicked
+        // TODO add your handling code here:
+        FichaAuspex personaje = null;
+        try {
+            personaje = new FichaAuspex();
+        } catch (IOException ex) {
+            Logger.getLogger(Cabecera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        personaje.setVisible(true);
+        
+        
+    }//GEN-LAST:event_fichapersonajeMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barraProgreso;
@@ -206,6 +241,7 @@ public class Cabecera extends javax.swing.JPanel {
     private javax.swing.JProgressBar barraSospecha;
     private javax.swing.JProgressBar barraVida;
     private javax.swing.JLabel clan;
+    private javax.swing.JButton fichapersonaje;
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;

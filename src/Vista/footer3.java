@@ -196,10 +196,12 @@ public class footer3 extends javax.swing.JPanel {
     private void opcion1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseEntered
         // TODO add your handling code here:
         
+        
     }//GEN-LAST:event_opcion1MouseEntered
 
     private void opcion1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseExited
         // TODO add your handling code here:
+        
         
     }//GEN-LAST:event_opcion1MouseExited
 

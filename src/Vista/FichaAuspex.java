@@ -62,12 +62,13 @@ public class FichaAuspex extends javax.swing.JFrame {
         nombre.setText(partida.getProtagonista().getNombre());
         String[]hab1y2=partida.getProtagonista().getNombre().split(";");
         habilidad1.setText(hab1y2[1]);
-        habilidad2.setText(hab1y2[2]);
+        dineroDato.setText(hab1y2[2]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
         ataqueBarra1.setValue(partida.getProtagonista().getAtaque());
         vidaBarra.setMaximum(partida.getProtagonista().getVidaMax());
         vidaBarra.setValue(partida.getProtagonista().getVidaActual());
         animoBarra.setValue(partida.getProtagonista().getEstadoDeAnimo());
+        dineroDato.setText(partida.getProtagonista().getDinero()+"");
         
         
     }
@@ -98,13 +99,15 @@ public class FichaAuspex extends javax.swing.JFrame {
         amuletos = new javax.swing.JLabel();
         ataque = new javax.swing.JLabel();
         defensivo = new javax.swing.JLabel();
-        habilidad2 = new javax.swing.JLabel();
+        dineroDato = new javax.swing.JLabel();
         estadoAnimo = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         vidaBarra = new javax.swing.JProgressBar();
         animoBarra = new javax.swing.JProgressBar();
         vida1 = new javax.swing.JLabel();
         ataqueBarra1 = new javax.swing.JProgressBar();
+        habilidad3 = new javax.swing.JLabel();
+        dinero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,11 +125,11 @@ public class FichaAuspex extends javax.swing.JFrame {
 
         clan.setText("Clan");
         jPanel1.add(clan);
-        clan.setBounds(230, 80, 120, 20);
+        clan.setBounds(230, 50, 120, 20);
 
         habilidad1.setText("Habilidad1");
         jPanel1.add(habilidad1);
-        habilidad1.setBounds(230, 120, 120, 20);
+        habilidad1.setBounds(230, 80, 120, 20);
 
         listaEspecial.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -183,10 +186,8 @@ public class FichaAuspex extends javax.swing.JFrame {
         defensivo.setText("Objetos Defensivos");
         jPanel1.add(defensivo);
         defensivo.setBounds(450, 250, 120, 20);
-
-        habilidad2.setText("Habilidad2");
-        jPanel1.add(habilidad2);
-        habilidad2.setBounds(230, 160, 120, 20);
+        jPanel1.add(dineroDato);
+        dineroDato.setBounds(290, 150, 50, 20);
 
         estadoAnimo.setText("Estado de animo");
         jPanel1.add(estadoAnimo);
@@ -194,7 +195,7 @@ public class FichaAuspex extends javax.swing.JFrame {
 
         nombre.setText("Nombre");
         jPanel1.add(nombre);
-        nombre.setBounds(230, 40, 60, 20);
+        nombre.setBounds(230, 20, 60, 20);
         jPanel1.add(vidaBarra);
         vidaBarra.setBounds(70, 210, 220, 19);
         jPanel1.add(animoBarra);
@@ -205,6 +206,14 @@ public class FichaAuspex extends javax.swing.JFrame {
         vida1.setBounds(310, 210, 50, 20);
         jPanel1.add(ataqueBarra1);
         ataqueBarra1.setBounds(350, 210, 230, 19);
+
+        habilidad3.setText("Habilidad2");
+        jPanel1.add(habilidad3);
+        habilidad3.setBounds(230, 110, 120, 20);
+
+        dinero.setText("Dinero");
+        jPanel1.add(dinero);
+        dinero.setBounds(230, 150, 50, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1000, 700);
@@ -259,10 +268,12 @@ public class FichaAuspex extends javax.swing.JFrame {
     private javax.swing.JLabel ataquePuntos;
     private javax.swing.JLabel clan;
     private javax.swing.JLabel defensivo;
+    private javax.swing.JLabel dinero;
+    private javax.swing.JLabel dineroDato;
     private javax.swing.JLabel estadoAnimo;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
-    private javax.swing.JLabel habilidad2;
+    private javax.swing.JLabel habilidad3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
