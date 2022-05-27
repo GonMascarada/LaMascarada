@@ -6,8 +6,8 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Equipo;
-import Mascarada.Partida;
 import java.util.List;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,32 +17,39 @@ import javax.swing.table.DefaultTableModel;
 public class Tienda extends javax.swing.JFrame {
 
     private Controlador controlador;
+
     /**
      * Creates new form Tienda
      */
     public Tienda(Controlador controlador) {
         initComponents();
         this.controlador = controlador;
+        
+        jTable1.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
-    
-     public void cargarDatos(List<Equipo> equipos) {
+
+    public void cargarDatos(List<Equipo> equipos) {
         String[] columnNames = {"Nombre", "Atributo", "Precio"};
-        DefaultTableModel model = new DefaultTableModel(null, columnNames);
+        DefaultTableModel model = new DefaultTableModel(null, columnNames) {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+
+                return false;
+            }
+        ;
+        };
         
         for (Equipo prod : equipos) {
 
             Object[] data = new Object[columnNames.length];
-            
-            data[0]= prod.getNombre();
-            data[1]= prod.getAtributo();
-            data[2]= prod.getPrecio();
-           
-            
+
+            data[0] = prod.getNombre();
+            data[1] = prod.getAtributo();
+            data[2] = prod.getPrecio();
+
             model.addRow(data);
         }
         jTable1.setModel(model);
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +69,7 @@ public class Tienda extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Vender");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,8 +160,8 @@ public class Tienda extends javax.swing.JFrame {
         // TODO add your handling code here:
         jButton3.setText("Vender");
         cargarDatos(controlador.getPartida().getProtagonista().getEquipacion());
-        
-        
+
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

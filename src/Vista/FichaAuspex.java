@@ -107,6 +107,7 @@ public class FichaAuspex extends javax.swing.JFrame {
         ataqueBarra1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
