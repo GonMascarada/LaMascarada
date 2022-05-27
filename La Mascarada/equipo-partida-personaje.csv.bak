@@ -1,0 +1,24 @@
+﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso
+Mapa;1;Camarera;true
+Azucarillo;1;Dueño;true
+Pistola;1;Vidente;true
+Brazalete;1;Nosferatu;true
+Anillo;1;Nosferatu;true
+Chaleco Antibalas;1;Nosferatu;true
+Ropa Gruesa;1;Nosferatu;true
+Bate;1;Nosferatu;true
+Pistola;1;Nosferatu;true
+Brazalete;1;Gon;true
+Anillo;1;Gon;true
+Chaleco Antibalas;1;Gon;true
+Ropa Gruesa;1;Gon;true
+
+Mapa;2;Camarera;true
+Azucarillo;2;Dueño;true
+Pistola;2;Vidente;true
+Brazalete;2;Nosferatu;true
+Anillo;2;Nosferatu;true
+Chaleco Antibalas;2;Nosferatu;true
+Ropa Gruesa;2;Nosferatu;true
+Bate;2;Nosferatu;true
+Pistola;2;Nosferatu;true
