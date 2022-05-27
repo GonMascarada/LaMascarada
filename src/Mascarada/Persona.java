@@ -158,6 +158,7 @@ public class Persona {
         String resultado = "";
         Equipo e;
         for (int i = 0; i < equipacion.size(); i++) {
+            System.out.println("Escribo equipo "+ nombre);
             e = equipacion.get(i);
             resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
             resultado += nombre + ";" + e.isEnUso();

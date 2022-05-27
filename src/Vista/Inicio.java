@@ -20,6 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -63,31 +65,35 @@ public class Inicio extends javax.swing.JFrame {
         }
         ListaClanes1.setModel(modelo);
         ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-        if (partidas.size() > 1) {
-            cargarDatosPartidas();
+
+        // Carga las listas de partidas.
+        if (partidas.size() > 0) {
+            cargarDatosPartidas(jTableCargar);
+//falta la pestaña de borrado            cargarDatosPartidas(jTableBorrar);
         }
+
+        //Pestaña de carga
+        jTableCargar.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 
     }
 
-    public void cargarDatosPartidas() {
-        String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Teimpo Jugado", "Fecha"};
-        DefaultTableModel model = new DefaultTableModel(null, columnNames);
-        Partida parti = new Partida();
-        List<Partida> listadatos = parti.getDatos();
-        for (Partida prod : listadatos) {
-
-            Object[] data = new Object[columnNames.length];
-
-            data[0] = prod.getProtagonista().getNombre();
-            data[1] = prod.getProtagonista().getClan();
-            data[2] = prod.getProtagonista().getHabilidades();
-            data[3] = prod.getProtagonista().getHabilidades();
-            data[4] = prod.getTiempo();
-            data[5] = prod.getFecha();
-
-            model.addRow(data);
+    /**
+     * Carga en el jTable que se le pase una lista de las partidas.
+     *
+     * @param table
+     */
+    public void cargarDatosPartidas(JTable table) {
+        String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Tiempo jugado", "Último guardado"};
+        // Evita que se puedan editar las celdas de la tabla
+        DefaultTableModel model = new DefaultTableModel(null, columnNames) {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+        for (Partida p : partidas) {
+            model.addRow(p.getDatos());
         }
-        jTable1.setModel(model);
+        table.setModel(model);
     }
 
     /**
@@ -119,8 +125,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabelError = new javax.swing.JLabel();
         CargarPartida = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jTableCargar = new javax.swing.JTable();
+        jButtonCargar = new javax.swing.JButton();
         BorrarPartida = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaBorrar = new javax.swing.JList<>();
@@ -247,7 +253,7 @@ public class Inicio extends javax.swing.JFrame {
 
         TabbedMain.addTab("Crear Partida", CrearPartida);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCargar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -258,9 +264,14 @@ public class Inicio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane4.setViewportView(jTableCargar);
 
-        jButton1.setText("Borrar seleccionados");
+        jButtonCargar.setText("Cargar");
+        jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCargarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
         CargarPartida.setLayout(CargarPartidaLayout);
@@ -269,7 +280,7 @@ public class Inicio extends javax.swing.JFrame {
             .addComponent(jScrollPane4)
             .addGroup(CargarPartidaLayout.createSequentialGroup()
                 .addGap(325, 325, 325)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(337, Short.MAX_VALUE))
         );
         CargarPartidaLayout.setVerticalGroup(
@@ -277,7 +288,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(CargarPartidaLayout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addComponent(jButtonCargar, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -430,6 +441,14 @@ public class Inicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CrearMouseClicked
 
+    private void jButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarActionPerformed
+        try {
+            controlador.cargarPartida(partidas.get(jTableCargar.getSelectedRow()));
+        } catch (IOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCargarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -493,12 +512,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCargar;
     private javax.swing.JLabel jLabelError;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCargar;
     private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
 }
