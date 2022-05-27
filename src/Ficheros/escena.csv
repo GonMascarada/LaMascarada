@@ -1,8 +1,8 @@
 ﻿IdEscena;Imagen;NombrePersonaje
-0;\Imagenes\Cartel.jpg;
-1;\Imagenes\Bar.jpg;
+0;\Imagenes\Cartel.jpg;0
+1;\Imagenes\Bar.jpg;0
 2;\Imagenes\Camarera.jpg;Camarera
-3;\Imagenes\Bar.jpg;
+3;\Imagenes\Bar.jpg;0
 4;\Imagenes\Camarera.jpg;Camarera
 5;\Imagenes\Camarera.jpg;Camarera
 6;\Imagenes\Camarera.jpg;Camarera
@@ -33,14 +33,15 @@
 31;\Imagenes\Dueño.jpg;Dueño
 32;\Imagenes\Dueño.jpg;Dueño
 33;\Imagenes\Dueño.jpg;Dueño
-34;\Imagenes\MapaPueblo.jpg;
+34;\Imagenes\MapaPueblo;0
 35;\Imagenes\DueñaMotel.jpg;DueñaMotel
 36;\Imagenes\DueñaMotel.jpg;DueñaMotel
 37;\Imagenes\DueñaMotel.jpg;DueñaMotel
 38;\Imagenes\DueñaMotel.jpg;DueñaMotel
 39;\Imagenes\DueñaMotel.jpg;DueñaMotel
 40;\Imagenes\DueñaMotel.jpg;DueñaMotel
-41;\Imagenes\DueñaMote.jpg;
+41;\Imagenes\DueñaMotel.jpg;DueñaMotel
+42;\Imagenes\MapaPueblo;0
 43;\Imagenes\CamareroPubPub.jpg;CamareroPub
 44;\Imagenes\CamareroPub.jpg;CamareroPub
 45;\Imagenes\CamareroPub.jpg;CamareroPub
@@ -59,9 +60,9 @@
 58;\Imagenes\CamareroPub.jpg;CamareroPub
 59;\Imagenes\ClientePub.jpg;ClientePub
 60;\Imagenes\CamareroPub.jpg;CamareroPub
-61;\Imagenes\Reservado.jpg;
-62;\Imagenes\Reservado.jpg;
-63;\Imagenes\MapaPueblo.jpg;
+61;\Imagenes\Reservado.jpg;0
+62;\Imagenes\Reservado.jpg;0
+63;\Imagenes\MapaPueblo;0
 64;\Imagenes\Nosferatu.jpg;Nosferatu
 65;\Imagenes\Nosferatu.jpg;Nosferatu
 66;\Imagenes\Nosferatu.jpg;Nosferatu
@@ -90,4 +91,3 @@
 89;\Imagenes\CasaColina;Ramonchu
 90;\Imagenes\CasaColina;Ramonchu
 91;\Imagenes\CasaColina;Ramonchu 
-
