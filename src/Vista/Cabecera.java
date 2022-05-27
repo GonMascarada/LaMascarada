@@ -20,19 +20,15 @@ import javax.swing.ImageIcon;
 public class Cabecera extends javax.swing.JPanel {
 
     private Partida partida;
-    
-    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
-    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-4.png"));
-    
-    
 
-    /** origin 
-     * Creates new form CabeceraImport
+    ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
+    ImageIcon botonRojo2 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-4.png"));
+
+    /**
+     * origin Creates new form CabeceraImport
      */
     public Cabecera() {
         initComponents();
-        
-        
         barraProgreso.setForeground(Color.white);
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);
@@ -53,7 +49,6 @@ public class Cabecera extends javax.swing.JPanel {
         fichapersonaje.setBackground(Color.black);
         fichapersonaje.setIcon(botonRojo1);
         fichapersonaje.setPressedIcon(botonRojo2);
-        
     }
 
     /**
@@ -62,6 +57,7 @@ public class Cabecera extends javax.swing.JPanel {
      * @param partida Objeto con la información sobre una partida.
      */
     public void insertarDatosPartida(Partida partida) {
+        this.partida = partida;
         nombre.setText(partida.getProtagonista().getNombre());
         String[] habiliades = partida.getProtagonista().getHabilidades().split(";");
         habilidad1.setText(habiliades[0]);
@@ -82,8 +78,6 @@ public class Cabecera extends javax.swing.JPanel {
         Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
         ImagenEscena = new ImageIcon(newimg);
         foto.setIcon(ImagenEscena);
-        
-
     }
 
     /**
@@ -128,6 +122,11 @@ public class Cabecera extends javax.swing.JPanel {
         fichapersonaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fichapersonajeMouseClicked(evt);
+            }
+        });
+        fichapersonaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fichapersonajeActionPerformed(evt);
             }
         });
         jPanel1.add(fichapersonaje);
@@ -222,17 +221,20 @@ public class Cabecera extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fichapersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fichapersonajeMouseClicked
-        // TODO add your handling code here:
-        FichaAuspex personaje = null;
+
         try {
-            personaje = new FichaAuspex();
+            FichaAuspex ficha = new FichaAuspex(partida);
+            ficha.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(Cabecera.class.getName()).log(Level.SEVERE, null, ex);
         }
-        personaje.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_fichapersonajeMouseClicked
+
+    private void fichapersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichapersonajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fichapersonajeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
