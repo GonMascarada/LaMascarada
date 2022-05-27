@@ -126,15 +126,16 @@ public class footer2 extends javax.swing.JPanel{
         // TODO add your handling code here:
     }//GEN-LAST:event_opcion1ActionPerformed
 
-    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {                                     
+
         try {
             // TODO add your handling code here:
             controlador.escoger(opciones.get(0));
-            vista.dispose();
         } catch (IOException ex) {
             Logger.getLogger(footer2.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_opcion1MouseClicked
+        vista.dispose();
+    }                                                                    
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
         try {
@@ -144,6 +145,7 @@ public class footer2 extends javax.swing.JPanel{
         } catch (IOException ex) {
             Logger.getLogger(footer2.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_opcion2MouseClicked
 
 

@@ -3,7 +3,10 @@ package Modelo;
 import Mascarada.*;
 import Vista.Inicio;
 import java.io.File;
+
+
 import java.io.FileNotFoundException;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +31,6 @@ public class BaseDeDatos {
     private static final String URL_EQ_PA_PE = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje.csv";
     private static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
     private static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
-
     private boolean conectado;
     private Connection conn;
     private Statement stmt;
@@ -185,6 +187,7 @@ public class BaseDeDatos {
     private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) throws IOException {
         File file = new File(URL_EQ_PA_PE);
         Scanner lector = new Scanner(file);
+
         String[] linea;
         ArrayList<Equipo> equipos = new ArrayList<>();
         Equipo equipo;

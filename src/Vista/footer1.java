@@ -88,6 +88,7 @@ public class footer1 extends javax.swing.JPanel{
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+
         try {
             // TODO add your handling code here:
             controlador.escoger(opciones.get(0));

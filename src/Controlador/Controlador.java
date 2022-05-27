@@ -188,6 +188,7 @@ public final class Controlador {
      */
     public void cargarPartida(Partida partida) throws IOException {
         this.partida = partida;
+
         lanzar();
     }
 
