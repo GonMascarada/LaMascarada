@@ -248,11 +248,11 @@ public class Partida {
     }
 
     /**
-     * Devuelve una lista con los datos de la partida.
+     * Devuelve una lista con los datos más relevantes de la partida.
      *
-     * @return
+     * @returnNombre, clan, habilidades, tiempo y fecha.
      */
-    public java.util.List getDatos() {
+    /*public java.util.List getDatos() {
         java.util.List<String> lista = new ArrayList<>();
         lista.add(protagonista.getNombre());
         lista.add(protagonista.getClan().getNombre());
@@ -261,6 +261,19 @@ public class Partida {
         lista.add(hab[1]);
         lista.add(String.valueOf(tiempo));
         lista.add(String.valueOf(fecha));
+        return lista;
+    }
+*/
+    
+    public Object[] getDatos() {
+        Object[] lista = new Object[6];
+        lista[0] = protagonista.getNombre();
+        lista[1] = protagonista.getClan().getNombre();
+        String[] hab = protagonista.getHabilidades().split(";");
+        lista[2] = hab[0];
+        lista[3] = hab[1];
+        lista[4] = String.valueOf(tiempo);
+        lista[5] = String.valueOf(fecha);
         return lista;
     }
 }
