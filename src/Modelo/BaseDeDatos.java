@@ -139,7 +139,7 @@ public class BaseDeDatos {
             if (Integer.parseInt(linea[0]) == idEscena) {
                 encontrado = true;
                 opciones = getOpciones(idEscena);
-                if (linea[2].equals("0")) {
+                if (linea[2].equals("No")) {
                     escena = new Escena(linea, opciones);
                 } else {
                     persona = getPNJ(linea[2], idPartida);
