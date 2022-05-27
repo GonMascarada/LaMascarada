@@ -7,7 +7,10 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -40,16 +43,19 @@ public class footer3 extends javax.swing.JPanel {
         opcion1.setForeground(Color.white);
         opcion1.setText(opciones.get(0).getTexto());
         
+        
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
         opcion2.setForeground(Color.white);
         opcion2.setText(opciones.get(1).getTexto());
+        opcion1.setVisible(true);
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
         opcion3.setForeground(Color.white);
         opcion3.setText(opciones.get(2).getTexto());
+        opcion1.setVisible(true);
     }
 
    
@@ -150,18 +156,30 @@ public class footer3 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
-        controlador.escoger(opciones.get(0));
-        vista.dispose();
+        try {
+            controlador.escoger(opciones.get(0));
+            vista.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(footer3.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_opcion1MouseClicked
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
-        controlador.escoger(opciones.get(1));
-        vista.dispose();
+        try {
+            controlador.escoger(opciones.get(1));
+            vista.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(footer3.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_opcion2MouseClicked
 
     private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
-        controlador.escoger(opciones.get(2));
-        vista.dispose();
+        try {
+            controlador.escoger(opciones.get(2));
+            vista.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(footer3.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_opcion3MouseClicked
 
     private void opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion3ActionPerformed

@@ -135,4 +135,68 @@ public class Persona {
         this.equipacion = equipacion;
         cambiado = true;
     }
+
+    /**
+     * Devuelve la información más básica sobre un personaje.
+     *
+     * @return
+     */
+    public String getInfoBasica() {
+        String resultado;
+        resultado = nombre + ";" + ataque + ";" + defensa + ";" + vidaMax + ";";
+        resultado += vidaActual + ";" + dinero + ";" + estadoDeAnimoActual + ";";
+        return resultado;
+    }
+
+    /**
+     * Devuelve una lista de todos los equipos del personaje con el formato
+     * adecuado para poder ser escritos en equipo-partida-personaje.csv
+     *
+     * @param idPartida
+     * @return
+     */
+    public String getInfoEquipo(int idPartida) {
+        String resultado = "";
+        Equipo e;
+        for (int i = 0; i < equipacion.size(); i++) {
+            e = equipacion.get(i);
+            resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
+            resultado += nombre + ";" + e.isEnUso();
+        }
+        return resultado;
+    }
+
+    @Override
+    public String toString() {
+        String resultado = getInfoBasica();
+        resultado += "Humano" + ";" + ";" + ";";
+        return resultado;
+    }
+
+    /**
+     * Quita un objeto al personaje, y lo retorna.
+     *
+     * @param nombre del objeto
+     * @return objeto pedido
+     */
+    public Equipo delObjeto(String nombre) {
+        Equipo e = new Equipo();
+        for (int i = 0; i < equipacion.size(); i++) {
+            if (equipacion.get(i).getNombre().equals(nombre)) {
+                cambiado = true;
+                return equipacion.remove(i);
+            }
+        }
+        return e;
+    }
+
+    /**
+     * Añade un objeto al iventario del personaje.
+     *
+     * @param equipo
+     */
+    public void addObjeto(Equipo equipo) {
+        equipacion.add(equipo);
+        cambiado = true;
+    }
 }

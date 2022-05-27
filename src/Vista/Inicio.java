@@ -4,40 +4,47 @@
  */
 package Vista;
 
-import Mascarada.Clan;
 import Controlador.Controlador;
+import Mascarada.Clan;
 import Mascarada.Partida;
 import java.awt.Color;
-import java.awt.List;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JPanel;
-import jdk.jfr.Event;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Moru
  */
-public class Inicio extends javax.swing.JFrame {
+public final class Inicio extends javax.swing.JFrame {
 
-    private Controlador controlador;
-    
+    private final Controlador controlador;
 
-    private ArrayList<Clan> clanes;
-    
-    private ArrayList<Partida>partida;
-    
-    private JPanel carga;
+    private final ArrayList<Clan> clanes;
+
+    private final ArrayList<Partida> partidas;
+
+    private Partida partida;
 
     /**
      * Creates new form Inicio
+     *
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
-    public Inicio() {
+    public Inicio() throws IOException, ParseException {
         initComponents();
         //Elementos del Jlist
         //Elemento que me trae la info
@@ -45,23 +52,51 @@ public class Inicio extends javax.swing.JFrame {
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
         //Lista de partidas para borrar y cargar
-        partida = controlador.getListaPartidas();
-        //ArrayLista para la carga y el borrado de partidas
-        DefaultListModel cargarBorrar = new DefaultListModel();
+        partidas = controlador.getListaPartidas();
+        //Hago invisible el label de errores.
+        jLabelError.setVisible(false);
+
         //ArrayList para el Jlist
         DefaultListModel modelo = new DefaultListModel();
         //Traigo los nombres de los clanes al Jlist gracias a controlador y los seteo con el modelo
-        for (int i = 0; i < partida.size(); i++) {
-            carga = new Vista.CargaBorrar();
-            cargarBorrar.addElement(carga);
-        }
+
         for (int i = 0; i < clanes.size(); i++) {
             modelo.addElement(clanes.get(i).getNombre());
         }
         ListaClanes1.setModel(modelo);
-        ListaBorrar.setModel(cargarBorrar);
-        LisjtaCargar.setModel(cargarBorrar);
+        ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 
+        // Carga las listas de partidas.
+        if (partidas.size() > 0) {
+            cargarDatosPartidas(jTableCargar);
+            cargarDatosPartidas(jTableBorrar);
+        }
+
+        //Pestaña de carga
+        jTableCargar.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        
+        jTableBorrar.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+    }
+
+    /**
+     * Carga en el jTable que se le pase una lista de las partidas.
+     *
+     * @param table
+     */
+    public void cargarDatosPartidas(JTable table) {
+        String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Tiempo jugado", "Último guardado"};
+        // Evita que se puedan editar las celdas de la tabla
+        DefaultTableModel model = new DefaultTableModel(null, columnNames) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+        for (Partida p : partidas) {
+            model.addRow(p.getDatos());
+        }
+        table.setModel(model);
     }
 
     /**
@@ -90,26 +125,34 @@ public class Inicio extends javax.swing.JFrame {
         Habilidad2 = new javax.swing.JCheckBox();
         Habilidad3 = new javax.swing.JCheckBox();
         Habilidad4 = new javax.swing.JCheckBox();
-        BorrarPartida = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ListaBorrar = new javax.swing.JList<>();
+        jLabelError = new javax.swing.JLabel();
         CargarPartida = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableCargar = new javax.swing.JTable();
+        jButtonCargar = new javax.swing.JButton();
+        BorrarPartida = new javax.swing.JPanel();
+        jButtonBorrar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        LisjtaCargar = new javax.swing.JList<>();
+        jTableBorrar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        FondoTotal.setLayout(null);
 
         LabelClanes.setText("Seleccione un clan:");
 
-        labelNombre.setText("introduzca un nombre");
+        labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNombre.setText("Introduzca un nombre");
 
-        TextNombre.setText("nombre......");
+        TextNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextNombreActionPerformed(evt);
             }
         });
 
+        Labeldificultad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Labeldificultad.setText("Seleccione la dificultad");
 
         BoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
@@ -150,47 +193,20 @@ public class Inicio extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(DescripcionClan);
 
-        Habilidad1.setText("jCheckBox1");
-
-        Habilidad2.setText("jCheckBox1");
-
-        Habilidad3.setText("jCheckBox1");
-
-        Habilidad4.setText("jCheckBox1");
+        jLabelError.setText("jLabel1");
 
         javax.swing.GroupLayout CrearPartidaLayout = new javax.swing.GroupLayout(CrearPartida);
         CrearPartida.setLayout(CrearPartidaLayout);
         CrearPartidaLayout.setHorizontalGroup(
             CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CrearPartidaLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(CrearPartidaLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CrearPartidaLayout.createSequentialGroup()
-                            .addGap(280, 280, 280)
-                            .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(354, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(0, 110, Short.MAX_VALUE)
+                .addGap(0, 90, Short.MAX_VALUE)
                 .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(353, 353, 353)
-                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(CrearPartidaLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(Habilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,6 +216,16 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(Habilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addComponent(Habilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(CrearPartidaLayout.createSequentialGroup()
+                .addGap(356, 356, 356)
+                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Labeldificultad, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                    .addComponent(BoxDificultad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TextNombre)
+                    .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CrearPartidaLayout.setVerticalGroup(
@@ -217,71 +243,119 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(Habilidad2)
                     .addComponent(Habilidad3)
                     .addComponent(Habilidad4))
-                .addGap(42, 42, 42)
+                .addGap(50, 50, 50)
                 .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jLabelError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(56, 56, 56))
         );
 
         TabbedMain.addTab("Crear Partida", CrearPartida);
 
-        ListaBorrar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jTableCargar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTableCargar);
+
+        jButtonCargar.setText("Cargar");
+        jButtonCargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCargarMouseClicked(evt);
+            }
         });
-        jScrollPane2.setViewportView(ListaBorrar);
-
-        javax.swing.GroupLayout BorrarPartidaLayout = new javax.swing.GroupLayout(BorrarPartida);
-        BorrarPartida.setLayout(BorrarPartidaLayout);
-        BorrarPartidaLayout.setHorizontalGroup(
-            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
-        );
-        BorrarPartidaLayout.setVerticalGroup(
-            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
-        );
-
-        TabbedMain.addTab("Borrar Partida", BorrarPartida);
-
-        LisjtaCargar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCargarActionPerformed(evt);
+            }
         });
-        jScrollPane3.setViewportView(LisjtaCargar);
 
         javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
         CargarPartida.setLayout(CargarPartidaLayout);
         CargarPartidaLayout.setHorizontalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
+            .addComponent(jScrollPane4)
+            .addGroup(CargarPartidaLayout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         CargarPartidaLayout.setVerticalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+            .addGroup(CargarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         TabbedMain.addTab("Cargar Partida", CargarPartida);
 
-        javax.swing.GroupLayout FondoTotalLayout = new javax.swing.GroupLayout(FondoTotal);
-        FondoTotal.setLayout(FondoTotalLayout);
-        FondoTotalLayout.setHorizontalGroup(
-            FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedMain)
+        jButtonBorrar.setText("Borrar");
+        jButtonBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBorrarMouseClicked(evt);
+            }
+        });
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
+
+        jTableBorrar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableBorrar);
+
+        javax.swing.GroupLayout BorrarPartidaLayout = new javax.swing.GroupLayout(BorrarPartida);
+        BorrarPartida.setLayout(BorrarPartidaLayout);
+        BorrarPartidaLayout.setHorizontalGroup(
+            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                .addGap(317, 317, 317)
+                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BorrarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
-        FondoTotalLayout.setVerticalGroup(
-            FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedMain, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+        BorrarPartidaLayout.setVerticalGroup(
+            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        TabbedMain.addTab("Borrar Partida", BorrarPartida);
+
+        FondoTotal.add(TabbedMain);
+        TabbedMain.setBounds(0, 0, 995, 726);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -315,14 +389,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_ListaClanes1MouseClicked
 
     private void ListaClanes1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaClanes1ValueChanged
-
-        // TODO add your handling code here:
         Clan clan;
         String nombreClan = ListaClanes1.getSelectedValue();
-        int contador=0;
-        HashMap<String, Boolean>habilidades ;
-                Iterator<String> it ;
-                String[]nombres=new String[4];
+        int contador = 0;
+        HashMap<String, Boolean> habilidades;
+        Iterator<String> it;
+        String[] nombres = new String[4];
         for (int i = 0; i < clanes.size(); i++) {
             clan = clanes.get(i);
             if (clan.getNombre().equalsIgnoreCase(nombreClan)) {
@@ -332,32 +404,99 @@ public class Inicio extends javax.swing.JFrame {
 
                 while (it.hasNext()) {
                     String nombreHabilidad = it.next();
-                    nombres[contador]=nombreHabilidad;
+                    nombres[contador] = nombreHabilidad;
                     contador++;
-                   
                 }
-                
-
             }
-        }Habilidad1.setText(nombres[0]);
+        }
+        Habilidad1.setText(nombres[0]);
         Habilidad2.setText(nombres[1]);
         Habilidad3.setText(nombres[2]);
         Habilidad4.setText(nombres[3]);
-        
-
     }//GEN-LAST:event_ListaClanes1ValueChanged
 
     private void CrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearMouseClicked
-        // TODO add your handling code here:
-
-        if (controlador.comprobarNombrePersonaje(TextNombre.getText())) {
-
-        } else {
-            TextNombre.setBackground(Color.red);
+        int indice, contador;
+        String error = "";
+        try {
+            if (controlador.comprobarNombrePersonaje(TextNombre.getText())) {
+                indice = ListaClanes1.getSelectedIndex();
+                contador = 0;
+                if (indice != -1) {
+                    if (Habilidad1.isSelected()) {
+                        contador++;
+                    }
+                    if (Habilidad2.isSelected()) {
+                        contador++;
+                    }
+                    if (Habilidad3.isSelected()) {
+                        contador++;
+                    }
+                    if (Habilidad4.isSelected()) {
+                        contador++;
+                    }
+                    if (contador == 2) {
+                        if (Habilidad1.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad1.getText());
+                        }
+                        if (Habilidad2.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad2.getText());
+                        }
+                        if (Habilidad3.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad3.getText());
+                        }
+                        if (Habilidad4.isSelected()) {
+                            clanes.get(indice).setHabilidad(Habilidad4.getText());
+                        }
+                        try {
+                            controlador.iniciarNuevaPartida(clanes.get(indice), TextNombre.getText(), BoxDificultad.getSelectedItem().toString());
+                            this.dispose();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        error = "Selecciona dos habilidades.";
+                    }
+                } else {
+                    error = "Selecciona un clan.";
+                }
+            } else {
+                error = "El nombre no está disponible.";
+            }
+            jLabelError.setText(error);
+            jLabelError.setVisible(true);
+            jLabelError.setForeground(Color.red);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
     }//GEN-LAST:event_CrearMouseClicked
+
+    private void jButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarActionPerformed
+        try {
+            Partida p = partidas.get(jTableCargar.getSelectedRow());
+            controlador.cargarPartida(p);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCargarActionPerformed
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButtonCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarMouseClicked
+        // TODO add your handling code here:
+        
+        System.out.println("Trabajando en la carga de partidas");
+    }//GEN-LAST:event_jButtonCargarMouseClicked
+
+    private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Trabajando en el borrado de partidas");
+    }//GEN-LAST:event_jButtonBorrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -368,7 +507,7 @@ public class Inicio extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -385,12 +524,20 @@ public class Inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
+        //</editor-fold>*/
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                try {
+                    try {
+                        new Inicio().setVisible(true);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -410,14 +557,17 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JCheckBox Habilidad4;
     private javax.swing.JLabel LabelClanes;
     private javax.swing.JLabel Labeldificultad;
-    private javax.swing.JList<String> LisjtaCargar;
-    private javax.swing.JList<String> ListaBorrar;
     private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
+    private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JButton jButtonCargar;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTableBorrar;
+    private javax.swing.JTable jTableCargar;
     private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
 }

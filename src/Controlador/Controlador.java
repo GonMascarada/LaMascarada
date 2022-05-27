@@ -3,7 +3,13 @@ package Controlador;
 import Modelo.BaseDeDatos;
 import Mascarada.*;
 import Vista.*;
+<<<<<<< HEAD
 import java.io.IOException;
+=======
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,7 +24,7 @@ public final class Controlador {
 
     private Partida partida;
 
-    private BaseDeDatos bbdd;
+    private final BaseDeDatos bbdd;
 
     public Controlador() throws IOException {
         bbdd = new BaseDeDatos();
@@ -29,8 +35,9 @@ public final class Controlador {
      * Devuelve la lista de todos los clanes disponibles.
      *
      * @return lista de todos los clanes de vampiro jugables.
+     * @throws java.io.IOException
      */
-    public ArrayList<Clan> getListaClanes() {
+    public ArrayList<Clan> getListaClanes() throws IOException {
         return bbdd.getListaClanes();
     }
 
@@ -54,8 +61,10 @@ public final class Controlador {
      * Lista de todas las partidas que se han guardado.
      *
      * @return lista de todas las partidas.
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
-    public ArrayList<Partida> getListaPartidas() {
+    public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
         return bbdd.getListaPartidas();
     }
 
@@ -64,8 +73,9 @@ public final class Controlador {
      *
      * @param nombre a comprobar.
      * @return true si está disponible, false en otro caso.
+     * @throws java.io.FileNotFoundException
      */
-    public boolean comprobarNombrePersonaje(String nombre) {
+    public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
         return bbdd.comprobarNombrePersonaje(nombre);
     }
 
@@ -73,12 +83,11 @@ public final class Controlador {
      * Inicia una nueva partida.
      *
      * @param clan del nuevo personaje.
-     * @param hab1 Nombre de la 1ª habilidad.
-     * @param hab2 Nombre de la 2ª habilidad.
      * @param nombre del nuevo personaje.
      * @param dificultad de la partida.
+     * @throws java.io.IOException
      */
-    public void iniciarNuevaPartida(Clan clan, String hab1, String hab2, String nombre, String dificultad) {
+    public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad) throws IOException {
         String datos;
         Vampire vampire;
         ArrayList<String[]> textos;
@@ -86,14 +95,11 @@ public final class Controlador {
 
         //Datos del nuevo protagonista
         datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
-        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";" + Utilidades.DINERO;
-
-        //Asignamos sus dos habilidades
-        clan.setHabilidad(hab1);
-        clan.setHabilidad(hab2);
-
+        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";";
+        datos += Utilidades.DINERO + ";" + Utilidades.EA_PROTAGONISTA + ";" + ";";
+        datos += clan.getHabilidadesObtenidas();
         //Creamos al protagonista
-        vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
+        vampire = new Vampire(clan, datos.split(";"), new ArrayList<>());
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
         partida = bbdd.iniciarNuevaPartida(vampire);
@@ -114,15 +120,16 @@ public final class Controlador {
      * Lanza la nueva escena de una opción.
      *
      * @param opcion marca cuál será la nueva escena.
+     * @throws java.io.IOException
      */
-    public void escoger(Opcion opcion) {
-        Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente());
+    public void escoger(Opcion opcion) throws IOException {
+        Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida());
         ArrayList<String[]> textos;
         ArrayList<Opcion> opciones;
         String texto;
 
         //1.Evaluar la opción que se acaba de tomar.
-        evaluarOpcion(opcion);
+        evaluarAccion(opcion);
 
         partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
         //2.Pedir a la base de datos todos los posibles textos.
@@ -166,8 +173,10 @@ public final class Controlador {
 
     /**
      * Guarda la partida en el estado actual.
+     *
+     * @throws java.io.FileNotFoundException
      */
-    public void guardarPartida() {
+    public void guardarPartida() throws FileNotFoundException, IOException {
         // 1. Se eliminan los pnc´s que no han sufrido cambios.
         partida.borrarNpcsInalterados();
 
@@ -179,11 +188,15 @@ public final class Controlador {
      * Carga una partida.
      *
      * @param partida
+     * @throws java.io.IOException
      */
-    public void cargarPartida(Partida partida) {
+    public void cargarPartida(Partida partida) throws IOException {
         this.partida = partida;
+<<<<<<< HEAD
         this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
         System.out.println("Opciones" + partida.getEscena().getOpciones().size());
+=======
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
         lanzar();
     }
 
@@ -192,8 +205,8 @@ public final class Controlador {
      *
      * @param partida
      */
-    private void borrarPartida(Partida partida) {
-        bbdd.borrarPartida(partida);
+    private void eliminarPartida(int idPartida) throws IOException {
+        bbdd.eliminarPartida(idPartida);
     }
 
     /**
@@ -220,7 +233,7 @@ public final class Controlador {
      *
      * @param opcion la opción tomada.
      */
-    private void evaluarOpcion(Opcion opcion) {
+    private void evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
         switch (opcion.getAccion()) {
             case Utilidades.OP_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);
@@ -240,6 +253,17 @@ public final class Controlador {
             case Utilidades.OP_ENFADAR -> {
                 if (partida.getEscena().hayPnj()) {
                     partida.getEscena().getPnj().setEstadoDeAnimo(Utilidades.EA_ENFADADO);
+                }
+            }
+            case Utilidades.OP_OBTENER_MAPA -> {
+                System.out.println("Vamos a obtener el mapa");
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
+                    if (e.getNombre().equals("")) {
+                        System.out.println("Error al obtener el mapa, el npc no lo tiene.");
+                    }
+                    partida.getProtagonista().addObjeto(e);
+                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
 
@@ -348,7 +372,11 @@ public final class Controlador {
                 }
             }
             case Utilidades.SI_MAPA -> {
-                cumplida = buscarEquipo("Mapa");
+                System.out.println("Compruebo si tiene mapa.");
+                if (buscarEquipo("Mapa")) {
+                    System.out.println("Mapa encontrado.");
+                    cumplida = true;
+                }
             }
         }
         return cumplida;

@@ -70,7 +70,10 @@ public abstract class Utilidades {
     public static final int SI_NOTA = 7;
     public static final int SI_AZUCARILLO = 8;
     public static final int SI_PISTA = 9;
-
+    public static final int SI_MAPA_BRUJAH = 10;
+    public static final int SI_BRUJAH = 11;
+    public static final int SI_PISTA_BRUJAH = 12;
+    
     // Estados de ánimo de los NPC´s
     public static final int EA_PROTAGONISTA = 0;
     public static final int EA_NORMAL = 1;

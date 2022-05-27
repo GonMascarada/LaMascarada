@@ -3,6 +3,7 @@ package Mascarada;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Almacena todos los datos relevantes de una partida.
@@ -14,7 +15,7 @@ public class Partida {
     private Vampire protagonista;
     private Escena escena;
     private int idPartida;
-    private Date fecha;
+    private String fecha;
     private int tiempo; //Se almacena en minutos
     private int progreso;
     private int sedDeSangre;
@@ -100,14 +101,14 @@ public class Partida {
     /**
      * @return the fecha
      */
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -193,5 +194,86 @@ public class Partida {
      */
     public void setPersonajes(ArrayList<Persona> personajes) {
         this.personajes = personajes;
+    }
+
+    /**
+     * Devuelve la información sobre una partida con el formato correcto para
+     * ser almacenado en partida.csv
+     *
+     * @return
+     */
+    public String getInfoPartida() {
+        String resultado;
+        resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso;
+        resultado += ";" + sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
+        resultado += escena.getIdEscena();
+        return resultado;
+    }
+
+    /**
+     * Devuelve la información de los npcs con el formato adecuado.
+     *
+     * @return
+     */
+    public String[] getInfoPersonajes() {
+        String[] pjs = new String[this.personajes.size() + 1];
+        //El primero será el protagonista
+        pjs[0] = protagonista.toString() + idPartida;
+        //Tras él, el resto de pnj´s
+        for (int i = 0; i < personajes.size(); i++) {
+            if (personajes.get(i) instanceof Persona) {
+                pjs[i + 1] = personajes.get(i).toString() + idPartida;
+            } else {
+                Vampire v = (Vampire) personajes.get(i);
+                pjs[i + 1] = v.toString() + idPartida;
+            }
+        }
+        return pjs;
+    }
+
+    /**
+     * Devuelve una lista en la que cada registro contiene la información de
+     * todo el equipo de un personaje, con el formato adecuado para ser escrito
+     * en equipo-partida-personaje.csv
+     *
+     * @return
+     */
+    public ArrayList<String> getInfoObjetos() {
+        ArrayList<String> resultado = new ArrayList<>();
+        resultado.add(protagonista.getInfoEquipo(idPartida));
+        for (int i = 0; i < personajes.size(); i++) {
+            resultado.add(personajes.get(i).getInfoEquipo(idPartida));
+        }
+        return resultado;
+    }
+
+    /**
+     * Devuelve una lista con los datos más relevantes de la partida.
+     *
+     * @returnNombre, clan, habilidades, tiempo y fecha.
+     */
+    /*public java.util.List getDatos() {
+        java.util.List<String> lista = new ArrayList<>();
+        lista.add(protagonista.getNombre());
+        lista.add(protagonista.getClan().getNombre());
+        String[] hab = protagonista.getHabilidades().split(";");
+        lista.add(hab[0]);
+        lista.add(hab[1]);
+        lista.add(String.valueOf(tiempo));
+        lista.add(String.valueOf(fecha));
+        return lista;
+    }
+*/
+    
+    public Object[] getDatos() {
+        Object[] lista = new Object[6];
+        lista[0] = protagonista.getNombre();
+        lista[1] = protagonista.getClan().getNombre();
+        String[] hab = protagonista.getHabilidades().split(";");
+        lista[2] = hab[0];
+        lista[3] = hab[1];
+        lista[4] = String.valueOf(tiempo);
+        lista[5] = String.valueOf(fecha);
+        return lista;
     }
 }

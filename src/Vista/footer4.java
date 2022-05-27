@@ -7,7 +7,13 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.awt.Color;
+<<<<<<< HEAD
+=======
+import java.io.IOException;
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -144,27 +150,64 @@ public class footer4 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
+<<<<<<< HEAD
         // TODO add your handling code here:
         controlador.escoger(opciones.get(0));
         vista.dispose();
+=======
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(0));
+             vista.dispose();
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
         
     }//GEN-LAST:event_opcion1MouseClicked
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
+<<<<<<< HEAD
         // TODO add your handling code here:
         controlador.escoger(opciones.get(1));
+=======
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(1));
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
         vista.dispose();
     }//GEN-LAST:event_opcion2MouseClicked
 
     private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
+<<<<<<< HEAD
         // TODO add your handling code here:
         controlador.escoger(opciones.get(2));
+=======
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(2));
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
         vista.dispose();
     }//GEN-LAST:event_opcion3MouseClicked
 
     private void opcion4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion4MouseClicked
+<<<<<<< HEAD
         // TODO add your handling code here:
         controlador.escoger(opciones.get(3));
+=======
+         try {
+             // TODO add your handling code here:
+             controlador.escoger(opciones.get(3));
+         } catch (IOException ex) {
+             Logger.getLogger(footer4.class.getName()).log(Level.SEVERE, null, ex);
+         }
+>>>>>>> 6fba48257e15a375683492921b4d4ae526946489
         vista.dispose();
     }//GEN-LAST:event_opcion4MouseClicked
 

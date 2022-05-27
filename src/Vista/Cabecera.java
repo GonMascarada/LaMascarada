@@ -4,10 +4,16 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Partida;
 import Mascarada.Utilidades;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -15,7 +21,9 @@ import javax.swing.ImageIcon;
  */
 public class Cabecera extends javax.swing.JPanel {
 
-    /**
+    private Partida partida;
+
+    /** origin 
      * Creates new form CabeceraImport
      */
     public Cabecera() {
@@ -36,8 +44,8 @@ public class Cabecera extends javax.swing.JPanel {
         tiempoJugado.setForeground(Color.white);
         tiempoJugadoDato.setForeground(Color.white);
         vida.setForeground(Color.white);
-       
 
+        
     }
 
     /**
@@ -61,9 +69,11 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
-        System.out.println(partida.getProtagonista().getClan().getImagen());
-        ImageIcon imagen =  new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
-        foto.setIcon(imagen);
+        ImageIcon ImagenEscena = new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
+        Image image = ImagenEscena.getImage();
+        Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+        ImagenEscena = new ImageIcon(newimg);
+        foto.setIcon(ImagenEscena);
 
     }
 
@@ -175,7 +185,7 @@ public class Cabecera extends javax.swing.JPanel {
 
         fondoCabecera.setText("jLabel1");
         jPanel1.add(fondoCabecera);
-        fondoCabecera.setBounds(-10, 0, 1000, 250);
+        fondoCabecera.setBounds(0, 0, 1000, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -211,4 +221,5 @@ public class Cabecera extends javax.swing.JPanel {
     private javax.swing.JLabel tiempoJugadoDato;
     private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
+
 }

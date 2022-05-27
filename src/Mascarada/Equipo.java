@@ -15,6 +15,7 @@ public class Equipo {
     private int precio;
 
     public Equipo() {
+        nombre = "";
     }
 
     /**
@@ -86,6 +87,22 @@ public class Equipo {
      */
     public int getPrecio() {
         return precio;
+    }
+
+    /**
+     * Devuelve el atributo principal de un objeto.
+     *
+     * @return el atributo característico entre ataque, defensa y vida.
+     */
+    public String getAtributo() {
+        if (ataque != 0) {
+            return "Ataque +" + ataque;
+        } else if (defensa != 0) {
+            return "Defensa +" + defensa;
+        } else if (vida != 0) {
+            return "Vida +" + vida;
+        }
+        return "";
     }
 
 }
