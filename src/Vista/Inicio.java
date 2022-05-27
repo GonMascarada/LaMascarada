@@ -89,6 +89,8 @@ public final class Inicio extends javax.swing.JFrame {
             //Hace que SI se pueda acceder a las pestañas de cargar y borrar
             TabbedMain.setEnabledAt(1, true);
             TabbedMain.setEnabledAt(2, true);
+            jTableCargar.setDefaultRenderer(Object.class, new MiRender());
+            jTableBorrar.setDefaultRenderer(Object.class, new MiRender());
         } else {
             //Hace que NO se pueda acceder a las pestañas de cargar y borrar
             TabbedMain.setEnabledAt(1, false);
