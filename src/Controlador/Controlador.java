@@ -205,7 +205,7 @@ public final class Controlador {
      *
      * @param partida
      */
-    private void eliminarPartida(int idPartida) throws IOException {
+    public void eliminarPartida(int idPartida) throws IOException {
         bbdd.eliminarPartida(idPartida);
     }
 
