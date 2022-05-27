@@ -3,10 +3,10 @@ package Modelo;
 import Mascarada.*;
 import Vista.Inicio;
 import java.io.File;
-<<<<<<< HEAD
-=======
+
+
 import java.io.FileNotFoundException;
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,22 +30,13 @@ public class BaseDeDatos {
     private static final String URL_PERSONAJE = "C:\\Users\\Public\\Documents\\La Mascarada\\personaje.csv";
     private static final String URL_EQ_PA_PE = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje.csv";
     private static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
-<<<<<<< HEAD
-=======
     private static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
-
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
     private boolean conectado;
     private Connection conn;
     private Statement stmt;
 
     public BaseDeDatos() throws IOException {
         File directorio = new File("C:\\Users\\Public\\Documents\\La Mascarada");
-<<<<<<< HEAD
-        SimpleDateFormat dtf;
-        Calendar calendar;
-=======
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
 
         if (!directorio.exists()) {
             directorio.mkdirs();
@@ -56,24 +47,6 @@ public class BaseDeDatos {
                 "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso");
         guardarEnFichero(URL_PARTIDA,
                 "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena");
-<<<<<<< HEAD
-        dtf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
-        calendar = Calendar.getInstance();
-        java.util.Date dateObj = calendar.getTime();
-        java.util.Date dateObj2 = calendar.getTime();
-        dtf.format(dateObj);
-        dtf.format(dateObj2);
-        dateObj.setTime(0);
-        //System.out.println("0 contra ahora: " + dateObj.compareTo(dateObj2));
-        //System.out.println("ahora contra ahora: " + dateObj2.compareTo(dateObj2));
-        //System.out.println("ahora contra 0: " + dateObj2.compareTo(dateObj));
-
-        guardarEnFichero("C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv",
-                dateObj.toString()
-        );
-
-        conectar();
-=======
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         guardarEnFichero(URL_ULTMA_MODIFICACION,
@@ -81,7 +54,6 @@ public class BaseDeDatos {
         );
 
         //conectar();
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
         if (conectado) {
             //           sincronizar();
         }
@@ -100,11 +72,7 @@ public class BaseDeDatos {
             archivo.createNewFile();
             try {
                 FileWriter fw = new FileWriter(archivo); // Escritor
-<<<<<<< HEAD
-                fw.write(texto + "\n");
-=======
                 fw.write(texto);
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
                 fw.close(); // Cerramos el escritor.
             } catch (IOException e) {
                 System.out.println(e);
@@ -216,14 +184,10 @@ public class BaseDeDatos {
      * @param idPartida de la partida en juego.
      * @return
      */
-<<<<<<< HEAD
-    private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) {
-        Scanner lector = new Scanner(URL_EQ_PA_PE);
-=======
     private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) throws IOException {
         File file = new File(URL_EQ_PA_PE);
         Scanner lector = new Scanner(file);
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
+
         String[] linea;
         ArrayList<Equipo> equipos = new ArrayList<>();
         Equipo equipo;

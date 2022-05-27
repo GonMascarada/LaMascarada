@@ -3,13 +3,9 @@ package Controlador;
 import Modelo.BaseDeDatos;
 import Mascarada.*;
 import Vista.*;
-<<<<<<< HEAD
-import java.io.IOException;
-=======
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -192,11 +188,7 @@ public final class Controlador {
      */
     public void cargarPartida(Partida partida) throws IOException {
         this.partida = partida;
-<<<<<<< HEAD
-        this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
-        System.out.println("Opciones" + partida.getEscena().getOpciones().size());
-=======
->>>>>>> 6fba48257e15a375683492921b4d4ae526946489
+
         lanzar();
     }
 
