@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/Inicio.java</file>
+            <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/Mapa.java</file>
             <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/Tienda.java</file>
-=======
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Persona.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Inicio.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Equipo.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Tienda.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/Cabecera.java</file>
-            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Prueba.java</file>
->>>>>>> ee49402b6b272c97a574916107b0ee7d802b1872
+            <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/FichaAuspex.java</file>
+            <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/VistaEscena.java</file>
         </group>
     </open-files>
 </project-private>

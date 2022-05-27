@@ -69,11 +69,13 @@ public class Inicio extends javax.swing.JFrame {
         // Carga las listas de partidas.
         if (partidas.size() > 0) {
             cargarDatosPartidas(jTableCargar);
-//falta la pestaña de borrado            cargarDatosPartidas(jTableBorrar);
+            cargarDatosPartidas(jTableBorrar);
         }
 
         //Pestaña de carga
         jTableCargar.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        
+        jTableBorrar.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
     }
 
@@ -128,10 +130,14 @@ public class Inicio extends javax.swing.JFrame {
         jTableCargar = new javax.swing.JTable();
         jButtonCargar = new javax.swing.JButton();
         BorrarPartida = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ListaBorrar = new javax.swing.JList<>();
+        jButtonBorrar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableBorrar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        FondoTotal.setLayout(null);
 
         LabelClanes.setText("Seleccione un clan:");
 
@@ -267,6 +273,11 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTableCargar);
 
         jButtonCargar.setText("Cargar");
+        jButtonCargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCargarMouseClicked(evt);
+            }
+        });
         jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCargarActionPerformed(evt);
@@ -286,44 +297,64 @@ public class Inicio extends javax.swing.JFrame {
         CargarPartidaLayout.setVerticalGroup(
             CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CargarPartidaLayout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCargar, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         TabbedMain.addTab("Cargar Partida", CargarPartida);
 
-        ListaBorrar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jButtonBorrar.setText("Borrar");
+        jButtonBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBorrarMouseClicked(evt);
+            }
         });
-        jScrollPane2.setViewportView(ListaBorrar);
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
+
+        jTableBorrar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableBorrar);
 
         javax.swing.GroupLayout BorrarPartidaLayout = new javax.swing.GroupLayout(BorrarPartida);
         BorrarPartida.setLayout(BorrarPartidaLayout);
         BorrarPartidaLayout.setHorizontalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
+            .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                .addGap(317, 317, 317)
+                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BorrarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
         BorrarPartidaLayout.setVerticalGroup(
             BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addGroup(BorrarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         TabbedMain.addTab("Borrar Partida", BorrarPartida);
 
-        javax.swing.GroupLayout FondoTotalLayout = new javax.swing.GroupLayout(FondoTotal);
-        FondoTotal.setLayout(FondoTotalLayout);
-        FondoTotalLayout.setHorizontalGroup(
-            FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedMain)
-        );
-        FondoTotalLayout.setVerticalGroup(
-            FondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedMain)
-        );
+        FondoTotal.add(TabbedMain);
+        TabbedMain.setBounds(0, 0, 995, 726);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -449,6 +480,21 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCargarActionPerformed
 
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButtonCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarMouseClicked
+        // TODO add your handling code here:
+        
+        System.out.println("Trabajando en la carga de partidas");
+    }//GEN-LAST:event_jButtonCargarMouseClicked
+
+    private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Trabajando en el borrado de partidas");
+    }//GEN-LAST:event_jButtonBorrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -458,7 +504,7 @@ public class Inicio extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -475,7 +521,7 @@ public class Inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
+        //</editor-fold>*/
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -508,15 +554,16 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JCheckBox Habilidad4;
     private javax.swing.JLabel LabelClanes;
     private javax.swing.JLabel Labeldificultad;
-    private javax.swing.JList<String> ListaBorrar;
     private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
     private javax.swing.JTextField TextNombre;
+    private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonCargar;
     private javax.swing.JLabel jLabelError;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTableBorrar;
     private javax.swing.JTable jTableCargar;
     private javax.swing.JLabel labelNombre;
     // End of variables declaration//GEN-END:variables
