@@ -69,9 +69,6 @@ public class Cabecera extends javax.swing.JPanel {
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
-        System.out.println(partida.getProtagonista().getClan().getImagen());
-        //ImageIcon imagen = new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
-       // foto.setIcon(imagen);
         ImageIcon ImagenEscena = new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
         Image image = ImagenEscena.getImage();
         Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);

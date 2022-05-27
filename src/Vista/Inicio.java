@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Moru
  */
-public class Inicio extends javax.swing.JFrame {
+public final class Inicio extends javax.swing.JFrame {
 
     private final Controlador controlador;
 
@@ -86,6 +86,7 @@ public class Inicio extends javax.swing.JFrame {
         String[] columnNames = {"Nombre", "Clan", "Habilidad 1", "Habilidad 2", "Tiempo jugado", "Último guardado"};
         // Evita que se puedan editar las celdas de la tabla
         DefaultTableModel model = new DefaultTableModel(null, columnNames) {
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return false;
             }
@@ -443,7 +444,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarActionPerformed
         try {
-            controlador.cargarPartida(partidas.get(jTableCargar.getSelectedRow()));
+            Partida p = partidas.get(jTableCargar.getSelectedRow());
+            controlador.cargarPartida(p);
+            this.dispose();
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }

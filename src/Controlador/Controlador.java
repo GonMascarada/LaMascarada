@@ -20,7 +20,7 @@ public final class Controlador {
 
     private Partida partida;
 
-    private BaseDeDatos bbdd;
+    private final BaseDeDatos bbdd;
 
     public Controlador() throws IOException {
         bbdd = new BaseDeDatos();
@@ -31,6 +31,7 @@ public final class Controlador {
      * Devuelve la lista de todos los clanes disponibles.
      *
      * @return lista de todos los clanes de vampiro jugables.
+     * @throws java.io.IOException
      */
     public ArrayList<Clan> getListaClanes() throws IOException {
         return bbdd.getListaClanes();
@@ -56,6 +57,8 @@ public final class Controlador {
      * Lista de todas las partidas que se han guardado.
      *
      * @return lista de todas las partidas.
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
     public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
         return bbdd.getListaPartidas();
@@ -66,6 +69,7 @@ public final class Controlador {
      *
      * @param nombre a comprobar.
      * @return true si está disponible, false en otro caso.
+     * @throws java.io.FileNotFoundException
      */
     public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
         return bbdd.comprobarNombrePersonaje(nombre);
@@ -77,6 +81,7 @@ public final class Controlador {
      * @param clan del nuevo personaje.
      * @param nombre del nuevo personaje.
      * @param dificultad de la partida.
+     * @throws java.io.IOException
      */
     public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad) throws IOException {
         String datos;
@@ -90,7 +95,7 @@ public final class Controlador {
         datos += Utilidades.DINERO + ";" + Utilidades.EA_PROTAGONISTA + ";" + ";";
         datos += clan.getHabilidadesObtenidas();
         //Creamos al protagonista
-        vampire = new Vampire(clan, datos.split(";"), new ArrayList<Equipo>());
+        vampire = new Vampire(clan, datos.split(";"), new ArrayList<>());
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
         partida = bbdd.iniciarNuevaPartida(vampire);
@@ -111,6 +116,7 @@ public final class Controlador {
      * Lanza la nueva escena de una opción.
      *
      * @param opcion marca cuál será la nueva escena.
+     * @throws java.io.IOException
      */
     public void escoger(Opcion opcion) throws IOException {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida());
@@ -163,6 +169,7 @@ public final class Controlador {
 
     /**
      * Guarda la partida en el estado actual.
+     * @throws java.io.FileNotFoundException
      */
     public void guardarPartida() throws FileNotFoundException {
         // 1. Se eliminan los pnc´s que no han sufrido cambios.
@@ -176,11 +183,10 @@ public final class Controlador {
      * Carga una partida.
      *
      * @param partida
+     * @throws java.io.IOException
      */
     public void cargarPartida(Partida partida) throws IOException {
         this.partida = partida;
-        this.partida.setPersonajes(bbdd.getPNJs(partida.getIdPartida()));
-        System.out.println("Opciones" + partida.getEscena().getOpciones().size());
         lanzar();
     }
 
@@ -217,7 +223,7 @@ public final class Controlador {
      *
      * @param opcion la opción tomada.
      */
-    private void evaluarAccion(Opcion opcion) throws FileNotFoundException {
+    private void evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
         switch (opcion.getAccion()) {
             case Utilidades.OP_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);

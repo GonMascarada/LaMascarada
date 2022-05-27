@@ -82,6 +82,7 @@ public class BaseDeDatos {
      * Devuelve la escena por haber perido todos los puntos de vida.
      *
      * @return escena por muerte.
+     * @throws java.io.IOException
      */
     public Escena getEscenaMuerte() throws IOException {
         return getEscena(999999999, 0); //Habrá que marcar cual es la escena de muerte.
@@ -92,6 +93,7 @@ public class BaseDeDatos {
      *
      * @param idEscena de la escena.
      * @return una lista de parejas [condición, texto]
+     * @throws java.io.IOException
      */
     public ArrayList<String[]> getTextos(int idEscena) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
@@ -117,7 +119,9 @@ public class BaseDeDatos {
      * Devuleve una escena concreta.
      *
      * @param idEscena identificador de la escena.
+     * @param idPartida
      * @return escena requerida.
+     * @throws java.io.IOException
      */
     public Escena getEscena(int idEscena, int idPartida) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/escena.csv");
@@ -253,6 +257,8 @@ public class BaseDeDatos {
      * protagonistas.
      *
      * @return lista de partidas guardadas.
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
     public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
         File file = new File(URL_PERSONAJE);
@@ -275,6 +281,7 @@ public class BaseDeDatos {
                 vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
                 partida = getPartida(idPartida); //Nos devuelve la partida sin el vampiro protagonista.
                 partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
+                partida.setPersonajes(getPNJs(idPartida));
                 partidas.add(partida); //Se añade la partida al listado.
             }
         }
@@ -351,6 +358,8 @@ public class BaseDeDatos {
      *
      * @param idPartida identifiador de la partida.
      * @return una partida.
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
     public Partida getPartida(int idPartida) throws IOException, ParseException {
         File file = new File(URL_PARTIDA);
@@ -393,6 +402,7 @@ public class BaseDeDatos {
      * Devuelve la lista de clanes disponible para jugar.
      *
      * @return lista de clanes.
+     * @throws java.io.IOException
      */
     public ArrayList<Clan> getListaClanes() throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
@@ -416,6 +426,7 @@ public class BaseDeDatos {
      *
      * @param nombre
      * @return lista de clanes.
+     * @throws java.io.IOException
      */
     public Clan getClan(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
@@ -462,7 +473,7 @@ public class BaseDeDatos {
             stmt = conn.createStatement();
 
             conectado = true;
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e);
             conectado = false;
         }
@@ -484,8 +495,9 @@ public class BaseDeDatos {
      * Guarda el estado actual de la partida.
      *
      * @param partida a guardar.
+     * @throws java.io.FileNotFoundException
      */
-    public void guardarPartida(Partida partida) throws FileNotFoundException {
+    public void guardarPartida(Partida partida) throws FileNotFoundException, IOException {
         int id;
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
@@ -500,7 +512,14 @@ public class BaseDeDatos {
 
         // 4.Guardar los datos de los objetos de cada personaje.
         escribirObjetos(partida.getInfoObjetos());
-        // 5.Sincronizar los datos locales con la base de datos.
+
+        // 5.Actualizar la última modificación
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+        guardarEnFichero(URL_ULTMA_MODIFICACION,
+                dtf.format(LocalDateTime.now())
+        );
+
+        // 6.Sincronizar los datos locales con la base de datos.
         sincronizar();
     }
 
@@ -555,11 +574,65 @@ public class BaseDeDatos {
     /**
      * Elimina todos los datos de una partida.
      *
-     * @param partida
+     * @param idPartida
+     * @throws java.io.IOException
      */
-    public void borrarPartida(Partida partida) {
-        System.out.println("Estamos trabajando en ello :(");
+    public void eliminarPartida(int idPartida) throws IOException {
+        borrarPorFiltro(URL_PARTIDA, idPartida, 0);
+        borrarPorFiltro(URL_PERSONAJE, idPartida, 10);
+        borrarPorFiltro(URL_EQ_PA_PE, idPartida, 1);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+        guardarEnFichero(URL_ULTMA_MODIFICACION,
+                dtf.format(LocalDateTime.now())
+        );
         sincronizar();
+    }
+
+    /**
+     * Borra de un archivo concreto dada su url, todos los elementos cuyo
+     * idPartida sea uno en particular.
+     *
+     * @param url del archivo al purgar.
+     * @param idPartida de los datos de partida a eliminar.
+     * @param posicion del idPartida dentro del archivo.
+     */
+    private void borrarPorFiltro(String url, int idPartida, int posicion) {
+        File f = new File(url);
+        ArrayList<String> texto = leer(f);
+        String[] linea;
+        try {
+            FileWriter fw = new FileWriter(f);
+            fw.write(texto.get(0)); //Escribimos la cabecera.
+            for (int i = 1; i < texto.size(); i++) {
+                linea = texto.get(i).split(";");
+                if (Integer.parseInt(linea[posicion]) != idPartida) {
+                    fw.write("\n" + texto.get(i));
+                }
+            }
+            fw.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * Extrae el texto del fichero.
+     *
+     * @param file a leer.
+     * @return texto leido.
+     */
+    private ArrayList<String> leer(File file) {
+        ArrayList<String> texto = new ArrayList<>();
+        try {
+            Scanner lector = new Scanner(file);
+            while (lector.hasNext()) {
+                texto.add(lector.nextLine());
+            }
+            lector.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e);
+        }
+        return texto;
     }
 
     /**
@@ -575,6 +648,7 @@ public class BaseDeDatos {
      *
      * @param nombre
      * @return true si está disponible, false en otro caso.
+     * @throws java.io.FileNotFoundException
      */
     public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
         File file = new File(URL_PERSONAJE);
@@ -726,6 +800,7 @@ public class BaseDeDatos {
     /**
      * Muestra por pantalla incoherencias en las escenas.
      *
+     * @throws java.io.IOException
      */
     public void comprobarConsistencia() throws IOException {
         HashMap<Integer, Integer> opcionesesenas = new HashMap<>();
@@ -757,5 +832,4 @@ public class BaseDeDatos {
         lector.close();
         inputStream.close();
     }
-
 }
