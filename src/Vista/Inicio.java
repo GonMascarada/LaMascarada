@@ -514,7 +514,7 @@ public final class Inicio extends javax.swing.JFrame {
         int[] seleccionados = jTableBorrar.getSelectedRows();
         for (int i = 0; i < seleccionados.length; i++) {
             try {
-                controlador.eliminarPartida(partidas.get(i).getIdPartida());
+                controlador.eliminarPartida(partidas.get(seleccionados[i]).getIdPartida());
             } catch (IOException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
