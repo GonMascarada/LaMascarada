@@ -20,17 +20,17 @@ import javax.swing.DefaultListModel;
  */
 public class FichaAuspex extends javax.swing.JFrame {
     
-    private Controlador controlador;
+    private Partida partida;
     private ArrayList<Equipo> equipo;
 
     /**
      * Creates new form FichaAuspex
      */
-    public FichaAuspex() throws IOException {
+    public FichaAuspex(Partida partida) throws IOException {
         initComponents();
-        controlador = new Controlador();
+        this.partida = partida;
         //Lista de la informacion de los clanes
-        equipo = controlador.getPartida().getProtagonista().getEquipacion();
+        equipo = partida.getProtagonista().getEquipacion();
         vidaBarra.setForeground(Color.green);
         ataqueBarra1.setForeground(Color.red);
         if(animoBarra.getValue()<=25) {
@@ -56,13 +56,13 @@ public class FichaAuspex extends javax.swing.JFrame {
         this.listaAtaque.setModel(listaAtaque);
         this.listaDefensivos.setModel(listaDefensivos);
         this.listaEspecial.setModel(listaEspeciales);
-              
+        datosFichaAuspex(partida);
     }
      public void datosFichaAuspex( Partida partida){
         nombre.setText(partida.getProtagonista().getNombre());
-        String[]hab1y2=partida.getProtagonista().getNombre().split(";");
-        habilidad1.setText(hab1y2[1]);
-        dineroDato.setText(hab1y2[2]);
+        String[]hab1y2=partida.getProtagonista().getHabilidades().split(";");
+        habilidad1.setText(hab1y2[0]);
+        dineroDato.setText(hab1y2[1]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
         ataqueBarra1.setValue(partida.getProtagonista().getAtaque());
         vidaBarra.setMaximum(partida.getProtagonista().getVidaMax());
@@ -110,7 +110,9 @@ public class FichaAuspex extends javax.swing.JFrame {
         dinero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setMaximumSize(new java.awt.Dimension(1000, 700));
+        setMinimumSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
@@ -197,15 +199,15 @@ public class FichaAuspex extends javax.swing.JFrame {
         jPanel1.add(nombre);
         nombre.setBounds(230, 20, 60, 20);
         jPanel1.add(vidaBarra);
-        vidaBarra.setBounds(70, 210, 220, 19);
+        vidaBarra.setBounds(70, 210, 220, 4);
         jPanel1.add(animoBarra);
-        animoBarra.setBounds(700, 210, 270, 19);
+        animoBarra.setBounds(700, 210, 270, 4);
 
         vida1.setText("Vida");
         jPanel1.add(vida1);
         vida1.setBounds(310, 210, 50, 20);
         jPanel1.add(ataqueBarra1);
-        ataqueBarra1.setBounds(350, 210, 230, 19);
+        ataqueBarra1.setBounds(350, 210, 230, 4);
 
         habilidad3.setText("Habilidad2");
         jPanel1.add(habilidad3);
@@ -251,11 +253,6 @@ public class FichaAuspex extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new FichaAuspex().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(FichaAuspex.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         });
     }
