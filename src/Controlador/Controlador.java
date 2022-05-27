@@ -169,9 +169,10 @@ public final class Controlador {
 
     /**
      * Guarda la partida en el estado actual.
+     *
      * @throws java.io.FileNotFoundException
      */
-    public void guardarPartida() throws FileNotFoundException {
+    public void guardarPartida() throws FileNotFoundException, IOException {
         // 1. Se eliminan los pnc´s que no han sufrido cambios.
         partida.borrarNpcsInalterados();
 
@@ -195,8 +196,8 @@ public final class Controlador {
      *
      * @param partida
      */
-    private void borrarPartida(Partida partida) {
-        bbdd.borrarPartida(partida);
+    private void eliminarPartida(int idPartida) throws IOException {
+        bbdd.eliminarPartida(idPartida);
     }
 
     /**
