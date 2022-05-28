@@ -61,8 +61,8 @@ public final class Inicio extends javax.swing.JFrame {
         for (int i = 0; i < clanes.size(); i++) {
             modelo.addElement(clanes.get(i).getNombre());
         }
-        ListaClanes1.setModel(modelo);
-        ListaClanes1.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        jListClanes.setModel(modelo);
+        jListClanes.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 
         // Carga las listas de partidas.
         refrescarListasPartidas();
@@ -89,8 +89,48 @@ public final class Inicio extends javax.swing.JFrame {
             //Hace que SI se pueda acceder a las pestañas de cargar y borrar
             TabbedMain.setEnabledAt(1, true);
             TabbedMain.setEnabledAt(2, true);
-            jTableCargar.setDefaultRenderer(Object.class, new MiRender());
-            jTableBorrar.setDefaultRenderer(Object.class, new MiRender());
+
+            //Cambio colores
+            Color fondo = Color.BLACK;
+            Color fondoClaro = Color.DARK_GRAY;
+            Color texto = Color.WHITE;
+            TabbedMain.setBackground(fondo);
+            TabbedMain.setForeground(texto);
+            jPanelFondo.setBackground(fondo);
+            jPanelCrearPartida.setBackground(fondo);
+            jPanelCargarPartida.setBackground(fondo);
+            jPanelBorrarPartida.setBackground(fondo);
+            jLabelError.setForeground(texto);
+            jLabelClanes.setForeground(texto);
+            jLabelDificultad.setForeground(texto);
+            jLabelNombre.setForeground(texto);
+            jListClanes.setBackground(fondoClaro);
+            jListClanes.setForeground(texto);
+            jTextDescripcionClan.setBackground(fondoClaro);
+            jTextDescripcionClan.setForeground(texto);
+            jCheckHabilidad1.setBackground(fondo);
+            jCheckHabilidad1.setForeground(texto);
+            jCheckHabilidad2.setBackground(fondo);
+            jCheckHabilidad2.setForeground(texto);
+            jCheckHabilidad3.setBackground(fondo);
+            jCheckHabilidad3.setForeground(texto);
+            jCheckHabilidad4.setBackground(fondo);
+            jCheckHabilidad4.setForeground(texto);
+            jTextNombre.setBackground(fondoClaro);
+            jTextNombre.setForeground(texto);
+            jComboBoxDificultad.setBackground(fondoClaro);
+            jComboBoxDificultad.setForeground(texto);
+            jTableCargar.setBackground(fondo);
+            jTableCargar.setForeground(texto);
+            jTableBorrar.setBackground(fondo);
+            jTableBorrar.setForeground(texto);
+            jTableCargar.getTableHeader().setBackground(fondo);
+            jTableCargar.getTableHeader().setForeground(texto);
+            jTableBorrar.getTableHeader().setBackground(fondo);
+            jTableBorrar.getTableHeader().setForeground(texto);
+            jScrollPaneCargar.getViewport().setBackground(fondo);
+            jScrollPaneBorrar.getViewport().setBackground(fondo);
+
         } else {
             //Hace que NO se pueda acceder a las pestañas de cargar y borrar
             TabbedMain.setEnabledAt(1, false);
@@ -127,63 +167,62 @@ public final class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FondoTotal = new javax.swing.JPanel();
+        jPanelFondo = new javax.swing.JPanel();
         TabbedMain = new javax.swing.JTabbedPane();
-        CrearPartida = new javax.swing.JPanel();
-        LabelClanes = new javax.swing.JLabel();
-        labelNombre = new javax.swing.JLabel();
-        TextNombre = new javax.swing.JTextField();
-        Labeldificultad = new javax.swing.JLabel();
-        BoxDificultad = new javax.swing.JComboBox<>();
+        jPanelCrearPartida = new javax.swing.JPanel();
+        jLabelClanes = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jTextNombre = new javax.swing.JTextField();
+        jLabelDificultad = new javax.swing.JLabel();
+        jComboBoxDificultad = new javax.swing.JComboBox<>();
         Crear = new javax.swing.JButton();
         Eleccion = new javax.swing.JScrollPane();
-        ListaClanes1 = new javax.swing.JList<>();
+        jListClanes = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        DescripcionClan = new javax.swing.JTextPane();
-        Habilidad1 = new javax.swing.JCheckBox();
-        Habilidad2 = new javax.swing.JCheckBox();
-        Habilidad3 = new javax.swing.JCheckBox();
-        Habilidad4 = new javax.swing.JCheckBox();
+        jTextDescripcionClan = new javax.swing.JTextPane();
+        jCheckHabilidad1 = new javax.swing.JCheckBox();
+        jCheckHabilidad2 = new javax.swing.JCheckBox();
+        jCheckHabilidad3 = new javax.swing.JCheckBox();
+        jCheckHabilidad4 = new javax.swing.JCheckBox();
         jLabelError = new javax.swing.JLabel();
-        CargarPartida = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanelCargarPartida = new javax.swing.JPanel();
+        jScrollPaneCargar = new javax.swing.JScrollPane();
         jTableCargar = new javax.swing.JTable();
         jButtonCargar = new javax.swing.JButton();
-        BorrarPartida = new javax.swing.JPanel();
+        jPanelBorrarPartida = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPaneBorrar = new javax.swing.JScrollPane();
         jTableBorrar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 700));
         setMinimumSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
 
-        FondoTotal.setLayout(null);
+        jPanelFondo.setLayout(null);
 
         TabbedMain.setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        CrearPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanelCrearPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        LabelClanes.setText("Seleccione un clan:");
+        jLabelClanes.setText("Seleccione un clan:");
 
-        labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelNombre.setText("Introduzca un nombre");
+        jLabelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNombre.setText("Introduzca un nombre");
 
-        TextNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+        jTextNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNombreActionPerformed(evt);
+                jTextNombreActionPerformed(evt);
             }
         });
 
-        Labeldificultad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Labeldificultad.setText("Seleccione la dificultad");
+        jLabelDificultad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDificultad.setText("Seleccione la dificultad");
 
-        BoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
-        BoxDificultad.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Normal", "Dificil", "Pesadilla" }));
+        jComboBoxDificultad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BoxDificultadActionPerformed(evt);
+                jComboBoxDificultadActionPerformed(evt);
             }
         });
 
@@ -199,83 +238,83 @@ public final class Inicio extends javax.swing.JFrame {
             }
         });
 
-        ListaClanes1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListClanes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Brujah", "Ventru", "Tremere", "Nosferatu" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        ListaClanes1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jListClanes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ListaClanes1MouseClicked(evt);
+                jListClanesMouseClicked(evt);
             }
         });
-        ListaClanes1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        jListClanes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                ListaClanes1ValueChanged(evt);
+                jListClanesValueChanged(evt);
             }
         });
-        Eleccion.setViewportView(ListaClanes1);
+        Eleccion.setViewportView(jListClanes);
 
-        jScrollPane1.setViewportView(DescripcionClan);
+        jScrollPane1.setViewportView(jTextDescripcionClan);
 
         jLabelError.setText("jLabel1");
 
-        javax.swing.GroupLayout CrearPartidaLayout = new javax.swing.GroupLayout(CrearPartida);
-        CrearPartida.setLayout(CrearPartidaLayout);
-        CrearPartidaLayout.setHorizontalGroup(
-            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelCrearPartidaLayout = new javax.swing.GroupLayout(jPanelCrearPartida);
+        jPanelCrearPartida.setLayout(jPanelCrearPartidaLayout);
+        jPanelCrearPartidaLayout.setHorizontalGroup(
+            jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
+            .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
-                .addComponent(Habilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCheckHabilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(Habilidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCheckHabilidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(Habilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCheckHabilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
-                .addComponent(Habilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCheckHabilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
+            .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
                 .addGap(356, 356, 356)
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Labeldificultad, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(BoxDificultad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TextNombre)
-                    .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelDificultad, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                    .addComponent(jComboBoxDificultad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextNombre)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        CrearPartidaLayout.setVerticalGroup(
-            CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CrearPartidaLayout.createSequentialGroup()
+        jPanelCrearPartidaLayout.setVerticalGroup(
+            jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(LabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Eleccion)
                     .addComponent(jScrollPane1))
                 .addGap(39, 39, 39)
-                .addGroup(CrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Habilidad1)
-                    .addComponent(Habilidad2)
-                    .addComponent(Habilidad3)
-                    .addComponent(Habilidad4))
+                .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckHabilidad1)
+                    .addComponent(jCheckHabilidad2)
+                    .addComponent(jCheckHabilidad3)
+                    .addComponent(jCheckHabilidad4))
                 .addGap(50, 50, 50)
-                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Labeldificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(jLabelError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,10 +322,11 @@ public final class Inicio extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
         );
 
-        TabbedMain.addTab("Crear Partida", CrearPartida);
+        TabbedMain.addTab("Crear Partida", jPanelCrearPartida);
 
-        CargarPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanelCargarPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
 
+        jTableCargar.setForeground(new java.awt.Color(0, 0, 0));
         jTableCargar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -298,7 +338,7 @@ public final class Inicio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTableCargar);
+        jScrollPaneCargar.setViewportView(jTableCargar);
 
         jButtonCargar.setText("Cargar");
         jButtonCargar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,28 +352,28 @@ public final class Inicio extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout CargarPartidaLayout = new javax.swing.GroupLayout(CargarPartida);
-        CargarPartida.setLayout(CargarPartidaLayout);
-        CargarPartidaLayout.setHorizontalGroup(
-            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-            .addGroup(CargarPartidaLayout.createSequentialGroup()
-                .addGap(315, 315, 315)
+        javax.swing.GroupLayout jPanelCargarPartidaLayout = new javax.swing.GroupLayout(jPanelCargarPartida);
+        jPanelCargarPartida.setLayout(jPanelCargarPartidaLayout);
+        jPanelCargarPartidaLayout.setHorizontalGroup(
+            jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPaneCargar, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
+                .addGap(306, 306, 306)
                 .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        CargarPartidaLayout.setVerticalGroup(
-            CargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CargarPartidaLayout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanelCargarPartidaLayout.setVerticalGroup(
+            jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPaneCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
-        TabbedMain.addTab("Cargar Partida", CargarPartida);
+        TabbedMain.addTab("Cargar Partida", jPanelCargarPartida);
 
-        BorrarPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanelBorrarPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jButtonBorrar.setText("Borrar");
         jButtonBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -358,68 +398,68 @@ public final class Inicio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTableBorrar);
+        jScrollPaneBorrar.setViewportView(jTableBorrar);
 
-        javax.swing.GroupLayout BorrarPartidaLayout = new javax.swing.GroupLayout(BorrarPartida);
-        BorrarPartida.setLayout(BorrarPartidaLayout);
-        BorrarPartidaLayout.setHorizontalGroup(
-            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BorrarPartidaLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelBorrarPartidaLayout = new javax.swing.GroupLayout(jPanelBorrarPartida);
+        jPanelBorrarPartida.setLayout(jPanelBorrarPartidaLayout);
+        jPanelBorrarPartidaLayout.setHorizontalGroup(
+            jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBorrarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPaneBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BorrarPartidaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBorrarPartidaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(331, 331, 331))
         );
-        BorrarPartidaLayout.setVerticalGroup(
-            BorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BorrarPartidaLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanelBorrarPartidaLayout.setVerticalGroup(
+            jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBorrarPartidaLayout.createSequentialGroup()
+                .addComponent(jScrollPaneBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        TabbedMain.addTab("Borrar Partida", BorrarPartida);
+        TabbedMain.addTab("Borrar Partida", jPanelBorrarPartida);
 
-        FondoTotal.add(TabbedMain);
+        jPanelFondo.add(TabbedMain);
         TabbedMain.setBounds(0, 0, 1000, 700);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
+    private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextNombreActionPerformed
+    }//GEN-LAST:event_jTextNombreActionPerformed
 
-    private void BoxDificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDificultadActionPerformed
+    private void jComboBoxDificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDificultadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BoxDificultadActionPerformed
+    }//GEN-LAST:event_jComboBoxDificultadActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
-    private void ListaClanes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaClanes1MouseClicked
+    private void jListClanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListClanesMouseClicked
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_ListaClanes1MouseClicked
+    }//GEN-LAST:event_jListClanesMouseClicked
 
-    private void ListaClanes1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaClanes1ValueChanged
+    private void jListClanesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClanesValueChanged
         Clan clan;
-        String nombreClan = ListaClanes1.getSelectedValue();
+        String nombreClan = jListClanes.getSelectedValue();
         int contador = 0;
         HashMap<String, Boolean> habilidades;
         Iterator<String> it;
@@ -427,7 +467,7 @@ public final class Inicio extends javax.swing.JFrame {
         for (int i = 0; i < clanes.size(); i++) {
             clan = clanes.get(i);
             if (clan.getNombre().equalsIgnoreCase(nombreClan)) {
-                DescripcionClan.setText(clanes.get(i).getDescripcion());
+                jTextDescripcionClan.setText(clanes.get(i).getDescripcion());
                 habilidades = clan.getHabilidades();
                 it = habilidades.keySet().iterator();
 
@@ -438,47 +478,47 @@ public final class Inicio extends javax.swing.JFrame {
                 }
             }
         }
-        Habilidad1.setText(nombres[0]);
-        Habilidad2.setText(nombres[1]);
-        Habilidad3.setText(nombres[2]);
-        Habilidad4.setText(nombres[3]);
-    }//GEN-LAST:event_ListaClanes1ValueChanged
+        jCheckHabilidad1.setText(nombres[0]);
+        jCheckHabilidad2.setText(nombres[1]);
+        jCheckHabilidad3.setText(nombres[2]);
+        jCheckHabilidad4.setText(nombres[3]);
+    }//GEN-LAST:event_jListClanesValueChanged
 
     private void CrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearMouseClicked
         int indice, contador;
         String error = "";
         try {
-            if (controlador.comprobarNombrePersonaje(TextNombre.getText())) {
-                indice = ListaClanes1.getSelectedIndex();
+            if (controlador.comprobarNombrePersonaje(jTextNombre.getText())) {
+                indice = jListClanes.getSelectedIndex();
                 contador = 0;
                 if (indice != -1) {
-                    if (Habilidad1.isSelected()) {
+                    if (jCheckHabilidad1.isSelected()) {
                         contador++;
                     }
-                    if (Habilidad2.isSelected()) {
+                    if (jCheckHabilidad2.isSelected()) {
                         contador++;
                     }
-                    if (Habilidad3.isSelected()) {
+                    if (jCheckHabilidad3.isSelected()) {
                         contador++;
                     }
-                    if (Habilidad4.isSelected()) {
+                    if (jCheckHabilidad4.isSelected()) {
                         contador++;
                     }
                     if (contador == 2) {
-                        if (Habilidad1.isSelected()) {
-                            clanes.get(indice).setHabilidad(Habilidad1.getText());
+                        if (jCheckHabilidad1.isSelected()) {
+                            clanes.get(indice).setHabilidad(jCheckHabilidad1.getText());
                         }
-                        if (Habilidad2.isSelected()) {
-                            clanes.get(indice).setHabilidad(Habilidad2.getText());
+                        if (jCheckHabilidad2.isSelected()) {
+                            clanes.get(indice).setHabilidad(jCheckHabilidad2.getText());
                         }
-                        if (Habilidad3.isSelected()) {
-                            clanes.get(indice).setHabilidad(Habilidad3.getText());
+                        if (jCheckHabilidad3.isSelected()) {
+                            clanes.get(indice).setHabilidad(jCheckHabilidad3.getText());
                         }
-                        if (Habilidad4.isSelected()) {
-                            clanes.get(indice).setHabilidad(Habilidad4.getText());
+                        if (jCheckHabilidad4.isSelected()) {
+                            clanes.get(indice).setHabilidad(jCheckHabilidad4.getText());
                         }
                         try {
-                            controlador.iniciarNuevaPartida(clanes.get(indice), TextNombre.getText(), BoxDificultad.getSelectedItem().toString());
+                            controlador.iniciarNuevaPartida(clanes.get(indice), jTextNombre.getText(), jComboBoxDificultad.getSelectedItem().toString());
                             this.dispose();
                         } catch (IOException ex) {
                             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -589,31 +629,31 @@ public final class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BorrarPartida;
-    private javax.swing.JComboBox<String> BoxDificultad;
-    private javax.swing.JPanel CargarPartida;
     private javax.swing.JButton Crear;
-    private javax.swing.JPanel CrearPartida;
-    private javax.swing.JTextPane DescripcionClan;
     private javax.swing.JScrollPane Eleccion;
-    private javax.swing.JPanel FondoTotal;
-    private javax.swing.JCheckBox Habilidad1;
-    private javax.swing.JCheckBox Habilidad2;
-    private javax.swing.JCheckBox Habilidad3;
-    private javax.swing.JCheckBox Habilidad4;
-    private javax.swing.JLabel LabelClanes;
-    private javax.swing.JLabel Labeldificultad;
-    private javax.swing.JList<String> ListaClanes1;
     private javax.swing.JTabbedPane TabbedMain;
-    private javax.swing.JTextField TextNombre;
     private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonCargar;
+    private javax.swing.JCheckBox jCheckHabilidad1;
+    private javax.swing.JCheckBox jCheckHabilidad2;
+    private javax.swing.JCheckBox jCheckHabilidad3;
+    private javax.swing.JCheckBox jCheckHabilidad4;
+    private javax.swing.JComboBox<String> jComboBoxDificultad;
+    private javax.swing.JLabel jLabelClanes;
+    private javax.swing.JLabel jLabelDificultad;
     private javax.swing.JLabel jLabelError;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JList<String> jListClanes;
+    private javax.swing.JPanel jPanelBorrarPartida;
+    private javax.swing.JPanel jPanelCargarPartida;
+    private javax.swing.JPanel jPanelCrearPartida;
+    private javax.swing.JPanel jPanelFondo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPaneBorrar;
+    private javax.swing.JScrollPane jScrollPaneCargar;
     private javax.swing.JTable jTableBorrar;
     private javax.swing.JTable jTableCargar;
-    private javax.swing.JLabel labelNombre;
+    private javax.swing.JTextPane jTextDescripcionClan;
+    private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
 }
