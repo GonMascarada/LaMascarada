@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.BaseDeDatos;
+import Modelo.GestorDeDatos;
 import Mascarada.*;
 import Vista.*;
 import java.io.FileNotFoundException;
@@ -20,10 +20,10 @@ public final class Controlador {
 
     private Partida partida;
 
-    private final BaseDeDatos bbdd;
+    private final GestorDeDatos bbdd;
 
     public Controlador() throws IOException {
-        bbdd = new BaseDeDatos();
+        bbdd = new GestorDeDatos();
         partida = new Partida(); //Habrá que borrarlo
     }
 
@@ -90,9 +90,9 @@ public final class Controlador {
         String texto;
 
         //Datos del nuevo protagonista
-        datos = nombre + ";" + Utilidades.ATQ_VAM + ";" + Utilidades.DEF_VAM + ";";
-        datos += Utilidades.VIDA_VAM + ";" + Utilidades.VIDA_VAM + ";";
-        datos += Utilidades.DINERO + ";" + Utilidades.EA_PROTAGONISTA + ";" + ";";
+        datos = nombre + ";" + Util.ATQ_VAM + ";" + Util.DEF_VAM + ";";
+        datos += Util.VIDA_VAM + ";" + Util.VIDA_VAM + ";";
+        datos += Util.DINERO + ";" + Util.EA_PROTAGONISTA + ";" + ";";
         datos += clan.getHabilidadesObtenidas();
         //Creamos al protagonista
         vampire = new Vampire(clan, datos.split(";"), new ArrayList<>());
@@ -195,7 +195,8 @@ public final class Controlador {
     /**
      * Borra de la base de datos una partida.
      *
-     * @param partida
+     * @param idPartida
+     * @throws java.io.IOException
      */
     public void eliminarPartida(int idPartida) throws IOException {
         bbdd.eliminarPartida(idPartida);
@@ -227,27 +228,27 @@ public final class Controlador {
      */
     private void evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
         switch (opcion.getAccion()) {
-            case Utilidades.OP_PROGRESO -> {
+            case Util.OP_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);
                 bbdd.guardarPartida(partida);
             }
-            case Utilidades.OP_SOSPECHA -> {
+            case Util.OP_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }
-            case Utilidades.OP_SEDSANGRE -> {
+            case Util.OP_SEDSANGRE -> {
                 partida.setSedDeSangre(partida.getSedDeSangre() + 1);
             }
-            case Utilidades.OP_AGRADAR -> {
+            case Util.OP_AGRADAR -> {
                 if (partida.getEscena().hayPnj()) {
-                    partida.getEscena().getPnj().setEstadoDeAnimo(Utilidades.EA_AGRADECIDO);
+                    partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
                 }
             }
-            case Utilidades.OP_ENFADAR -> {
+            case Util.OP_ENFADAR -> {
                 if (partida.getEscena().hayPnj()) {
-                    partida.getEscena().getPnj().setEstadoDeAnimo(Utilidades.EA_ENFADADO);
+                    partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
                 }
             }
-            case Utilidades.OP_OBTENER_MAPA -> {
+            case Util.OP_OBTENER_MAPA -> {
                 System.out.println("Vamos a obtener el mapa");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
@@ -275,7 +276,7 @@ public final class Controlador {
         int condicion;
         do {
             condicion = Integer.parseInt(textos.get(indice)[0]);
-            if (condicion == Utilidades.SI_ESTANDAR) {
+            if (condicion == Util.SI_ESTANDAR) {
                 texto = textos.get(indice)[1];
             } else if (evaluarCondicionDeTexto(condicion)) {
                 texto = textos.get(indice)[1];
@@ -299,7 +300,7 @@ public final class Controlador {
         int condicion;
         do {
             condicion = Integer.parseInt(textos.get(indice)[0]);
-            if (condicion == Utilidades.SI_EXTRA) {
+            if (condicion == Util.SI_EXTRA) {
                 texto = textos.get(indice)[1];
                 encontrado = true;
             }
@@ -318,16 +319,16 @@ public final class Controlador {
         boolean cumplida = false;
         Escena escena = partida.getEscena();
         switch (condicion) {
-            case Utilidades.SI_AGRADADO -> {
+            case Util.SI_AGRADADO -> {
                 if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_AGRADECIDO) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
                         cumplida = true;
                     }
                 }
             }
-            case Utilidades.SI_ENFADADO -> {
+            case Util.SI_ENFADADO -> {
                 if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_ENFADADO) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
                         cumplida = true;
                     }
                 }
@@ -346,24 +347,24 @@ public final class Controlador {
         boolean cumplida = false;
         Escena escena = partida.getEscena();
         switch (condicion) {
-            case Utilidades.SI_ESTANDAR -> {
+            case Util.SI_ESTANDAR -> {
                 cumplida = true;
             }
-            case Utilidades.SI_AGRADADO -> {
+            case Util.SI_AGRADADO -> {
                 if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_AGRADECIDO) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
                         cumplida = true;
                     }
                 }
             }
-            case Utilidades.SI_ENFADADO -> {
+            case Util.SI_ENFADADO -> {
                 if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Utilidades.EA_ENFADADO) {
+                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
                         cumplida = true;
                     }
                 }
             }
-            case Utilidades.SI_MAPA -> {
+            case Util.SI_MAPA -> {
                 System.out.println("Compruebo si tiene mapa.");
                 if (buscarEquipo("Mapa")) {
                     System.out.println("Mapa encontrado.");
