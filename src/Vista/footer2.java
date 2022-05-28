@@ -18,16 +18,17 @@ import javax.swing.JButton;
  *
  * @author Alumno
  */
-public class footer2 extends javax.swing.JPanel{
-    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
-    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
-    
+public class footer2 extends javax.swing.JPanel {
+
+    ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+
     private Controlador controlador;
     private VistaEscena vista;
     private ArrayList<Opcion> opciones;
 
-
     private ArrayList<JButton> botones;
+
     /**
      * Creates new form footer2
      */
@@ -36,8 +37,7 @@ public class footer2 extends javax.swing.JPanel{
         this.controlador = controlador;
         this.vista = vista;
         this.opciones = controlador.getPartida().getEscena().getOpciones();
-        
-        
+
         opcion1.setRolloverEnabled(true);
         opcion1.setIcon(botonRojo1);
         opcion1.setPressedIcon(botonRojo2);
@@ -50,10 +50,7 @@ public class footer2 extends javax.swing.JPanel{
         opcion2.setText(opciones.get(1).getTexto());
         opcion2.setForeground(Color.white);
 
-        
     }
-    
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,16 +123,16 @@ public class footer2 extends javax.swing.JPanel{
         // TODO add your handling code here:
     }//GEN-LAST:event_opcion1ActionPerformed
 
-    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {
 
         try {
             // TODO add your handling code here:
             controlador.escoger(opciones.get(0));
+            vista.dispose();
         } catch (IOException ex) {
             Logger.getLogger(footer2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        vista.dispose();
-    }                                                                    
+    }
 
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
         try {
