@@ -6,7 +6,7 @@ package Mascarada;
  *
  * @author Gonzalo López Fernández
  */
-public abstract class Util {
+public final class Util {
 
     // Ulr´s a los ficheros
     public static final String URL_CARPETA = "C:\\Users\\Public\\Documents\\La Mascarada";

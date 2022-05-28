@@ -21,23 +21,7 @@ import java.util.Scanner;
  *
  * @author Gonzalo López Fernández
  */
-public class Fichero {
-
-    public  Fichero() throws IOException {
-        File directorio = new File(Util.URL_CARPETA);
-
-        if (!directorio.exists()) {
-            directorio.mkdirs();
-        }
-        guardarEnFichero(Util.URL_PERSONAJE, Util.CABECERA_PERSONAJE);
-        guardarEnFichero(Util.URL_EQ_PA_PE, Util.CABECERA_EQ_PA_PE);
-        guardarEnFichero(Util.URL_PARTIDA, Util.CABECERA_PARTIDA);
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION,
-                dtf.format(LocalDateTime.now())
-        );
-    }
+public final class Fichero {
 
     /**
      * Borra de un archivo concreto dada su url, todos los elementos cuyo
@@ -47,7 +31,7 @@ public class Fichero {
      * @param idPartida de los datos de partida a eliminar.
      * @param posicion del idPartida dentro del archivo.
      */
-    private void borrarPorFiltro(String url, int idPartida, int posicion) {
+    private static void borrarPorFiltro(String url, int idPartida, int posicion) {
         File f = new File(url);
         ArrayList<String> texto = leer(f);
         String[] linea;
@@ -71,7 +55,7 @@ public class Fichero {
      *
      * @throws java.io.IOException
      */
-    public void comprobarConsistencia() throws IOException {
+    public static void comprobarConsistencia() throws IOException {
         HashMap<Integer, Integer> opcionesesenas = new HashMap<>();
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
         Scanner lector = new Scanner(inputStream);
@@ -103,13 +87,33 @@ public class Fichero {
     }
 
     /**
+     * Comprueba si existen la carpeta y los ficheros necesarios para alamacenar
+     * los avances en el juego.
+     *
+     * @throws IOException
+     */
+    public static void comprobarFicherosDeGuardado() throws IOException {
+        File directorio = new File(Util.URL_CARPETA);
+
+        if (!directorio.exists()) {
+            directorio.mkdirs();
+        }
+        guardarEnFichero(Util.URL_PERSONAJE, Util.CABECERA_PERSONAJE);
+        guardarEnFichero(Util.URL_EQ_PA_PE, Util.CABECERA_EQ_PA_PE);
+        guardarEnFichero(Util.URL_PARTIDA, Util.CABECERA_PARTIDA);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, dtf.format(LocalDateTime.now()));
+    }
+
+    /**
      * Comprueba si un nombre ya está siendo usado por otro personaje.
      *
      * @param nombre
      * @return true si está disponible, false en otro caso.
      * @throws java.io.FileNotFoundException
      */
-    public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
+    public static boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
         File file = new File(Util.URL_PERSONAJE);
         Scanner lector = new Scanner(file);
         String[] linea;
@@ -136,7 +140,7 @@ public class Fichero {
      * @param idPartida
      * @throws java.io.IOException
      */
-    public void eliminarPartida(int idPartida) throws IOException {
+    public static void eliminarPartida(int idPartida) throws IOException {
         borrarPorFiltro(Util.URL_PARTIDA, idPartida, 0);
         borrarPorFiltro(Util.URL_PERSONAJE, idPartida, 10);
         borrarPorFiltro(Util.URL_EQ_PA_PE, idPartida, 1);
@@ -146,7 +150,7 @@ public class Fichero {
         );
     }
 
-    private void escribirObjetos(ArrayList<String> infoObjetos) {
+    private static void escribirObjetos(ArrayList<String> infoObjetos) {
         File f = new File(Util.URL_EQ_PA_PE);
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
@@ -164,7 +168,7 @@ public class Fichero {
      *
      * @param partida
      */
-    private void escribirPartida(String info) {
+    private static void escribirPartida(String info) {
         File f = new File(Util.URL_PARTIDA);
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
@@ -181,7 +185,7 @@ public class Fichero {
      *
      * @param infoPersonajes
      */
-    private void escribirPersonajes(String[] infoPersonajes) {
+    private static void escribirPersonajes(String[] infoPersonajes) {
         File f = new File(Util.URL_PERSONAJE);
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
@@ -201,7 +205,7 @@ public class Fichero {
      * @return lista de clanes.
      * @throws java.io.IOException
      */
-    private Clan getClan(String nombre) throws IOException {
+    private static Clan getClan(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         Clan clan = new Clan();
@@ -226,7 +230,7 @@ public class Fichero {
      * @param string nombre del equipo.
      * @return
      */
-    private Equipo getEquipo(String nombre) throws IOException {
+    private static Equipo getEquipo(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -252,7 +256,7 @@ public class Fichero {
      * @param idPartida de la partida en juego.
      * @return
      */
-    private ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) throws IOException {
+    private static ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) throws IOException {
         File file = new File(Util.URL_EQ_PA_PE);
         Scanner lector = new Scanner(file);
 
@@ -278,7 +282,7 @@ public class Fichero {
      * @param nombre del personaje.
      * @return lista de su inventario.
      */
-    private ArrayList<Equipo> getEquiposIniciales(String nombre) throws IOException {
+    private static ArrayList<Equipo> getEquiposIniciales(String nombre) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -306,7 +310,7 @@ public class Fichero {
      * @return escena requerida.
      * @throws java.io.IOException
      */
-    public Escena getEscena(int idEscena, int idPartida) throws IOException {
+    public static Escena getEscena(int idEscena, int idPartida) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/escena.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -342,7 +346,7 @@ public class Fichero {
      * @return el mismo idPartida si se deben sobreescribir esos datos, o un
      * nuevo id donde hacerlo.
      */
-    private int getIdGuardado(int idPartida, int progreso) throws FileNotFoundException {
+    private static int getIdGuardado(int idPartida, int progreso) throws FileNotFoundException {
         int id = 0;
         File file = new File(Util.URL_PARTIDA);
         Scanner lector = new Scanner(file);
@@ -380,7 +384,7 @@ public class Fichero {
      * @return lista de clanes.
      * @throws java.io.IOException
      */
-    public ArrayList<Clan> getListaClanes() throws IOException {
+    public static ArrayList<Clan> getListaClanes() throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Clan> clanes = new ArrayList<>();
@@ -405,7 +409,7 @@ public class Fichero {
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
+    public static ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
         File file = new File(Util.URL_PERSONAJE);
         Scanner lector = new Scanner(file);
         ArrayList<Partida> partidas = new ArrayList<>();
@@ -440,7 +444,7 @@ public class Fichero {
      *
      * @return un número de id libre.
      */
-    private int getNuevoIdPartida() throws IOException {
+    private static int getNuevoIdPartida() throws IOException {
         ArrayList<Integer> ids = new ArrayList<>();
         File file = new File(Util.URL_PARTIDA);
         Scanner lector = new Scanner(file);
@@ -471,7 +475,7 @@ public class Fichero {
      * @param idEscena de la escena sobre la que se quieren las opciones.
      * @return Arraylist de Opciones.
      */
-    private ArrayList<Opcion> getOpciones(int idEscena) throws IOException {
+    private static ArrayList<Opcion> getOpciones(int idEscena) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -496,7 +500,7 @@ public class Fichero {
      * @param string
      * @return
      */
-    private Persona getPNJ(String nombre, int idPartida) throws FileNotFoundException, IOException {
+    private static Persona getPNJ(String nombre, int idPartida) throws FileNotFoundException, IOException {
         File file = new File(Util.URL_PERSONAJE);
         Scanner lector = new Scanner(file);
         String[] linea;
@@ -529,7 +533,7 @@ public class Fichero {
      * @return lista de Personas.
      * @throws IOException
      */
-    private ArrayList<Persona> getPNJs(int idPartida) throws IOException {
+    private static ArrayList<Persona> getPNJs(int idPartida) throws IOException {
         File file = new File(Util.URL_PERSONAJE);
         Scanner lector = new Scanner(file);
         ArrayList<Persona> pnjs = new ArrayList<>();
@@ -560,7 +564,7 @@ public class Fichero {
      *
      * @return lista de personas o vampiros
      */
-    private ArrayList<Persona> getPNJsIniciales() throws IOException {
+    private static ArrayList<Persona> getPNJsIniciales() throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Persona> pnjs = new ArrayList<>();
@@ -597,7 +601,7 @@ public class Fichero {
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    private Partida getPartida(int idPartida) throws IOException, ParseException {
+    private static Partida getPartida(int idPartida) throws IOException, ParseException {
         File file = new File(Util.URL_PARTIDA);
         Scanner lector = new Scanner(file);
         String[] linea;
@@ -630,7 +634,7 @@ public class Fichero {
      * @return una lista de parejas [condición, texto]
      * @throws java.io.IOException
      */
-    public ArrayList<String[]> getTextos(int idEscena) throws IOException {
+    public static ArrayList<String[]> getTextos(int idEscena) throws IOException {
         InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -661,10 +665,8 @@ public class Fichero {
         File archivo = new File(url);
         if (!archivo.exists()) {
             archivo.createNewFile();
-            try {
-                FileWriter fw = new FileWriter(archivo); // Escritor
+            try (FileWriter fw = new FileWriter(archivo)) {
                 fw.write(texto);
-                fw.close(); // Cerramos el escritor.
             } catch (IOException e) {
                 System.out.println(e);
             }
@@ -677,7 +679,7 @@ public class Fichero {
      * @param partida a guardar.
      * @throws java.io.FileNotFoundException
      */
-    public void guardarPartida(Partida partida) throws FileNotFoundException, IOException {
+    public static void guardarPartida(Partida partida) throws FileNotFoundException, IOException {
         int id;
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
@@ -708,7 +710,7 @@ public class Fichero {
      * @return Partida.
      * @throws java.io.IOException
      */
-    public Partida iniciarNuevaPartida(Vampire protagonista) throws IOException {
+    public static Partida iniciarNuevaPartida(Vampire protagonista) throws IOException {
         Partida partida = new Partida();
         Escena primera;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
@@ -737,7 +739,7 @@ public class Fichero {
      * @param file a leer.
      * @return texto leido.
      */
-    private ArrayList<String> leer(File file) {
+    private static ArrayList<String> leer(File file) {
         ArrayList<String> texto = new ArrayList<>();
         try {
             Scanner lector = new Scanner(file);
