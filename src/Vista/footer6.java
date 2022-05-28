@@ -184,7 +184,6 @@ public class footer6 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
-
          try {
              // TODO add your handling code here:
              controlador.escoger(opciones.get(0));
@@ -197,14 +196,6 @@ public class footer6 extends javax.swing.JPanel {
          try {
              // TODO add your handling code here:
              controlador.escoger(opciones.get(5));
-         } catch (IOException ex) {
-             Logger.getLogger(footer6.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        vista.dispose();
-
-         try {
-             // TODO add your handling code here:
-             controlador.escoger(opciones.get(0));
              vista.dispose();
          } catch (IOException ex) {
              Logger.getLogger(footer6.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,7 +205,7 @@ public class footer6 extends javax.swing.JPanel {
     private void opcion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion3MouseClicked
          try {
              // TODO add your handling code here:
-             controlador.escoger(opciones.get(1));
+             controlador.escoger(opciones.get(2));
              vista.dispose();
          } catch (IOException ex) {
              Logger.getLogger(footer6.class.getName()).log(Level.SEVERE, null, ex);
@@ -224,7 +215,7 @@ public class footer6 extends javax.swing.JPanel {
     private void opcion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion2MouseClicked
          try {
              // TODO add your handling code here:
-             controlador.escoger(opciones.get(2));
+             controlador.escoger(opciones.get(1));
              vista.dispose();
          } catch (IOException ex) {
              Logger.getLogger(footer6.class.getName()).log(Level.SEVERE, null, ex);
@@ -234,7 +225,7 @@ public class footer6 extends javax.swing.JPanel {
     private void opcion5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion5MouseClicked
          try {
              // TODO add your handling code here:
-             controlador.escoger(opciones.get(3));
+             controlador.escoger(opciones.get(4));
              vista.dispose();
          } catch (IOException ex) {
              Logger.getLogger(footer6.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,7 +235,7 @@ public class footer6 extends javax.swing.JPanel {
     private void opcion4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion4MouseClicked
          try {
              // TODO add your handling code here:
-             controlador.escoger(opciones.get(4));
+             controlador.escoger(opciones.get(3));
              vista.dispose();
          } catch (IOException ex) {
              Logger.getLogger(footer6.class.getName()).log(Level.SEVERE, null, ex);

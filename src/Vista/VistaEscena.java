@@ -26,7 +26,6 @@ public class VistaEscena extends javax.swing.JFrame {
 
     public VistaEscena() {
         initComponents();
-
     }
 
     public VistaEscena(Controlador controlador) {
@@ -82,8 +81,14 @@ public class VistaEscena extends javax.swing.JFrame {
         cabecera1 = new Vista.Cabecera();
         fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setLayout(null);
 
@@ -118,6 +123,10 @@ public class VistaEscena extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        System.out.println("Dew");
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
