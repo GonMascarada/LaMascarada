@@ -1,8 +1,8 @@
 package Controlador;
 
-import Modelo.GestorDeDatos;
+import Modelo.*;
 import Mascarada.Partida;
-import Vista.Inicio;
+
 import Vista.Tienda;
 import java.io.IOException;
 import java.text.ParseException;
@@ -24,16 +24,15 @@ public class Prueba {
         Controlador controlador = new Controlador();
         GestorDeDatos bd = new GestorDeDatos();
 
-        ArrayList<Partida> partidas = bd.getListaPartidas();
-        bd.comprobarConsistencia();
+        
+        Fichero.comprobarConsistencia();
 
+        ArrayList<Partida> partidas = bd.getListaPartidas();
         Partida p = partidas.get(0);
         controlador.cargarPartida(p);
 
         Tienda tienda = new Tienda(controlador);
         tienda.setVisible(true);
 
-        Inicio inicio = new Inicio();
-        inicio.setVisible(true);
     }
 }

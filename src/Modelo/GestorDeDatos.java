@@ -16,12 +16,10 @@ import java.util.ArrayList;
  */
 public class GestorDeDatos {
 
-    private Fichero fichero;
     private BaseDeDatos bd;
-    private boolean conectado;
 
     public GestorDeDatos() throws IOException {
-        fichero = new Fichero();
+        Fichero.comprobarFicherosDeGuardado();
         bd = new BaseDeDatos();
     }
 
@@ -33,7 +31,7 @@ public class GestorDeDatos {
      * @throws java.io.FileNotFoundException
      */
     public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
-        return fichero.comprobarNombrePersonaje(nombre);
+        return Fichero.comprobarNombrePersonaje(nombre);
     }
 
     /**
@@ -43,7 +41,7 @@ public class GestorDeDatos {
      * @throws java.io.IOException
      */
     public void eliminarPartida(int idPartida) throws IOException {
-        fichero.eliminarPartida(idPartida);
+        Fichero.eliminarPartida(idPartida);
         bd.sincronizar();
     }
 
@@ -56,7 +54,7 @@ public class GestorDeDatos {
      * @throws java.io.IOException
      */
     public Escena getEscena(int idEscena, int idPartida) throws IOException {
-        return fichero.getEscena(idEscena, idPartida);
+        return Fichero.getEscena(idEscena, idPartida);
     }
 
     /**
@@ -66,7 +64,7 @@ public class GestorDeDatos {
      * @throws java.io.IOException
      */
     public ArrayList<Clan> getListaClanes() throws IOException {
-        return fichero.getListaClanes();
+        return Fichero.getListaClanes();
     }
 
     /**
@@ -78,7 +76,7 @@ public class GestorDeDatos {
      * @throws java.text.ParseException
      */
     public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
-        return fichero.getListaPartidas();
+        return Fichero.getListaPartidas();
     }
 
     /**
@@ -89,7 +87,7 @@ public class GestorDeDatos {
      * @throws java.io.IOException
      */
     public ArrayList<String[]> getTextos(int idEscena) throws IOException {
-        return fichero.getTextos(idEscena);
+        return Fichero.getTextos(idEscena);
     }
 
     /**
@@ -99,7 +97,7 @@ public class GestorDeDatos {
      * @throws java.io.FileNotFoundException
      */
     public void guardarPartida(Partida partida) throws IOException {
-        fichero.guardarPartida(partida);
+        Fichero.guardarPartida(partida);
         bd.sincronizar();
     }
 
@@ -112,7 +110,14 @@ public class GestorDeDatos {
      * @throws java.io.IOException
      */
     public Partida iniciarNuevaPartida(Vampire vampire) throws IOException {
-        return fichero.iniciarNuevaPartida(vampire);
+        return Fichero.iniciarNuevaPartida(vampire);
     }
 
+    /**
+     *
+     * @return true si se ha conectado, false en otro caso.
+     */
+    public boolean isConectado() {
+        return bd.isConectado();
+    }
 }

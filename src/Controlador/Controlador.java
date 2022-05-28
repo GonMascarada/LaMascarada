@@ -19,12 +19,12 @@ import java.util.Iterator;
 public final class Controlador {
 
     private Partida partida;
-
     private final GestorDeDatos bbdd;
+    private boolean conectado;
 
     public Controlador() throws IOException {
         bbdd = new GestorDeDatos();
-        partida = new Partida(); //Habrá que borrarlo
+        conectado = bbdd.isConectado();
     }
 
     /**

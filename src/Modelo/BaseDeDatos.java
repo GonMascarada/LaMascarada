@@ -71,10 +71,18 @@ public class BaseDeDatos {
     }
 
     /**
+     * @return the conectado
+     */
+    public boolean isConectado() {
+        return conectado;
+    }
+
+    /**
      * Comprueba que la copia local y la de la base de datos están actualizadas.
      * En caso de no estarlo, lo sincroniza.
      */
     public void sincronizar() {
         System.out.println("Estamos trabajando en ello :(");
     }
+
 }
