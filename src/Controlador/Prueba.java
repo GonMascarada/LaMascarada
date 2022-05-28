@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.BaseDeDatos;
+import Modelo.GestorDeDatos;
 import Mascarada.Partida;
 import Vista.Inicio;
 import Vista.Tienda;
@@ -22,7 +22,7 @@ public class Prueba {
      */
     public static void main(String[] args) throws IOException, ParseException {
         Controlador controlador = new Controlador();
-        BaseDeDatos bd = new BaseDeDatos();
+        GestorDeDatos bd = new GestorDeDatos();
 
         ArrayList<Partida> partidas = bd.getListaPartidas();
         bd.comprobarConsistencia();

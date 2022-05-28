@@ -5,7 +5,7 @@
 package Vista;
 
 import Mascarada.Partida;
-import Mascarada.Utilidades;
+import Mascarada.Util;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
@@ -65,11 +65,11 @@ public class Cabecera extends javax.swing.JPanel {
         clan.setText(partida.getProtagonista().getClan().getNombre());
         hora.setText(partida.getFecha() + "");
         barraSangre.setValue(partida.getSedDeSangre());
-        barraSangre.setMaximum(Utilidades.SED_MAX);
+        barraSangre.setMaximum(Util.SED_MAX);
         barraProgreso.setValue(partida.getProgreso());
-        barraProgreso.setMaximum(Utilidades.PROGRESO_MAX);
+        barraProgreso.setMaximum(Util.PROGRESO_MAX);
         barraSospecha.setValue(partida.getSospecha());
-        barraSospecha.setMaximum(Utilidades.SOSPECHA_MAX);
+        barraSospecha.setMaximum(Util.SOSPECHA_MAX);
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");

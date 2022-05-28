@@ -6,12 +6,30 @@ package Mascarada;
  *
  * @author Gonzalo López Fernández
  */
-public abstract class Utilidades {
+public abstract class Util {
+
+    // Ulr´s a los ficheros
+    public static final String URL_CARPETA = "C:\\Users\\Public\\Documents\\La Mascarada";
+    public static final String URL_PERSONAJE = "C:\\Users\\Public\\Documents\\La Mascarada\\personaje.csv";
+    public static final String URL_EQ_PA_PE = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje.csv";
+    public static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
+    public static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
+
+    // Cabecera ficheros
+    public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
+    public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso";
+    public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena";
     
     // Constantes de gestión
     public static final int SED_MAX = 5;
     public static final int SOSPECHA_MAX = 5;
     public static final int PROGRESO_MAX = 5;
+
+    //Códigos de actualización
+    public static final int ACTUALIZADO = 0;
+    public static final int INSERT = 0;
+    public static final int UPDATE = 0;
+    public static final int DELETE = 0;
 
     // Atributos de un personaje
     public static final int ATQ = 5;
@@ -56,8 +74,8 @@ public abstract class Utilidades {
     public static final int OP_OBTENER_LLAVE = 15;
     public static final int OP_OBTENER_NOTA = 16;
     public static final int OP_OBTENER_COLGANTE = 17;
-    public static final int OP_OBTENER_PISTA= 18;
-    public static final int OP_FIN= 19; 
+    public static final int OP_OBTENER_PISTA = 18;
+    public static final int OP_FIN = 19;
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal
@@ -73,7 +91,7 @@ public abstract class Utilidades {
     public static final int SI_MAPA_BRUJAH = 10;
     public static final int SI_BRUJAH = 11;
     public static final int SI_PISTA_BRUJAH = 12;
-    
+
     // Estados de ánimo de los NPC´s
     public static final int EA_PROTAGONISTA = 0;
     public static final int EA_NORMAL = 1;
