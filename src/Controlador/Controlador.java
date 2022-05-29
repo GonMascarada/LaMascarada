@@ -5,10 +5,13 @@ import Mascarada.*;
 import Vista.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Se encarga de abastecer a las interfaces con la información neceseria.
@@ -450,10 +453,39 @@ public final class Controlador {
      *
      * @param text
      * @param password
-     * @return 
+     * @return
      */
     public boolean comprobarCredenciales(String text, String password) {
-        return bbdd.comprobarCredenciales(text, password);
+        try {
+            return bbdd.comprobarCredenciales(text, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    /**
+     * Comprueba si un nombre de usuario está disponible.
+     *
+     * @param usuario
+     * @return true si está disponible, false en otro caso.
+     */
+    public boolean comprobarNombreUsuario(String usuario) {
+        try {
+            return bbdd.comprobarNombreUsuario(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    /**
+     * Crea un nuevo usuario en la base de datos.
+     * @param usuario
+     * @param pass 
+     */
+    public void crearNuevoUsuario(String usuario, String pass) {
+        bbdd.crearNuevoUsuario( usuario,  pass);
     }
 
 }

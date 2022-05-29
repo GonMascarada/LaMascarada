@@ -7,8 +7,8 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Util;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +28,8 @@ public class VistaCredenciales extends javax.swing.JFrame {
         initComponents();
         Util.centrar(this);
         this.controlador = controlador;
-        jLabelError.setVisible(false);
+        jLabelError.setVisible(true);
+        jLabelError.setText("");
     }
 
     /**
@@ -41,12 +42,13 @@ public class VistaCredenciales extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        areaNombre = new javax.swing.JTextField();
-        nombre = new javax.swing.JLabel();
-        contraseña = new javax.swing.JLabel();
-        areaContraseña = new javax.swing.JPasswordField();
-        aceptar = new javax.swing.JButton();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPasswordField = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabelError = new javax.swing.JLabel();
+        jCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -62,23 +64,22 @@ public class VistaCredenciales extends javax.swing.JFrame {
             }
         });
 
-        nombre.setBackground(new java.awt.Color(0, 0, 0));
-        nombre.setForeground(new java.awt.Color(255, 255, 255));
-        nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre.setText("Nombre");
+        jLabelNombre.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNombre.setText("Nombre");
 
-        contraseña.setBackground(new java.awt.Color(0, 0, 0));
-        contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        contraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contraseña.setText("Contraseña");
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Contraseña");
 
-        areaContraseña.setBackground(new java.awt.Color(0, 0, 0));
-        areaContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        areaContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        areaContraseña.setText("jPasswordField1");
-        areaContraseña.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordField.setBackground(new java.awt.Color(0, 0, 0));
+        jPasswordField.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaContraseñaActionPerformed(evt);
+                jPasswordFieldActionPerformed(evt);
             }
         });
 
@@ -96,36 +97,49 @@ public class VistaCredenciales extends javax.swing.JFrame {
         jLabelError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelError.setText("Usuario o contraseña erroneos");
 
+        jCheckBox.setBackground(new java.awt.Color(0, 0, 0));
+        jCheckBox.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox.setText("Nuevo jugador");
+        jCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(aceptar)
+                    .addComponent(jCheckBox)
+                    .addComponent(jButton1)
                     .addComponent(jLabelError)
-                    .addComponent(areaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(areaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {areaContraseña, areaNombre, contraseña, jLabelError, nombre});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabelError, jLabelNombre, jPasswordField, jTextFieldNombre});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(nombre)
+                .addContainerGap()
+                .addComponent(jLabelNombre)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(areaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(contraseña)
                 .addGap(12, 12, 12)
-                .addComponent(areaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox)
+                .addGap(4, 4, 4)  
                 .addComponent(jLabelError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(aceptar)
@@ -150,28 +164,37 @@ public class VistaCredenciales extends javax.swing.JFrame {
         jLabelError.setVisible(false);
     }//GEN-LAST:event_areaNombreActionPerformed
 
-    private void areaContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaContraseñaActionPerformed
+    private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
         jLabelError.setVisible(false);
-    }//GEN-LAST:event_areaContraseñaActionPerformed
+    }//GEN-LAST:event_jPasswordFieldActionPerformed
 
-    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        String usuario = areaNombre.getText();
-        if (controlador.comprobarCredenciales(
-                usuario,
-                Arrays.toString(areaContraseña.getPassword()))) 
-        {
-            try {
-                new VistaPartidas(controlador, usuario).setVisible(true);
-                this.dispose();
-            } catch (IOException ex) {
-                Logger.getLogger(VistaCredenciales.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(VistaCredenciales.class.getName()).log(Level.SEVERE, null, ex);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String usuario = jTextFieldNombre.getText();
+        String pass = String.valueOf(jPasswordField.getPassword());
+        if ((usuario.length() > 30) || (usuario.length() < 3)) {
+            jLabelError.setText("Longitud de usuario entre 3-30.");
+        } else if ((pass.length() > 30) || (pass.length() < 3)) {
+            jLabelError.setText("Longitud de contraseña entre 3-30.");
+        } else if (jCheckBox.isSelected()) {
+            if (controlador.comprobarNombreUsuario(usuario)) {
+                controlador.crearNuevoUsuario(usuario, pass);
+                lanzarPartidas();
+            } else {
+                jLabelError.setText("Usuario no disponible.");
+
             }
-        } else{
-            jLabelError.setVisible(true);
+        } else if (controlador.comprobarCredenciales(usuario, pass)) {
+            lanzarPartidas();
+        } else {
+            jLabelError.setText("Usuario o contraseña erroneos.");
         }
-    }//GEN-LAST:event_aceptarActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    private void jCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,13 +213,17 @@ public class VistaCredenciales extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaCredenciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCredenciales.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaCredenciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCredenciales.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaCredenciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCredenciales.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaCredenciales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCredenciales.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -210,12 +237,25 @@ public class VistaCredenciales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
-    private javax.swing.JPasswordField areaContraseña;
-    private javax.swing.JTextField areaNombre;
-    private javax.swing.JLabel contraseña;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox;
+    private javax.swing.JLabel jLabel1;
+
     private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
+
+    private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JTextField jTextFieldNombre;
+
     private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables
+
+    private void lanzarPartidas() {
+        try {
+            new VistaPartidas(controlador, jTextFieldNombre.getText()).setVisible(true);
+            this.dispose();
+        } catch (ParseException | IOException ex) {
+            Logger.getLogger(VistaCredenciales.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
