@@ -27,7 +27,7 @@ public class Prueba {
         
         Fichero.comprobarConsistencia();
 
-        ArrayList<Partida> partidas = bd.getListaPartidas();
+        ArrayList<Partida> partidas = bd.getListaPartidas("Admin");
         Partida p = partidas.get(0);
         controlador.cargarPartida(p);
 

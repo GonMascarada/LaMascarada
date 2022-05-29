@@ -1,16 +1,13 @@
 package Modelo;
 
 import Mascarada.Util;
-import Vista.VistaPartidas;
+import com.mysql.cj.protocol.Resultset;
+
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Gestiona la recolección, insercción, actualización y borrado de datos en la
@@ -45,11 +42,27 @@ public class BaseDeDatos {
      *
      * @param text
      * @param password
-     * @return 
+     * @return
+     * @throws java.sql.SQLException
      */
-    public boolean comprobarCredenciales(String text, String password) {
-        System.out.println("Estamos trabajando en ello.");
-        return true;
+    public boolean comprobarCredenciales(String text, String password) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("select comprobarUsuario(\"" + text + "\", \"" + password + "\") as resultado;");
+        ResultSet r = stmt.executeQuery();
+        r.next();
+        return r.getInt("resultado") == 1;
+    }
+
+    /**
+     * Comprueba si un nombre de usuario está disponible.
+     *
+     * @param usuario
+     * @return true si está disponible, false en otro caso.
+     */
+    public boolean comprobarNombreUsuario(String usuario) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("select comprobarNombreUsuarioDisponible(\"" + usuario + "\") as resultado;");
+        ResultSet r = stmt.executeQuery();
+        r.next();
+        return r.getInt("resultado") == 1;
     }
 
     /**
@@ -105,6 +118,17 @@ public class BaseDeDatos {
     }
 
     /**
+     * Crea un nuevo usuario en la base de datos.
+     *
+     * @param usuario
+     * @param pass
+     */
+    public void crearNuevoUsuario(String usuario, String pass) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios VALUES ('"+usuario+"', '"+pass+"', current_timestamp());");
+        stmt.executeUpdate();
+    }
+
+    /**
      * Devuelve la configuración con la base de datos almacenada en el fichero
      * bd.csv
      *
@@ -130,5 +154,4 @@ public class BaseDeDatos {
     public void sincronizar() {
         System.out.println("Estamos trabajando en ello :(");
     }
-
 }
