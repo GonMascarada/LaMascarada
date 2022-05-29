@@ -215,9 +215,7 @@ public class VistaConexionBD extends javax.swing.JFrame {
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         try {
             new VistaPartidas(controlador, "Local").setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
+        } catch (IOException | ParseException ex) {
             Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
