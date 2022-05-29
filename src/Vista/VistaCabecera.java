@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
  *
  * @author Alumno
  */
-public class Cabecera extends javax.swing.JPanel {
+public class VistaCabecera extends javax.swing.JPanel {
 
     private Partida partida;
 
@@ -27,7 +27,7 @@ public class Cabecera extends javax.swing.JPanel {
     /**
      * origin Creates new form CabeceraImport
      */
-    public Cabecera() {
+    public VistaCabecera() {
         initComponents();
         barraProgreso.setForeground(Color.white);
         barraSangre.setForeground(Color.red);
@@ -226,7 +226,7 @@ public class Cabecera extends javax.swing.JPanel {
             VistaFicha ficha = new VistaFicha(partida);
             ficha.setVisible(true);
         } catch (IOException ex) {
-            Logger.getLogger(Cabecera.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaCabecera.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 

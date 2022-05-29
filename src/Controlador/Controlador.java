@@ -56,12 +56,13 @@ public final class Controlador {
     /**
      * Lista de todas las partidas que se han guardado.
      *
+     * @param usuario
      * @return lista de todas las partidas.
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
-        return bbdd.getListaPartidas();
+    public ArrayList<Partida> getListaPartidas(String usuario) throws IOException, ParseException {
+        return bbdd.getListaPartidas(usuario);
     }
 
     /**
@@ -441,6 +442,18 @@ public final class Controlador {
      */
     public String getConfiguracionBD() {
         return bbdd.getConfiguracionBD();
+    }
+
+    /**
+     * Comprueba en la base de datos si el usuario y la contraseña son
+     * correctos.
+     *
+     * @param text
+     * @param password
+     * @return 
+     */
+    public boolean comprobarCredenciales(String text, String password) {
+        return bbdd.comprobarCredenciales(text, password);
     }
 
 }

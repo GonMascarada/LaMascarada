@@ -2,7 +2,9 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Util;
+import java.awt.Color;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,23 +20,15 @@ public class VistaConexionBD extends javax.swing.JFrame {
     /**
      * Creates new form VistaConexionBD
      */
-    public VistaConexionBD() throws IOException {
+    public VistaConexionBD(Controlador controlador) throws IOException {
         initComponents();
         String[] config;
-        controlador = new Controlador();
+        this.controlador = controlador;
         Util.centrar(this);
-
-        if (controlador.isConectado()) {
-            VistaCredenciales v = new VistaCredenciales(controlador);
-            v.setVisible(true);
-            this.dispose();
-        } else {
-            config = controlador.getConfiguracionBD().split(";");
-            jTextFieldPuerto.setText(config[0]); 
-            jTextFieldUsuario.setText(config[2]);
-            jPasswordField.setText(config[1]);
-
-        }
+        config = controlador.getConfiguracionBD().split(";");
+        jTextFieldPuerto.setText(config[0]);
+        jTextFieldUsuario.setText(config[2]);
+        jPasswordField.setText(config[1]);
     }
 
     /**
@@ -69,8 +63,13 @@ public class VistaConexionBD extends javax.swing.JFrame {
         jLabel1.setText("Puerto");
 
         jTextFieldPuerto.setBackground(new java.awt.Color(0, 0, 0));
-        jTextFieldPuerto.setForeground(new java.awt.Color(204, 0, 0));
+        jTextFieldPuerto.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldPuerto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldPuerto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldPuertoMouseClicked(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,8 +77,13 @@ public class VistaConexionBD extends javax.swing.JFrame {
         jLabel2.setText("Usuario");
 
         jTextFieldUsuario.setBackground(new java.awt.Color(0, 0, 0));
-        jTextFieldUsuario.setForeground(new java.awt.Color(204, 0, 0));
+        jTextFieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldUsuarioMouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,9 +91,14 @@ public class VistaConexionBD extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
 
         jPasswordField.setBackground(new java.awt.Color(0, 0, 0));
-        jPasswordField.setForeground(new java.awt.Color(204, 0, 0));
+        jPasswordField.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPasswordField.setText("jPasswordField1");
+        jPasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordFieldMouseClicked(evt);
+            }
+        });
 
         jButtonConectar.setBackground(new java.awt.Color(51, 51, 51));
         jButtonConectar.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,7 +125,6 @@ public class VistaConexionBD extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jTextArea1.setText("No se ha podido conectar con la base de datos \ncon los parámetros actuales.\nPor favor, introduzca los datos correctos.\nEn caso de no poder conectar continue sin \nrealizar la conexión, pero los datos de su partida\nserán solo locales, NUNCA estarán disponibles\nonline, ni en nigún otro ordenador.");
         jTextArea1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -188,19 +196,42 @@ public class VistaConexionBD extends javax.swing.JFrame {
         String pas = jPasswordField.getText();
 
         boolean conseguido = controlador.conectar(url, use, pas);
-        if(conseguido){
+        if (conseguido) {
             try {
                 new VistaCredenciales(controlador).setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.dispose();
+        } else {
+            jTextFieldPuerto.setForeground(Color.red);
+            jTextFieldUsuario.setForeground(Color.red);
+            jPasswordField.setForeground(Color.red);
         }
     }//GEN-LAST:event_jButtonConectarActionPerformed
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
-        // TODO add your handling code here:
+        try {
+            new VistaPartidas(controlador, "Local").setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
     }//GEN-LAST:event_jButtonContinuarActionPerformed
+
+    private void jTextFieldPuertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPuertoMouseClicked
+        cambiarTextoABlanco();
+    }//GEN-LAST:event_jTextFieldPuertoMouseClicked
+
+    private void jTextFieldUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMouseClicked
+        cambiarTextoABlanco();
+    }//GEN-LAST:event_jTextFieldUsuarioMouseClicked
+
+    private void jPasswordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMouseClicked
+        cambiarTextoABlanco();
+    }//GEN-LAST:event_jPasswordFieldMouseClicked
 
     /**
      * @param args the command line arguments
@@ -232,11 +263,8 @@ public class VistaConexionBD extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new VistaConexionBD().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                //                   new VistaConexionBD().setVisible(true);
+
             }
         });
     }
@@ -254,4 +282,11 @@ public class VistaConexionBD extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPuerto;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private void cambiarTextoABlanco() {
+        jTextFieldPuerto.setForeground(Color.WHITE);
+        jTextFieldUsuario.setForeground(Color.WHITE);
+        jPasswordField.setForeground(Color.WHITE);
+    }
+
 }

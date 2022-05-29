@@ -78,7 +78,7 @@ public class VistaEscena extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         foto = new javax.swing.JLabel();
         texto = new javax.swing.JLabel();
-        cabecera1 = new Vista.Cabecera();
+        cabecera1 = new Vista.VistaCabecera();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -142,7 +142,7 @@ public class VistaEscena extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Vista.Cabecera cabecera1;
+    private Vista.VistaCabecera cabecera1;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel foto;
     private javax.swing.JPanel jPanel1;

@@ -40,6 +40,19 @@ public class BaseDeDatos {
     }
 
     /**
+     * Comprueba en la base de datos si el usuario y la contraseña son
+     * correctos.
+     *
+     * @param text
+     * @param password
+     * @return 
+     */
+    public boolean comprobarCredenciales(String text, String password) {
+        System.out.println("Estamos trabajando en ello.");
+        return true;
+    }
+
+    /**
      * Crea la sesión con la base de datos.
      */
     private void conectar() throws IOException {
@@ -82,7 +95,7 @@ public class BaseDeDatos {
             stmt = conn.createStatement();
 
             conectado = true;
-            conexion = url + ";" + use + ";" + pas;
+            conexion = url + ";" + pas + ";" + use;
             Fichero.escribiTexto(Util.URL_BD, conexion);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e);

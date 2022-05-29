@@ -24,6 +24,18 @@ public class GestorDeDatos {
     }
 
     /**
+     * Comprueba en la base de datos si el usuario y la contraseña son
+     * correctos.
+     *
+     * @param text
+     * @param password
+     * @return 
+     */
+    public boolean comprobarCredenciales(String text, String password) {
+        return bd.comprobarCredenciales(text, password);
+    }
+
+    /**
      * Comprueba si un nombre ya está siendo usado por otro personaje.
      *
      * @param nombre
@@ -97,8 +109,8 @@ public class GestorDeDatos {
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    public ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
-        return Fichero.getListaPartidas();
+    public ArrayList<Partida> getListaPartidas(String usuario) throws IOException, ParseException {
+        return Fichero.getListaPartidas(usuario);
     }
 
     /**

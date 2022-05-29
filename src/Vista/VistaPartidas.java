@@ -32,24 +32,24 @@ import javax.swing.table.DefaultTableModel;
 public final class VistaPartidas extends javax.swing.JFrame {
 
     private final Controlador controlador;
-
     private final ArrayList<Clan> clanes;
-
     private ArrayList<Partida> partidas;
+    private String usuario;
 
     /**
      * Creates new form Inicio
      *
      * @param controlador
+     * @param usuario
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    public VistaPartidas(Controlador controlador) throws IOException, ParseException {
+    public VistaPartidas(Controlador controlador, String usuario) throws IOException, ParseException {
         initComponents();
         partidas = new ArrayList<>();
-        //Elementos del Jlist
-        //Elemento que me trae la info
         this.controlador = controlador;
+        this.usuario = usuario;
+
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
         //Hago invisible el label de errores.
@@ -66,7 +66,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
         jListClanes.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 
         // Carga las listas de partidas.
-        refrescarListasPartidas();
+        refrescarListasPartidas(usuario);
 
         //Pestaña de carga
         jTableCargar.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
@@ -81,9 +81,9 @@ public final class VistaPartidas extends javax.swing.JFrame {
      * @throws IOException
      * @throws ParseException
      */
-    private void refrescarListasPartidas() throws IOException, ParseException {
+    private void refrescarListasPartidas(String usuario) throws IOException, ParseException {
         //Lista de partidas para borrar y cargar
-        partidas = controlador.getListaPartidas();
+        partidas = controlador.getListaPartidas(usuario);
         if (partidas.size() > 0) {
             cargarDatosPartidas(jTableCargar);
             cargarDatosPartidas(jTableBorrar);
@@ -97,6 +97,12 @@ public final class VistaPartidas extends javax.swing.JFrame {
             Color texto = Color.WHITE;
             TabbedMain.setBackground(fondo);
             TabbedMain.setForeground(texto);
+            TabbedMain.setBackgroundAt(0, fondo);
+            TabbedMain.setBackgroundAt(1, fondo);
+            TabbedMain.setBackgroundAt(2, fondo);
+            TabbedMain.setForegroundAt(0, texto);
+            TabbedMain.setForegroundAt(1, texto);
+            TabbedMain.setForegroundAt(2, texto);
             jPanelFondo.setBackground(fondo);
             jPanelCrearPartida.setBackground(fondo);
             jPanelCargarPartida.setBackground(fondo);
@@ -201,6 +207,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
 
         jPanelFondo.setLayout(null);
 
+        TabbedMain.setBackground(new java.awt.Color(0, 0, 0));
         TabbedMain.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanelCrearPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -388,6 +395,8 @@ public final class VistaPartidas extends javax.swing.JFrame {
             }
         });
 
+        jTableBorrar.setBackground(new java.awt.Color(0, 0, 0));
+        jTableBorrar.setForeground(new java.awt.Color(255, 255, 255));
         jTableBorrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -564,7 +573,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
         }
         VistaPartidas inicio;
         try {
-            inicio = new VistaPartidas(controlador);
+            inicio = new VistaPartidas(controlador, usuario);
             inicio.setVisible(true);
             this.dispose();
         } catch (IOException ex) {
