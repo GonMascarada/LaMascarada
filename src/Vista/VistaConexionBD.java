@@ -26,9 +26,9 @@ public class VistaConexionBD extends javax.swing.JFrame {
         this.controlador = controlador;
         Util.centrar(this);
         config = controlador.getConfiguracionBD().split(";");
-        jTextFieldPuerto.setText(config[0]);
-        jTextFieldUsuario.setText(config[2]);
-        jPasswordField.setText(config[1]);
+        campoPuerto.setText(config[0]);
+        campousuario.setText(config[2]);
+        campoContraseña.setText(config[1]);
     }
 
     /**
@@ -41,138 +41,140 @@ public class VistaConexionBD extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldPuerto = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jPasswordField = new javax.swing.JPasswordField();
-        jButtonConectar = new javax.swing.JButton();
-        jButtonContinuar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        puerto = new javax.swing.JLabel();
+        campoPuerto = new javax.swing.JTextField();
+        usuario = new javax.swing.JLabel();
+        campousuario = new javax.swing.JTextField();
+        contraseña = new javax.swing.JLabel();
+        campoContraseña = new javax.swing.JPasswordField();
+        botonConectar = new javax.swing.JButton();
+        botonContinuar = new javax.swing.JButton();
+        panelText = new javax.swing.JScrollPane();
+        panelTexto = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Puerto");
+        puerto.setBackground(new java.awt.Color(0, 0, 0));
+        puerto.setForeground(new java.awt.Color(255, 255, 255));
+        puerto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        puerto.setText("Puerto");
 
-        jTextFieldPuerto.setBackground(new java.awt.Color(0, 0, 0));
-        jTextFieldPuerto.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldPuerto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextFieldPuerto.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoPuerto.setBackground(new java.awt.Color(0, 0, 0));
+        campoPuerto.setForeground(new java.awt.Color(255, 255, 255));
+        campoPuerto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoPuerto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldPuertoMouseClicked(evt);
+                campoPuertoMouseClicked(evt);
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Usuario");
+        usuario.setBackground(new java.awt.Color(0, 0, 0));
+        usuario.setForeground(new java.awt.Color(255, 255, 255));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usuario.setText("Usuario");
 
-        jTextFieldUsuario.setBackground(new java.awt.Color(0, 0, 0));
-        jTextFieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        campousuario.setBackground(new java.awt.Color(0, 0, 0));
+        campousuario.setForeground(new java.awt.Color(255, 255, 255));
+        campousuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campousuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldUsuarioMouseClicked(evt);
+                campousuarioMouseClicked(evt);
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Contraseña");
+        contraseña.setBackground(new java.awt.Color(0, 0, 0));
+        contraseña.setForeground(new java.awt.Color(255, 255, 255));
+        contraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        contraseña.setText("Contraseña");
 
-        jPasswordField.setBackground(new java.awt.Color(0, 0, 0));
-        jPasswordField.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField.setText("jPasswordField1");
-        jPasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoContraseña.setBackground(new java.awt.Color(0, 0, 0));
+        campoContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        campoContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoContraseña.setText("jPasswordField1");
+        campoContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordFieldMouseClicked(evt);
+                campoContraseñaMouseClicked(evt);
             }
         });
 
-        jButtonConectar.setBackground(new java.awt.Color(51, 51, 51));
-        jButtonConectar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConectar.setText("Conectar");
-        jButtonConectar.addActionListener(new java.awt.event.ActionListener() {
+        botonConectar.setBackground(new java.awt.Color(51, 51, 51));
+        botonConectar.setForeground(new java.awt.Color(255, 255, 255));
+        botonConectar.setText("Conectar");
+        botonConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConectarActionPerformed(evt);
+                botonConectarActionPerformed(evt);
             }
         });
 
-        jButtonContinuar.setBackground(new java.awt.Color(51, 51, 51));
-        jButtonContinuar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonContinuar.setText("Continuar");
-        jButtonContinuar.addActionListener(new java.awt.event.ActionListener() {
+        botonContinuar.setBackground(new java.awt.Color(51, 51, 51));
+        botonContinuar.setForeground(new java.awt.Color(255, 255, 255));
+        botonContinuar.setText("Continuar");
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonContinuarActionPerformed(evt);
+                botonContinuarActionPerformed(evt);
             }
         });
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("No se ha podido conectar con la base de datos \ncon los parámetros actuales.\nPor favor, introduzca los datos correctos.\nEn caso de no poder conectar continue sin \nrealizar la conexión, pero los datos de su partida\nserán solo locales, NUNCA estarán disponibles\nonline, ni en nigún otro ordenador.");
-        jTextArea1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTextArea1);
+        panelTexto.setEditable(false);
+        panelTexto.setBackground(new java.awt.Color(0, 0, 0));
+        panelTexto.setColumns(20);
+        panelTexto.setForeground(new java.awt.Color(255, 255, 255));
+        panelTexto.setRows(5);
+        panelTexto.setText("No se ha podido conectar con la base de datos \ncon los parámetros actuales.\nPor favor, introduzca los datos correctos.\nEn caso de no poder conectar continue sin \nrealizar la conexión, pero los datos de su partida\nserán solo locales, NUNCA estarán disponibles\nonline, ni en nigún otro ordenador.");
+        panelTexto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        panelText.setViewportView(panelTexto);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonContinuar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelText, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonContinuar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(campoPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campousuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contraseña)
+                            .addComponent(usuario)
+                            .addComponent(puerto)
+                            .addComponent(botonConectar))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextFieldPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonConectar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jPasswordField, jTextFieldPuerto, jTextFieldUsuario});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {campoContraseña, campoPuerto, campousuario, contraseña, puerto, usuario});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(puerto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campousuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(contraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonConectar)
+                .addComponent(botonConectar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonContinuar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonContinuar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -190,10 +192,10 @@ public class VistaConexionBD extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
-        String url = jTextFieldPuerto.getText();
-        String use = jTextFieldUsuario.getText();
-        String pas = jPasswordField.getText();
+    private void botonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConectarActionPerformed
+        String url = campoPuerto.getText();
+        String use = campousuario.getText();
+        String pas = campoContraseña.getText();
 
         boolean conseguido = controlador.conectar(url, use, pas);
         if (conseguido) {
@@ -204,13 +206,13 @@ public class VistaConexionBD extends javax.swing.JFrame {
             }
             this.dispose();
         } else {
-            jTextFieldPuerto.setForeground(Color.red);
-            jTextFieldUsuario.setForeground(Color.red);
-            jPasswordField.setForeground(Color.red);
+            campoPuerto.setForeground(Color.red);
+            campousuario.setForeground(Color.red);
+            campoContraseña.setForeground(Color.red);
         }
-    }//GEN-LAST:event_jButtonConectarActionPerformed
+    }//GEN-LAST:event_botonConectarActionPerformed
 
-    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         try {
             new VistaPartidas(controlador, "Local").setVisible(true);
         } catch (IOException ex) {
@@ -219,19 +221,19 @@ public class VistaConexionBD extends javax.swing.JFrame {
             Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-    }//GEN-LAST:event_jButtonContinuarActionPerformed
+    }//GEN-LAST:event_botonContinuarActionPerformed
 
-    private void jTextFieldPuertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPuertoMouseClicked
+    private void campoPuertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoPuertoMouseClicked
         cambiarTextoABlanco();
-    }//GEN-LAST:event_jTextFieldPuertoMouseClicked
+    }//GEN-LAST:event_campoPuertoMouseClicked
 
-    private void jTextFieldUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMouseClicked
+    private void campousuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campousuarioMouseClicked
         cambiarTextoABlanco();
-    }//GEN-LAST:event_jTextFieldUsuarioMouseClicked
+    }//GEN-LAST:event_campousuarioMouseClicked
 
-    private void jPasswordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMouseClicked
+    private void campoContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoContraseñaMouseClicked
         cambiarTextoABlanco();
-    }//GEN-LAST:event_jPasswordFieldMouseClicked
+    }//GEN-LAST:event_campoContraseñaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -270,23 +272,23 @@ public class VistaConexionBD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonConectar;
-    private javax.swing.JButton jButtonContinuar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton botonConectar;
+    private javax.swing.JButton botonContinuar;
+    private javax.swing.JPasswordField campoContraseña;
+    private javax.swing.JTextField campoPuerto;
+    private javax.swing.JTextField campousuario;
+    private javax.swing.JLabel contraseña;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldPuerto;
-    private javax.swing.JTextField jTextFieldUsuario;
+    private javax.swing.JScrollPane panelText;
+    private javax.swing.JTextArea panelTexto;
+    private javax.swing.JLabel puerto;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
     private void cambiarTextoABlanco() {
-        jTextFieldPuerto.setForeground(Color.WHITE);
-        jTextFieldUsuario.setForeground(Color.WHITE);
-        jPasswordField.setForeground(Color.WHITE);
+        campoPuerto.setForeground(Color.WHITE);
+        campousuario.setForeground(Color.WHITE);
+        campoContraseña.setForeground(Color.WHITE);
     }
 
 }

@@ -66,6 +66,8 @@
               <Image iconType="3" name="/Vista/Fondo texto.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Texto"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="inheritsPopupMenu" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

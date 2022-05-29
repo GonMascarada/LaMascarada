@@ -192,14 +192,18 @@ public final class VistaPartidas extends javax.swing.JFrame {
         jCheckHabilidad3 = new javax.swing.JCheckBox();
         jCheckHabilidad4 = new javax.swing.JCheckBox();
         jLabelError = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanelCargarPartida = new javax.swing.JPanel();
         jScrollPaneCargar = new javax.swing.JScrollPane();
         jTableCargar = new javax.swing.JTable();
         jButtonCargar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanelBorrarPartida = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
         jScrollPaneBorrar = new javax.swing.JScrollPane();
         jTableBorrar = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
@@ -267,18 +271,21 @@ public final class VistaPartidas extends javax.swing.JFrame {
 
         jLabelError.setText("jLabel1");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel2.setText("jLabel1");
+
         javax.swing.GroupLayout jPanelCrearPartidaLayout = new javax.swing.GroupLayout(jPanelCrearPartida);
         jPanelCrearPartida.setLayout(jPanelCrearPartidaLayout);
         jPanelCrearPartidaLayout.setHorizontalGroup(
             jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 65, Short.MAX_VALUE)
                 .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelClanes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(jCheckHabilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,6 +306,11 @@ public final class VistaPartidas extends javax.swing.JFrame {
                     .addComponent(Crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanelCrearPartidaLayout.setVerticalGroup(
             jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,11 +335,16 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 .addComponent(jLabelDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jLabelError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
+            .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         TabbedMain.addTab("Crear Partida", jPanelCrearPartida);
@@ -360,6 +377,9 @@ public final class VistaPartidas extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel3.setText("jLabel1");
+
         javax.swing.GroupLayout jPanelCargarPartidaLayout = new javax.swing.GroupLayout(jPanelCargarPartida);
         jPanelCargarPartida.setLayout(jPanelCargarPartidaLayout);
         jPanelCargarPartidaLayout.setHorizontalGroup(
@@ -369,6 +389,11 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 .addGap(306, 306, 306)
                 .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanelCargarPartidaLayout.setVerticalGroup(
             jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,6 +402,11 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
+            .addGroup(jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         TabbedMain.addTab("Cargar Partida", jPanelCargarPartida);
@@ -410,6 +440,9 @@ public final class VistaPartidas extends javax.swing.JFrame {
         ));
         jScrollPaneBorrar.setViewportView(jTableBorrar);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel4.setText("jLabel1");
+
         javax.swing.GroupLayout jPanelBorrarPartidaLayout = new javax.swing.GroupLayout(jPanelBorrarPartida);
         jPanelBorrarPartida.setLayout(jPanelBorrarPartidaLayout);
         jPanelBorrarPartidaLayout.setHorizontalGroup(
@@ -421,6 +454,11 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(331, 331, 331))
+            .addGroup(jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelBorrarPartidaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanelBorrarPartidaLayout.setVerticalGroup(
             jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,12 +467,22 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelBorrarPartidaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         TabbedMain.addTab("Borrar Partida", jPanelBorrarPartida);
 
         jPanelFondo.add(TabbedMain);
         TabbedMain.setBounds(0, 0, 1000, 700);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanelFondo.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1000, 700);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -641,6 +689,10 @@ public final class VistaPartidas extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckHabilidad3;
     private javax.swing.JCheckBox jCheckHabilidad4;
     private javax.swing.JComboBox<String> jComboBoxDificultad;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelClanes;
     private javax.swing.JLabel jLabelDificultad;
     private javax.swing.JLabel jLabelError;

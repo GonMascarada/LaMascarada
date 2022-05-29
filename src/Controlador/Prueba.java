@@ -28,6 +28,8 @@ public class Prueba {
         Fichero.comprobarConsistencia();
 
         ArrayList<Partida> partidas = bd.getListaPartidas("Admin");
+        ArrayList<Partida> partidas = bd.getListaPartidas("pablo");
+
         Partida p = partidas.get(0);
         controlador.cargarPartida(p);
 

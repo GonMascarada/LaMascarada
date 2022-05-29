@@ -55,12 +55,12 @@ public class VistaCredenciales extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextFieldNombre.setBackground(new java.awt.Color(0, 0, 0));
-        jTextFieldNombre.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+        areaNombre.setBackground(new java.awt.Color(0, 0, 0));
+        areaNombre.setForeground(new java.awt.Color(255, 255, 255));
+        areaNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        areaNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNombreActionPerformed(evt);
+                areaNombreActionPerformed(evt);
             }
         });
 
@@ -83,12 +83,12 @@ public class VistaCredenciales extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        aceptar.setBackground(new java.awt.Color(51, 51, 51));
+        aceptar.setForeground(new java.awt.Color(255, 255, 255));
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                aceptarActionPerformed(evt);
             }
         });
 
@@ -130,18 +130,19 @@ public class VistaCredenciales extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelNombre)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(areaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(contraseña)
                 .addGap(12, 12, 12)
                 .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox)
-                .addGap(4, 4, 4)
+                .addGap(4, 4, 4)  
                 .addComponent(jLabelError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(aceptar)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -159,9 +160,9 @@ public class VistaCredenciales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+    private void areaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaNombreActionPerformed
         jLabelError.setVisible(false);
-    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+    }//GEN-LAST:event_areaNombreActionPerformed
 
     private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
         jLabelError.setVisible(false);
@@ -180,6 +181,7 @@ public class VistaCredenciales extends javax.swing.JFrame {
                 lanzarPartidas();
             } else {
                 jLabelError.setText("Usuario no disponible.");
+
             }
         } else if (controlador.comprobarCredenciales(usuario, pass)) {
             lanzarPartidas();
@@ -187,8 +189,8 @@ public class VistaCredenciales extends javax.swing.JFrame {
             jLabelError.setText("Usuario o contraseña erroneos.");
         }
 
-
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
     private void jCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxActionPerformed
         // TODO add your handling code here:
@@ -238,11 +240,14 @@ public class VistaCredenciales extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox;
     private javax.swing.JLabel jLabel1;
+
     private javax.swing.JLabel jLabelError;
-    private javax.swing.JLabel jLabelNombre;
     private javax.swing.JPanel jPanel1;
+
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTextFieldNombre;
+
+    private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables
 
     private void lanzarPartidas() {
