@@ -41,11 +41,11 @@ public class VistaCredenciales extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        areaNombre = new javax.swing.JTextField();
-        nombre = new javax.swing.JLabel();
-        contraseña = new javax.swing.JLabel();
-        areaContraseña = new javax.swing.JPasswordField();
-        aceptar = new javax.swing.JButton();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,41 +53,41 @@ public class VistaCredenciales extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        areaNombre.setBackground(new java.awt.Color(0, 0, 0));
-        areaNombre.setForeground(new java.awt.Color(255, 255, 255));
-        areaNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        areaNombre.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNombre.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaNombreActionPerformed(evt);
+                jTextFieldNombreActionPerformed(evt);
             }
         });
 
-        nombre.setBackground(new java.awt.Color(0, 0, 0));
-        nombre.setForeground(new java.awt.Color(255, 255, 255));
-        nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre.setText("Nombre");
+        jLabelNombre.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNombre.setText("Nombre");
 
-        contraseña.setBackground(new java.awt.Color(0, 0, 0));
-        contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        contraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contraseña.setText("Contraseña");
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Contraseña");
 
-        areaContraseña.setBackground(new java.awt.Color(0, 0, 0));
-        areaContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        areaContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        areaContraseña.setText("jPasswordField1");
-        areaContraseña.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaContraseñaActionPerformed(evt);
+                jPasswordField1ActionPerformed(evt);
             }
         });
 
-        aceptar.setBackground(new java.awt.Color(51, 51, 51));
-        aceptar.setForeground(new java.awt.Color(255, 255, 255));
-        aceptar.setText("Aceptar");
-        aceptar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -103,32 +103,32 @@ public class VistaCredenciales extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(aceptar)
+                    .addComponent(jButton1)
                     .addComponent(jLabelError)
-                    .addComponent(areaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(areaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {areaContraseña, areaNombre, contraseña, jLabelError, nombre});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabelError, jLabelNombre, jPasswordField1, jTextFieldNombre});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(nombre)
+                .addComponent(jLabelNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(areaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(contraseña)
+                .addComponent(jLabel1)
                 .addGap(12, 12, 12)
-                .addComponent(areaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabelError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(aceptar)
+                .addComponent(jButton1)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -146,19 +146,19 @@ public class VistaCredenciales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void areaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaNombreActionPerformed
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         jLabelError.setVisible(false);
-    }//GEN-LAST:event_areaNombreActionPerformed
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
-    private void areaContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaContraseñaActionPerformed
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         jLabelError.setVisible(false);
-    }//GEN-LAST:event_areaContraseñaActionPerformed
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        String usuario = areaNombre.getText();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String usuario = jTextFieldNombre.getText();
         if (controlador.comprobarCredenciales(
                 usuario,
-                Arrays.toString(areaContraseña.getPassword()))) 
+                Arrays.toString(jPasswordField1.getPassword()))) 
         {
             try {
                 new VistaPartidas(controlador, usuario).setVisible(true);
@@ -171,7 +171,7 @@ public class VistaCredenciales extends javax.swing.JFrame {
         } else{
             jLabelError.setVisible(true);
         }
-    }//GEN-LAST:event_aceptarActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,12 +210,12 @@ public class VistaCredenciales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
-    private javax.swing.JPasswordField areaContraseña;
-    private javax.swing.JTextField areaNombre;
-    private javax.swing.JLabel contraseña;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelError;
+    private javax.swing.JLabel jLabelNombre;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel nombre;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
