@@ -6,6 +6,7 @@ import Mascarada.Partida;
 import Mascarada.Vampire;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -29,9 +30,9 @@ public class GestorDeDatos {
      *
      * @param text
      * @param password
-     * @return 
+     * @return
      */
-    public boolean comprobarCredenciales(String text, String password) {
+    public boolean comprobarCredenciales(String text, String password) throws SQLException {
         return bd.comprobarCredenciales(text, password);
     }
 
@@ -47,6 +48,16 @@ public class GestorDeDatos {
     }
 
     /**
+     * Comprueba si un nombre de usuario está disponible.
+     *
+     * @param usuario
+     * @return true si está disponible, false en otro caso.
+     */
+    public boolean comprobarNombreUsuario(String usuario) throws SQLException {
+        return bd.comprobarNombreUsuario(usuario);
+    }
+
+    /**
      * Reintenta la conexión con la base de datos.
      *
      * @param url
@@ -56,6 +67,16 @@ public class GestorDeDatos {
      */
     public boolean conectar(String url, String use, String pas) {
         return bd.conectar(url, use, pas);
+    }
+
+    /**
+     * Crea un nuevo usuario en la base de datos.
+     *
+     * @param usuario
+     * @param pass
+     */
+    public void crearNuevoUsuario(String usuario, String pass) {
+        bd.crearNuevoUsuario(usuario, pass);
     }
 
     /**
@@ -154,5 +175,4 @@ public class GestorDeDatos {
     public boolean isConectado() {
         return bd.isConectado();
     }
-
 }
