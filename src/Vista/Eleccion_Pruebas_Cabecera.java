@@ -32,7 +32,7 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
         Opcion2 = new javax.swing.JButton();
         Opcion1 = new javax.swing.JButton();
         Opcion3 = new javax.swing.JButton();
-        cabecera1 = new Vista.Cabecera();
+        cabecera1 = new Vista.VistaCabecera();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,7 +131,7 @@ public class Eleccion_Pruebas_Cabecera extends javax.swing.JFrame {
     private javax.swing.JButton Opcion2;
     private javax.swing.JButton Opcion3;
     private javax.swing.JLabel Texto;
-    private Vista.Cabecera cabecera1;
+    private Vista.VistaCabecera cabecera1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

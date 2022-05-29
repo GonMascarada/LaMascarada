@@ -139,7 +139,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButton3">
         </Component>
-        <Component class="Vista.Cabecera" name="cabecera1">
+        <Component class="Vista.VistaCabecera" name="cabecera1">
         </Component>
       </SubComponents>
     </Container>

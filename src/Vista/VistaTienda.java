@@ -67,7 +67,7 @@ public class VistaTienda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        cabecera1 = new Vista.Cabecera();
+        cabecera1 = new Vista.VistaCabecera();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -213,7 +213,7 @@ public class VistaTienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Vista.Cabecera cabecera1;
+    private Vista.VistaCabecera cabecera1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

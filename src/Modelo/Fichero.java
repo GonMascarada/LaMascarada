@@ -465,11 +465,12 @@ public final class Fichero {
      * Devuelve lista de todas las partidas guardadas en la base de datos de los
      * protagonistas.
      *
+     * @param usuario
      * @return lista de partidas guardadas.
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    public static ArrayList<Partida> getListaPartidas() throws IOException, ParseException {
+    public static ArrayList<Partida> getListaPartidas(String usuario) throws IOException, ParseException {
         File file = new File(Util.URL_PERSONAJE);
         Scanner lector = new Scanner(file);
         ArrayList<Partida> partidas = new ArrayList<>();
@@ -485,13 +486,15 @@ public final class Fichero {
             linea = aux.split(";");
             // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
             if (Integer.valueOf(linea[6]) == Util.EA_PROTAGONISTA) {
-                clan = getClan(linea[7]);
                 idPartida = Integer.parseInt(linea[10]);
-                vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
                 partida = getPartida(idPartida); //Nos devuelve la partida sin el vampiro protagonista.
-                partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
-                partida.setPersonajes(getPNJs(idPartida));
-                partidas.add(partida); //Se añade la partida al listado.
+                if (partida.getUsuario().equals(usuario)) {
+                    clan = getClan(linea[7]);
+                    vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
+                    partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
+                    partida.setPersonajes(getPNJs(idPartida));
+                    partidas.add(partida); //Se añade la partida al listado.  
+                }
             }
         }
         lector.close();
@@ -680,6 +683,7 @@ public final class Fichero {
                 partida.setSospecha(Integer.parseInt(linea[5]));
                 partida.setUltimaPista(linea[6]);
                 partida.setEscena(getEscena(Integer.parseInt(linea[7]), idPartida));
+                partida.setUsuario(linea[8]);
                 encontrado = true;
             }
         }
