@@ -108,6 +108,7 @@ public class VistaFicha extends javax.swing.JFrame {
         ataqueBarra1 = new javax.swing.JProgressBar();
         habilidad3 = new javax.swing.JLabel();
         dinero = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
@@ -197,15 +198,15 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(nombre);
         nombre.setBounds(230, 20, 60, 20);
         jPanel1.add(vidaBarra);
-        vidaBarra.setBounds(70, 210, 220, 4);
+        vidaBarra.setBounds(70, 210, 220, 19);
         jPanel1.add(animoBarra);
-        animoBarra.setBounds(700, 210, 270, 4);
+        animoBarra.setBounds(700, 210, 270, 19);
 
         vida1.setText("Vida");
         jPanel1.add(vida1);
         vida1.setBounds(310, 210, 50, 20);
         jPanel1.add(ataqueBarra1);
-        ataqueBarra1.setBounds(350, 210, 230, 4);
+        ataqueBarra1.setBounds(350, 210, 230, 19);
 
         habilidad3.setText("Habilidad2");
         jPanel1.add(habilidad3);
@@ -214,6 +215,11 @@ public class VistaFicha extends javax.swing.JFrame {
         dinero.setText("Dinero");
         jPanel1.add(dinero);
         dinero.setBounds(230, 150, 50, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(1, 0, 1000, 700);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1000, 700);
@@ -270,6 +276,7 @@ public class VistaFicha extends javax.swing.JFrame {
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
     private javax.swing.JLabel habilidad3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
