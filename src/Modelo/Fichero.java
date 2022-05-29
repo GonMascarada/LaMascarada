@@ -1,20 +1,24 @@
 package Modelo;
 
 import Mascarada.*;
-import Vista.Inicio;
+import Vista.VistaPartidas;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Key;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Gestiona los ficheros en local.
@@ -51,13 +55,31 @@ public final class Fichero {
     }
 
     /**
+     * Cifra un texto, para que no pueda ser leido a simple vista.
+     *
+     * @param texto a cifrar.
+     * @return texto cifrado.
+     * @throws Exception
+     */
+    private static String cifrar(String texto) throws Exception {
+        Key aesKey = new SecretKeySpec(Util.ENCRYPT_KEY.getBytes(), "AES");
+
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, aesKey);
+
+        byte[] encrypted = cipher.doFinal(texto.getBytes());
+
+        return Base64.getEncoder().encodeToString(encrypted);
+    }
+
+    /**
      * Muestra por pantalla incoherencias en las escenas.
      *
      * @throws java.io.IOException
      */
     public static void comprobarConsistencia() throws IOException {
         HashMap<Integer, Integer> opcionesesenas = new HashMap<>();
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/opcion.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         int actual, siguente, aux;
@@ -101,6 +123,7 @@ public final class Fichero {
         guardarEnFichero(Util.URL_PERSONAJE, Util.CABECERA_PERSONAJE);
         guardarEnFichero(Util.URL_EQ_PA_PE, Util.CABECERA_EQ_PA_PE);
         guardarEnFichero(Util.URL_PARTIDA, Util.CABECERA_PARTIDA);
+        guardarEnFichero(Util.URL_BD, Util.CABECERA_BD);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
         guardarEnFichero(Util.URL_ULTMA_MODIFICACION, dtf.format(LocalDateTime.now()));
@@ -132,6 +155,26 @@ public final class Fichero {
         }
         lector.close();
         return disponible;
+    }
+
+    /**
+     * Descrifra un texto.
+     *
+     * @param texto a descifrar.
+     * @return texto descifrado
+     * @throws Exception
+     */
+    private static String descifrar(String texto) throws Exception {
+        byte[] encryptedBytes = Base64.getDecoder().decode(texto.replace("\n", ""));
+
+        Key aesKey = new SecretKeySpec(Util.ENCRYPT_KEY.getBytes(), "AES");
+
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, aesKey);
+
+        String decrypted = new String(cipher.doFinal(encryptedBytes));
+
+        return decrypted;
     }
 
     /**
@@ -199,6 +242,23 @@ public final class Fichero {
     }
 
     /**
+     * Sobre escribe un fichero con un texto.
+     *
+     * @param url del archivo.
+     * @param texto a escribir.
+     */
+    public static void escribiTexto(String url, String texto) {
+        File f = new File(url);
+        try {
+            FileWriter fw = new FileWriter(f); // Escritor
+            fw.write(texto);
+            fw.close(); // Cerramos el escritor.
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
      * Devuelve un clan especifico dado el nombre
      *
      * @param nombre
@@ -206,7 +266,7 @@ public final class Fichero {
      * @throws java.io.IOException
      */
     private static Clan getClan(String nombre) throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         Clan clan = new Clan();
         String[] linea;
@@ -231,7 +291,7 @@ public final class Fichero {
      * @return
      */
     private static Equipo getEquipo(String nombre) throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/equipo.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         Equipo equipo = new Equipo();
@@ -283,7 +343,7 @@ public final class Fichero {
      * @return lista de su inventario.
      */
     private static ArrayList<Equipo> getEquiposIniciales(String nombre) throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/equipo-partida-personaje.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         ArrayList<Equipo> equipos = new ArrayList<>();
@@ -311,7 +371,7 @@ public final class Fichero {
      * @throws java.io.IOException
      */
     public static Escena getEscena(int idEscena, int idPartida) throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/escena.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/escena.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         Escena escena = new Escena();
@@ -385,7 +445,7 @@ public final class Fichero {
      * @throws java.io.IOException
      */
     public static ArrayList<Clan> getListaClanes() throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/clan.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/clan.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Clan> clanes = new ArrayList<>();
         String[] linea;
@@ -476,7 +536,7 @@ public final class Fichero {
      * @return Arraylist de Opciones.
      */
     private static ArrayList<Opcion> getOpciones(int idEscena) throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/opcion.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/opcion.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         ArrayList<Opcion> opciones = new ArrayList<>();
@@ -565,7 +625,7 @@ public final class Fichero {
      * @return lista de personas o vampiros
      */
     private static ArrayList<Persona> getPNJsIniciales() throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/personaje.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/personaje.csv");
         Scanner lector = new Scanner(inputStream);
         ArrayList<Persona> pnjs = new ArrayList<>();
         String[] linea;
@@ -635,7 +695,7 @@ public final class Fichero {
      * @throws java.io.IOException
      */
     public static ArrayList<String[]> getTextos(int idEscena) throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/texto-escena.csv");
+        InputStream inputStream = VistaPartidas.class.getResourceAsStream("/Ficheros/texto-escena.csv");
         Scanner lector = new Scanner(inputStream);
         String[] linea;
         ArrayList<String[]> textos = new ArrayList<>();
@@ -739,7 +799,7 @@ public final class Fichero {
      * @param file a leer.
      * @return texto leido.
      */
-    private static ArrayList<String> leer(File file) {
+    public static ArrayList<String> leer(File file) {
         ArrayList<String> texto = new ArrayList<>();
         try {
             Scanner lector = new Scanner(file);

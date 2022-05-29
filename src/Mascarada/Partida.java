@@ -1,9 +1,7 @@
 package Mascarada;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Almacena todos los datos relevantes de una partida.
@@ -22,6 +20,7 @@ public class Partida {
     private int sospecha;
     private String ultimaPista;
     private ArrayList<Persona> personajes;
+    private String usuario;
 
     public Partida() {
     }
@@ -275,5 +274,19 @@ public class Partida {
         lista[4] = String.valueOf(tiempo);
         lista[5] = String.valueOf(fecha);
         return lista;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public String getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 }

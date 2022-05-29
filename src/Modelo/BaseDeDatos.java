@@ -1,12 +1,15 @@
 package Modelo;
 
-import Vista.Inicio;
+import Mascarada.Util;
+import Vista.VistaPartidas;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -40,23 +43,13 @@ public class BaseDeDatos {
      * Crea la sesión con la base de datos.
      */
     private void conectar() throws IOException {
-        InputStream inputStream = Inicio.class.getResourceAsStream("/Ficheros/conexionBD.csv");
-        Scanner lector = new Scanner(inputStream);
-        String[] conexion = new String[3];// url, user y pass en ese orden.
-        String[] linea;
-
-        //Se extraen los datos para la conexión de conexionBD.csv
-        for (int i = 0; i < conexion.length; i++) {
-            linea = lector.nextLine().split(";");
-            conexion[i] = linea[0]; //Primer campo valor, segundo clave.
-        }
-
+        String[] conexion = getConfiguracionBD().split(";");
         try {
             //se carga la clase del Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             //Se establece la conexión
-            conn = DriverManager.getConnection(conexion[0], conexion[1], conexion[2]);
+            conn = DriverManager.getConnection(conexion[0], conexion[2], conexion[1]);
 
             //Se establece la sesión
             stmt = conn.createStatement();
@@ -66,8 +59,48 @@ public class BaseDeDatos {
             System.out.println("Error: " + e);
             conectado = false;
         }
-        lector.close();
-        inputStream.close();
+    }
+
+    /**
+     * Reintenta la conexión con la base de datos.
+     *
+     * @param url
+     * @param use
+     * @param pas
+     * @return
+     */
+    public boolean conectar(String url, String use, String pas) {
+        String conexion;
+        try {
+            //se carga la clase del Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Se establece la conexión
+            conn = DriverManager.getConnection(url, use, pas);
+
+            //Se establece la sesión
+            stmt = conn.createStatement();
+
+            conectado = true;
+            conexion = url + ";" + use + ";" + pas;
+            Fichero.escribiTexto(Util.URL_BD, conexion);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error: " + e);
+            conectado = false;
+        }
+        return conectado;
+    }
+
+    /**
+     * Devuelve la configuración con la base de datos almacenada en el fichero
+     * bd.csv
+     *
+     * @return Texto con la url, usuario y contraseña.
+     */
+    public String getConfiguracionBD() {
+        File f = new File(Util.URL_BD);
+        ArrayList<String> texto = Fichero.leer(f);
+        return texto.get(0); //Solo tiene una línea
     }
 
     /**

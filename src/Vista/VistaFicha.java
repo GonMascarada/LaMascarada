@@ -18,7 +18,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Moru
  */
-public class FichaAuspex extends javax.swing.JFrame {
+public class VistaFicha extends javax.swing.JFrame {
     
     private Partida partida;
     private ArrayList<Equipo> equipo;
@@ -26,7 +26,7 @@ public class FichaAuspex extends javax.swing.JFrame {
     /**
      * Creates new form FichaAuspex
      */
-    public FichaAuspex(Partida partida) throws IOException {
+    public VistaFicha(Partida partida) throws IOException {
         initComponents();
         this.partida = partida;
         //Lista de la informacion de los clanes
@@ -110,9 +110,7 @@ public class FichaAuspex extends javax.swing.JFrame {
         dinero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 700));
         setMinimumSize(new java.awt.Dimension(1000, 700));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
@@ -240,14 +238,15 @@ public class FichaAuspex extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FichaAuspex.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FichaAuspex.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FichaAuspex.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FichaAuspex.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

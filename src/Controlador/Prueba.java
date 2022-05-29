@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.*;
 import Mascarada.Partida;
 
-import Vista.Tienda;
+import Vista.VistaTienda;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class Prueba {
         Partida p = partidas.get(0);
         controlador.cargarPartida(p);
 
-        Tienda tienda = new Tienda(controlador);
+        VistaTienda tienda = new VistaTienda(controlador);
         tienda.setVisible(true);
 
     }

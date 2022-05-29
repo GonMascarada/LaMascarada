@@ -223,7 +223,7 @@ public class Cabecera extends javax.swing.JPanel {
     private void fichapersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fichapersonajeMouseClicked
 
         try {
-            FichaAuspex ficha = new FichaAuspex(partida);
+            VistaFicha ficha = new VistaFicha(partida);
             ficha.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(Cabecera.class.getName()).log(Level.SEVERE, null, ex);

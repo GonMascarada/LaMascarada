@@ -35,6 +35,18 @@ public class GestorDeDatos {
     }
 
     /**
+     * Reintenta la conexión con la base de datos.
+     *
+     * @param url
+     * @param use
+     * @param pas
+     * @return
+     */
+    public boolean conectar(String url, String use, String pas) {
+        return bd.conectar(url, use, pas);
+    }
+
+    /**
      * Elimina todos los datos de una partida.
      *
      * @param idPartida
@@ -43,6 +55,16 @@ public class GestorDeDatos {
     public void eliminarPartida(int idPartida) throws IOException {
         Fichero.eliminarPartida(idPartida);
         bd.sincronizar();
+    }
+
+    /**
+     * Devuelve la configuración con la base de datos almacenada en el fichero
+     * bd.csv
+     *
+     * @return Texto con la url, usuario y contraseña.
+     */
+    public String getConfiguracionBD() {
+        return bd.getConfiguracionBD();
     }
 
     /**
@@ -120,4 +142,5 @@ public class GestorDeDatos {
     public boolean isConectado() {
         return bd.isConectado();
     }
+
 }
