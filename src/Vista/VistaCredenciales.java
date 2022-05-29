@@ -46,9 +46,10 @@ public class VistaCredenciales extends javax.swing.JFrame {
         jLabelNombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPasswordField = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        jButtonConectar = new javax.swing.JButton();
         jLabelError = new javax.swing.JLabel();
         jCheckBox = new javax.swing.JCheckBox();
+        jButtonJugarOffline = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -83,12 +84,12 @@ public class VistaCredenciales extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConectar.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonConectar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConectar.setText("Conectar");
+        jButtonConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonConectarActionPerformed(evt);
             }
         });
 
@@ -106,6 +107,15 @@ public class VistaCredenciales extends javax.swing.JFrame {
             }
         });
 
+        jButtonJugarOffline.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonJugarOffline.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonJugarOffline.setText("Jugar offline");
+        jButtonJugarOffline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonJugarOfflineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,12 +124,13 @@ public class VistaCredenciales extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jCheckBox)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonConectar)
                     .addComponent(jLabelError)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonJugarOffline))
                 .addGap(36, 36, 36))
         );
 
@@ -141,8 +152,10 @@ public class VistaCredenciales extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabelError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jButtonConectar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonJugarOffline)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,7 +180,7 @@ public class VistaCredenciales extends javax.swing.JFrame {
         jLabelError.setVisible(false);
     }//GEN-LAST:event_jPasswordFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
         String usuario = jTextFieldNombre.getText();
         String pass = String.valueOf(jPasswordField.getPassword());
         if ((usuario.length() > 30) || (usuario.length() < 3)) {
@@ -188,11 +201,20 @@ public class VistaCredenciales extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonConectarActionPerformed
 
     private void jCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxActionPerformed
+
+    private void jButtonJugarOfflineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarOfflineActionPerformed
+        try {
+            new VistaPartidas(controlador, "Local").setVisible(true);
+        } catch (IOException | ParseException ex) {
+            Logger.getLogger(VistaConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_jButtonJugarOfflineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,7 +257,8 @@ public class VistaCredenciales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonConectar;
+    private javax.swing.JButton jButtonJugarOffline;
     private javax.swing.JCheckBox jCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelError;

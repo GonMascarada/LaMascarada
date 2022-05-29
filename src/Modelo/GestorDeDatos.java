@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Gestiona el amacenamiento permanente de los datos.
@@ -19,9 +21,13 @@ public class GestorDeDatos {
 
     private BaseDeDatos bd;
 
-    public GestorDeDatos() throws IOException {
-        Fichero.comprobarFicherosDeGuardado();
-        bd = new BaseDeDatos();
+    public GestorDeDatos() {
+        try {
+            Fichero.comprobarFicherosDeGuardado();
+            bd = new BaseDeDatos();
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -32,8 +38,13 @@ public class GestorDeDatos {
      * @param password
      * @return
      */
-    public boolean comprobarCredenciales(String text, String password) throws SQLException {
-        return bd.comprobarCredenciales(text, password);
+    public boolean comprobarCredenciales(String text, String password) {
+        try {
+            return bd.comprobarCredenciales(text, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     /**
@@ -41,10 +52,14 @@ public class GestorDeDatos {
      *
      * @param nombre
      * @return true si está disponible, false en otro caso.
-     * @throws java.io.FileNotFoundException
      */
-    public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
-        return Fichero.comprobarNombrePersonaje(nombre);
+    public boolean comprobarNombrePersonaje(String nombre) {
+        try {
+            return Fichero.comprobarNombrePersonaje(nombre);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     /**
@@ -53,8 +68,13 @@ public class GestorDeDatos {
      * @param usuario
      * @return true si está disponible, false en otro caso.
      */
-    public boolean comprobarNombreUsuario(String usuario) throws SQLException {
-        return bd.comprobarNombreUsuario(usuario);
+    public boolean comprobarNombreUsuario(String usuario){
+        try {
+            return bd.comprobarNombreUsuario(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     /**
@@ -76,18 +96,25 @@ public class GestorDeDatos {
      * @param pass
      */
     public void crearNuevoUsuario(String usuario, String pass) {
-        bd.crearNuevoUsuario(usuario, pass);
+        try {
+            bd.crearNuevoUsuario(usuario, pass);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
      * Elimina todos los datos de una partida.
      *
      * @param idPartida
-     * @throws java.io.IOException
      */
-    public void eliminarPartida(int idPartida) throws IOException {
-        Fichero.eliminarPartida(idPartida);
-        bd.sincronizar();
+    public void eliminarPartida(int idPartida){
+        try {
+            Fichero.eliminarPartida(idPartida);
+            bd.sincronizar();
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -106,32 +133,44 @@ public class GestorDeDatos {
      * @param idEscena identificador de la escena.
      * @param idPartida
      * @return escena requerida.
-     * @throws java.io.IOException
      */
-    public Escena getEscena(int idEscena, int idPartida) throws IOException {
-        return Fichero.getEscena(idEscena, idPartida);
+    public Escena getEscena(int idEscena, int idPartida){
+        try {
+            return Fichero.getEscena(idEscena, idPartida);
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /**
      * Devuelve la lista de clanes disponible para jugar.
      *
      * @return lista de clanes.
-     * @throws java.io.IOException
      */
-    public ArrayList<Clan> getListaClanes() throws IOException {
-        return Fichero.getListaClanes();
+    public ArrayList<Clan> getListaClanes() {
+        try {
+            return Fichero.getListaClanes();
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /**
      * Devuelve lista de todas las partidas guardadas en la base de datos de los
      * protagonistas.
      *
+     * @param usuario
      * @return lista de partidas guardadas.
-     * @throws java.io.IOException
-     * @throws java.text.ParseException
      */
-    public ArrayList<Partida> getListaPartidas(String usuario) throws IOException, ParseException {
-        return Fichero.getListaPartidas(usuario);
+    public ArrayList<Partida> getListaPartidas(String usuario){
+        try {
+            return Fichero.getListaPartidas(usuario);
+        } catch (IOException | ParseException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /**
@@ -139,21 +178,28 @@ public class GestorDeDatos {
      *
      * @param idEscena de la escena.
      * @return una lista de parejas [condición, texto]
-     * @throws java.io.IOException
      */
-    public ArrayList<String[]> getTextos(int idEscena) throws IOException {
-        return Fichero.getTextos(idEscena);
+    public ArrayList<String[]> getTextos(int idEscena) {
+        try {
+            return Fichero.getTextos(idEscena);
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /**
      * Guarda el estado actual de la partida.
      *
      * @param partida a guardar.
-     * @throws java.io.FileNotFoundException
      */
-    public void guardarPartida(Partida partida) throws IOException {
-        Fichero.guardarPartida(partida);
-        bd.sincronizar();
+    public void guardarPartida(Partida partida) {
+        try {
+            Fichero.guardarPartida(partida);
+            bd.sincronizar();
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
 
     /**
@@ -162,10 +208,14 @@ public class GestorDeDatos {
      *
      * @param vampire protagonista
      * @return Partida.
-     * @throws java.io.IOException
      */
-    public Partida iniciarNuevaPartida(Vampire vampire) throws IOException {
-        return Fichero.iniciarNuevaPartida(vampire);
+    public Partida iniciarNuevaPartida(Vampire vampire) {
+        try {
+            return Fichero.iniciarNuevaPartida(vampire);
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /**
