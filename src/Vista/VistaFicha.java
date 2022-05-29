@@ -31,15 +31,7 @@ public class VistaFicha extends javax.swing.JFrame {
         this.partida = partida;
         //Lista de la informacion de los clanes
         equipo = partida.getProtagonista().getEquipacion();
-        vidaBarra.setForeground(Color.green);
-        ataqueBarra1.setForeground(Color.red);
-        if(animoBarra.getValue()<=25) {
-            animoBarra.setForeground(Color.red);
-        }else if (animoBarra.getValue()>25&&animoBarra.getValue()<=75) {
-            animoBarra.setForeground(Color.yellow);
-        }else{
-            animoBarra.setForeground(Color.green);
-        }
+     
         DefaultListModel listaAtaque = new DefaultListModel();
         DefaultListModel listaAmuletos = new DefaultListModel();
         DefaultListModel listaDefensivos = new DefaultListModel();
@@ -64,10 +56,6 @@ public class VistaFicha extends javax.swing.JFrame {
         habilidad1.setText(hab1y2[0]);
         dineroDato.setText(hab1y2[1]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
-        ataqueBarra1.setValue(partida.getProtagonista().getAtaque());
-        vidaBarra.setMaximum(partida.getProtagonista().getVidaMax());
-        vidaBarra.setValue(partida.getProtagonista().getVidaActual());
-        animoBarra.setValue(partida.getProtagonista().getEstadoDeAnimo());
         dineroDato.setText(partida.getProtagonista().getDinero()+"");
         
         
@@ -84,6 +72,7 @@ public class VistaFicha extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         foto = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         objetoEspecial = new javax.swing.JLabel();
         clan = new javax.swing.JLabel();
         habilidad1 = new javax.swing.JLabel();
@@ -95,20 +84,20 @@ public class VistaFicha extends javax.swing.JFrame {
         listaDefensivos = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         listaAmuletos = new javax.swing.JList<>();
-        ataquePuntos = new javax.swing.JLabel();
         amuletos = new javax.swing.JLabel();
         ataque = new javax.swing.JLabel();
         defensivo = new javax.swing.JLabel();
         dineroDato = new javax.swing.JLabel();
-        estadoAnimo = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
-        vidaBarra = new javax.swing.JProgressBar();
-        animoBarra = new javax.swing.JProgressBar();
-        vida1 = new javax.swing.JLabel();
-        ataqueBarra1 = new javax.swing.JProgressBar();
         habilidad3 = new javax.swing.JLabel();
         dinero = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        ataqueDato = new javax.swing.JLabel();
+        estadoAnimo1 = new javax.swing.JLabel();
+        vida = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
@@ -120,9 +109,13 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(foto);
         foto.setBounds(10, 10, 180, 190);
 
+        jLabel2.setText("Ataque");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(420, 100, 110, 30);
+
         objetoEspecial.setText("Objetos Especiales");
         jPanel1.add(objetoEspecial);
-        objetoEspecial.setBounds(750, 250, 120, 20);
+        objetoEspecial.setBounds(800, 270, 120, 20);
 
         clan.setText("Clan");
         jPanel1.add(clan);
@@ -140,7 +133,7 @@ public class VistaFicha extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaEspecial);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(670, 270, 310, 420);
+        jScrollPane1.setBounds(770, 300, 200, 350);
 
         listaAtaque.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -150,7 +143,7 @@ public class VistaFicha extends javax.swing.JFrame {
         jScrollPane2.setViewportView(listaAtaque);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(20, 270, 310, 420);
+        jScrollPane2.setBounds(30, 300, 200, 350);
 
         listaDefensivos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -160,7 +153,7 @@ public class VistaFicha extends javax.swing.JFrame {
         jScrollPane3.setViewportView(listaDefensivos);
 
         jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(340, 270, 320, 420);
+        jScrollPane3.setBounds(270, 300, 200, 350);
 
         listaAmuletos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -170,43 +163,25 @@ public class VistaFicha extends javax.swing.JFrame {
         jScrollPane4.setViewportView(listaAmuletos);
 
         jPanel1.add(jScrollPane4);
-        jScrollPane4.setBounds(370, 30, 600, 170);
-
-        ataquePuntos.setText("Ataque");
-        jPanel1.add(ataquePuntos);
-        ataquePuntos.setBounds(20, 210, 120, 20);
+        jScrollPane4.setBounds(520, 300, 200, 350);
 
         amuletos.setText("Amuletos");
         jPanel1.add(amuletos);
-        amuletos.setBounds(590, 10, 120, 20);
+        amuletos.setBounds(560, 270, 120, 20);
 
         ataque.setText("Objetos de Ataque");
         jPanel1.add(ataque);
-        ataque.setBounds(110, 250, 120, 20);
+        ataque.setBounds(70, 270, 120, 20);
 
         defensivo.setText("Objetos Defensivos");
         jPanel1.add(defensivo);
-        defensivo.setBounds(450, 250, 120, 20);
+        defensivo.setBounds(320, 270, 120, 20);
         jPanel1.add(dineroDato);
         dineroDato.setBounds(290, 150, 50, 20);
-
-        estadoAnimo.setText("Estado de animo");
-        jPanel1.add(estadoAnimo);
-        estadoAnimo.setBounds(600, 210, 110, 20);
 
         nombre.setText("Nombre");
         jPanel1.add(nombre);
         nombre.setBounds(230, 20, 60, 20);
-        jPanel1.add(vidaBarra);
-        vidaBarra.setBounds(70, 210, 220, 19);
-        jPanel1.add(animoBarra);
-        animoBarra.setBounds(700, 210, 270, 19);
-
-        vida1.setText("Vida");
-        jPanel1.add(vida1);
-        vida1.setBounds(310, 210, 50, 20);
-        jPanel1.add(ataqueBarra1);
-        ataqueBarra1.setBounds(350, 210, 230, 19);
 
         habilidad3.setText("Habilidad2");
         jPanel1.add(habilidad3);
@@ -216,10 +191,28 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(dinero);
         dinero.setBounds(230, 150, 50, 20);
 
+        jLabel3.setText("Estado de animo");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(420, 60, 110, 30);
+        jPanel1.add(ataqueDato);
+        ataqueDato.setBounds(570, 100, 110, 30);
+        jPanel1.add(estadoAnimo1);
+        estadoAnimo1.setBounds(580, 60, 110, 30);
+        jPanel1.add(vida);
+        vida.setBounds(580, 20, 110, 30);
+
+        jLabel6.setText("Vida:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(420, 20, 110, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(1, 0, 1000, 700);
+
+        jLabel4.setText("Ataque");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(420, 100, 110, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1000, 700);
@@ -264,19 +257,21 @@ public class VistaFicha extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amuletos;
-    private javax.swing.JProgressBar animoBarra;
     private javax.swing.JLabel ataque;
-    private javax.swing.JProgressBar ataqueBarra1;
-    private javax.swing.JLabel ataquePuntos;
+    private javax.swing.JLabel ataqueDato;
     private javax.swing.JLabel clan;
     private javax.swing.JLabel defensivo;
     private javax.swing.JLabel dinero;
     private javax.swing.JLabel dineroDato;
-    private javax.swing.JLabel estadoAnimo;
+    private javax.swing.JLabel estadoAnimo1;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
     private javax.swing.JLabel habilidad3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -288,7 +283,6 @@ public class VistaFicha extends javax.swing.JFrame {
     private javax.swing.JList<String> listaEspecial;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel objetoEspecial;
-    private javax.swing.JLabel vida1;
-    private javax.swing.JProgressBar vidaBarra;
+    private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 }
