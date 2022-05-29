@@ -7,6 +7,9 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Equipo;
 import Mascarada.Partida;
+import Mascarada.Persona;
+import Mascarada.Util;
+import Mascarada.Vampire;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +29,19 @@ public class VistaFicha extends javax.swing.JFrame {
     /**
      * Creates new form FichaAuspex
      */
-    public VistaFicha(Partida partida) throws IOException {
+    public VistaFicha(Persona p) throws IOException {
+        if (p instanceof Vampire){
+            Vampire v = (Vampire) p;
+        }
+        
+        if(p.getEstadoDeAnimo()==Util.EA_PROTAGONISTA){
+            //mostramos lo del protagonista
+            //listas seleccionables
+            //boton de guardar
+        } else {
+            //listas NOOOOOO seleccionables
+            //label de estado de ánimo
+        }
         initComponents();
         this.partida = partida;
         //Lista de la informacion de los clanes
