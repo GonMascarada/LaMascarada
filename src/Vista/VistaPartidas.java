@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Moru
  * @author Gonzalo López Fernández
  */
-public final class Inicio extends javax.swing.JFrame {
+public final class VistaPartidas extends javax.swing.JFrame {
 
     private final Controlador controlador;
 
@@ -40,15 +40,16 @@ public final class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      *
+     * @param controlador
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    public Inicio() throws IOException, ParseException {
+    public VistaPartidas(Controlador controlador) throws IOException, ParseException {
         initComponents();
         partidas = new ArrayList<>();
         //Elementos del Jlist
         //Elemento que me trae la info
-        controlador = new Controlador();
+        this.controlador = controlador;
         //Lista de la informacion de los clanes
         clanes = controlador.getListaClanes();
         //Hago invisible el label de errores.
@@ -521,7 +522,7 @@ public final class Inicio extends javax.swing.JFrame {
                             controlador.iniciarNuevaPartida(clanes.get(indice), jTextNombre.getText(), jComboBoxDificultad.getSelectedItem().toString());
                             this.dispose();
                         } catch (IOException ex) {
-                            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     } else {
                         error = "Selecciona dos habilidades.";
@@ -536,7 +537,7 @@ public final class Inicio extends javax.swing.JFrame {
             jLabelError.setVisible(true);
             jLabelError.setForeground(Color.red);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -548,7 +549,7 @@ public final class Inicio extends javax.swing.JFrame {
             controlador.cargarPartida(p);
             this.dispose();
         } catch (IOException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCargarActionPerformed
 
@@ -558,18 +559,18 @@ public final class Inicio extends javax.swing.JFrame {
             try {
                 controlador.eliminarPartida(partidas.get(seleccionados[i]).getIdPartida());
             } catch (IOException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        Inicio inicio;
+        VistaPartidas inicio;
         try {
-            inicio = new Inicio();
+            inicio = new VistaPartidas(controlador);
             inicio.setVisible(true);
             this.dispose();
         } catch (IOException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
@@ -601,13 +602,13 @@ public final class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPartidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPartidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPartidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPartidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>*/
@@ -615,15 +616,7 @@ public final class Inicio extends javax.swing.JFrame {
  /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    try {
-                        new Inicio().setVisible(true);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } catch (IOException ex) {
-                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                //new VistaPartidas(controlador).setVisible(true);
             }
         });
     }

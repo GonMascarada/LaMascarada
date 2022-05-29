@@ -76,6 +76,18 @@ public final class Controlador {
     }
 
     /**
+     * Reintenta la conexión con la base de datos.
+     *
+     * @param url
+     * @param use
+     * @param pas
+     * @return
+     */
+    public boolean conectar(String url, String use, String pas) {
+        return bbdd.conectar(url, use, pas);
+    }
+
+    /**
      * Inicia una nueva partida.
      *
      * @param clan del nuevo personaje.
@@ -413,4 +425,22 @@ public final class Controlador {
         }
         return derecho;
     }
+
+    /**
+     * @return the conectado
+     */
+    public boolean isConectado() {
+        return conectado;
+    }
+
+    /**
+     * Devuelve la configuración con la base de datos almacenada en el fichero
+     * bd.csv
+     *
+     * @return Texto con la url, usuario y contraseña.
+     */
+    public String getConfiguracionBD() {
+        return bbdd.getConfiguracionBD();
+    }
+
 }

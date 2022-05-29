@@ -1,5 +1,9 @@
 package Mascarada;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+
 /**
  * Compendio de constantes comunes para todo el programa. Contiene los dátos
  * estandar.
@@ -14,12 +18,14 @@ public final class Util {
     public static final String URL_EQ_PA_PE = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje.csv";
     public static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
     public static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
+    public static final String URL_BD = "C:\\Users\\Public\\Documents\\La Mascarada\\bd.csv";
 
     // Cabecera ficheros
     public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
     public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso";
-    public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena";
-    
+    public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;Usuario";
+    public static final String CABECERA_BD = "﻿jdbc:mysql://localhost:3306/lamascarada;;root";
+
     // Constantes de gestión
     public static final int SED_MAX = 5;
     public static final int SOSPECHA_MAX = 5;
@@ -98,4 +104,16 @@ public final class Util {
     public static final int EA_AGRADECIDO = 2;
     public static final int EA_ENFADADO = 3;
     public static final int EA_MUERTO = 4;
+
+    // Criptado y desencriptado 
+    public static String ENCRYPT_KEY = "pipipi";
+    
+    // Centrar ventana
+    public static void centrar (JFrame j){
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - j.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - j.getHeight()) / 2);
+        j.setLocation(x, y);
+    }
+
 }
