@@ -100,6 +100,8 @@ public class VistaEscena extends javax.swing.JFrame {
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Fondo texto.png"))); // NOI18N
         texto.setText("Texto");
+        texto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        texto.setInheritsPopupMenu(false);
         jPanel1.add(texto);
         texto.setBounds(460, 260, 500, 300);
         jPanel1.add(cabecera1);
