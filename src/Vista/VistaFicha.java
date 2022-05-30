@@ -22,6 +22,13 @@ public class VistaFicha extends javax.swing.JFrame {
     
     private Partida partida;
     private ArrayList<Equipo> equipo;
+    private ArrayList ataquel;
+    private ArrayList defensal;
+    private ArrayList vidal;
+    private Persona persona;
+    private Equipo objeto;
+    private int index;
+    
       
 
     /**
@@ -68,10 +75,13 @@ public class VistaFicha extends javax.swing.JFrame {
           for (int i = 0; i < equipo.size(); i++) {
               if(equipo.get(i).getAtaque()!=0){
                   listaAtaque.addElement(equipo.get(i).getNombre());
+                  
               }else if (equipo.get(i).getDefensa()!=0) {
                   listaDefensivos.addElement(equipo.get(i).getNombre());
+               
               }else if (equipo.get(i).getVida()!=0) {
                     listaAmuletos.addElement(equipo.get(i).getNombre());
+                  
               }else  {
                   listaEspeciales.addElement(equipo.get(i).getNombre());
               }
@@ -91,10 +101,13 @@ public class VistaFicha extends javax.swing.JFrame {
             //mostramos lo del protagonista
              estadoAnimo1.setVisible(false);
         labelEstadoAnimo.setVisible(false);
-        listaAmuletos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+            
+                
+        listaAmuletos.setSelectionMode(DefaultListSelectionModel.SINGLE_INTERVAL_SELECTION);
         listaAtaque.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
         listaDefensivos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
         listaEspecial.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        
         
         DefaultListModel listaAtaque = new DefaultListModel();
         DefaultListModel listaAmuletos = new DefaultListModel();
@@ -105,13 +118,28 @@ public class VistaFicha extends javax.swing.JFrame {
         
         equipo = partida.getProtagonista().getEquipacion();
         
-          for (int i = 0; i < equipo.size(); i++) {
-            listaAtaque.addElement(equipo.get(i).getNombre());
-            listaAmuletos.addElement(equipo.get(i).getNombre());
-            listaDefensivos.addElement(equipo.get(i).getNombre());
-            listaEspeciales.addElement(equipo.get(i).getNombre());
-
+        for (int i = 0; i < equipo.size(); i++) {
+              if(equipo.get(i).getAtaque()!=0){
+                  objeto=equipo.get(i);
+                  listaAtaque.addElement(objeto.getNombre());
+                  ataquel.add(equipo.get(i).getNombre());
+                      if (objeto.isEnUso()) {
+                index=(i-1);
+                //INDEX PARA DEJAR SELECCIONADO LO YA EN USO 
+                //falta implementar en el resto de listas
+            }
+              
+              }else if (equipo.get(i).getDefensa()!=0) {
+                  listaDefensivos.addElement(equipo.get(i).getNombre());
+                  defensal.add(equipo.get(i).getNombre());
+              }else if (equipo.get(i).getVida()!=0) {
+                    listaAmuletos.addElement(equipo.get(i).getNombre());
+                    vidal.add(equipo.get(i).getNombre());
+              }else  {
+                  listaEspeciales.addElement(equipo.get(i).getNombre());
+              }
         }
+        
         this.listaAmuletos.setModel(listaAmuletos);
         this.listaAtaque.setModel(listaAtaque);
         this.listaDefensivos.setModel(listaDefensivos);
@@ -134,6 +162,8 @@ public class VistaFicha extends javax.swing.JFrame {
         jButton1.setVisible(true);
         estadoAnimo1.setVisible(false);
         labelEstadoAnimo.setVisible(false);
+        
+        
         } else {
             //listas NOOOOOO seleccionables
         listaAmuletos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
@@ -180,7 +210,7 @@ public class VistaFicha extends javax.swing.JFrame {
         }
         
       
-        
+        listaAtaque.setSelectedIndex(index);
     }
  
 
@@ -266,6 +296,11 @@ public class VistaFicha extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        listaAtaque.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaAtaqueValueChanged(evt);
+            }
         });
         jScrollPane2.setViewportView(listaAtaque);
 
@@ -375,12 +410,45 @@ public class VistaFicha extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        ataqueDato1.setText(text);
+        
+        
+        
+        
+        
+        
+   
+        
        
-       listaAtaque.getSelectedValues();
-       listaDefensivos.getSelectedValues();
-       listaEspecial.getSelectedValues();
+
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void listaAtaqueValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAtaqueValueChanged
+        // TODO add your handling code here:
+        String ataque=listaAtaque.getSelectedValue();
+        String defensivo=listaDefensivos.getSelectedValue();
+        String amuleto=listaAmuletos.getSelectedValue();
+        
+        Equipo objetoataque;
+        Equipo objetodefensa;
+        Equipo objetoamuleto;
+        for (int i = 0; i < 100; i++) {
+            if (ataque.equalsIgnoreCase((String) ataquel.get(i))) {
+                objetoataque=(Equipo) ataquel.get(i);
+                ataqueDato1.setText(objetoataque.getAtaque()+"");
+                objetoataque.setEnUso(true);
+            }
+            if (defensivo.equalsIgnoreCase((String) defensal.get(i))) {
+                objetodefensa=(Equipo) defensal.get(i);
+                defensaDato.setText(objetodefensa.getAtaque()+"");
+                objetodefensa.setEnUso(true);
+            }
+            if (amuleto.equalsIgnoreCase((String) vidal.get(i))) {
+                objetoamuleto=(Equipo) vidal.get(i);
+                vida1.setText(objetoamuleto.getAtaque()+"");
+                objetoamuleto.setEnUso(true);
+            }
+        }
+    }//GEN-LAST:event_listaAtaqueValueChanged
 
     /**
      * @param args the command line arguments
