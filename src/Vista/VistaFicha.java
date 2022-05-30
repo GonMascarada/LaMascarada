@@ -66,7 +66,10 @@ public class VistaFicha extends javax.swing.JFrame {
         equipo = p.getEquipacion();
         
           for (int i = 0; i < equipo.size(); i++) {
-            listaAtaque.addElement(equipo.get(i).getNombre());
+              if(equipo.get(i).getAtaque()!=0){
+                  listaAtaque.addElement(equipo.get(i).getNombre());
+              }
+            
             listaAmuletos.addElement(equipo.get(i).getNombre());
             listaDefensivos.addElement(equipo.get(i).getNombre());
             listaEspeciales.addElement(equipo.get(i).getNombre());
