@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Equipo;
+import Mascarada.Util;
 import java.util.List;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +24,7 @@ public class VistaTienda extends javax.swing.JFrame {
      */
     public VistaTienda(Controlador controlador) {
         initComponents();
+        Util.centrar(this);
         this.controlador = controlador;
         
         jTable1.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -62,6 +64,7 @@ public class VistaTienda extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        vistaCabecera1 = new Vista.VistaCabecera();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -82,6 +85,8 @@ public class VistaTienda extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1);
         jButton1.setBounds(632, 271, 247, 57);
+        jPanel1.add(vistaCabecera1);
+        vistaCabecera1.setBounds(-10, 0, 1000, 220);
 
         jLabel1.setText("Tienda");
         jPanel1.add(jLabel1);
@@ -196,5 +201,6 @@ public class VistaTienda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private Vista.VistaCabecera vistaCabecera1;
     // End of variables declaration//GEN-END:variables
 }
