@@ -7,6 +7,7 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Escena;
 import Mascarada.Opcion;
+import Mascarada.Util;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class VistaEscena extends javax.swing.JFrame {
 
     public VistaEscena() {
         initComponents();
+        Util.centrar(this);
     }
 
     public VistaEscena(Controlador controlador) {

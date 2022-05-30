@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
  */
 public class VistaCabecera extends javax.swing.JPanel {
 
+     
     private Partida partida;
 
     ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
@@ -28,7 +29,10 @@ public class VistaCabecera extends javax.swing.JPanel {
      * origin Creates new form CabeceraImport
      */
     public VistaCabecera() {
+        
         initComponents();
+        
+        
         barraProgreso.setForeground(Color.white);
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);

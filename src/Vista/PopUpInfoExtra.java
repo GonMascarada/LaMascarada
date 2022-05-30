@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Mascarada.Util;
+
 /**
  *
  * @author Moru
@@ -15,6 +17,7 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
      */
     public PopUpInfoExtra() {
         initComponents();
+        Util.centrar(this);
     }
 
     /**
