@@ -152,12 +152,13 @@ public class BaseDeDatos {
      *
      * @param partida
      */
-    void insertarNuevaPartida(Partida partida) {
+    void insertarNuevaPartida(Partida partida) throws SQLException {
         // 1.Guardar los datos de la partida.
-        //PreparedStatement stmt = conn.prepareStatement("INSERT INTO partida VALUES ('"
-        //        + usuario + "', '" + pass + "', current_timestamp());");
-        //stmt.executeUpdate();
-System.out.println("Aquiiiiiii");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO partida VALUES ("
+                + partida.getInfoPartidaParaBD()+");");
+        System.out.println("INSERT INTO partida VALUES ("+partida.getInfoPartidaParaBD()+");");
+        stmt.executeUpdate();
+
         // 2.Guardar los datos de los personajes, protagonista incluido.
         //escribirPersonajes(partida.getInfoPersonajes());
 

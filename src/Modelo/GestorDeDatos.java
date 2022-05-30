@@ -68,7 +68,7 @@ public class GestorDeDatos {
      * @param usuario
      * @return true si está disponible, false en otro caso.
      */
-    public boolean comprobarNombreUsuario(String usuario){
+    public boolean comprobarNombreUsuario(String usuario) {
         try {
             return bd.comprobarNombreUsuario(usuario);
         } catch (SQLException ex) {
@@ -108,7 +108,7 @@ public class GestorDeDatos {
      *
      * @param idPartida
      */
-    public void eliminarPartida(int idPartida){
+    public void eliminarPartida(int idPartida) {
         try {
             Fichero.eliminarPartida(idPartida);
             bd.sincronizar();
@@ -134,7 +134,7 @@ public class GestorDeDatos {
      * @param idPartida
      * @return escena requerida.
      */
-    public Escena getEscena(int idEscena, int idPartida){
+    public Escena getEscena(int idEscena, int idPartida) {
         try {
             return Fichero.getEscena(idEscena, idPartida);
         } catch (IOException ex) {
@@ -164,7 +164,7 @@ public class GestorDeDatos {
      * @param usuario
      * @return lista de partidas guardadas.
      */
-    public ArrayList<Partida> getListaPartidas(String usuario){
+    public ArrayList<Partida> getListaPartidas(String usuario) {
         try {
             return Fichero.getListaPartidas(usuario);
         } catch (IOException | ParseException ex) {
@@ -197,14 +197,18 @@ public class GestorDeDatos {
     public void guardarPartida(Partida partida, boolean nuevaPartida) {
         try {
             Fichero.guardarPartida(partida);
-            if(nuevaPartida){
-                bd.insertarNuevaPartida(partida);
+            if (nuevaPartida) {
+                try {
+                    bd.insertarNuevaPartida(partida);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
-               bd.sincronizar(); 
-            }            
+                bd.sincronizar();
+            }
         } catch (IOException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }
 
     /**
