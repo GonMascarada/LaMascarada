@@ -205,7 +205,21 @@ public class Partida {
         String resultado;
         resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso;
         resultado += ";" + sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
-        resultado += escena.getIdEscena();
+        resultado += escena.getIdEscena() + ";" + usuario;
+        return resultado;
+    }
+
+    /**
+     * Devuelve la información sobre una partida con el formato correcto para
+     * ser almacenado en base de datos
+     *
+     * @return
+     */
+    public String getInfoPartidaParaBD() {
+        String resultado;
+        resultado = idPartida + ", '" + fecha + "', " + tiempo + ", " + progreso;
+        resultado += ", " + sedDeSangre + ", " + sospecha + ", '" + ultimaPista + "', ";
+        resultado += escena.getIdEscena() + ", '" + usuario + "'";
         return resultado;
     }
 
@@ -262,8 +276,7 @@ public class Partida {
         lista.add(String.valueOf(fecha));
         return lista;
     }
-*/
-    
+     */
     public Object[] getDatos() {
         Object[] lista = new Object[6];
         lista[0] = protagonista.getNombre();

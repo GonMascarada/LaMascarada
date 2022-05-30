@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Alumno/Documents/La%20Mascarada/src/Vista/VistaTienda.java</file>
             <file>file:/C:/Users/Alumno/Documents/La%20Mascarada/src/Vista/VistaCabecera.java</file>
+=======
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Util.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaTienda.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/Fichero.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Partida.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/GestorDeDatos.java</file>
+            <file>file:/C:/Users/admin/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaCabecera.java</file>
+>>>>>>> d49547d04d848d8efe6b4246a9cef67c72a2efcb
         </group>
     </open-files>
 </project-private>
