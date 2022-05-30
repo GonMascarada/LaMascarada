@@ -68,11 +68,17 @@ public class VistaFicha extends javax.swing.JFrame {
           for (int i = 0; i < equipo.size(); i++) {
               if(equipo.get(i).getAtaque()!=0){
                   listaAtaque.addElement(equipo.get(i).getNombre());
+              }else if (equipo.get(i).getDefensa()!=0) {
+                  listaDefensivos.addElement(equipo.get(i).getNombre());
+              }else if (equipo.get(i).getVida()!=0) {
+                    listaAmuletos.addElement(equipo.get(i).getNombre());
+              }else  {
+                  listaEspeciales.addElement(equipo.get(i).getNombre());
               }
             
-            listaAmuletos.addElement(equipo.get(i).getNombre());
-            listaDefensivos.addElement(equipo.get(i).getNombre());
-            listaEspeciales.addElement(equipo.get(i).getNombre());
+            
+          
+            
 
         }
         this.listaAmuletos.setModel(listaAmuletos);
@@ -352,7 +358,7 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(710, 120, 210, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(1, 0, 1000, 700);
@@ -369,8 +375,8 @@ public class VistaFicha extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        
-       listaAmuletos.getSelectedValues();
+        ataqueDato1.setText(text);
+       
        listaAtaque.getSelectedValues();
        listaDefensivos.getSelectedValues();
        listaEspecial.getSelectedValues();
