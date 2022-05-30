@@ -4,17 +4,13 @@
  */
 package Vista;
 
-import Controlador.Controlador;
 import Mascarada.Equipo;
 import Mascarada.Partida;
 import Mascarada.Persona;
 import Mascarada.Util;
 import Mascarada.Vampire;
-import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 
