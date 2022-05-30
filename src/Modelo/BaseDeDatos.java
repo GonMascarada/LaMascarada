@@ -46,9 +46,11 @@ public class BaseDeDatos {
     public boolean comprobarCredenciales(String text, String password) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("select comprobarUsuario(\"" + text + "\", \"" + password + "\") as resultado;");
         ResultSet r = stmt.executeQuery();
-        r.next();
+        int resultado;
+        r.next(); 
+        resultado = r.getInt("resultado");      
         stmt.close();
-        return r.getInt("resultado") == 1;
+        return resultado == 1;
     }
 
     /**
@@ -60,9 +62,11 @@ public class BaseDeDatos {
     public boolean comprobarNombreUsuario(String usuario) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("select comprobarNombreUsuarioDisponible(\"" + usuario + "\") as resultado;");
         ResultSet r = stmt.executeQuery();
+        int resultado;
         r.next();
-        stmt.close();
-        return r.getInt("resultado") == 1;
+        resultado = r.getInt("resultado");
+        stmt.close();;
+        return resultado == 1;
     }
 
     /**
@@ -126,7 +130,7 @@ public class BaseDeDatos {
      * @param pass
      */
     public void crearNuevoUsuario(String usuario, String pass) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios VALUES ('" + usuario + "', '" + pass + "', current_timestamp());");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuario VALUES ('" + usuario + "', '" + pass + "', current_timestamp());");
         stmt.executeUpdate();
         stmt.close();
     }

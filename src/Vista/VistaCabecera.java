@@ -222,14 +222,13 @@ public class VistaCabecera extends javax.swing.JPanel {
 
     private void fichapersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fichapersonajeMouseClicked
 
+        VistaFicha ficha;
         try {
-            VistaFicha ficha = new VistaFicha(partida);
+            ficha = new VistaFicha(partida.getProtagonista());
             ficha.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(VistaCabecera.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_fichapersonajeMouseClicked
 
     private void fichapersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichapersonajeActionPerformed
