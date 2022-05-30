@@ -31,15 +31,13 @@ public final class Util {
     public static final String TABLA = "/lamascarada";
 
     // Constantes de gestión
+    public static final int DINERO = 0;
+    public static final int ATQ_VAM = 10;
+    public static final int DEF_VAM = 4;
+    public static final int VIDA_VAM = 20;
     public static final int SED_MAX = 5;
     public static final int SOSPECHA_MAX = 5;
     public static final int PROGRESO_MAX = 5;
-
-    //Códigos de actualización
-    public static final int ACTUALIZADO = 0;
-    public static final int INSERT = 0;
-    public static final int UPDATE = 0;
-    public static final int DELETE = 0;
 
     // Acciones de las opciones
     public static final int AC_CONTINUAR = 0;
@@ -79,7 +77,7 @@ public final class Util {
     public static final int SI_PISTA_BRUJAH = 12;
     public static final int SI_TREMERE = 60;
     public static final int SI_NOSFERATU = 90;
-    public static final int SI_VEWNTRUE = 120;
+    public static final int SI_VENTRUE = 120;
     
 
     // Estados de ánimo de los NPC´s
