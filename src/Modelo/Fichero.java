@@ -487,7 +487,7 @@ public final class Fichero {
             // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
             if (Integer.valueOf(linea[6]) == Util.EA_PROTAGONISTA) {
                 idPartida = Integer.parseInt(linea[10]);
-                partida = getPartida(idPartida); //Nos devuelve la partida sin el vampiro protagonista.
+                partida = getPartida(idPartida, usuario); //Nos devuelve la partida sin el vampiro protagonista.
                 if (partida.getUsuario().equals(usuario)) {
                     clan = getClan(linea[7]);
                     vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
@@ -664,7 +664,7 @@ public final class Fichero {
      * @throws java.io.IOException
      * @throws java.text.ParseException
      */
-    private static Partida getPartida(int idPartida) throws IOException, ParseException {
+    private static Partida getPartida(int idPartida, String usuario) throws IOException, ParseException {
         File file = new File(Util.URL_PARTIDA);
         Scanner lector = new Scanner(file);
         String[] linea;
@@ -674,7 +674,7 @@ public final class Fichero {
         lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && (!encontrado))) {
             linea = lector.nextLine().split(";");
-            if (Integer.parseInt(linea[0]) == idPartida) {
+            if ((Integer.parseInt(linea[0]) == idPartida)&&(linea[8].equals(usuario))) {
                 partida.setIdPartida(Integer.parseInt(linea[0]));
                 partida.setFecha(linea[1]); //Revisar
                 partida.setTiempo(Integer.parseInt(linea[2]));

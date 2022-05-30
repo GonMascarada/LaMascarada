@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Mascarada.Util;
 import java.awt.Color;
 
 /**
@@ -17,6 +18,7 @@ public class Mapa extends javax.swing.JFrame {
      */
     public Mapa() {
         initComponents();
+        Util.centrar(this);
         
         callejon.setText("Callejon");
         callejon.setForeground(Color.white);
