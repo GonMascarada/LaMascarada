@@ -12,6 +12,7 @@ import Mascarada.Vampire;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 
 /**
  *
@@ -21,34 +22,50 @@ public class VistaFicha extends javax.swing.JFrame {
     
     private Partida partida;
     private ArrayList<Equipo> equipo;
+      
 
     /**
      * Creates new form FichaAuspex
      */
     public VistaFicha(Persona p) throws IOException {
-        if (p instanceof Vampire){
-            Vampire v = (Vampire) p;
-        }
-        
-        if(p.getEstadoDeAnimo()==Util.EA_PROTAGONISTA){
-            //mostramos lo del protagonista
-            //listas seleccionables
-            //boton de guardar
-        } else {
-            //listas NOOOOOO seleccionables
-            //label de estado de ánimo
-        }
         initComponents();
-        this.partida = partida;
-        //Lista de la informacion de los clanes
-        equipo = partida.getProtagonista().getEquipacion();
-     
+        Util.centrar(this);
+        
+        
+       
+        if (p instanceof Vampire){
+        estadoAnimo1.setVisible(true);
+        labelEstadoAnimo.setVisible(true);
+        jButton1.setVisible(false);
+        
+            Vampire v = (Vampire) p;
+        vidaMax.setText(p.getVidaMax()+"");
+        vida1.setText(p.getVidaActual()+"");
+        String[] habiliades = ((Vampire) p).getHabilidades().split(";");
+        habilidad1.setText(habiliades[0]);
+        habilidad3.setText(habiliades[1]);
+        nombre.setText(p.getNombre());
+        clan.setText(((Vampire) p).getClan().getNombre());
+        dineroDato.setText(p.getDinero()+"");
+        ataqueDato1.setText(p.getAtaque()+"");
+        defensaDato.setText(p.getDefensa()+"");
+        estadoAnimo1.setText(p.getEstadoDeAnimo()+"");
+        
+        listaAmuletos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaAtaque.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaDefensivos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaEspecial.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        
         DefaultListModel listaAtaque = new DefaultListModel();
         DefaultListModel listaAmuletos = new DefaultListModel();
         DefaultListModel listaDefensivos = new DefaultListModel();
-        DefaultListModel listaEspeciales = new DefaultListModel();
+        DefaultListModel listaEspeciales = new DefaultListModel(); 
+            
+      
         
-         for (int i = 0; i < equipo.size(); i++) {
+        equipo = p.getEquipacion();
+        
+          for (int i = 0; i < equipo.size(); i++) {
             listaAtaque.addElement(equipo.get(i).getNombre());
             listaAmuletos.addElement(equipo.get(i).getNombre());
             listaDefensivos.addElement(equipo.get(i).getNombre());
@@ -59,18 +76,104 @@ public class VistaFicha extends javax.swing.JFrame {
         this.listaAtaque.setModel(listaAtaque);
         this.listaDefensivos.setModel(listaDefensivos);
         this.listaEspecial.setModel(listaEspeciales);
-        datosFichaAuspex(partida);
-    }
-     public void datosFichaAuspex( Partida partida){
+        }
+        
+        if(p.getEstadoDeAnimo()==Util.EA_PROTAGONISTA){
+            //mostramos lo del protagonista
+             estadoAnimo1.setVisible(false);
+        labelEstadoAnimo.setVisible(false);
+        listaAmuletos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaAtaque.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaDefensivos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaEspecial.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        
+        DefaultListModel listaAtaque = new DefaultListModel();
+        DefaultListModel listaAmuletos = new DefaultListModel();
+        DefaultListModel listaDefensivos = new DefaultListModel();
+        DefaultListModel listaEspeciales = new DefaultListModel(); 
+            
+      
+        
+        equipo = partida.getProtagonista().getEquipacion();
+        
+          for (int i = 0; i < equipo.size(); i++) {
+            listaAtaque.addElement(equipo.get(i).getNombre());
+            listaAmuletos.addElement(equipo.get(i).getNombre());
+            listaDefensivos.addElement(equipo.get(i).getNombre());
+            listaEspeciales.addElement(equipo.get(i).getNombre());
+
+        }
+        this.listaAmuletos.setModel(listaAmuletos);
+        this.listaAtaque.setModel(listaAtaque);
+        this.listaDefensivos.setModel(listaDefensivos);
+        this.listaEspecial.setModel(listaEspeciales);
+            
+       
+        vidaMax.setText(partida.getProtagonista().getVidaMax()+"");
+        vida1.setText(partida.getProtagonista().getVidaActual()+"");
+        String[] habiliades = partida.getProtagonista().getHabilidades().split(";");
+        habilidad1.setText(habiliades[0]);
+        habilidad3.setText(habiliades[1]);
         nombre.setText(partida.getProtagonista().getNombre());
-        String[]hab1y2=partida.getProtagonista().getHabilidades().split(";");
-        habilidad1.setText(hab1y2[0]);
-        dineroDato.setText(hab1y2[1]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
         dineroDato.setText(partida.getProtagonista().getDinero()+"");
+        ataqueDato1.setText(partida.getProtagonista().getAtaque()+"");
+        defensaDato.setText(partida.getProtagonista().getDefensa()+"");
+
         
+        
+        jButton1.setVisible(true);
+        estadoAnimo1.setVisible(false);
+        labelEstadoAnimo.setVisible(false);
+        } else {
+            //listas NOOOOOO seleccionables
+        listaAmuletos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaAtaque.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaDefensivos.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        listaEspecial.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        
+        DefaultListModel listaAtaque = new DefaultListModel();
+        DefaultListModel listaAmuletos = new DefaultListModel();
+        DefaultListModel listaDefensivos = new DefaultListModel();
+        DefaultListModel listaEspeciales = new DefaultListModel(); 
+            
+      
+        
+        equipo = partida.getEscena().getPnj().getEquipacion();
+        
+          for (int i = 0; i < equipo.size(); i++) {
+            listaAtaque.addElement(equipo.get(i).getNombre());
+            listaAmuletos.addElement(equipo.get(i).getNombre());
+            listaDefensivos.addElement(equipo.get(i).getNombre());
+            listaEspeciales.addElement(equipo.get(i).getNombre());
+
+        }
+         this.listaAmuletos.setModel(listaAmuletos);
+        this.listaAtaque.setModel(listaAtaque);
+        this.listaDefensivos.setModel(listaDefensivos);
+        this.listaEspecial.setModel(listaEspeciales);
+        
+            //label de estado de ánimo
+        estadoAnimo1.setVisible(true);
+        labelEstadoAnimo.setVisible(true);
+        vidaMax.setText(partida.getEscena().getPnj().getVidaMax()+"");
+        vida1.setText(partida.getEscena().getPnj().getVidaActual()+"");
+        habilidad1.setVisible(false);
+        habilidad3.setVisible(false);
+        nombre.setText(partida.getEscena().getPnj().getNombre());
+        clan.setText(" Humano ");
+        dineroDato.setText(partida.getEscena().getPnj().getDinero()+"");
+        ataqueDato1.setText(partida.getEscena().getPnj().getAtaque()+"");
+        defensaDato.setText(partida.getEscena().getPnj().getDefensa()+"");
+        estadoAnimo1.setText(partida.getEscena().getPnj().getEstadoDeAnimo()+"");
+        jButton1.setVisible(false);
+        
+        }
+        
+      
         
     }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,13 +205,17 @@ public class VistaFicha extends javax.swing.JFrame {
         nombre = new javax.swing.JLabel();
         habilidad3 = new javax.swing.JLabel();
         dinero = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        ataqueDato = new javax.swing.JLabel();
+        labelEstadoAnimo = new javax.swing.JLabel();
+        defensaDato = new javax.swing.JLabel();
         estadoAnimo1 = new javax.swing.JLabel();
-        vida = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        vidaMax = new javax.swing.JLabel();
+        labelVidaMax = new javax.swing.JLabel();
+        labelAtaque = new javax.swing.JLabel();
+        ataqueDato1 = new javax.swing.JLabel();
+        labelVida = new javax.swing.JLabel();
+        vida1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
@@ -120,9 +227,9 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(foto);
         foto.setBounds(10, 10, 180, 190);
 
-        jLabel2.setText("Ataque");
+        jLabel2.setText("Defensa");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(420, 100, 110, 30);
+        jLabel2.setBounds(420, 140, 110, 30);
 
         objetoEspecial.setText("Objetos Especiales");
         jPanel1.add(objetoEspecial);
@@ -202,34 +309,69 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(dinero);
         dinero.setBounds(230, 150, 50, 20);
 
-        jLabel3.setText("Estado de animo");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(420, 60, 110, 30);
-        jPanel1.add(ataqueDato);
-        ataqueDato.setBounds(570, 100, 110, 30);
+        labelEstadoAnimo.setText("Estado de animo");
+        jPanel1.add(labelEstadoAnimo);
+        labelEstadoAnimo.setBounds(420, 60, 110, 30);
+        jPanel1.add(defensaDato);
+        defensaDato.setBounds(570, 140, 110, 30);
         jPanel1.add(estadoAnimo1);
         estadoAnimo1.setBounds(580, 60, 110, 30);
-        jPanel1.add(vida);
-        vida.setBounds(580, 20, 110, 30);
+        jPanel1.add(vidaMax);
+        vidaMax.setBounds(880, 20, 110, 30);
 
-        jLabel6.setText("Vida:");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(420, 20, 110, 30);
+        labelVidaMax.setText("Vida max:");
+        jPanel1.add(labelVidaMax);
+        labelVidaMax.setBounds(740, 20, 110, 30);
+
+        labelAtaque.setText("Ataque");
+        jPanel1.add(labelAtaque);
+        labelAtaque.setBounds(420, 100, 110, 30);
+        jPanel1.add(ataqueDato1);
+        ataqueDato1.setBounds(580, 100, 110, 30);
+
+        labelVida.setText("Vida actual:");
+        jPanel1.add(labelVida);
+        labelVida.setBounds(420, 20, 110, 30);
+        jPanel1.add(vida1);
+        vida1.setBounds(580, 20, 110, 30);
+
+        jButton1.setText("Guardar seleccionados");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(710, 120, 210, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(1, 0, 1000, 700);
 
-        jLabel4.setText("Ataque");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(420, 100, 110, 30);
-
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1000, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        
+       listaAmuletos.getSelectedValues();
+       listaAtaque.getSelectedValues();
+       listaDefensivos.getSelectedValues();
+       listaEspecial.getSelectedValues();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -269,8 +411,9 @@ public class VistaFicha extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amuletos;
     private javax.swing.JLabel ataque;
-    private javax.swing.JLabel ataqueDato;
+    private javax.swing.JLabel ataqueDato1;
     private javax.swing.JLabel clan;
+    private javax.swing.JLabel defensaDato;
     private javax.swing.JLabel defensivo;
     private javax.swing.JLabel dinero;
     private javax.swing.JLabel dineroDato;
@@ -278,22 +421,25 @@ public class VistaFicha extends javax.swing.JFrame {
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
     private javax.swing.JLabel habilidad3;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel labelAtaque;
+    private javax.swing.JLabel labelEstadoAnimo;
+    private javax.swing.JLabel labelVida;
+    private javax.swing.JLabel labelVidaMax;
     private javax.swing.JList<String> listaAmuletos;
     private javax.swing.JList<String> listaAtaque;
     private javax.swing.JList<String> listaDefensivos;
     private javax.swing.JList<String> listaEspecial;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel objetoEspecial;
-    private javax.swing.JLabel vida;
+    private javax.swing.JLabel vida1;
+    private javax.swing.JLabel vidaMax;
     // End of variables declaration//GEN-END:variables
 }
