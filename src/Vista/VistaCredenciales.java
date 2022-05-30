@@ -183,10 +183,10 @@ public class VistaCredenciales extends javax.swing.JFrame {
     private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
         String usuario = jTextFieldNombre.getText();
         String pass = String.valueOf(jPasswordField.getPassword());
-        if ((usuario.length() > 30) || (usuario.length() < 3)) {
-            jLabelError.setText("Longitud de usuario entre 3-30.");
-        } else if ((pass.length() > 30) || (pass.length() < 3)) {
-            jLabelError.setText("Longitud de contraseña entre 3-30.");
+        if ((usuario.length() > 20) || (usuario.length() < 3)) {
+            jLabelError.setText("Longitud de usuario entre 3-20.");
+        } else if ((pass.length() > 20) || (pass.length() < 3)) {
+            jLabelError.setText("Longitud de contraseña entre 3-20.");
         } else if (jCheckBox.isSelected()) {
             if (controlador.comprobarNombreUsuario(usuario)) {
                 controlador.crearNuevoUsuario(usuario, pass);

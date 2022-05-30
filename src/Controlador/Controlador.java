@@ -5,13 +5,10 @@ import Mascarada.*;
 import Vista.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Se encarga de abastecer a las interfaces con la información neceseria.
@@ -123,7 +120,7 @@ public final class Controlador {
         partida.setUltimaPista(texto);
 
         //Guardado incial de la partida.
-        guardarPartida();
+        guardarPartida(true);
         // Mostramos la primera escena.
         lanzar();
     }
@@ -163,7 +160,7 @@ public final class Controlador {
         //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
         opciones = partida.getEscena().getOpciones();
         for (int i = opciones.size() - 1; i >= 0; i--) {
-            if (!evaluarCondicionDeOpcion(opciones.get(i).getCondiccion())) {
+            if (!evaluarCondicion(opciones.get(i).getCondiccion())) {
                 opciones.remove(i);
             }
         }
@@ -186,14 +183,15 @@ public final class Controlador {
     /**
      * Guarda la partida en el estado actual.
      *
+     * @param nuevaPartida true si es una nueva partida, false en otro caso.
      * @throws java.io.FileNotFoundException
      */
-    public void guardarPartida() throws FileNotFoundException, IOException {
+    public void guardarPartida(boolean nuevaPartida) throws FileNotFoundException, IOException {
         // 1. Se eliminan los pnc´s que no han sufrido cambios.
         partida.borrarNpcsInalterados();
 
         // 2. Se almacena todos los datos de la partida en la base de datos.
-        bbdd.guardarPartida(partida);
+        bbdd.guardarPartida(partida, nuevaPartida);
     }
 
     /**
@@ -244,27 +242,27 @@ public final class Controlador {
      */
     private void evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
         switch (opcion.getAccion()) {
-            case Util.OP_PROGRESO -> {
+            case Util.AC_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);
-                bbdd.guardarPartida(partida);
+                bbdd.guardarPartida(partida, false);
             }
-            case Util.OP_SOSPECHA -> {
+            case Util.AC_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }
-            case Util.OP_SEDSANGRE -> {
+            case Util.AC_SEDSANGRE -> {
                 partida.setSedDeSangre(partida.getSedDeSangre() + 1);
             }
-            case Util.OP_AGRADAR -> {
+            case Util.AC_AGRADAR -> {
                 if (partida.getEscena().hayPnj()) {
                     partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
                 }
             }
-            case Util.OP_ENFADAR -> {
+            case Util.AC_ENFADAR -> {
                 if (partida.getEscena().hayPnj()) {
                     partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
                 }
             }
-            case Util.OP_OBTENER_MAPA -> {
+            case Util.AC_OBTENER_MAPA -> {
                 System.out.println("Vamos a obtener el mapa");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
@@ -294,7 +292,7 @@ public final class Controlador {
             condicion = Integer.parseInt(textos.get(indice)[0]);
             if (condicion == Util.SI_ESTANDAR) {
                 texto = textos.get(indice)[1];
-            } else if (evaluarCondicionDeTexto(condicion)) {
+            } else if (evaluarCondicion(condicion)) {
                 texto = textos.get(indice)[1];
                 encontrado = true;
             }
@@ -326,42 +324,15 @@ public final class Controlador {
     }
 
     /**
-     * Comprueba si se cumple la condición de un texto para ser mostrado.
+     * Comprueba si se cumple la condición.
      *
      * @param condicion a comprobar.
      * @return true si se cumple la condición, false en otro caso.
      */
-    private boolean evaluarCondicionDeTexto(int condicion) {
+    private boolean evaluarCondicion(int condicion) {
         boolean cumplida = false;
         Escena escena = partida.getEscena();
-        switch (condicion) {
-            case Util.SI_AGRADADO -> {
-                if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
-                        cumplida = true;
-                    }
-                }
-            }
-            case Util.SI_ENFADADO -> {
-                if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
-                        cumplida = true;
-                    }
-                }
-            }
-        }
-        return cumplida;
-    }
-
-    /**
-     * Comprueba si se cumple la condición de un texto para ser mostrado.
-     *
-     * @param condicion a comprobar.
-     * @return true si se cumple la condición, false en otro caso.
-     */
-    private boolean evaluarCondicionDeOpcion(int condicion) {
-        boolean cumplida = false;
-        Escena escena = partida.getEscena();
+        String clan = partida.getProtagonista().getClan().getNombre();
         switch (condicion) {
             case Util.SI_ESTANDAR -> {
                 cumplida = true;
@@ -380,10 +351,65 @@ public final class Controlador {
                     }
                 }
             }
+            case Util.SI_BRUJAH -> {
+                if (clan.equals("Brujah")) {                    
+                        cumplida = true;                    
+                }
+            }
+            case Util.SI_TREMERE -> {
+                if (clan.equals("Tremere")) {                    
+                        cumplida = true;                    
+                }
+            }
+            case Util.SI_NOSFERATU -> {
+                if (clan.equals("Nosferatu")) {                    
+                        cumplida = true;                    
+                }
+            }
+            case Util.SI_VENTRUE -> {
+                if (clan.equals("Ventrue")) {                    
+                        cumplida = true;                    
+                }
+            }
             case Util.SI_MAPA -> {
                 System.out.println("Compruebo si tiene mapa.");
                 if (buscarEquipo("Mapa")) {
                     System.out.println("Mapa encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_PASS -> {
+                System.out.println("Compruebo si tiene Contraseña.");
+                if (buscarEquipo("Contraseña")) {
+                    System.out.println("Contraseña encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_LLAVE -> {
+                System.out.println("Compruebo si tiene Llave.");
+                if (buscarEquipo("Llave")) {
+                    System.out.println("Llave encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_NOTA -> {
+                System.out.println("Compruebo si tiene Nota.");
+                if (buscarEquipo("Nota")) {
+                    System.out.println("Nota encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_AZUCARILLO -> {
+                System.out.println("Compruebo si tiene Azucarillo.");
+                if (buscarEquipo("Azucarillo")) {
+                    System.out.println("Azucarillo encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_PISTA -> {
+                System.out.println("Compruebo si tiene Nota.");
+                if (buscarEquipo("Nota")) {
+                    System.out.println("Nota encontrado.");
                     cumplida = true;
                 }
             }

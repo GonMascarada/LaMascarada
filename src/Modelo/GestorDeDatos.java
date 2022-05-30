@@ -192,11 +192,16 @@ public class GestorDeDatos {
      * Guarda el estado actual de la partida.
      *
      * @param partida a guardar.
+     * @param nuevaPartida true si es una nueva partida, false en otro caso.
      */
-    public void guardarPartida(Partida partida) {
+    public void guardarPartida(Partida partida, boolean nuevaPartida) {
         try {
             Fichero.guardarPartida(partida);
-            bd.sincronizar();
+            if(nuevaPartida){
+                bd.insertarNuevaPartida(partida);
+            } else {
+               bd.sincronizar(); 
+            }            
         } catch (IOException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }        

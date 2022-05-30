@@ -1,5 +1,6 @@
 package Modelo;
 
+import Mascarada.Partida;
 import Mascarada.Util;
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class BaseDeDatos {
         PreparedStatement stmt = conn.prepareStatement("select comprobarUsuario(\"" + text + "\", \"" + password + "\") as resultado;");
         ResultSet r = stmt.executeQuery();
         r.next();
+        stmt.close();
         return r.getInt("resultado") == 1;
     }
 
@@ -59,6 +61,7 @@ public class BaseDeDatos {
         PreparedStatement stmt = conn.prepareStatement("select comprobarNombreUsuarioDisponible(\"" + usuario + "\") as resultado;");
         ResultSet r = stmt.executeQuery();
         r.next();
+        stmt.close();
         return r.getInt("resultado") == 1;
     }
 
@@ -125,6 +128,7 @@ public class BaseDeDatos {
     public void crearNuevoUsuario(String usuario, String pass) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios VALUES ('" + usuario + "', '" + pass + "', current_timestamp());");
         stmt.executeUpdate();
+        stmt.close();
     }
 
     /**
@@ -137,6 +141,26 @@ public class BaseDeDatos {
         File f = new File(Util.URL_BD);
         ArrayList<String> texto = Fichero.leer(f);
         return texto.get(0); //Solo tiene una línea
+    }
+
+    /**
+     * Inserta en base de datos una nueva partida.
+     *
+     * @param partida
+     */
+    void insertarNuevaPartida(Partida partida) {
+        // 1.Guardar los datos de la partida.
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO partida VALUES ('"
+                + usuario + "', '" + pass + "', current_timestamp());");
+        stmt.executeUpdate();
+
+        // 2.Guardar los datos de los personajes, protagonista incluido.
+        escribirPersonajes(partida.getInfoPersonajes());
+
+        // 3.Guardar los datos de los objetos de cada personaje.
+        escribirObjetos(partida.getInfoObjetos());
+
+        // 4.Actualizar la última modificación
     }
 
     /**
@@ -153,4 +177,5 @@ public class BaseDeDatos {
     public void sincronizar() {
         System.out.println("Estamos trabajando en ello :(");
     }
+
 }
