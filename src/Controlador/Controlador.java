@@ -456,12 +456,7 @@ public final class Controlador {
      * @return
      */
     public boolean comprobarCredenciales(String text, String password) {
-        try {
-            return bbdd.comprobarCredenciales(text, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+        return bbdd.comprobarCredenciales(text, password);
     }
 
     /**
@@ -471,12 +466,7 @@ public final class Controlador {
      * @return true si está disponible, false en otro caso.
      */
     public boolean comprobarNombreUsuario(String usuario) {
-        try {
-            return bbdd.comprobarNombreUsuario(usuario);
-        } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+        return bbdd.comprobarNombreUsuario(usuario);
     }
 
     /**

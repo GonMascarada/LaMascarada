@@ -24,7 +24,11 @@ public final class Util {
     public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
     public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso";
     public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;Usuario";
-    public static final String CABECERA_BD = "﻿jdbc:mysql://localhost:3306/lamascarada;;root";
+    public static final String CABECERA_BD = "3306;;root";
+
+    //Base de datos
+    public static final String RUTA = "jdbc:mysql://localhost:";
+    public static final String TABLA = "/lamascarada";
 
     // Constantes de gestión
     public static final int SED_MAX = 5;
@@ -37,51 +41,27 @@ public final class Util {
     public static final int UPDATE = 0;
     public static final int DELETE = 0;
 
-    // Atributos de un personaje
-    public static final int ATQ = 5;
-    public static final int DEF = 2;
-    public static final int VIDA = 10;
-    public static final int DINERO = 0;
-    public static final int ATQ_VAM = 10;
-    public static final int DEF_VAM = 4;
-    public static final int VIDA_VAM = 20;
-
-    // Atributos equipo
-    //Armas - ATQ
-    public static final int[] PISTOLA = {10, 0, 0, 500};
-    public static final int[] BATE = {5, 0, 0, 250};
-    public static final int[] NAVAJA = {4, 0, 0, 200};
-    public static final int[] PUÑO_USA = {3, 0, 0, 150};
-    public static final int[] BOTELLA = {2, 0, 0, 0};
-    //Armaduras - DEF
-    public static final int[] ANTIBALAS = {0, 9, 0, 450};
-    public static final int[] ROPA_GRUESA = {0, 4, 0, 200};
-    //Amuletos - VIDA
-    public static final int[] COLGANTE = {0, 0, 9, 450};
-    public static final int[] BRAZALETE = {0, 0, 6, 300};
-    public static final int[] ANILLO = {0, 0, 3, 150};
-
     // Acciones de las opciones
-    public static final int OP_CONTINUAR = 0;
-    public static final int OP_PROGRESO = 1;
-    public static final int OP_GUARDAR = 2;
-    public static final int OP_BORRAR = 3;
-    public static final int OP_CARGAR = 4;
-    public static final int OP_PELEAR = 5;
-    public static final int OP_ANALIZAR = 6;
-    public static final int OP_AGRADAR = 7;
-    public static final int OP_ENFADAR = 8;
-    public static final int OP_COMPRAR = 9;
-    public static final int OP_VENDER = 10;
-    public static final int OP_SOSPECHA = 11;
-    public static final int OP_SEDSANGRE = 12;
-    public static final int OP_OBTENER_MAPA = 13;
-    public static final int OP_OBTENER_PASS = 14;
-    public static final int OP_OBTENER_LLAVE = 15;
-    public static final int OP_OBTENER_NOTA = 16;
-    public static final int OP_OBTENER_COLGANTE = 17;
-    public static final int OP_OBTENER_PISTA = 18;
-    public static final int OP_FIN = 19;
+    public static final int AC_CONTINUAR = 0;
+    public static final int AC_PROGRESO = 1;
+    public static final int AC_GUARDAR = 2;
+    public static final int AC_BORRAR = 3;
+    public static final int AC_CARGAR = 4;
+    public static final int AC_PELEAR = 5;
+    public static final int AC_ANALIZAR = 6;
+    public static final int AC_AGRADAR = 7;
+    public static final int AC_ENFADAR = 8;
+    public static final int AC_COMPRAR = 9;
+    public static final int AC_VENDER = 10;
+    public static final int AC_SOSPECHA = 11;
+    public static final int AC_SEDSANGRE = 12;
+    public static final int AC_OBTENER_MAPA = 13;
+    public static final int AC_OBTENER_PASS = 14;
+    public static final int AC_OBTENER_LLAVE = 15;
+    public static final int AC_OBTENER_NOTA = 16;
+    public static final int AC_OBTENER_COLGANTE = 17;
+    public static final int AC_OBTENER_PISTA = 18;
+    public static final int AC_FIN = 19;
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal
@@ -97,6 +77,10 @@ public final class Util {
     public static final int SI_MAPA_BRUJAH = 10;
     public static final int SI_BRUJAH = 11;
     public static final int SI_PISTA_BRUJAH = 12;
+    public static final int SI_TREMERE = 60;
+    public static final int SI_NOSFERATU = 90;
+    public static final int SI_VEWNTRUE = 120;
+    
 
     // Estados de ánimo de los NPC´s
     public static final int EA_PROTAGONISTA = 0;
@@ -107,9 +91,9 @@ public final class Util {
 
     // Criptado y desencriptado 
     public static String ENCRYPT_KEY = "pipipi";
-    
+
     // Centrar ventana
-    public static void centrar (JFrame j){
+    public static void centrar(JFrame j) {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - j.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - j.getHeight()) / 2);
