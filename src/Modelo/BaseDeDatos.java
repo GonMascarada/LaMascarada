@@ -1,12 +1,9 @@
 package Modelo;
 
 import Mascarada.Util;
-import com.mysql.cj.protocol.Resultset;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-
 import java.util.ArrayList;
 
 /**
@@ -70,12 +67,13 @@ public class BaseDeDatos {
      */
     private void conectar() throws IOException {
         String[] conexion = getConfiguracionBD().split(";");
+        String servidor = Util.RUTA + conexion[0] + Util.TABLA;
         try {
             //se carga la clase del Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             //Se establece la conexión
-            conn = DriverManager.getConnection(conexion[0], conexion[2], conexion[1]);
+            conn = DriverManager.getConnection(servidor, conexion[2], conexion[1]);
 
             //Se establece la sesión
             stmt = conn.createStatement();
@@ -90,25 +88,26 @@ public class BaseDeDatos {
     /**
      * Reintenta la conexión con la base de datos.
      *
-     * @param url
+     * @param puerto
      * @param use
      * @param pas
      * @return
      */
-    public boolean conectar(String url, String use, String pas) {
+    public boolean conectar(String puerto, String use, String pas) {
         String conexion;
+        String servidor = Util.RUTA + puerto + Util.TABLA;
         try {
             //se carga la clase del Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             //Se establece la conexión
-            conn = DriverManager.getConnection(url, use, pas);
+            conn = DriverManager.getConnection(servidor, use, pas);
 
             //Se establece la sesión
             stmt = conn.createStatement();
 
             conectado = true;
-            conexion = url + ";" + pas + ";" + use;
+            conexion = puerto + ";" + pas + ";" + use;
             Fichero.escribiTexto(Util.URL_BD, conexion);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e);
@@ -124,7 +123,7 @@ public class BaseDeDatos {
      * @param pass
      */
     public void crearNuevoUsuario(String usuario, String pass) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios VALUES ('"+usuario+"', '"+pass+"', current_timestamp());");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios VALUES ('" + usuario + "', '" + pass + "', current_timestamp());");
         stmt.executeUpdate();
     }
 
