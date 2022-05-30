@@ -7,7 +7,6 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Util;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

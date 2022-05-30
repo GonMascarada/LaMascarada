@@ -150,15 +150,15 @@ public class BaseDeDatos {
      */
     void insertarNuevaPartida(Partida partida) {
         // 1.Guardar los datos de la partida.
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO partida VALUES ('"
-                + usuario + "', '" + pass + "', current_timestamp());");
-        stmt.executeUpdate();
-
+        //PreparedStatement stmt = conn.prepareStatement("INSERT INTO partida VALUES ('"
+        //        + usuario + "', '" + pass + "', current_timestamp());");
+        //stmt.executeUpdate();
+System.out.println("Aquiiiiiii");
         // 2.Guardar los datos de los personajes, protagonista incluido.
-        escribirPersonajes(partida.getInfoPersonajes());
+        //escribirPersonajes(partida.getInfoPersonajes());
 
         // 3.Guardar los datos de los objetos de cada personaje.
-        escribirObjetos(partida.getInfoObjetos());
+        //escribirObjetos(partida.getInfoObjetos());
 
         // 4.Actualizar la última modificación
     }
@@ -177,5 +177,6 @@ public class BaseDeDatos {
     public void sincronizar() {
         System.out.println("Estamos trabajando en ello :(");
     }
+
 
 }
