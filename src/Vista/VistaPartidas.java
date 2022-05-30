@@ -47,13 +47,12 @@ public final class VistaPartidas extends javax.swing.JFrame {
      */
     public VistaPartidas(Controlador controlador, String usuario) throws IOException, ParseException {
         initComponents();
-        
+
         jCheckHabilidad1.setVisible(false);
         jCheckHabilidad2.setVisible(false);
         jCheckHabilidad3.setVisible(false);
         jCheckHabilidad4.setVisible(false);
-        
-        
+
         Util.centrar(this);
         partidas = new ArrayList<>();
         this.controlador = controlador;
@@ -100,58 +99,57 @@ public final class VistaPartidas extends javax.swing.JFrame {
             TabbedMain.setEnabledAt(1, true);
             TabbedMain.setEnabledAt(2, true);
 
-            //Cambio colores
-            Color fondo = Color.BLACK;
-            Color fondoClaro = Color.DARK_GRAY;
-            Color texto = Color.WHITE;
-            TabbedMain.setBackground(fondo);
-            TabbedMain.setForeground(texto);
-            TabbedMain.setBackgroundAt(0, fondo);
-            TabbedMain.setBackgroundAt(1, fondo);
-            TabbedMain.setBackgroundAt(2, fondo);
-            TabbedMain.setForegroundAt(0, texto);
-            TabbedMain.setForegroundAt(1, texto);
-            TabbedMain.setForegroundAt(2, texto);
-            jPanelFondo.setBackground(fondo);
-            jPanelCrearPartida.setBackground(fondo);
-            jPanelCargarPartida.setBackground(fondo);
-            jPanelBorrarPartida.setBackground(fondo);
-            jLabelError.setForeground(texto);
-            jLabelClanes.setForeground(texto);
-            jLabelDificultad.setForeground(texto);
-            jLabelNombre.setForeground(texto);
-            jListClanes.setBackground(fondoClaro);
-            jListClanes.setForeground(texto);
-            jTextDescripcionClan.setBackground(fondoClaro);
-            jTextDescripcionClan.setForeground(texto);
-            jCheckHabilidad1.setBackground(fondo);
-            jCheckHabilidad1.setForeground(texto);
-            jCheckHabilidad2.setBackground(fondo);
-            jCheckHabilidad2.setForeground(texto);
-            jCheckHabilidad3.setBackground(fondo);
-            jCheckHabilidad3.setForeground(texto);
-            jCheckHabilidad4.setBackground(fondo);
-            jCheckHabilidad4.setForeground(texto);
-            jTextNombre.setBackground(fondoClaro);
-            jTextNombre.setForeground(texto);
-            jComboBoxDificultad.setBackground(fondoClaro);
-            jComboBoxDificultad.setForeground(texto);
-            jTableCargar.setBackground(fondo);
-            jTableCargar.setForeground(texto);
-            jTableBorrar.setBackground(fondo);
-            jTableBorrar.setForeground(texto);
-            jTableCargar.getTableHeader().setBackground(fondo);
-            jTableCargar.getTableHeader().setForeground(texto);
-            jTableBorrar.getTableHeader().setBackground(fondo);
-            jTableBorrar.getTableHeader().setForeground(texto);
-            jScrollPaneCargar.getViewport().setBackground(fondo);
-            jScrollPaneBorrar.getViewport().setBackground(fondo);
-
         } else {
             //Hace que NO se pueda acceder a las pestañas de cargar y borrar
             TabbedMain.setEnabledAt(1, false);
             TabbedMain.setEnabledAt(2, false);
         }
+        //Cambio colores
+        Color fondo = Color.BLACK;
+        Color fondoClaro = Color.DARK_GRAY;
+        Color texto = Color.WHITE;
+        TabbedMain.setBackground(fondo);
+        TabbedMain.setForeground(texto);
+        TabbedMain.setBackgroundAt(0, fondo);
+        TabbedMain.setBackgroundAt(1, fondo);
+        TabbedMain.setBackgroundAt(2, fondo);
+        TabbedMain.setForegroundAt(0, texto);
+        TabbedMain.setForegroundAt(1, texto);
+        TabbedMain.setForegroundAt(2, texto);
+        jPanelFondo.setBackground(fondo);
+        jPanelCrearPartida.setBackground(fondo);
+        jPanelCargarPartida.setBackground(fondo);
+        jPanelBorrarPartida.setBackground(fondo);
+        jLabelError.setForeground(texto);
+        jLabelClanes.setForeground(texto);
+        jLabelDificultad.setForeground(texto);
+        jLabelNombre.setForeground(texto);
+        jListClanes.setBackground(fondoClaro);
+        jListClanes.setForeground(texto);
+        jTextDescripcionClan.setBackground(fondoClaro);
+        jTextDescripcionClan.setForeground(texto);
+        jCheckHabilidad1.setBackground(fondo);
+        jCheckHabilidad1.setForeground(texto);
+        jCheckHabilidad2.setBackground(fondo);
+        jCheckHabilidad2.setForeground(texto);
+        jCheckHabilidad3.setBackground(fondo);
+        jCheckHabilidad3.setForeground(texto);
+        jCheckHabilidad4.setBackground(fondo);
+        jCheckHabilidad4.setForeground(texto);
+        jTextNombre.setBackground(fondoClaro);
+        jTextNombre.setForeground(texto);
+        jComboBoxDificultad.setBackground(fondoClaro);
+        jComboBoxDificultad.setForeground(texto);
+        jTableCargar.setBackground(fondo);
+        jTableCargar.setForeground(texto);
+        jTableBorrar.setBackground(fondo);
+        jTableBorrar.setForeground(texto);
+        jTableCargar.getTableHeader().setBackground(fondo);
+        jTableCargar.getTableHeader().setForeground(texto);
+        jTableBorrar.getTableHeader().setBackground(fondo);
+        jTableBorrar.getTableHeader().setForeground(texto);
+        jScrollPaneCargar.getViewport().setBackground(fondo);
+        jScrollPaneBorrar.getViewport().setBackground(fondo);
     }
 
     /**
@@ -292,16 +290,6 @@ public final class VistaPartidas extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jCheckHabilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jCheckHabilidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(jCheckHabilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(jCheckHabilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanelCrearPartidaLayout.createSequentialGroup()
                 .addGap(356, 356, 356)
                 .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelDificultad, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
@@ -311,6 +299,14 @@ public final class VistaPartidas extends javax.swing.JFrame {
                     .addComponent(Crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrearPartidaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckHabilidad4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckHabilidad3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckHabilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckHabilidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(438, 438, 438))
         );
         jPanelCrearPartidaLayout.setVerticalGroup(
             jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,13 +317,15 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Eleccion)
                     .addComponent(jScrollPane1))
-                .addGap(39, 39, 39)
-                .addGroup(jPanelCrearPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckHabilidad1)
-                    .addComponent(jCheckHabilidad2)
-                    .addComponent(jCheckHabilidad3)
-                    .addComponent(jCheckHabilidad4))
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckHabilidad1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckHabilidad2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckHabilidad3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckHabilidad4)
+                .addGap(22, 22, 22)
                 .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -530,7 +528,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
         jCheckHabilidad2.setText(nombres[1]);
         jCheckHabilidad3.setText(nombres[2]);
         jCheckHabilidad4.setText(nombres[3]);
-        
+
         jCheckHabilidad1.setVisible(true);
         jCheckHabilidad2.setVisible(true);
         jCheckHabilidad3.setVisible(true);
