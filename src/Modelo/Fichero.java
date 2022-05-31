@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.Key;
 import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,6 +17,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.sql.Timestamp;
 
 /**
  * Gestiona los ficheros en local.
@@ -125,8 +124,8 @@ public final class Fichero {
         guardarEnFichero(Util.URL_PARTIDA, Util.CABECERA_PARTIDA);
         guardarEnFichero(Util.URL_BD, Util.CABECERA_BD);
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, dtf.format(LocalDateTime.now()));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
     }
 
     /**
@@ -187,10 +186,8 @@ public final class Fichero {
         borrarPorFiltro(Util.URL_PARTIDA, idPartida, 0);
         borrarPorFiltro(Util.URL_PERSONAJE, idPartida, 10);
         borrarPorFiltro(Util.URL_EQ_PA_PE, idPartida, 1);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION,
-                dtf.format(LocalDateTime.now())
-        );
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
     }
 
     private static void escribirObjetos(ArrayList<String> infoObjetos) {
@@ -488,7 +485,7 @@ public final class Fichero {
             if (Integer.valueOf(linea[6]) == Util.EA_PROTAGONISTA) {
                 idPartida = Integer.parseInt(linea[10]);
                 partida = getPartida(idPartida, usuario); //Nos devuelve la partida sin el vampiro protagonista.
-                if (partida.getUsuario().equals(usuario)) {
+                if (partida.getUsuario().isBlank()) {
                     clan = getClan(linea[7]);
                     vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
                     partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
@@ -674,7 +671,7 @@ public final class Fichero {
         lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && (!encontrado))) {
             linea = lector.nextLine().split(";");
-            if ((Integer.parseInt(linea[0]) == idPartida)&&(linea[8].equals(usuario))) {
+            if ((Integer.parseInt(linea[0]) == idPartida) && (linea[8].equals(usuario))) {
                 partida.setIdPartida(Integer.parseInt(linea[0]));
                 partida.setFecha(linea[1]); //Revisar
                 partida.setTiempo(Integer.parseInt(linea[2]));
@@ -760,10 +757,8 @@ public final class Fichero {
         escribirObjetos(partida.getInfoObjetos());
 
         // 5.Actualizar la última modificación
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION,
-                dtf.format(LocalDateTime.now())
-        );
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
     }
 
     /**
@@ -777,7 +772,7 @@ public final class Fichero {
     public static Partida iniciarNuevaPartida(Vampire protagonista) throws IOException {
         Partida partida = new Partida();
         Escena primera;
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         // Insercción protagonista, primera escena e id.
         partida.setIdPartida(getNuevoIdPartida());
@@ -785,7 +780,7 @@ public final class Fichero {
         primera = getEscena(0, partida.getIdPartida()); //Primera escena        
         partida.setEscena(primera);
         // Insercción de la hora actual.
-        partida.setFecha(dtf.format(LocalDateTime.now()));
+        partida.setFecha(String.valueOf(timestamp));
         // Insercción del tiempo, progreso, sed de sangre y sospecha.
         partida.setTiempo(0);
         partida.setProgreso(0);

@@ -5,6 +5,8 @@ import Mascarada.Util;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -47,8 +49,8 @@ public class BaseDeDatos {
         PreparedStatement stmt = conn.prepareStatement("select comprobarUsuario(\"" + text + "\", \"" + password + "\") as resultado;");
         ResultSet r = stmt.executeQuery();
         int resultado;
-        r.next(); 
-        resultado = r.getInt("resultado");      
+        r.next();
+        resultado = r.getInt("resultado");
         stmt.close();
         return resultado == 1;
     }
@@ -154,17 +156,34 @@ public class BaseDeDatos {
      */
     void insertarNuevaPartida(Partida partida) throws SQLException {
         // 1.Guardar los datos de la partida.
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO partida VALUES ("
-                + partida.getInfoPartidaParaBD()+");");
-        System.out.println("INSERT INTO partida VALUES ("+partida.getInfoPartidaParaBD()+");");
+        System.out.println(Util.IN_PARTIDA);
+        Timestamp timestamp = Timestamp.valueOf(partida.getFecha());
+        PreparedStatement stmt = conn.prepareStatement(Util.IN_PARTIDA);
+        System.out.println("IdPartida: " + partida.getIdPartida());
+        System.out.println("Fecha: " + timestamp);
+        System.out.println("Tiempo: " + partida.getTiempo());
+        System.out.println("Progreso: " + partida.getProgreso());
+        System.out.println("SedSangre: " + partida.getSedDeSangre());
+        System.out.println("Sospecha: " + partida.getSospecha());
+        System.out.println("UltimaPista: " + partida.getUltimaPista());
+        System.out.println("UltimaPista tamaño: " + partida.getUltimaPista().length());
+        System.out.println("IdEscena: " + partida.getEscena().getIdEscena());
+        System.out.println("Usuario: " + partida.getUsuario());
+        stmt.setInt(1, partida.getIdPartida());
+        stmt.setTimestamp(2, timestamp);
+        stmt.setInt(3, partida.getTiempo());
+        stmt.setInt(4, partida.getProgreso());
+        stmt.setInt(5, partida.getSedDeSangre());
+        stmt.setInt(6, partida.getSospecha());
+        stmt.setString(7, partida.getUltimaPista());
+        stmt.setInt(8, partida.getEscena().getIdEscena());
+        stmt.setString(9, partida.getUsuario());
         stmt.executeUpdate();
 
         // 2.Guardar los datos de los personajes, protagonista incluido.
         //escribirPersonajes(partida.getInfoPersonajes());
-
         // 3.Guardar los datos de los objetos de cada personaje.
         //escribirObjetos(partida.getInfoObjetos());
-
         // 4.Actualizar la última modificación
     }
 
@@ -182,6 +201,5 @@ public class BaseDeDatos {
     public void sincronizar() {
         System.out.println("Estamos trabajando en ello :(");
     }
-
 
 }
