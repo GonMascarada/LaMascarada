@@ -30,6 +30,9 @@ public final class Util {
     public static final String RUTA = "jdbc:mysql://localhost:";
     public static final String TABLA = "/lamascarada";
 
+    //Consultas
+    public static final String IN_PARTIDA = "INSERT INTO `lamascarada`.`partida` (`IdPartida`, `Fecha`, `Tiempo`, `Progreso`, `SedSangre`, `Sospecha`, `UltimaPista`, `IdEscena`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
     // Constantes de gestión
     public static final int DINERO = 0;
     public static final int ATQ_VAM = 10;
@@ -78,7 +81,6 @@ public final class Util {
     public static final int SI_TREMERE = 60;
     public static final int SI_NOSFERATU = 90;
     public static final int SI_VENTRUE = 120;
-    
 
     // Estados de ánimo de los NPC´s
     public static final int EA_PROTAGONISTA = 0;

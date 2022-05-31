@@ -96,7 +96,7 @@ public final class Controlador {
      * @param dificultad de la partida.
      * @throws java.io.IOException
      */
-    public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad) throws IOException {
+    public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad, String usuario) throws IOException {
         String datos;
         Vampire vampire;
         ArrayList<String[]> textos;
@@ -112,6 +112,9 @@ public final class Controlador {
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
         partida = bbdd.iniciarNuevaPartida(vampire);
+        
+        //Insertamos el usuario al que pertenece
+        partida.setUsuario(usuario);
 
         //Insertamos el texto correcto para esa escena.
         textos = bbdd.getTextos(partida.getEscena().getIdEscena());

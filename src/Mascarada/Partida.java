@@ -210,20 +210,6 @@ public class Partida {
     }
 
     /**
-     * Devuelve la información sobre una partida con el formato correcto para
-     * ser almacenado en base de datos
-     *
-     * @return
-     */
-    public String getInfoPartidaParaBD() {
-        String resultado;
-        resultado = idPartida + ", '" + fecha + "', " + tiempo + ", " + progreso;
-        resultado += ", " + sedDeSangre + ", " + sospecha + ", '" + ultimaPista + "', ";
-        resultado += escena.getIdEscena() + ", '" + usuario + "'";
-        return resultado;
-    }
-
-    /**
      * Devuelve la información de los npcs con el formato adecuado.
      *
      * @return
@@ -293,6 +279,9 @@ public class Partida {
      * @return the usuario
      */
     public String getUsuario() {
+        if (usuario == null) {
+            return " ";
+        }
         return usuario;
     }
 
