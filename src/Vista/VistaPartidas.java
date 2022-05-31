@@ -569,7 +569,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
                             clanes.get(indice).setHabilidad(jCheckHabilidad4.getText());
                         }
                         try {
-                            controlador.iniciarNuevaPartida(clanes.get(indice), jTextNombre.getText(), jComboBoxDificultad.getSelectedItem().toString());
+                            controlador.iniciarNuevaPartida(clanes.get(indice), jTextNombre.getText(), jComboBoxDificultad.getSelectedItem().toString(), usuario);
                             this.dispose();
                         } catch (IOException ex) {
                             Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
