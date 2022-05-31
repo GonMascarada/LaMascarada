@@ -63,6 +63,7 @@ public class VistaTienda extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        vistaCabecera1 = new Vista.VistaCabecera();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -75,6 +76,8 @@ public class VistaTienda extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setLayout(null);
+        jPanel1.add(vistaCabecera1);
+        vistaCabecera1.setBounds(-10, 0, 1000, 220);
 
         jButton1.setText("Vender");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,5 +201,6 @@ public class VistaTienda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private Vista.VistaCabecera vistaCabecera1;
     // End of variables declaration//GEN-END:variables
 }
