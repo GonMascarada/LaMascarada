@@ -333,7 +333,7 @@
 376;Acertar 3;0;0;20;0;329;332
 377;Ir al periodico;0;0;20;0;332;334
 378;Registrar escritorio;0;0;20;0;334;335
-379;Buscar en la oficina del jefe;;;;;;
+379;Buscar en la oficina del jefe;0;0;20;0;335;12
 380;Buscar en los escritorios;0;0;20;0;44;46
 381;Atras...;0;0;20;0;46;44
 382;Buscar en la oficina del Jefe;16;0;20;0;44;47
