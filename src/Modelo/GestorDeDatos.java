@@ -197,15 +197,18 @@ public class GestorDeDatos {
     public void guardarPartida(Partida partida, boolean nuevaPartida) {
         try {
             Fichero.guardarPartida(partida);
-            if (nuevaPartida) {
-                try {
-                    bd.insertarNuevaPartida(partida);
-                } catch (SQLException ex) {
-                    Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                bd.sincronizar();
+            if (bd.isConectado()) {
+                if (nuevaPartida) {
+                    try {
+                        bd.insertarNuevaPartida(partida);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    bd.sincronizar();
+                }   
             }
+
         } catch (IOException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
