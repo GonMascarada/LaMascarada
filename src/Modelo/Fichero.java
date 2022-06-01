@@ -548,7 +548,7 @@ public final class Fichero {
             if (Integer.valueOf(linea[6]) == Util.EA_PROTAGONISTA) {
                 idPartida = Integer.parseInt(linea[10]);
                 partida = getPartida(idPartida, usuario); //Nos devuelve la partida sin el vampiro protagonista.
-                if (partida.getUsuario().isBlank()) {
+                if (!partida.getUsuario().isBlank()) {
                     clan = getClan(linea[7]);
                     vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
                     partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
@@ -697,19 +697,20 @@ public final class Fichero {
 
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
-            ArrayList<Equipo> equipos = getEquiposIniciales(linea[0]);
-            if (linea[7].equals("Humano")) {
-                Persona p = new Persona(linea, equipos);
-                //Fuerzo que hayan sido modificados
-                p.setVidaActual(p.getVidaActual());
-                pnjs.add(p);
-            } else {
-                clan = getClan(linea[7]);
-                Vampire v = new Vampire(clan, linea, equipos);
-                v.setVidaActual(v.getVidaActual());
-                pnjs.add(v);
+            if (!linea[0].equals("No")) {
+                ArrayList<Equipo> equipos = getEquiposIniciales(linea[0]);
+                if (linea[7].equals("Humano")) {
+                    Persona p = new Persona(linea, equipos);
+                    //Fuerzo que hayan sido modificados
+                    p.setVidaActual(p.getVidaActual());
+                    pnjs.add(p);
+                } else {
+                    clan = getClan(linea[7]);
+                    Vampire v = new Vampire(clan, linea, equipos);
+                    v.setVidaActual(v.getVidaActual());
+                    pnjs.add(v);
+                }
             }
-
         }
         lector.close();
         inputStream.close();
