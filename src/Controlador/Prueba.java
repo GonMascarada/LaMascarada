@@ -23,9 +23,10 @@ public class Prueba {
     public static void main(String[] args) throws IOException, ParseException {
         Controlador controlador = new Controlador();
         GestorDeDatos bd = new GestorDeDatos();
-
         
-        Fichero.comprobarConsistencia();
+        Fichero.escribirInsertsBD();
+
+        //Fichero.comprobarConsistencia();
 
         ArrayList<Partida> partidas = bd.getListaPartidas("Local");
         //ArrayList<Partida> partidas = bd.getListaPartidas("pablo");

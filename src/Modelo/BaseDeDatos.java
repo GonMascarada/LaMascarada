@@ -5,8 +5,6 @@ import Mascarada.Util;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +16,6 @@ import java.util.ArrayList;
 public class BaseDeDatos {
 
     private Connection conn;
-    private Statement stmt;
     private boolean conectado;
 
     public BaseDeDatos() throws IOException {
@@ -32,7 +29,6 @@ public class BaseDeDatos {
      * @throws SQLException
      */
     public void cerrar() throws SQLException {
-        stmt.close(); //finalizar la sesión
         conn.close(); //finalizar la conexión
     }
 
@@ -67,7 +63,7 @@ public class BaseDeDatos {
         int resultado;
         r.next();
         resultado = r.getInt("resultado");
-        stmt.close();;
+        stmt.close();
         return resultado == 1;
     }
 
@@ -83,9 +79,6 @@ public class BaseDeDatos {
 
             //Se establece la conexión
             conn = DriverManager.getConnection(servidor, conexion[2], conexion[1]);
-
-            //Se establece la sesión
-            stmt = conn.createStatement();
 
             conectado = true;
         } catch (ClassNotFoundException | SQLException e) {
@@ -112,12 +105,9 @@ public class BaseDeDatos {
             //Se establece la conexión
             conn = DriverManager.getConnection(servidor, use, pas);
 
-            //Se establece la sesión
-            stmt = conn.createStatement();
-
             conectado = true;
             conexion = puerto + ";" + pas + ";" + use;
-            Fichero.escribiTexto(Util.URL_BD, conexion);
+            Fichero.escribirTexto(Util.URL_BD, conexion);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e);
             conectado = false;
@@ -159,16 +149,6 @@ public class BaseDeDatos {
         System.out.println(Util.IN_PARTIDA);
         Timestamp timestamp = Timestamp.valueOf(partida.getFecha());
         PreparedStatement stmt = conn.prepareStatement(Util.IN_PARTIDA);
-        System.out.println("IdPartida: " + partida.getIdPartida());
-        System.out.println("Fecha: " + timestamp);
-        System.out.println("Tiempo: " + partida.getTiempo());
-        System.out.println("Progreso: " + partida.getProgreso());
-        System.out.println("SedSangre: " + partida.getSedDeSangre());
-        System.out.println("Sospecha: " + partida.getSospecha());
-        System.out.println("UltimaPista: " + partida.getUltimaPista());
-        System.out.println("UltimaPista tamaño: " + partida.getUltimaPista().length());
-        System.out.println("IdEscena: " + partida.getEscena().getIdEscena());
-        System.out.println("Usuario: " + partida.getUsuario());
         stmt.setInt(1, partida.getIdPartida());
         stmt.setTimestamp(2, timestamp);
         stmt.setInt(3, partida.getTiempo());
@@ -179,11 +159,11 @@ public class BaseDeDatos {
         stmt.setInt(8, partida.getEscena().getIdEscena());
         stmt.setString(9, partida.getUsuario());
         stmt.executeUpdate();
-
+        stmt.close();
         // 2.Guardar los datos de los personajes, protagonista incluido.
-        //escribirPersonajes(partida.getInfoPersonajes());
+        
         // 3.Guardar los datos de los objetos de cada personaje.
-        //escribirObjetos(partida.getInfoObjetos());
+ 
         // 4.Actualizar la última modificación
     }
 

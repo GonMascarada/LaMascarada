@@ -19,6 +19,17 @@ public final class Util {
     public static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
     public static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
     public static final String URL_BD = "C:\\Users\\Public\\Documents\\La Mascarada\\bd.csv";
+    public static final String URL_INSERTS = "C:\\Users\\Public\\Documents\\La Mascarada\\script.sql";
+
+    //Url´s a los dicheros del JAR
+    public static final String JAR_TEXTO_ESCENA = "/Ficheros/texto-escena.csv";
+    public static final String JAR_CLAN = "/Ficheros/clan.csv";
+    public static final String JAR_ESCENA = "/Ficheros/escena.csv";
+    public static final String JAR_EQUIPO = "/Ficheros/equipo.csv";
+    public static final String JAR_EQ_PA_PE = "/Ficheros/equipo-partida-personaje.csv";
+    public static final String JAR_OPCION = "/Ficheros/opcion.csv";
+    public static final String JAR_PERSONAJE = "/Ficheros/personaje.csv";
+    public static final String JAR_HABILIDAD = "/Ficheros/habilidad.csv";
 
     // Cabecera ficheros
     public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
