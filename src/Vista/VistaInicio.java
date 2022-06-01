@@ -26,7 +26,7 @@ public class VistaInicio extends javax.swing.JFrame {
     public VistaInicio() throws IOException {
         initComponents();
         controlador = new Controlador();
-        ImageIcon imagen = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MapaPueblo.jpg"));
+        ImageIcon imagen = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mapa.png"));
         Image image = imagen.getImage();
         Image newimg = image.getScaledInstance(jLabelFoto.getWidth(), jLabelFoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
         imagen = new ImageIcon(newimg);

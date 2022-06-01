@@ -511,8 +511,10 @@ public final class Fichero {
         lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
-            clan = new Clan(linea);
-            clanes.add(clan);
+            if (!linea[0].equals("Humano")) {
+                clan = new Clan(linea);
+                clanes.add(clan);
+            }
         }
         lector.close();
         inputStream.close();
@@ -787,7 +789,7 @@ public final class Fichero {
         File archivo = new File(url);
         if (!archivo.exists()) {
             archivo.createNewFile();
-            try (FileWriter fw = new FileWriter(archivo)) {
+            try ( FileWriter fw = new FileWriter(archivo)) {
                 fw.write(texto);
             } catch (IOException e) {
                 System.out.println(e);
