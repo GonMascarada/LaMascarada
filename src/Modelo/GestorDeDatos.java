@@ -196,8 +196,10 @@ public class GestorDeDatos {
      */
     public void guardarPartida(Partida partida, boolean nuevaPartida) {
         try {
-            Fichero.guardarPartida(partida);
-            if ((bd.isConectado())&& !partida.getUsuario().equals("Local")) {
+            if (partida.getUsuario().equals("Local")) {
+                Fichero.guardarPartida(partida, true);
+            } else if (bd.isConectado()) {
+                Fichero.guardarPartida(partida, false);
                 if (nuevaPartida) {
                     try {
                         bd.insertarNuevaPartida(partida);
@@ -206,7 +208,7 @@ public class GestorDeDatos {
                     }
                 } else {
                     bd.sincronizar();
-                }   
+                }
             }
 
         } catch (IOException ex) {
@@ -224,8 +226,10 @@ public class GestorDeDatos {
     public Partida iniciarNuevaPartida(Vampire vampire) {
         try {
             return Fichero.iniciarNuevaPartida(vampire);
+
         } catch (IOException ex) {
-            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestorDeDatos.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

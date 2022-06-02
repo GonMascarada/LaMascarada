@@ -1,6 +1,8 @@
 package Modelo;
 
+import Mascarada.Equipo;
 import Mascarada.Partida;
+import Mascarada.Persona;
 import Mascarada.Util;
 import Mascarada.Vampire;
 import java.io.File;
@@ -146,13 +148,16 @@ public class BaseDeDatos {
      * @param partida
      */
     void insertarNuevaPartida(Partida partida) throws SQLException {
-        Vampire pj;
-        String [] habilidades;
+        ArrayList<Persona> personajes;
+        ArrayList<Equipo> equipamiento;
+        Persona pj;
+        Vampire v;
+        String[] habilidades;
+        int idPartida = partida.getIdPartida();
         // 1.Guardar los datos de la partida.
-        System.out.println(Util.IN_PARTIDA);
         Timestamp timestamp = Timestamp.valueOf(partida.getFecha());
         PreparedStatement stmt = conn.prepareStatement(Util.IN_PARTIDA);
-        stmt.setInt(1, partida.getIdPartida());
+        stmt.setInt(1, idPartida);
         stmt.setTimestamp(2, timestamp);
         stmt.setInt(3, partida.getTiempo());
         stmt.setInt(4, partida.getProgreso());
@@ -164,26 +169,53 @@ public class BaseDeDatos {
         stmt.executeUpdate();
         stmt.close();
         // 2.Guardar los datos de los personajes, protagonista incluido.
-        System.out.println(Util.IN_PERSONAJE);
-        pj = partida.getProtagonista();
-        habilidades = pj.getHabilidades().split(";");
+        personajes = partida.getPersonajes();
+        personajes.add(partida.getProtagonista());
         stmt = conn.prepareStatement(Util.IN_PERSONAJE);
-        stmt.setString(1, pj.getNombre());
-        stmt.setInt(2, pj.getAtaque());
-        stmt.setInt(3, pj.getDefensa());
-        stmt.setInt(4, pj.getVidaMax());
-        stmt.setInt(5, pj.getVidaActual());
-        stmt.setInt(6, pj.getDinero());
-        stmt.setInt(7, pj.getEstadoDeAnimo());
-        stmt.setString(8, pj.getClan().getNombre());
-        stmt.setString(9, habilidades[0]);
-        stmt.setString(10, habilidades[1]);
-        stmt.setInt(11, partida.getIdPartida());
-        stmt.executeUpdate();
+        for (int i = 0; i < personajes.size(); i++) {
+            pj = personajes.get(i);
+            stmt.setString(1, pj.getNombre());
+            stmt.setInt(2, pj.getAtaque());
+            stmt.setInt(3, pj.getDefensa());
+            stmt.setInt(4, pj.getVidaMax());
+            stmt.setInt(5, pj.getVidaActual());
+            stmt.setInt(6, pj.getDinero());
+            stmt.setInt(7, pj.getEstadoDeAnimo());
+            if (pj instanceof Vampire) {
+                v = (Vampire) pj;
+                habilidades = v.getHabilidades().split(";");
+                stmt.setString(8, v.getClan().getNombre());
+                stmt.setString(9, habilidades[0]);
+                stmt.setString(10, habilidades[1]);
+            } else {
+                stmt.setString(8, "Humano");
+                stmt.setString(9, "No");
+                stmt.setString(10, "No");
+            }
+            stmt.setInt(11, idPartida);
+            stmt.executeUpdate();
+        }
         stmt.close();
         // 3.Guardar los datos de los objetos de cada personaje.
+        stmt = conn.prepareStatement(Util.IN_EQ_PA_PE);
+        for (int i = 0; i < personajes.size(); i++) {
+            pj = personajes.get(i);
+            equipamiento = pj.getEquipacion();
+            for (int j = 0; j < equipamiento.size(); j++) {
+                stmt.setString(1, equipamiento.get(j).getNombre());
+                stmt.setInt(2, idPartida);
+                stmt.setString(3, pj.getNombre());
+                stmt.setBoolean(4, equipamiento.get(j).isEnUso());
+                stmt.executeUpdate();
+            }
+        }
+        stmt.close();
 
         // 4.Actualizar la última modificación
+        stmt = conn.prepareStatement(Util.UP_FECHA);
+        stmt.setTimestamp(1, timestamp);
+        stmt.setString(2, partida.getUsuario());
+        stmt.close();
     }
 
     /**

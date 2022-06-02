@@ -302,8 +302,13 @@ public final class Fichero {
 
     }
 
-    private static void escribirObjetos(ArrayList<String> infoObjetos) {
-        File f = new File(Util.URL_EQ_PA_PE);
+    private static void escribirObjetos(ArrayList<String> infoObjetos, boolean local) {
+        File f;
+        if (local) {
+            f = new File(Util.URL_EQ_PA_PE_LOCAL);
+        } else {
+            f = new File(Util.URL_EQ_PA_PE);
+        }
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             for (int i = 0; i < infoObjetos.size(); i++) {
@@ -320,8 +325,13 @@ public final class Fichero {
      *
      * @param partida
      */
-    private static void escribirPartida(String info) {
-        File f = new File(Util.URL_PARTIDA);
+    private static void escribirPartida(String info, boolean local) {
+        File f;
+        if (local) {
+            f = new File(Util.URL_PARTIDA_LOCAL);
+        } else {
+            f = new File(Util.URL_PARTIDA);
+        }
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             fw.write("\n" + info);
@@ -337,8 +347,13 @@ public final class Fichero {
      *
      * @param infoPersonajes
      */
-    private static void escribirPersonajes(String[] infoPersonajes) {
-        File f = new File(Util.URL_PERSONAJE);
+    private static void escribirPersonajes(String[] infoPersonajes, boolean local) {
+        File f;
+        if (local) {
+            f = new File(Util.URL_PERSONAJE_LOCAL);
+        } else {
+            f = new File(Util.URL_PERSONAJE);
+        }
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             for (int i = 0; i < infoPersonajes.length; i++) {
@@ -841,7 +856,7 @@ public final class Fichero {
         File archivo = new File(url);
         if (!archivo.exists()) {
             archivo.createNewFile();
-            try (FileWriter fw = new FileWriter(archivo)) {
+            try ( FileWriter fw = new FileWriter(archivo)) {
                 fw.write(texto);
             } catch (IOException e) {
                 System.out.println(e);
@@ -855,7 +870,7 @@ public final class Fichero {
      * @param partida a guardar.
      * @throws java.io.FileNotFoundException
      */
-    public static void guardarPartida(Partida partida) throws FileNotFoundException, IOException {
+    public static void guardarPartida(Partida partida, boolean local) throws FileNotFoundException, IOException {
         int id;
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
@@ -863,13 +878,13 @@ public final class Fichero {
         partida.setIdPartida(id);
 
         // 2.Guardar los datos de la partida.
-        escribirPartida(partida.getInfoPartida());
+        escribirPartida(partida.getInfoPartida(), local);
 
         // 3.Guardar los datos de los personajes, protagonista incluido.
-        escribirPersonajes(partida.getInfoPersonajes());
+        escribirPersonajes(partida.getInfoPersonajes(), local);
 
         // 4.Guardar los datos de los objetos de cada personaje.
-        escribirObjetos(partida.getInfoObjetos());
+        escribirObjetos(partida.getInfoObjetos(), local);
 
         // 5.Actualizar la última modificación
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
