@@ -48,12 +48,18 @@ public final class Util {
 
     //Consultas
     public static final String IN_PARTIDA = "INSERT INTO `lamascarada`.`partida` (`IdPartida`, `Fecha`, `Tiempo`, `Progreso`, `SedSangre`, `Sospecha`, `UltimaPista`, `IdEscena`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    public static final String IN_PERSONAJE = "INSERT INTO `personaje_en_partida` (`Nombre`, `Ataque`, `Defensa`, `VidaMax`, `Vida`, `Dinero`, `EstadoAnimo`, `NombreClan`, `NombreHabilidad1`, `NombreHabilidad2`, `IdPartida`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    public static final String IN_EQ_PA_PE = "INSERT INTO `equipo_partida_personaje_en_partida` (`NombreEquipo`, `IdPartida`, `NombrePersonaje`, `EnUso`) VALUES (?, ?, ?, ?);";
+    public static final String IN_PERSONAJE = "INSERT INTO `personaje_en_partida` (`Nombre`, `Ataque`, `Defensa`, `VidaMax`, `Vida`, `Dinero`, `EstadoAnimo`, `NombreClan`, `NombreHabilidad1`, `NombreHabilidad2`, `IdPartida`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String IN_EQ_PA_PE = "INSERT INTO `equipo_partida_personaje_en_partida` (`NombreEquipo`, `IdPartida`, `NombrePersonaje`, `EnUso`, `Usuario`) VALUES (?, ?, ?, ?, ?);";
     public static final String UP_FECHA = "UPDATE `usuario` SET `Ultima_Modificacion` = ? WHERE `usuario`.`Usuario` = ?;";
+    public static final String IN_USUARIO = "INSERT INTO `usuario` (`Usuario`, `Pass`, `Ultima_Modificacion`) VALUES (?, ?, current_timestamp());";
+    public static final String SE_USUARIO = "SELECT comprobarNombreUsuarioDisponible(?) as resultado;";
+    public static final String SE_HORA = "SELECT Ultima_Modificacion FROM `usuario` WHERE Usuario=?;";
 
     // Constantes de gestión
     public static final int DINERO = 0;
+    public static final int ATQ_HUM = 5;
+    public static final int DEF_HUM = 2;
+    public static final int VIDA_HUM = 10;
     public static final int ATQ_VAM = 10;
     public static final int DEF_VAM = 4;
     public static final int VIDA_VAM = 20;

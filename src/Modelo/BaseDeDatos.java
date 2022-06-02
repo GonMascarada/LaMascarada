@@ -61,7 +61,8 @@ public class BaseDeDatos {
      * @return true si está disponible, false en otro caso.
      */
     public boolean comprobarNombreUsuario(String usuario) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("select comprobarNombreUsuarioDisponible(\"" + usuario + "\") as resultado;");
+        PreparedStatement stmt = conn.prepareStatement(Util.SE_USUARIO);
+        stmt.setString(1, usuario);
         ResultSet r = stmt.executeQuery();
         int resultado;
         r.next();
@@ -125,7 +126,9 @@ public class BaseDeDatos {
      * @param pass
      */
     public void crearNuevoUsuario(String usuario, String pass) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuario VALUES ('" + usuario + "', '" + pass + "', current_timestamp());");
+        PreparedStatement stmt = conn.prepareStatement(Util.IN_USUARIO);
+        stmt.setString(1, usuario);
+        stmt.setString(2, pass);
         stmt.executeUpdate();
         stmt.close();
     }
@@ -143,17 +146,18 @@ public class BaseDeDatos {
     }
 
     /**
-     * Inserta en base de datos una nueva partida.
+     * Inserta todos los datos de una partida en la base de datos.
      *
      * @param partida
      */
-    void insertarNuevaPartida(Partida partida) throws SQLException {
+    void insertarPartida(Partida partida) throws SQLException {
         ArrayList<Persona> personajes;
         ArrayList<Equipo> equipamiento;
         Persona pj;
         Vampire v;
         String[] habilidades;
         int idPartida = partida.getIdPartida();
+        String usuario = partida.getUsuario();
         // 1.Guardar los datos de la partida.
         Timestamp timestamp = Timestamp.valueOf(partida.getFecha());
         PreparedStatement stmt = conn.prepareStatement(Util.IN_PARTIDA);
@@ -165,7 +169,7 @@ public class BaseDeDatos {
         stmt.setInt(6, partida.getSospecha());
         stmt.setString(7, partida.getUltimaPista());
         stmt.setInt(8, partida.getEscena().getIdEscena());
-        stmt.setString(9, partida.getUsuario());
+        stmt.setString(9, usuario);
         stmt.executeUpdate();
         stmt.close();
         // 2.Guardar los datos de los personajes, protagonista incluido.
@@ -193,6 +197,7 @@ public class BaseDeDatos {
                 stmt.setString(10, "No");
             }
             stmt.setInt(11, idPartida);
+            stmt.setString(12, usuario);
             stmt.executeUpdate();
         }
         stmt.close();
@@ -206,6 +211,7 @@ public class BaseDeDatos {
                 stmt.setInt(2, idPartida);
                 stmt.setString(3, pj.getNombre());
                 stmt.setBoolean(4, equipamiento.get(j).isEnUso());
+                stmt.setString(5, usuario);
                 stmt.executeUpdate();
             }
         }
@@ -229,8 +235,28 @@ public class BaseDeDatos {
      * Comprueba que la copia local y la de la base de datos están actualizadas.
      * En caso de no estarlo, lo sincroniza.
      */
-    public void sincronizar() {
-        System.out.println("Estamos trabajando en ello :(");
+    public void sincronizar(String usuario, int idPartida) throws SQLException {
+        Timestamp local, bd;
+        File f = new File(Util.URL_ULTMA_MODIFICACION);
+        ArrayList<String> texto = Fichero.leer(f);   
+        //Última hora local
+        local = Timestamp.valueOf(texto.get(0));
+        //Última hora en base de datos
+        PreparedStatement stmt = conn.prepareStatement(Util.SE_HORA);
+        stmt.setString(1, usuario);
+        ResultSet r = stmt.executeQuery();
+        r.next();
+        bd = r.getTimestamp("Ultima_Modificacion");        
+        stmt.close();
+        
+        //Comparo las horas
+        if(local.before(bd)){
+            //Subo el local a la bd
+            //borrar partida
+            //insertarPartida(partida);
+        } else if (local.after(bd)) {
+            // Bajo bd a local
+        }
     }
 
 }

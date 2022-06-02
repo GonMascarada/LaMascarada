@@ -5,6 +5,7 @@ import Mascarada.*;
 import Vista.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -197,11 +198,15 @@ public final class Controlador {
      * @throws java.io.FileNotFoundException
      */
     public void guardarPartida(boolean nuevaPartida) throws FileNotFoundException, IOException {
-        // 1. Se eliminan los pnc´s que no han sufrido cambios.
-        partida.borrarNpcsInalterados();
-
-        // 2. Se almacena todos los datos de la partida en la base de datos.
-        bbdd.guardarPartida(partida, nuevaPartida);
+        try {
+            // 1. Se eliminan los pnc´s que no han sufrido cambios.
+            partida.borrarNpcsInalterados();
+            
+            // 2. Se almacena todos los datos de la partida en la base de datos.
+            bbdd.guardarPartida(partida, nuevaPartida);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -219,11 +224,16 @@ public final class Controlador {
     /**
      * Borra de la base de datos una partida.
      *
+     * @param usuario
      * @param idPartida
      * @throws java.io.IOException
      */
-    public void eliminarPartida(int idPartida) throws IOException {
-        bbdd.eliminarPartida(idPartida);
+    public void eliminarPartida(String usuario, int idPartida) throws IOException {
+        try {
+            bbdd.eliminarPartida(usuario, idPartida);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -254,9 +264,14 @@ public final class Controlador {
         boolean seguir = true;
         switch (opcion.getAccion()) {
             case Util.AC_PROGRESO -> {
-                partida.setProgreso(partida.getProgreso() + 1);
-                bbdd.guardarPartida(partida, false);
+                try {
+                    partida.setProgreso(partida.getProgreso() + 1);
+                    bbdd.guardarPartida(partida, false);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
             case Util.AC_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }

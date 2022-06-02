@@ -108,10 +108,10 @@ public class GestorDeDatos {
      *
      * @param idPartida
      */
-    public void eliminarPartida(int idPartida) {
+    public void eliminarPartida(String usuario, int idPartida) throws SQLException {
         try {
             Fichero.eliminarPartida(idPartida);
-            bd.sincronizar();
+            bd.sincronizar(usuario, idPartida);
         } catch (IOException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -194,20 +194,21 @@ public class GestorDeDatos {
      * @param partida a guardar.
      * @param nuevaPartida true si es una nueva partida, false en otro caso.
      */
-    public void guardarPartida(Partida partida, boolean nuevaPartida) {
+    public void guardarPartida(Partida partida, boolean nuevaPartida) throws SQLException {
+        String usuario = partida.getUsuario();
         try {
-            if (partida.getUsuario().equals("Local")) {
+            if (usuario.equals("Local")) {
                 Fichero.guardarPartida(partida, true);
             } else if (bd.isConectado()) {
                 Fichero.guardarPartida(partida, false);
                 if (nuevaPartida) {
                     try {
-                        bd.insertarNuevaPartida(partida);
+                        bd.insertarPartida(partida);
                     } catch (SQLException ex) {
                         Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                    bd.sincronizar();
+                    bd.sincronizar(usuario, partida.getIdPartida());
                 }
             }
 
