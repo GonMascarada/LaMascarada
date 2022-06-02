@@ -8,6 +8,7 @@ import Mascarada.Vampire;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -39,18 +40,23 @@ public class BaseDeDatos {
      * Comprueba en la base de datos si el usuario y la contraseña son
      * correctos.
      *
-     * @param text
+     * @param usuario
      * @param password
      * @return
      * @throws java.sql.SQLException
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
-    public boolean comprobarCredenciales(String text, String password) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("select comprobarUsuario(\"" + text + "\", \"" + password + "\") as resultado;");
+    public boolean comprobarCredenciales(String usuario, String password) throws SQLException, IOException, ParseException {
+        PreparedStatement stmt = conn.prepareStatement("select comprobarUsuario(\"" + usuario + "\", \"" + password + "\") as resultado;");
         ResultSet r = stmt.executeQuery();
         int resultado;
         r.next();
         resultado = r.getInt("resultado");
         stmt.close();
+        if (resultado == 1) {
+            sincronizar(usuario);
+        }
         return resultado == 1;
     }
 
@@ -59,6 +65,7 @@ public class BaseDeDatos {
      *
      * @param usuario
      * @return true si está disponible, false en otro caso.
+     * @throws java.sql.SQLException
      */
     public boolean comprobarNombreUsuario(String usuario) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(Util.SE_USUARIO);
@@ -111,7 +118,7 @@ public class BaseDeDatos {
 
             conectado = true;
             conexion = puerto + ";" + pas + ";" + use;
-            Fichero.escribirTexto(Util.URL_BD, conexion);
+            Fichero.escribirTexto(Util.URL_BD, conexion, false);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e);
             conectado = false;
@@ -124,6 +131,7 @@ public class BaseDeDatos {
      *
      * @param usuario
      * @param pass
+     * @throws java.sql.SQLException
      */
     public void crearNuevoUsuario(String usuario, String pass) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(Util.IN_USUARIO);
@@ -154,7 +162,6 @@ public class BaseDeDatos {
         ArrayList<Persona> personajes;
         ArrayList<Equipo> equipamiento;
         Persona pj;
-        Vampire v;
         String[] habilidades;
         int idPartida = partida.getIdPartida();
         String usuario = partida.getUsuario();
@@ -185,10 +192,9 @@ public class BaseDeDatos {
             stmt.setInt(5, pj.getVidaActual());
             stmt.setInt(6, pj.getDinero());
             stmt.setInt(7, pj.getEstadoDeAnimo());
-            if (pj instanceof Vampire) {
-                v = (Vampire) pj;
-                habilidades = v.getHabilidades().split(";");
-                stmt.setString(8, v.getClan().getNombre());
+            if (pj instanceof Vampire vampire) {
+                habilidades = vampire.getHabilidades().split(";");
+                stmt.setString(8, vampire.getClan().getNombre());
                 stmt.setString(9, habilidades[0]);
                 stmt.setString(10, habilidades[1]);
             } else {
@@ -232,30 +238,116 @@ public class BaseDeDatos {
     }
 
     /**
-     * Comprueba que la copia local y la de la base de datos están actualizadas.
-     * En caso de no estarlo, lo sincroniza.
+     * Escribe en los ficheros en local la última versión de la base de datos.
+     *
+     * @param usuario
+     * @param idPartida
      */
-    public void sincronizar(String usuario, int idPartida) throws SQLException {
+    private void seleccionarPartidas(String usuario) throws SQLException {
+        PreparedStatement stmt;
+        ResultSet r;
+        String linea;
+        //Partidas
+        stmt = conn.prepareStatement(Util.SE_PARTIDA);
+        stmt.setString(1, usuario);
+        r = stmt.executeQuery();
+        while (r.next()) {
+            linea = "\n" + r.getInt("IdPartida") + ";";
+            linea += String.valueOf(r.getTimestamp("Fecha")) + ";";
+            linea += r.getInt("Tiempo") + ";";
+            linea += r.getInt("Progreso") + ";";
+            linea += r.getInt("SedSangre") + ";";
+            linea += r.getInt("Sospecha") + ";";
+            linea += r.getString("UltimaPista") + ";";
+            linea += r.getInt("IdEscena") + ";";
+            linea += r.getString("Usuario");
+            Fichero.escribirTexto(Util.URL_PARTIDA, linea, true);
+        }
+        r.close();
+        stmt.close();
+
+        //Personajes
+        stmt = conn.prepareStatement(Util.SE_PERSONAJE);
+        stmt.setString(1, usuario);
+        r = stmt.executeQuery();
+        while (r.next()) {
+            linea = "\n" + r.getString("Nombre") + ";";
+            linea += r.getInt("Ataque") + ";";
+            linea += r.getInt("Defensa") + ";";
+            linea += r.getInt("VidaMax") + ";";
+            linea += r.getInt("Vida") + ";";
+            linea += r.getInt("Dinero") + ";";
+            linea += r.getInt("EstadoAnimo") + ";";
+            linea += r.getString("NombreClan") + ";";
+            linea += r.getString("NombreHabilidad1") + ";";
+            linea += r.getString("NombreHabilidad2") + ";";
+            linea += r.getInt("IdPartida") + ";";
+            linea += r.getString("Usuario");
+            Fichero.escribirTexto(Util.URL_PERSONAJE, linea, true);
+        }
+        r.close();
+        stmt.close();
+        
+        //Equipos
+        stmt = conn.prepareStatement(Util.SE_EQ_PA_PE);
+        stmt.setString(1, usuario);
+        r = stmt.executeQuery();
+        while (r.next()) {
+            linea = "\n" + r.getString("NombreEquipo") + ";";
+            linea += r.getInt("IdPartida") + ";";
+            linea += r.getString("NombrePersonaje") + ";";
+            linea += r.getBoolean("EnUso") + ";";
+            linea += r.getString("Usuario");
+            Fichero.escribirTexto(Util.URL_EQ_PA_PE, linea, true);
+        }
+        r.close();
+        stmt.close();
+    }
+
+    /**
+     * Comprueba que la copia local y la de la base de datos están
+     * actualizadas.En caso de no estarlo, lo sincroniza.
+     *
+     * @param usuario
+     * @throws java.sql.SQLException
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
+     */
+    public void sincronizar(String usuario) throws SQLException, IOException, ParseException {
         Timestamp local, bd;
         File f = new File(Util.URL_ULTMA_MODIFICACION);
-        ArrayList<String> texto = Fichero.leer(f);   
+        ArrayList<String> texto = Fichero.leer(f);
+        PreparedStatement stmt;
+        ArrayList<Partida> partidas;
         //Última hora local
         local = Timestamp.valueOf(texto.get(0));
         //Última hora en base de datos
-        PreparedStatement stmt = conn.prepareStatement(Util.SE_HORA);
+        stmt = conn.prepareStatement(Util.SE_HORA);
         stmt.setString(1, usuario);
         ResultSet r = stmt.executeQuery();
         r.next();
-        bd = r.getTimestamp("Ultima_Modificacion");        
+        bd = r.getTimestamp("Ultima_Modificacion");
         stmt.close();
-        
+
+        System.out.println("Local: " + local);
+        System.out.println("BD: " + bd);
         //Comparo las horas
-        if(local.before(bd)){
+        if (local.after(bd)) {
+            System.out.println("After");
             //Subo el local a la bd
-            //borrar partida
-            //insertarPartida(partida);
-        } else if (local.after(bd)) {
+            //1. Borrar todos los datos de la partida
+            stmt = conn.prepareStatement(Util.DE_PARTIDA);
+            stmt.setString(1, usuario);
+            stmt.executeUpdate();
+            //2. Insertar en la bd los datos almacenados en ficheros
+            partidas = Fichero.getListaPartidas(usuario);
+            for (Partida partida : partidas) {
+                insertarPartida(partida);
+            }
+        } else if (local.before(bd)) {
+            System.out.println("Before");
             // Bajo bd a local
+            seleccionarPartidas(usuario);
         }
     }
 

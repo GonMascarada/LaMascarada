@@ -37,8 +37,8 @@ public final class Util {
     public static final String JAR_TABLAS = "/Ficheros/LaMascaradaTablas.sql";
 
     // Cabecera ficheros
-    public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
-    public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso";
+    public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida;Usuario";
+    public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso;Usuario";
     public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;Usuario";
     public static final String CABECERA_BD = "3306;;root";
 
@@ -54,6 +54,10 @@ public final class Util {
     public static final String IN_USUARIO = "INSERT INTO `usuario` (`Usuario`, `Pass`, `Ultima_Modificacion`) VALUES (?, ?, current_timestamp());";
     public static final String SE_USUARIO = "SELECT comprobarNombreUsuarioDisponible(?) as resultado;";
     public static final String SE_HORA = "SELECT Ultima_Modificacion FROM `usuario` WHERE Usuario=?;";
+    public static final String DE_PARTIDA = "call borrarDatosPartida(?);";
+    public static final String SE_PARTIDA = "SELECT * FROM `partida` WHERE Usuario = ?;";
+    public static final String SE_PERSONAJE = "SELECT * FROM `personaje_en_partida` WHERE Usuario = ?;";
+    public static final String SE_EQ_PA_PE = "SELECT * FROM `equipo_partida_personaje_en_partida` WHERE Usuario = ?;";
 
     // Constantes de gestión
     public static final int DINERO = 0;

@@ -41,7 +41,7 @@ public class GestorDeDatos {
     public boolean comprobarCredenciales(String text, String password) {
         try {
             return bd.comprobarCredenciales(text, password);
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
@@ -106,13 +106,15 @@ public class GestorDeDatos {
     /**
      * Elimina todos los datos de una partida.
      *
+     * @param usuario
      * @param idPartida
+     * @throws java.sql.SQLException
      */
     public void eliminarPartida(String usuario, int idPartida) throws SQLException {
         try {
             Fichero.eliminarPartida(idPartida);
-            bd.sincronizar(usuario, idPartida);
-        } catch (IOException ex) {
+            bd.sincronizar(usuario);
+        } catch (IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -208,11 +210,11 @@ public class GestorDeDatos {
                         Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                    bd.sincronizar(usuario, partida.getIdPartida());
+                    bd.sincronizar(usuario);
                 }
             }
 
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -222,11 +224,12 @@ public class GestorDeDatos {
      * almacena los datos de la nueva partida.
      *
      * @param vampire protagonista
+     * @param usuario
      * @return Partida.
      */
-    public Partida iniciarNuevaPartida(Vampire vampire) {
+    public Partida iniciarNuevaPartida(Vampire vampire, String usuario) {
         try {
-            return Fichero.iniciarNuevaPartida(vampire);
+            return Fichero.iniciarNuevaPartida(vampire, usuario);
 
         } catch (IOException ex) {
             Logger.getLogger(GestorDeDatos.class

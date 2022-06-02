@@ -114,7 +114,7 @@ public final class Controlador {
         vampire = new Vampire(clan, datos.split(";"), new ArrayList<>());
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
-        partida = bbdd.iniciarNuevaPartida(vampire);
+        partida = bbdd.iniciarNuevaPartida(vampire, usuario);
 
         //Insertamos el usuario al que pertenece
         partida.setUsuario(usuario);
