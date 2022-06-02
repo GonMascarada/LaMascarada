@@ -202,11 +202,15 @@ public final class Fichero {
         if (!f.exists()) {
             f.createNewFile();
         }
-        //fw.write("TRUNCATE TABLE `lamascarada`.`Clan`;\n");
-        //fw.write("TRUNCATE TABLE `lamascarada`.`Habilidad`;\n");
+
+        //Creación de tablas
+        texto = leerJar(Util.JAR_TABLAS, false);
+        for (int i = 0; i < texto.size(); i++) {
+            fw.write(texto.get(i) + "\n");
+        }
 
         // Habilidades 
-        texto = leerJar(Util.JAR_HABILIDAD);
+        texto = leerJar(Util.JAR_HABILIDAD, true);
         insert = "INSERT INTO `lamascarada`.`Habilidad` (`Nombre`, `Descripcion`) VALUES ('";
         for (int i = 0; i < texto.size(); i++) {
             linea = texto.get(i).split(";");
@@ -215,7 +219,7 @@ public final class Fichero {
         }
 
         // Clan 
-        texto = leerJar(Util.JAR_CLAN);
+        texto = leerJar(Util.JAR_CLAN, true);
         insert = "INSERT INTO `lamascarada`.`Clan` (`Nombre`, `Descripcion`, `Imagen`, `Habilidad_1`, `Habilidad_2`, `Habilidad_3`, `Habilidad_4`) VALUES ('";
         for (int i = 0; i < texto.size(); i++) {
             linea = texto.get(i).split(";");
@@ -226,7 +230,7 @@ public final class Fichero {
         }
 
         // Personaje 
-        texto = leerJar(Util.JAR_PERSONAJE);
+        texto = leerJar(Util.JAR_PERSONAJE, true);
         insert = "INSERT INTO `lamascarada`.`personaje` (`Nombre`, `Ataque`, `Defensa`, `VidaMax`, `Vida`, `Dinero`, `EstadoAnimo`, `NombreClan`, `NombreHabilidad1`, `NombreHabilidad2`) VALUES ('";
         for (int i = 0; i < texto.size(); i++) {
             linea = texto.get(i).split(";");
@@ -238,13 +242,60 @@ public final class Fichero {
         }
 
         // Escena 
-        texto = leerJar(Util.JAR_ESCENA);
+        texto = leerJar(Util.JAR_ESCENA, true);
         insert = "INSERT INTO `lamascarada`.`escena` (`IdEscena`, `Imagen`, `NombrePersonaje`) VALUES ('";
         for (int i = 0; i < texto.size(); i++) {
             linea = texto.get(i).split(";");
             aux = insert + linea[0] + "', '" + linea[1] + "', '";
             aux += linea[2] + "');\n";
             fw.write(aux);
+        }
+
+        // Texto-Escena 
+        texto = leerJar(Util.JAR_TEXTO_ESCENA, true);
+        insert = "INSERT INTO `lamascarada`.`texto_escena` (`IdEscena`, `Condicion`, `Texto`) VALUES ('";
+        for (int i = 0; i < texto.size(); i++) {
+            linea = texto.get(i).split(";");
+            aux = insert + linea[0] + "', '" + linea[1] + "', '";
+            aux += linea[2] + "');\n";
+            fw.write(aux);
+        }
+
+        // Opcion 
+        texto = leerJar(Util.JAR_OPCION, true);
+        insert = "INSERT INTO `lamascarada`.`opcion` (`IdOpcion`, `Texto`, `Accion`, `Condicion`, `Tiempo`, `NombreClan`, `IdEscena`, `IdEscenaSiguiente`) VALUES ('";
+        for (int i = 0; i < texto.size(); i++) {
+            linea = texto.get(i).split(";");
+            aux = insert + linea[0] + "', '" + linea[1] + "', '";
+            aux += linea[2] + "', '" + linea[3] + "', '" + linea[4] + "', '";
+            aux += linea[5] + "', '" + linea[6] + "', '" + linea[7] + "');\n";
+            fw.write(aux);
+        }
+
+        // Equipo 
+        texto = leerJar(Util.JAR_EQUIPO, true);
+        insert = "INSERT INTO `lamascarada`.`equipo` (`Nombre`, `Descripcion`, `Ataque`, `Defensa`, `Vida`, `Precio`) VALUES ('";
+        for (int i = 0; i < texto.size(); i++) {
+            linea = texto.get(i).split(";");
+            aux = insert + linea[0] + "', '" + linea[1] + "', '";
+            aux += linea[2] + "', '" + linea[3] + "', '" + linea[4] + "', '";
+            aux += linea[5] + "');\n";
+            fw.write(aux);
+        }
+        // Equipo_Partida_Personaje 
+        texto = leerJar(Util.JAR_EQ_PA_PE, true);
+        insert = "INSERT INTO `lamascarada`.`equipo_partida_personaje` (`NombreEquipo`, `NombrePersonaje`, `EnUso`) VALUES ('";
+        for (int i = 0; i < texto.size(); i++) {
+            linea = texto.get(i).split(";");
+            aux = insert + linea[0] + "', '" + linea[1] + "', '";
+            aux += linea[2] + "');\n";
+            fw.write(aux);
+        }
+
+        //Creación de funciones
+        texto = leerJar(Util.JAR_FUNCIONES, false);
+        for (int i = 0; i < texto.size(); i++) {
+            fw.write(texto.get(i) + "\n");
         }
 
         fw.close(); // Cerramos el escritor.
@@ -790,7 +841,7 @@ public final class Fichero {
         File archivo = new File(url);
         if (!archivo.exists()) {
             archivo.createNewFile();
-            try ( FileWriter fw = new FileWriter(archivo)) {
+            try (FileWriter fw = new FileWriter(archivo)) {
                 fw.write(texto);
             } catch (IOException e) {
                 System.out.println(e);
@@ -883,11 +934,13 @@ public final class Fichero {
      * @return
      * @throws IOException
      */
-    public static ArrayList<String> leerJar(String url) throws IOException {
+    public static ArrayList<String> leerJar(String url, boolean saltarPrimeraLinea) throws IOException {
         InputStream inputStream = VistaPartidas.class.getResourceAsStream(url);
         Scanner lector = new Scanner(inputStream);
         ArrayList<String> textos = new ArrayList<>();
-        lector.nextLine(); //Salta la cabecera del documento
+        if (saltarPrimeraLinea) {
+            lector.nextLine(); //Salta la cabecera del documento   
+        }
         while (lector.hasNext()) {
             textos.add(lector.nextLine());
         }
