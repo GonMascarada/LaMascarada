@@ -45,6 +45,7 @@ public final class Util {
 
     //Consultas
     public static final String IN_PARTIDA = "INSERT INTO `lamascarada`.`partida` (`IdPartida`, `Fecha`, `Tiempo`, `Progreso`, `SedSangre`, `Sospecha`, `UltimaPista`, `IdEscena`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String IN_PERSONAJE = "INSERT INTO `personaje_en_partida` (`Nombre`, `Ataque`, `Defensa`, `VidaMax`, `Vida`, `Dinero`, `EstadoAnimo`, `NombreClan`, `NombreHabilidad1`, `NombreHabilidad2`, `IdPartida`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     // Constantes de gestión
     public static final int DINERO = 0;
@@ -54,6 +55,8 @@ public final class Util {
     public static final int SED_MAX = 5;
     public static final int SOSPECHA_MAX = 5;
     public static final int PROGRESO_MAX = 5;
+    public static final int BIBLIOTECA = 154;
+    public static final int PUB = 1000;
 
     // Acciones de las opciones
     public static final int AC_CONTINUAR = 0;
