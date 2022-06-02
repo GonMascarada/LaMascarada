@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Util;
 import java.awt.Color;
 
@@ -13,11 +14,14 @@ import java.awt.Color;
  */
 public class Mapa extends javax.swing.JFrame {
 
+    
+    private Controlador controlador;
     /**
      * Creates new form Mapa
      */
-    public Mapa() {
+    public Mapa(Controlador controlador) {
         initComponents();
+        this.controlador= controlador;
         Util.centrar(this);
         
         callejon.setText("Callejon");
@@ -36,9 +40,9 @@ public class Mapa extends javax.swing.JFrame {
         colina.setForeground(Color.white);
         colina.setBackground(Color.black);
         
-        periodicofuera.setText("Periodico fuera");
-        periodicofuera.setForeground(Color.white);
-        periodicofuera.setBackground(Color.black);
+        motel.setText("Motel");
+        motel.setForeground(Color.white);
+        motel.setBackground(Color.black);
         
         casaabandonada.setText("Casa abandonada");
         casaabandonada.setForeground(Color.white);
@@ -71,6 +75,8 @@ public class Mapa extends javax.swing.JFrame {
 
     }
 
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,7 +91,6 @@ public class Mapa extends javax.swing.JFrame {
         biblioteca = new javax.swing.JButton();
         entrada = new javax.swing.JButton();
         colina = new javax.swing.JButton();
-        periodicofuera = new javax.swing.JButton();
         casaabandonada = new javax.swing.JButton();
         pub1 = new javax.swing.JButton();
         periodicoDentro = new javax.swing.JButton();
@@ -93,6 +98,7 @@ public class Mapa extends javax.swing.JFrame {
         pub2 = new javax.swing.JButton();
         puertaIglesia = new javax.swing.JButton();
         plazaCentral = new javax.swing.JButton();
+        motel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,8 +111,13 @@ public class Mapa extends javax.swing.JFrame {
         callejon.setBounds(690, 650, 80, 40);
 
         biblioteca.setText("Biblioteca");
+        biblioteca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bibliotecaActionPerformed(evt);
+            }
+        });
         jPanel1.add(biblioteca);
-        biblioteca.setBounds(140, 210, 90, 50);
+        biblioteca.setBounds(160, 210, 90, 50);
 
         entrada.setText("Entrada pueblo");
         jPanel1.add(entrada);
@@ -115,10 +126,6 @@ public class Mapa extends javax.swing.JFrame {
         colina.setText("Casa colina");
         jPanel1.add(colina);
         colina.setBounds(870, 550, 100, 40);
-
-        periodicofuera.setText("Periodico Fuera");
-        jPanel1.add(periodicofuera);
-        periodicofuera.setBounds(190, 610, 120, 40);
 
         casaabandonada.setText("Casa abandonada");
         jPanel1.add(casaabandonada);
@@ -148,6 +155,15 @@ public class Mapa extends javax.swing.JFrame {
         jPanel1.add(plazaCentral);
         plazaCentral.setBounds(550, 420, 120, 40);
 
+        motel.setText("Motel");
+        motel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                motelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(motel);
+        motel.setBounds(390, 400, 90, 40);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/mapa.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
@@ -166,6 +182,16 @@ public class Mapa extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
+        // TODO add your handling code here:
+        controlador.cargarEscena(Util.BIBLIOTECA);
+        
+    }//GEN-LAST:event_bibliotecaActionPerformed
+
+    private void motelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_motelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +223,7 @@ public class Mapa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mapa().setVisible(true);
+                //new Mapa().setVisible(true);
             }
         });
     }
@@ -211,8 +237,8 @@ public class Mapa extends javax.swing.JFrame {
     private javax.swing.JButton entrada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton motel;
     private javax.swing.JButton periodicoDentro;
-    private javax.swing.JButton periodicofuera;
     private javax.swing.JButton plazaCentral;
     private javax.swing.JButton pub1;
     private javax.swing.JButton pub2;

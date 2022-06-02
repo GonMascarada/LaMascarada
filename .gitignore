@@ -6,3 +6,5 @@ nbproject/private/private.xml
 /build/classes/Mascarada/*.class
 /build/classes/Vista/*.class
 *.class
+/dist/
+/nbproject/private/private.xml

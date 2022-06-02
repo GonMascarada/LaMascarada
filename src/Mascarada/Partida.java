@@ -291,4 +291,13 @@ public class Partida {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+    /**
+     * Suma cierta cantidad de tiempo al que ya se tiene acumualdo.
+     *
+     * @param tiempo a añadir.
+     */
+    public void sumarTiempo(int tiempo) {
+        this.tiempo += tiempo;
+    }
 }

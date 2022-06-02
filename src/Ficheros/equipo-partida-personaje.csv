@@ -1,11 +1,10 @@
 ﻿NombreEquipo;NombrePersonaje;EnUso
-Pistola;Vidente;true
-Garrote;Camarero;true
-Mapa;Camarera;true
-Azucarillo;Dueño;true
-Brazalete;Nosferatu;true
-Anillo;Nosferatu;true
-Chaleco Antibalas;Nosferatu;true
-Ropa Gruesa;Nosferatu;true
-Bate;Nosferatu;true
-Pistola;Nosferatu;true
+Pistola;Vidente;1
+Mapa;Camarera;0
+Azucarillo;Dueño;0
+Brazalete;Nosferatu;0
+Anillo;Nosferatu;0
+Chaleco Antibalas;Nosferatu;0
+Ropa Gruesa;Nosferatu;0
+Bate;Nosferatu;0
+Pistola;Nosferatu;0

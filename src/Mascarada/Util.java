@@ -15,8 +15,11 @@ public final class Util {
     // Ulr´s a los ficheros
     public static final String URL_CARPETA = "C:\\Users\\Public\\Documents\\La Mascarada";
     public static final String URL_PERSONAJE = "C:\\Users\\Public\\Documents\\La Mascarada\\personaje.csv";
+    public static final String URL_PERSONAJE_LOCAL = "C:\\Users\\Public\\Documents\\La Mascarada\\personaje_local.csv";
     public static final String URL_EQ_PA_PE = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje.csv";
+    public static final String URL_EQ_PA_PE_LOCAL = "C:\\Users\\Public\\Documents\\La Mascarada\\equipo-partida-personaje_local.csv";
     public static final String URL_PARTIDA = "C:\\Users\\Public\\Documents\\La Mascarada\\partida.csv";
+    public static final String URL_PARTIDA_LOCAL = "C:\\Users\\Public\\Documents\\La Mascarada\\partida_local.csv";
     public static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
     public static final String URL_BD = "C:\\Users\\Public\\Documents\\La Mascarada\\bd.csv";
     public static final String URL_INSERTS = "C:\\Users\\Public\\Documents\\La Mascarada\\script.sql";
@@ -30,10 +33,12 @@ public final class Util {
     public static final String JAR_OPCION = "/Ficheros/opcion.csv";
     public static final String JAR_PERSONAJE = "/Ficheros/personaje.csv";
     public static final String JAR_HABILIDAD = "/Ficheros/habilidad.csv";
+    public static final String JAR_FUNCIONES = "/Ficheros/LaMascaradaFunciones.sql";
+    public static final String JAR_TABLAS = "/Ficheros/LaMascaradaTablas.sql";
 
     // Cabecera ficheros
-    public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
-    public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso";
+    public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida;Usuario";
+    public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso;Usuario";
     public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;Usuario";
     public static final String CABECERA_BD = "3306;;root";
 
@@ -43,15 +48,30 @@ public final class Util {
 
     //Consultas
     public static final String IN_PARTIDA = "INSERT INTO `lamascarada`.`partida` (`IdPartida`, `Fecha`, `Tiempo`, `Progreso`, `SedSangre`, `Sospecha`, `UltimaPista`, `IdEscena`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String IN_PERSONAJE = "INSERT INTO `personaje_en_partida` (`Nombre`, `Ataque`, `Defensa`, `VidaMax`, `Vida`, `Dinero`, `EstadoAnimo`, `NombreClan`, `NombreHabilidad1`, `NombreHabilidad2`, `IdPartida`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String IN_EQ_PA_PE = "INSERT INTO `equipo_partida_personaje_en_partida` (`NombreEquipo`, `IdPartida`, `NombrePersonaje`, `EnUso`, `Usuario`) VALUES (?, ?, ?, ?, ?);";
+    public static final String UP_FECHA = "UPDATE `usuario` SET `Ultima_Modificacion` = ? WHERE `usuario`.`Usuario` = ?;";
+    public static final String IN_USUARIO = "INSERT INTO `usuario` (`Usuario`, `Pass`, `Ultima_Modificacion`) VALUES (?, ?, current_timestamp());";
+    public static final String SE_USUARIO = "SELECT comprobarNombreUsuarioDisponible(?) as resultado;";
+    public static final String SE_HORA = "SELECT Ultima_Modificacion FROM `usuario` WHERE Usuario=?;";
+    public static final String DE_PARTIDA = "call borrarDatosPartida(?);";
+    public static final String SE_PARTIDA = "SELECT * FROM `partida` WHERE Usuario = ?;";
+    public static final String SE_PERSONAJE = "SELECT * FROM `personaje_en_partida` WHERE Usuario = ?;";
+    public static final String SE_EQ_PA_PE = "SELECT * FROM `equipo_partida_personaje_en_partida` WHERE Usuario = ?;";
 
     // Constantes de gestión
     public static final int DINERO = 0;
+    public static final int ATQ_HUM = 5;
+    public static final int DEF_HUM = 2;
+    public static final int VIDA_HUM = 10;
     public static final int ATQ_VAM = 10;
     public static final int DEF_VAM = 4;
     public static final int VIDA_VAM = 20;
     public static final int SED_MAX = 5;
     public static final int SOSPECHA_MAX = 5;
     public static final int PROGRESO_MAX = 5;
+    public static final int BIBLIOTECA = 154;
+    public static final int PUB = 1000;
 
     // Acciones de las opciones
     public static final int AC_CONTINUAR = 0;
@@ -74,6 +94,8 @@ public final class Util {
     public static final int AC_OBTENER_COLGANTE = 17;
     public static final int AC_OBTENER_PISTA = 18;
     public static final int AC_FIN = 19;
+    public static final int AC_MOSTRAR_MAPA = 50;
+    public static final int AC_MOSTRAR_TIENDA = 51;
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal
