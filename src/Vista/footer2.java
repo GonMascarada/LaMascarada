@@ -43,12 +43,14 @@ public class footer2 extends javax.swing.JPanel {
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setText(opciones.get(0).getTexto());
         opcion1.setForeground(Color.white);
+        opcion1.setBackground(Color.black);
 
         opcion2.setRolloverEnabled(true);
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
         opcion2.setText(opciones.get(1).getTexto());
         opcion2.setForeground(Color.white);
+        opcion2.setBackground(Color.black);
 
     }
 
@@ -67,6 +69,7 @@ public class footer2 extends javax.swing.JPanel {
         setOpaque(false);
 
         opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1.png"))); // NOI18N
+        opcion2.setBorder(null);
         opcion2.setBorderPainted(false);
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,6 +84,8 @@ public class footer2 extends javax.swing.JPanel {
         });
 
         opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1.png"))); // NOI18N
+        opcion1.setBorder(null);
+        opcion1.setBorderPainted(false);
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
