@@ -117,15 +117,14 @@ CREATE TABLE IF NOT EXISTS Opcion (
 
 CREATE TABLE IF NOT EXISTS Equipo (
 	Nombre VARCHAR(20) PRIMARY KEY,
+	Descripcion VARCHAR(280),
 	Ataque INT NOT NULL,
     Defensa INT NOT NULL,
     Vida INT NOT NULL,
-    EstadoAnimo INT NOT NULL,
-    NombreClan VARCHAR(10),
-    FOREIGN KEY (NombreClan) REFERENCES Clan(Nombre)
+    Precio INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje (
+CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje_En_Partida (
 	NombreEquipo VARCHAR(20),
     IdPartida INT,
     NombrePersonaje VARCHAR(10),
@@ -136,26 +135,11 @@ CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje (
     FOREIGN KEY (NombrePersonaje) REFERENCES Personaje(Nombre)
 );
 
-drop function if exists comprobarUsuario;
-
-DELIMITER $$
-	Create function comprobarUsuario(in_usuario VARCHAR(30), in_pass VARCHAR(30)) returns boolean deterministic
-	BEGIN
-		if (SELECT count(*) FROM usuario WHERE in_usuario = usuario AND in_pass = pass)>0 then RETURN true;
-		else
-            RETURN false;
-		end if;
-	End;
-	$$
-
-drop function if exists comprobarNombreUsuarioDisponible
-
-DELIMITER $$
-	Create function comprobarNombreUsuarioDisponible(in_usuario VARCHAR(30)) returns boolean deterministic
-	BEGIN
-		if (SELECT count(*) FROM usuario WHERE in_usuario = usuario)>0 then RETURN false;
-		else
-            RETURN true;
-		end if;
-	End;
-	$$
+CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje (
+	NombreEquipo VARCHAR(20),
+    NombrePersonaje VARCHAR(10),
+    EnUso BOOLEAN,
+    PRIMARY KEY (NombreEquipo, NombrePersonaje),
+    FOREIGN KEY (NombreEquipo) REFERENCES Equipo(Nombre),
+    FOREIGN KEY (NombrePersonaje) REFERENCES Personaje(Nombre)
+);

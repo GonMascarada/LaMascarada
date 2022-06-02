@@ -30,6 +30,8 @@ public final class Util {
     public static final String JAR_OPCION = "/Ficheros/opcion.csv";
     public static final String JAR_PERSONAJE = "/Ficheros/personaje.csv";
     public static final String JAR_HABILIDAD = "/Ficheros/habilidad.csv";
+    public static final String JAR_FUNCIONES = "/Ficheros/LaMascaradaFunciones.sql";
+    public static final String JAR_TABLAS = "/Ficheros/LaMascaradaTablas.sql";
 
     // Cabecera ficheros
     public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida";
@@ -74,6 +76,8 @@ public final class Util {
     public static final int AC_OBTENER_COLGANTE = 17;
     public static final int AC_OBTENER_PISTA = 18;
     public static final int AC_FIN = 19;
+    public static final int AC_MOSTRAR_MAPA = 50;
+    public static final int AC_MOSTRAR_TIENDA = 51;
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal

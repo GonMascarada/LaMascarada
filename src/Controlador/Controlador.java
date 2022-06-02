@@ -112,7 +112,7 @@ public final class Controlador {
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
         partida = bbdd.iniciarNuevaPartida(vampire);
-        
+
         //Insertamos el usuario al que pertenece
         partida.setUsuario(usuario);
 
@@ -139,48 +139,53 @@ public final class Controlador {
         ArrayList<String[]> textos;
         ArrayList<Opcion> opciones;
         String texto;
+        boolean seguir;
 
         //1.Evaluar la opción que se acaba de tomar.
-        evaluarAccion(opcion);
+        seguir = evaluarAccion(opcion);
+        partida.sumarTiempo(opcion.getTiempo());
 
-        partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
-        //2.Pedir a la base de datos todos los posibles textos.
-        textos = bbdd.getTextos(siguiente.getIdEscena());
+        // Si se tienen que seguir lanzando escenas. 
+        // Puede que evaluarAccion haya lanzado ya una alternativa (tienda).
+        if (seguir) {
+            partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
+            //2.Pedir a la base de datos todos los posibles textos.
+            textos = bbdd.getTextos(siguiente.getIdEscena());
 
-        //3.Comprobar si se cumple alguna de las condiciones de los textos.
-        //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
-        texto = getTextoCorrecto(textos);
+            //3.Comprobar si se cumple alguna de las condiciones de los textos.
+            //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
+            texto = getTextoCorrecto(textos);
 
-        //3.1 Cambiamos -- por nombre del npc y ++ por el del protagonista.
-        texto = texto.replace("++", partida.getProtagonista().getNombre() + ": ");
-        if (partida.getEscena().hayPnj()) {
-            texto = texto.replace("--", partida.getEscena().getPnj().getNombre() + ": ");
-        }
+            //3.1 Cambiamos -- por nombre del npc y ++ por el del protagonista.
+            texto = texto.replace("++", partida.getProtagonista().getNombre() + ": ");
+            if (partida.getEscena().hayPnj()) {
+                texto = texto.replace("--", partida.getEscena().getPnj().getNombre() + ": ");
+            }
 
-        //4.Insertar a la escena el texto
-        partida.getEscena().setTexto(texto);
+            //4.Insertar a la escena el texto
+            partida.getEscena().setTexto(texto);
 
-        //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
-        opciones = partida.getEscena().getOpciones();
-        for (int i = opciones.size() - 1; i >= 0; i--) {
-            if (!evaluarCondicion(opciones.get(i).getCondiccion())) {
-                opciones.remove(i);
+            //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
+            opciones = partida.getEscena().getOpciones();
+            for (int i = opciones.size() - 1; i >= 0; i--) {
+                if (!evaluarCondicion(opciones.get(i).getCondiccion())) {
+                    opciones.remove(i);
+                }
+            }
+            partida.getEscena().setOpciones(opciones);
+            System.out.println("Escena: " + partida.getEscena().getIdEscena() + " tiene " + partida.getEscena().getOpciones().size() + " opciones.");
+            // 6.Mostrar la escena.
+            lanzar();
+
+            // 7. Si se tiene dechercho, obtener info extra y mostrarla si hay.
+            if (comprobarAnimalismo()) {
+                texto = getTextoExtra(textos);
+                if (!texto.equals("")) {
+                    PopUpInfoExtra ventana = new PopUpInfoExtra(texto);
+                    ventana.setVisible(true);
+                }
             }
         }
-        partida.getEscena().setOpciones(opciones);
-        System.out.println("Escena: " + partida.getEscena().getIdEscena() + " tiene " + partida.getEscena().getOpciones().size() + " opciones.");
-        // 6.Mostrar la escena.
-        lanzar();
-
-        // 7. Si se tiene dechercho, obtener info extra y mostrarla si hay.
-        if (comprobarAnimalismo()) {
-            texto = getTextoExtra(textos);
-            if (!texto.equals("")) {
-                PopUpInfoExtra ventana = new PopUpInfoExtra(texto);
-                ventana.setVisible(true);
-            }
-        }
-
     }
 
     /**
@@ -243,7 +248,8 @@ public final class Controlador {
      *
      * @param opcion la opción tomada.
      */
-    private void evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
+    private boolean evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
+        boolean seguir = true;
         switch (opcion.getAccion()) {
             case Util.AC_PROGRESO -> {
                 partida.setProgreso(partida.getProgreso() + 1);
@@ -265,6 +271,18 @@ public final class Controlador {
                     partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
                 }
             }
+            case Util.AC_FIN -> {
+                seguir = false;
+                //Lanzar escena fin
+            }
+            case Util.AC_MOSTRAR_MAPA -> {
+                seguir = false;
+                new Mapa().setVisible(true);
+            }
+            case Util.AC_MOSTRAR_TIENDA -> {
+                seguir = false;
+                new VistaTienda(this).setVisible(true);
+            }
             case Util.AC_OBTENER_MAPA -> {
                 System.out.println("Vamos a obtener el mapa");
                 if (partida.getEscena().hayPnj()) {
@@ -276,8 +294,8 @@ public final class Controlador {
                     System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
-
         }
+        return seguir;
     }
 
     /**
@@ -355,23 +373,23 @@ public final class Controlador {
                 }
             }
             case Util.SI_BRUJAH -> {
-                if (clan.equals("Brujah")) {                    
-                        cumplida = true;                    
+                if (clan.equals("Brujah")) {
+                    cumplida = true;
                 }
             }
             case Util.SI_TREMERE -> {
-                if (clan.equals("Tremere")) {                    
-                        cumplida = true;                    
+                if (clan.equals("Tremere")) {
+                    cumplida = true;
                 }
             }
             case Util.SI_NOSFERATU -> {
-                if (clan.equals("Nosferatu")) {                    
-                        cumplida = true;                    
+                if (clan.equals("Nosferatu")) {
+                    cumplida = true;
                 }
             }
             case Util.SI_VENTRUE -> {
-                if (clan.equals("Ventrue")) {                    
-                        cumplida = true;                    
+                if (clan.equals("Ventrue")) {
+                    cumplida = true;
                 }
             }
             case Util.SI_MAPA -> {
@@ -500,11 +518,12 @@ public final class Controlador {
 
     /**
      * Crea un nuevo usuario en la base de datos.
+     *
      * @param usuario
-     * @param pass 
+     * @param pass
      */
     public void crearNuevoUsuario(String usuario, String pass) {
-        bbdd.crearNuevoUsuario( usuario,  pass);
+        bbdd.crearNuevoUsuario(usuario, pass);
     }
 
 }

@@ -28,14 +28,14 @@ public class Prueba {
 
         //Fichero.comprobarConsistencia();
 
-        ArrayList<Partida> partidas = bd.getListaPartidas("Local");
+        //ArrayList<Partida> partidas = bd.getListaPartidas("Local");
         //ArrayList<Partida> partidas = bd.getListaPartidas("pablo");
 
-        Partida p = partidas.get(0);
-        controlador.cargarPartida(p);
+        //Partida p = partidas.get(0);
+        //controlador.cargarPartida(p);
 
-        VistaTienda tienda = new VistaTienda(controlador);
-        tienda.setVisible(true);
+        //VistaTienda tienda = new VistaTienda(controlador);
+        //tienda.setVisible(true);
 
     }
 }
