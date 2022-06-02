@@ -41,6 +41,7 @@ public class footer3 extends javax.swing.JPanel {
         opcion1.setIcon(botonRojo1);
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setForeground(Color.white);
+        opcion1.setBackground(Color.black);
         opcion1.setText(opciones.get(0).getTexto());
         
         
@@ -48,14 +49,14 @@ public class footer3 extends javax.swing.JPanel {
         opcion2.setPressedIcon(botonRojo2);
         opcion2.setForeground(Color.white);
         opcion2.setText(opciones.get(1).getTexto());
-        opcion1.setVisible(true);
+        opcion2.setBackground(Color.black);
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
         opcion3.setForeground(Color.white);
         opcion3.setText(opciones.get(2).getTexto());
-        opcion1.setVisible(true);
+        opcion3.setBackground(Color.black);
     }
 
    
@@ -79,6 +80,7 @@ public class footer3 extends javax.swing.JPanel {
 
         opcion1.setBackground(new java.awt.Color(0, 0, 0));
         opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion1.setBorder(null);
         opcion1.setBorderPainted(false);
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion1.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -106,6 +108,7 @@ public class footer3 extends javax.swing.JPanel {
         opcion2.setBackground(new java.awt.Color(0, 0, 0));
         opcion2.setForeground(new java.awt.Color(0, 0, 0));
         opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion2.setBorder(null);
         opcion2.setBorderPainted(false);
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,6 +120,7 @@ public class footer3 extends javax.swing.JPanel {
         opcion3.setBackground(new java.awt.Color(51, 51, 51));
         opcion3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         opcion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"))); // NOI18N
+        opcion3.setBorder(null);
         opcion3.setBorderPainted(false);
         opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion3.addMouseListener(new java.awt.event.MouseAdapter() {

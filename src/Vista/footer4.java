@@ -41,24 +41,28 @@ public class footer4 extends javax.swing.JPanel {
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setText(opciones.get(0).getTexto());
         opcion1.setForeground(Color.white);
+        opcion1.setBackground(Color.black);
 
         opcion2.setRolloverEnabled(true);
         opcion2.setIcon(botonRojo1);
         opcion2.setPressedIcon(botonRojo2);
         opcion2.setText(opciones.get(1).getTexto());
         opcion2.setForeground(Color.white);
+        opcion2.setBackground(Color.black);
         
         opcion3.setRolloverEnabled(true);
         opcion3.setIcon(botonRojo1);
         opcion3.setPressedIcon(botonRojo2);
         opcion3.setText(opciones.get(2).getTexto());
         opcion3.setForeground(Color.white);
+        opcion3.setBackground(Color.black);
         
         opcion4.setRolloverEnabled(true);
         opcion4.setIcon(botonRojo1);
         opcion4.setPressedIcon(botonRojo2);
         opcion4.setText(opciones.get(3).getTexto());
         opcion4.setForeground(Color.white);
+        opcion4.setBackground(Color.black);
 
         
     }
@@ -82,6 +86,8 @@ public class footer4 extends javax.swing.JPanel {
 
         opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion1.setText("jButton1");
+        opcion1.setBorder(null);
+        opcion1.setBorderPainted(false);
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,6 +97,7 @@ public class footer4 extends javax.swing.JPanel {
 
         opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion2.setText("jButton1");
+        opcion2.setBorderPainted(false);
         opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,6 +107,8 @@ public class footer4 extends javax.swing.JPanel {
 
         opcion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion3.setText("jButton1");
+        opcion3.setBorder(null);
+        opcion3.setBorderPainted(false);
         opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,6 +118,8 @@ public class footer4 extends javax.swing.JPanel {
 
         opcion4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1-4.png"))); // NOI18N
         opcion4.setText("jButton1");
+        opcion4.setBorder(null);
+        opcion4.setBorderPainted(false);
         opcion4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,13 +145,13 @@ public class footer4 extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(opcion4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
