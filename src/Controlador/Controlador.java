@@ -284,7 +284,7 @@ public final class Controlador {
 
             case Util.AC_MOSTRAR_MAPA -> {
                 seguir = false;
-                new Mapa().setVisible(true);
+                new Mapa(this).setVisible(true);
             }
             case Util.AC_MOSTRAR_TIENDA -> {
                 seguir = false;

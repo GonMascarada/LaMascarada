@@ -7,12 +7,14 @@ package Vista;
 import Controlador.Controlador;
 import Mascarada.Opcion;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -26,6 +28,7 @@ public class footer1 extends javax.swing.JPanel{
     private Controlador controlador;
     private VistaEscena vista;
     private ArrayList<Opcion> opciones;
+    private MouseEvent evt;
 
 
     /**
@@ -42,7 +45,16 @@ public class footer1 extends javax.swing.JPanel{
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setText(opciones.get(0).getTexto());
         opcion1.setForeground(Color.white);
+        
 
+    }
+    
+    public void mostrarboton(int a){
+        
+        for (int i = 0; i < a; i++) {
+            opcion1MouseEntered(evt);
+        }
+               
     }
     
    
@@ -66,6 +78,9 @@ public class footer1 extends javax.swing.JPanel{
         opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 opcion1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                opcion1MouseEntered(evt);
             }
         });
 
@@ -97,6 +112,11 @@ public class footer1 extends javax.swing.JPanel{
             Logger.getLogger(footer1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_opcion1MouseClicked
+
+    private void opcion1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_opcion1MouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
