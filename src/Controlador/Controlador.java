@@ -520,7 +520,10 @@ public final class Controlador {
      * @return true si está disponible, false en otro caso.
      */
     public boolean comprobarNombreUsuario(String usuario) {
-        return bbdd.comprobarNombreUsuario(usuario);
+        if(!usuario.equals("Local")){
+           return bbdd.comprobarNombreUsuario(usuario); 
+        }
+        return false;
     }
 
     /**

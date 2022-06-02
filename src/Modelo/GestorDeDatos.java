@@ -197,7 +197,7 @@ public class GestorDeDatos {
     public void guardarPartida(Partida partida, boolean nuevaPartida) {
         try {
             Fichero.guardarPartida(partida);
-            if (bd.isConectado()) {
+            if ((bd.isConectado())&& !partida.getUsuario().equals("Local")) {
                 if (nuevaPartida) {
                     try {
                         bd.insertarNuevaPartida(partida);
