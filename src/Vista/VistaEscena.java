@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -48,7 +49,11 @@ public class VistaEscena extends javax.swing.JFrame {
         cabecera1.insertarDatosPartida(controlador.getPartida());
         switch (opciones.size()) {
             case 1 -> {
-                jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);
+                footer1 botones =new footer1(controlador, this);
+                
+                jPanel1.add(botones).setBounds(0, 590, 1000, 115);  
+                
+                botones.mostrarboton(100);
             }
             case 2 -> {
                 jPanel1.add(new footer2(controlador, this)).setBounds(0, 590, 1000, 115);
