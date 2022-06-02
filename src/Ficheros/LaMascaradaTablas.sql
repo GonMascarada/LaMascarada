@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Partida (
 );
 
 CREATE TABLE IF NOT EXISTS Personaje_En_Partida (
-	Nombre VARCHAR(20) PRIMARY KEY,
+	Nombre VARCHAR(20),
 	Ataque INT NOT NULL,
     Defensa INT NOT NULL,
     VidaMax INT NOT NULL,
@@ -95,6 +95,8 @@ CREATE TABLE IF NOT EXISTS Personaje_En_Partida (
     NombreHabilidad1 VARCHAR(10),
     NombreHabilidad2 VARCHAR(10),
 	IdPartida INT,
+	Usuario VARCHAR(20),
+	PRIMARY KEY (Nombre, IdPartida, Usuario), 
     FOREIGN KEY (NombreClan) REFERENCES Clan(Nombre),
     FOREIGN KEY (NombreHabilidad1) REFERENCES Habilidad(Nombre),
     FOREIGN KEY (NombreHabilidad2) REFERENCES Habilidad(Nombre),
@@ -129,7 +131,8 @@ CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje_En_Partida (
     IdPartida INT,
     NombrePersonaje VARCHAR(10),
     EnUso BOOLEAN,
-    PRIMARY KEY (NombreEquipo, IdPartida),
+	Usuario VARCHAR(20),
+    PRIMARY KEY (NombreEquipo, IdPartida, NombrePersonaje, Usuario),
     FOREIGN KEY (NombreEquipo) REFERENCES Equipo(Nombre),
     FOREIGN KEY (IdPartida) REFERENCES Partida(IdPartida),
     FOREIGN KEY (NombrePersonaje) REFERENCES Personaje(Nombre)

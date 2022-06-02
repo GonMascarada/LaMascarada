@@ -38,6 +38,9 @@ public class VistaEscena extends javax.swing.JFrame {
         ArrayList<Opcion> opciones = escena.getOpciones();
         
         ImageIcon ImagenEscena=new javax.swing.ImageIcon(getClass().getResource(controlador.getPartida().getEscena().getImagen()));
+        Image image = ImagenEscena.getImage();
+        Image newimg = image.getScaledInstance( foto.getWidth(),foto.getHeight(),  java.awt.Image.SCALE_SMOOTH); 
+        ImagenEscena = new ImageIcon(newimg);
         foto.setIcon(ImagenEscena);
                 
         texto.setText(escena.getTexto());

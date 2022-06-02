@@ -7,3 +7,4 @@ nbproject/private/private.xml
 /build/classes/Vista/*.class
 *.class
 /dist/
+/nbproject/private/private.xml

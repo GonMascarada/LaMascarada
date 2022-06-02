@@ -41,7 +41,7 @@ public class GestorDeDatos {
     public boolean comprobarCredenciales(String text, String password) {
         try {
             return bd.comprobarCredenciales(text, password);
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
@@ -106,13 +106,15 @@ public class GestorDeDatos {
     /**
      * Elimina todos los datos de una partida.
      *
+     * @param usuario
      * @param idPartida
+     * @throws java.sql.SQLException
      */
-    public void eliminarPartida(int idPartida) {
+    public void eliminarPartida(String usuario, int idPartida) throws SQLException {
         try {
             Fichero.eliminarPartida(idPartida);
-            bd.sincronizar();
-        } catch (IOException ex) {
+            bd.sincronizar(usuario);
+        } catch (IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -194,22 +196,25 @@ public class GestorDeDatos {
      * @param partida a guardar.
      * @param nuevaPartida true si es una nueva partida, false en otro caso.
      */
-    public void guardarPartida(Partida partida, boolean nuevaPartida) {
+    public void guardarPartida(Partida partida, boolean nuevaPartida) throws SQLException {
+        String usuario = partida.getUsuario();
         try {
-            Fichero.guardarPartida(partida);
-            if ((bd.isConectado())&& !partida.getUsuario().equals("Local")) {
+            if (usuario.equals("Local")) {
+                Fichero.guardarPartida(partida, true);
+            } else if (bd.isConectado()) {
+                Fichero.guardarPartida(partida, false);
                 if (nuevaPartida) {
                     try {
-                        bd.insertarNuevaPartida(partida);
+                        bd.insertarPartida(partida);
                     } catch (SQLException ex) {
                         Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                    bd.sincronizar();
-                }   
+                    bd.sincronizar(usuario);
+                }
             }
 
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -219,13 +224,16 @@ public class GestorDeDatos {
      * almacena los datos de la nueva partida.
      *
      * @param vampire protagonista
+     * @param usuario
      * @return Partida.
      */
-    public Partida iniciarNuevaPartida(Vampire vampire) {
+    public Partida iniciarNuevaPartida(Vampire vampire, String usuario) {
         try {
-            return Fichero.iniciarNuevaPartida(vampire);
+            return Fichero.iniciarNuevaPartida(vampire, usuario);
+
         } catch (IOException ex) {
-            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestorDeDatos.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

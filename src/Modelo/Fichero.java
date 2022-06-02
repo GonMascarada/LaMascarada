@@ -119,13 +119,16 @@ public final class Fichero {
         if (!directorio.exists()) {
             directorio.mkdirs();
         }
-        guardarEnFichero(Util.URL_PERSONAJE, Util.CABECERA_PERSONAJE);
-        guardarEnFichero(Util.URL_EQ_PA_PE, Util.CABECERA_EQ_PA_PE);
-        guardarEnFichero(Util.URL_PARTIDA, Util.CABECERA_PARTIDA);
-        guardarEnFichero(Util.URL_BD, Util.CABECERA_BD);
+        crearFichero(Util.URL_PERSONAJE, Util.CABECERA_PERSONAJE);
+        crearFichero(Util.URL_PERSONAJE_LOCAL, Util.CABECERA_PERSONAJE);
+        crearFichero(Util.URL_EQ_PA_PE, Util.CABECERA_EQ_PA_PE);
+        crearFichero(Util.URL_EQ_PA_PE_LOCAL, Util.CABECERA_EQ_PA_PE);
+        crearFichero(Util.URL_PARTIDA, Util.CABECERA_PARTIDA);
+        crearFichero(Util.URL_PARTIDA_LOCAL, Util.CABECERA_PARTIDA);
+        crearFichero(Util.URL_BD, Util.CABECERA_BD);
 
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
+        Timestamp timestamp = new Timestamp(0);
+        crearFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
     }
 
     /**
@@ -154,6 +157,28 @@ public final class Fichero {
         }
         lector.close();
         return disponible;
+    }
+
+    /**
+     * Si el archivo en la url no existe, entonces lo crea, y escribe el texto.
+     *
+     * @param url de archivo que comprobar si existe.
+     * @param texto a escribir en el archivo.
+     * @throws IOException
+     */
+    private static void crearFichero(String url, String texto) throws IOException {
+        File archivo = new File(url);
+        if (!archivo.exists()) {
+            archivo.createNewFile();
+
+            try {
+                FileWriter fw = new FileWriter(archivo);
+                fw.write(texto);
+                fw.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
     }
 
     /**
@@ -187,7 +212,29 @@ public final class Fichero {
         borrarPorFiltro(Util.URL_PERSONAJE, idPartida, 10);
         borrarPorFiltro(Util.URL_EQ_PA_PE, idPartida, 1);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
+        escribirEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
+    }
+
+    /**
+     * Escribe un texto en el archivo de la url. Si no existe el fichero se
+     * crea.
+     *
+     * @param url
+     * @param texto
+     * @throws IOException
+     */
+    private static void escribirEnFichero(String url, String texto) throws IOException {
+        File archivo = new File(url);
+        if (!archivo.exists()) {
+            archivo.createNewFile();
+        }
+            try {
+                FileWriter fw = new FileWriter(archivo);
+                fw.write(texto);
+                fw.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }        
     }
 
     /**
@@ -302,12 +349,17 @@ public final class Fichero {
 
     }
 
-    private static void escribirObjetos(ArrayList<String> infoObjetos) {
-        File f = new File(Util.URL_EQ_PA_PE);
+    private static void escribirObjetos(ArrayList<String> infoObjetos, String usuario) {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_EQ_PA_PE_LOCAL);
+        } else {
+            f = new File(Util.URL_EQ_PA_PE);
+        }
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             for (int i = 0; i < infoObjetos.size(); i++) {
-                fw.write(infoObjetos.get(i));
+                fw.write(infoObjetos.get(i) + ";" + usuario);
             }
             fw.close(); // Cerramos el escritor.
         } catch (IOException e) {
@@ -320,8 +372,13 @@ public final class Fichero {
      *
      * @param partida
      */
-    private static void escribirPartida(String info) {
-        File f = new File(Util.URL_PARTIDA);
+    private static void escribirPartida(String info, String usuario) {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PARTIDA_LOCAL);
+        } else {
+            f = new File(Util.URL_PARTIDA);
+        }
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             fw.write("\n" + info);
@@ -337,12 +394,17 @@ public final class Fichero {
      *
      * @param infoPersonajes
      */
-    private static void escribirPersonajes(String[] infoPersonajes) {
-        File f = new File(Util.URL_PERSONAJE);
+    private static void escribirPersonajes(String[] infoPersonajes, String usuario) {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PERSONAJE_LOCAL);
+        } else {
+            f = new File(Util.URL_PERSONAJE);
+        }
         try {
             FileWriter fw = new FileWriter(f, true); // Escritor
             for (int i = 0; i < infoPersonajes.length; i++) {
-                fw.write("\n" + infoPersonajes[i]);
+                fw.write("\n" + infoPersonajes[i] + ";" + usuario);
             }
             fw.close(); // Cerramos el escritor.
         } catch (IOException e) {
@@ -355,11 +417,12 @@ public final class Fichero {
      *
      * @param url del archivo.
      * @param texto a escribir.
+     * @param concatenar
      */
-    public static void escribirTexto(String url, String texto) {
+    public static void escribirTexto(String url, String texto, boolean concatenar) {
         File f = new File(url);
         try {
-            FileWriter fw = new FileWriter(f); // Escritor
+            FileWriter fw = new FileWriter(f, concatenar); // Escritor
             fw.write(texto);
             fw.close(); // Cerramos el escritor.
         } catch (IOException e) {
@@ -582,8 +645,13 @@ public final class Fichero {
      * @throws java.text.ParseException
      */
     public static ArrayList<Partida> getListaPartidas(String usuario) throws IOException, ParseException {
-        File file = new File(Util.URL_PERSONAJE);
-        Scanner lector = new Scanner(file);
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PERSONAJE_LOCAL);
+        } else {
+            f = new File(Util.URL_PERSONAJE);
+        }
+        Scanner lector = new Scanner(f);
         ArrayList<Partida> partidas = new ArrayList<>();
         String[] linea;
         int idPartida;
@@ -618,17 +686,25 @@ public final class Fichero {
      *
      * @return un número de id libre.
      */
-    private static int getNuevoIdPartida() throws IOException {
+    private static int getNuevoIdPartida(String usuario) throws IOException {
         ArrayList<Integer> ids = new ArrayList<>();
-        File file = new File(Util.URL_PARTIDA);
-        Scanner lector = new Scanner(file);
+        File file;
+        Scanner lector;
         String[] linea;
         int id;
+        if (usuario.equals("Local")) {
+            file = new File(Util.URL_PARTIDA_LOCAL);
+        } else {
+            file = new File(Util.URL_PARTIDA);
+        }
+        lector = new Scanner(file);
 
         lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
-            ids.add(Integer.parseInt(linea[0]));
+            if (linea[8].equals(usuario)) {
+                ids.add(Integer.parseInt(linea[0]));
+            }
         }
         Collections.sort(ids);
         id = 0;
@@ -831,49 +907,34 @@ public final class Fichero {
     }
 
     /**
-     * Si el archivo en la url no existe, entonces lo crea, y escribe el texto.
-     *
-     * @param url de archivo que comprobar si existe.
-     * @param texto a escribir en el archivo.
-     * @throws IOException
-     */
-    private static void guardarEnFichero(String url, String texto) throws IOException {
-        File archivo = new File(url);
-        if (!archivo.exists()) {
-            archivo.createNewFile();
-            try (FileWriter fw = new FileWriter(archivo)) {
-                fw.write(texto);
-            } catch (IOException e) {
-                System.out.println(e);
-            }
-        }
-    }
-
-    /**
      * Guarda el estado actual de la partida.
      *
      * @param partida a guardar.
+     * @param local
      * @throws java.io.FileNotFoundException
      */
-    public static void guardarPartida(Partida partida) throws FileNotFoundException, IOException {
+    public static void guardarPartida(Partida partida, boolean local) throws FileNotFoundException, IOException {
         int id;
+        String usuario = partida.getUsuario();
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
         id = getIdGuardado(partida.getIdPartida(), partida.getProgreso());
         partida.setIdPartida(id);
 
         // 2.Guardar los datos de la partida.
-        escribirPartida(partida.getInfoPartida());
+        escribirPartida(partida.getInfoPartida(), usuario);
 
         // 3.Guardar los datos de los personajes, protagonista incluido.
-        escribirPersonajes(partida.getInfoPersonajes());
+        escribirPersonajes(partida.getInfoPersonajes(), usuario);
 
         // 4.Guardar los datos de los objetos de cada personaje.
-        escribirObjetos(partida.getInfoObjetos());
+        escribirObjetos(partida.getInfoObjetos(), usuario);
 
         // 5.Actualizar la última modificación
+        System.out.println("Se supone que actualizo la ultima mod");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        guardarEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
+        System.out.println("Fecha: " + timestamp);
+        escribirEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
     }
 
     /**
@@ -884,13 +945,13 @@ public final class Fichero {
      * @return Partida.
      * @throws java.io.IOException
      */
-    public static Partida iniciarNuevaPartida(Vampire protagonista) throws IOException {
+    public static Partida iniciarNuevaPartida(Vampire protagonista, String usuario) throws IOException {
         Partida partida = new Partida();
         Escena primera;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         // Insercción protagonista, primera escena e id.
-        partida.setIdPartida(getNuevoIdPartida());
+        partida.setIdPartida(getNuevoIdPartida(usuario));
         partida.setProtagonista(protagonista);
         primera = getEscena(0, partida.getIdPartida()); //Primera escena        
         partida.setEscena(primera);

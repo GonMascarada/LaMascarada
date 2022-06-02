@@ -25,7 +25,7 @@ DELIMITER $$
 delimiter //
 create procedure borrarDatosPartida(in usuario varchar(20))
 begin
-    DELETE FROM `lamascarada`.`Equipo_Partida_Personaje_En_Partida` WHERE `Usuario` = usuario;
+    DELETE FROM `lamascarada`.`Equipo_Partida_Personaje_En_Partida` WHERE Usuario` = usuario;
 	DELETE FROM `lamascarada`.`Personaje_En_Partida` WHERE `Usuario` = usuario;
 	DELETE FROM `lamascarada`.`Partida` WHERE `Usuario` = usuario;
 end //

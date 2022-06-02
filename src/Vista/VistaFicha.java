@@ -352,7 +352,7 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(710, 120, 210, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(1, 0, 1000, 700);
