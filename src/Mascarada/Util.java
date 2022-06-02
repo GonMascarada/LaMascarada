@@ -54,6 +54,7 @@ public final class Util {
     public static final int SED_MAX = 5;
     public static final int SOSPECHA_MAX = 5;
     public static final int PROGRESO_MAX = 5;
+    public static final int BIBLIOTECA = 154;
 
     // Acciones de las opciones
     public static final int AC_CONTINUAR = 0;
