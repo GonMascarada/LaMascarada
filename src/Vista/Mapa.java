@@ -185,7 +185,7 @@ public class Mapa extends javax.swing.JFrame {
 
     private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
         // TODO add your handling code here:
-        controlador.cargarEscena("Biblioteca");
+        controlador.cargarEscena(Util.BIBLIOTECA);
         
     }//GEN-LAST:event_bibliotecaActionPerformed
 
@@ -223,7 +223,7 @@ public class Mapa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mapa().setVisible(true);
+                //new Mapa().setVisible(true);
             }
         });
     }

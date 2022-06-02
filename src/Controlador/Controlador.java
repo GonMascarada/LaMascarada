@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Se encarga de abastecer a las interfaces con la información neceseria.
@@ -272,12 +274,17 @@ public final class Controlador {
                 }
             }
             case Util.AC_FIN -> {
-                seguir = false;
-                //Lanzar escena fin
+                try {
+                    seguir = false;
+                    new VistaPartidas(this, partida.getUsuario()).setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
             case Util.AC_MOSTRAR_MAPA -> {
                 seguir = false;
-                new Mapa().setVisible(true);
+                new Mapa(this).setVisible(true);
             }
             case Util.AC_MOSTRAR_TIENDA -> {
                 seguir = false;
@@ -513,7 +520,10 @@ public final class Controlador {
      * @return true si está disponible, false en otro caso.
      */
     public boolean comprobarNombreUsuario(String usuario) {
-        return bbdd.comprobarNombreUsuario(usuario);
+        if(!usuario.equals("Local")){
+           return bbdd.comprobarNombreUsuario(usuario); 
+        }
+        return false;
     }
 
     /**
@@ -526,4 +536,9 @@ public final class Controlador {
         bbdd.crearNuevoUsuario(usuario, pass);
     }
 
+    public void cargarEscena(int id){
+        Escena escena = bbdd.getEscena(id, partida.getIdPartida());
+        partida.setEscena(escena);
+        lanzar();
+    }
 }

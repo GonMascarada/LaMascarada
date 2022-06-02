@@ -2,6 +2,7 @@ package Modelo;
 
 import Mascarada.Partida;
 import Mascarada.Util;
+import Mascarada.Vampire;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -145,6 +146,8 @@ public class BaseDeDatos {
      * @param partida
      */
     void insertarNuevaPartida(Partida partida) throws SQLException {
+        Vampire pj;
+        String [] habilidades;
         // 1.Guardar los datos de la partida.
         System.out.println(Util.IN_PARTIDA);
         Timestamp timestamp = Timestamp.valueOf(partida.getFecha());
@@ -161,9 +164,25 @@ public class BaseDeDatos {
         stmt.executeUpdate();
         stmt.close();
         // 2.Guardar los datos de los personajes, protagonista incluido.
-        
+        System.out.println(Util.IN_PERSONAJE);
+        pj = partida.getProtagonista();
+        habilidades = pj.getHabilidades().split(";");
+        stmt = conn.prepareStatement(Util.IN_PERSONAJE);
+        stmt.setString(1, pj.getNombre());
+        stmt.setInt(2, pj.getAtaque());
+        stmt.setInt(3, pj.getDefensa());
+        stmt.setInt(4, pj.getVidaMax());
+        stmt.setInt(5, pj.getVidaActual());
+        stmt.setInt(6, pj.getDinero());
+        stmt.setInt(7, pj.getEstadoDeAnimo());
+        stmt.setString(8, pj.getClan().getNombre());
+        stmt.setString(9, habilidades[0]);
+        stmt.setString(10, habilidades[1]);
+        stmt.setInt(11, partida.getIdPartida());
+        stmt.executeUpdate();
+        stmt.close();
         // 3.Guardar los datos de los objetos de cada personaje.
- 
+
         // 4.Actualizar la última modificación
     }
 

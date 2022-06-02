@@ -61,9 +61,6 @@ public class VistaEscena extends javax.swing.JFrame {
             case 4 -> {
                 jPanel1.add(new footer4(controlador, this)).setBounds(0, 590, 1000, 115);
             }
-            case 6 -> {
-                jPanel1.add(new footer6(controlador, this)).setBounds(0, 590, 1000, 115);
-            }
         }
 
     }
