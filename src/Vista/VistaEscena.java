@@ -101,7 +101,7 @@ public class VistaEscena extends javax.swing.JFrame {
 
         foto.setText("jLabel1");
         jPanel1.add(foto);
-        foto.setBounds(0, 260, 440, 300);
+        foto.setBounds(30, 260, 400, 300);
 
         texto.setBackground(new java.awt.Color(0, 0, 0));
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,7 +110,7 @@ public class VistaEscena extends javax.swing.JFrame {
         texto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         texto.setInheritsPopupMenu(false);
         jPanel1.add(texto);
-        texto.setBounds(460, 260, 500, 300);
+        texto.setBounds(460, 260, 510, 300);
         jPanel1.add(cabecera1);
         cabecera1.setBounds(0, 0, 1000, 220);
 

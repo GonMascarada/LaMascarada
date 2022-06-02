@@ -45,6 +45,7 @@ public class footer1 extends javax.swing.JPanel{
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setText(opciones.get(0).getTexto());
         opcion1.setForeground(Color.white);
+        opcion1.setBackground(Color.black);
         
 
     }
@@ -73,6 +74,7 @@ public class footer1 extends javax.swing.JPanel{
         setOpaque(false);
 
         opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1.png"))); // NOI18N
+        opcion1.setBorder(null);
         opcion1.setBorderPainted(false);
         opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         opcion1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,7 +100,7 @@ public class footer1 extends javax.swing.JPanel{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
