@@ -104,6 +104,7 @@ public final class Controlador {
         String datos;
         Vampire vampire;
         ArrayList<String[]> textos;
+        Escena e;
         String texto;
 
         //Datos del nuevo protagonista
@@ -116,6 +117,11 @@ public final class Controlador {
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
         partida = bbdd.iniciarNuevaPartida(vampire, usuario);
+        
+        //Quitamos las opciones que no sean corrctas.
+        e = partida.getEscena();
+        e.setOpciones(evaluarOpciones(e.getOpciones()));
+        partida.setEscena(e);
 
         //Insertamos el usuario al que pertenece
         partida.setUsuario(usuario);
@@ -181,12 +187,8 @@ public final class Controlador {
             partida.getEscena().setTexto(texto);
 
             //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
-            opciones = partida.getEscena().getOpciones();
-            for (int i = opciones.size() - 1; i >= 0; i--) {
-                if (!evaluarCondicion(opciones.get(i).getCondiccion())) {
-                    opciones.remove(i);
-                }
-            }
+            opciones = evaluarOpciones(partida.getEscena().getOpciones());
+
             partida.getEscena().setOpciones(opciones);
             System.out.println("Escena: " + partida.getEscena().getIdEscena() + " tiene " + partida.getEscena().getOpciones().size() + " opciones.");
             // 6.Mostrar la escena.
@@ -592,6 +594,7 @@ public final class Controlador {
             case Util.SI_BRUJAH_O_VENTRUE -> {
                 if ((clan.equals("Brujah")) || (clan.equals("Ventrue"))) {
                     cumplida = true;
+                    System.out.println("Soy brujah o ventrue");
                 }
             }
             case Util.SI_MAPA -> {
@@ -689,7 +692,7 @@ public final class Controlador {
                 aux1 = evaluarCondicion(Util.SI_TREMERE);
                 aux2 = !evaluarCondicion(Util.SI_COLGANTE_ROJO);
                 cumplida = aux1 && aux2;
-            }        
+            }
         }
         return cumplida;
     }
@@ -789,5 +792,20 @@ public final class Controlador {
         Escena escena = bbdd.getEscena(id, partida.getIdPartida());
         partida.setEscena(escena);
         lanzar();
+    }
+
+    /**
+     * Elimina las opciones que no se deben mostrar.
+     *
+     * @param opciones
+     * @return
+     */
+    private ArrayList<Opcion> evaluarOpciones(ArrayList<Opcion> opciones) {
+        for (int i = opciones.size() - 1; i >= 0; i--) {
+            if (!evaluarCondicion(opciones.get(i).getCondiccion())) {
+                opciones.remove(i);
+            }
+        }
+        return opciones;
     }
 }

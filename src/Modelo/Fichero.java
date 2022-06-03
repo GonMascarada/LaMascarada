@@ -937,7 +937,7 @@ public final class Fichero {
         // Insercción protagonista, primera escena e id.
         partida.setIdPartida(getNuevoIdPartida(usuario));
         partida.setProtagonista(protagonista);
-        primera = getEscena(0, partida.getIdPartida()); //Primera escena        
+        primera = getEscena(0, partida.getIdPartida()); //Primera escena 
         partida.setEscena(primera);
         // Insercción de la hora actual.
         partida.setFecha(String.valueOf(timestamp));
