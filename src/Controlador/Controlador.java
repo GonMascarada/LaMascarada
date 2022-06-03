@@ -75,8 +75,8 @@ public final class Controlador {
      * @return true si está disponible, false en otro caso.
      * @throws java.io.FileNotFoundException
      */
-    public boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
-        return bbdd.comprobarNombrePersonaje(nombre);
+    public boolean comprobarNombrePersonaje(String nombre, String usuario) throws FileNotFoundException {
+        return bbdd.comprobarNombrePersonaje(nombre, usuario);
     }
 
     /**
@@ -156,7 +156,7 @@ public final class Controlador {
      * @throws java.io.IOException
      */
     public void escoger(Opcion opcion) throws IOException {
-        Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida());
+        Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida(), partida.getUsuario());
         ArrayList<String> textos;
         ArrayList<Opcion> opciones;
         String texto;
@@ -456,7 +456,7 @@ public final class Controlador {
         }
 
         if (evaularMecanica()) {
-            Escena e = bbdd.getEscena(Util.ES_MUERTE, partida.getIdPartida());
+            Escena e = bbdd.getEscena(Util.ES_MUERTE, partida.getIdPartida(), partida.getUsuario());
             partida.setEscena(e);
         }
         return seguir;
@@ -790,7 +790,7 @@ public final class Controlador {
     }
 
     public void cargarEscena(int id) {
-        Escena escena = bbdd.getEscena(id, partida.getIdPartida());
+        Escena escena = bbdd.getEscena(id, partida.getIdPartida(), partida.getUsuario());
         partida.setEscena(escena);
         lanzar();
     }

@@ -53,11 +53,12 @@ public class GestorDeDatos {
      * Comprueba si un nombre ya está siendo usado por otro personaje.
      *
      * @param nombre
+     * @param usuario
      * @return true si está disponible, false en otro caso.
      */
-    public boolean comprobarNombrePersonaje(String nombre) {
+    public boolean comprobarNombrePersonaje(String nombre, String usuario) {
         try {
-            return Fichero.comprobarNombrePersonaje(nombre);
+            return Fichero.comprobarNombrePersonaje(nombre, usuario);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,9 +154,9 @@ public class GestorDeDatos {
      * @param idPartida
      * @return escena requerida.
      */
-    public Escena getEscena(int idEscena, int idPartida) {
+    public Escena getEscena(int idEscena, int idPartida, String usuario) {
         try {
-            return Fichero.getEscena(idEscena, idPartida);
+            return Fichero.getEscena(idEscena, idPartida, usuario);
         } catch (IOException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
