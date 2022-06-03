@@ -67,6 +67,7 @@ public class footer2 extends javax.swing.JPanel {
         opcion1 = new javax.swing.JButton();
 
         setOpaque(false);
+        setLayout(null);
 
         opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1.png"))); // NOI18N
         opcion2.setBorder(null);
@@ -82,6 +83,8 @@ public class footer2 extends javax.swing.JPanel {
                 opcion2ActionPerformed(evt);
             }
         });
+        add(opcion2);
+        opcion2.setBounds(587, 6, 282, 79);
 
         opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1.png"))); // NOI18N
         opcion1.setBorder(null);
@@ -97,27 +100,8 @@ public class footer2 extends javax.swing.JPanel {
                 opcion1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
-                .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(131, 131, 131))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(opcion1);
+        opcion1.setBounds(110, 6, 275, 79);
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion2ActionPerformed

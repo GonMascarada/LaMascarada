@@ -40,6 +40,8 @@ public class footer4 extends javax.swing.JPanel {
         opcion1.setIcon(botonRojo1);
         opcion1.setPressedIcon(botonRojo2);
         opcion1.setText(opciones.get(0).getTexto());
+        opcion1.revalidate();
+        opcion1.repaint();
         opcion1.setForeground(Color.white);
         opcion1.setBackground(Color.black);
 
