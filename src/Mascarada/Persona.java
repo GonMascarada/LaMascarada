@@ -134,6 +134,7 @@ public class Persona {
     public void setEquipacion(ArrayList<Equipo> equipacion) {
         this.equipacion = equipacion;
         cambiado = true;
+        actualizar();
     }
 
     /**
@@ -199,4 +200,34 @@ public class Persona {
         equipacion.add(equipo);
         cambiado = true;
     }
+    
+    /**
+     * Funcion para la act
+     */
+    
+    private void actualizar(){
+        Equipo e = null;
+        
+        for (int i = 0; i < equipacion.size(); i++) {
+            e=equipacion.get(i);
+            if (e.isEnUso()==true&&e.getAtaque()!=0) {
+                ataque=Util.ATQ_VAM+e.getAtaque();
+            }else if (e.isEnUso()==true&&e.getDefensa()!=0) {
+                defensa=Util.VIDA_VAM+e.getDefensa();
+            }else if (e.isEnUso()==true&&e.getVida()!=0) {
+                vidaMax=Util.DEF_VAM+e.getDefensa();
+                if (vidaActual>vidaMax) {
+                    vidaActual=vidaMax;
+                }
+            }else{
+                break;
+            }
+            
+        }
+        
+        
+    }
+            
+            
+    
 }
