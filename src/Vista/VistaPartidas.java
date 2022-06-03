@@ -339,6 +339,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
         TabbedMain.addTab("Crear Partida", jPanelCrearPartida);
 
         jPanelCargarPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanelCargarPartida.setLayout(null);
 
         jTableCargar.setForeground(new java.awt.Color(0, 0, 0));
         jTableCargar.setModel(new javax.swing.table.DefaultTableModel(
@@ -354,6 +355,9 @@ public final class VistaPartidas extends javax.swing.JFrame {
         ));
         jScrollPaneCargar.setViewportView(jTableCargar);
 
+        jPanelCargarPartida.add(jScrollPaneCargar);
+        jScrollPaneCargar.setBounds(0, 0, 1000, 500);
+
         jButtonCargar.setText("Cargar");
         jButtonCargar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCargar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -366,42 +370,18 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 jButtonCargarActionPerformed(evt);
             }
         });
+        jPanelCargarPartida.add(jButtonCargar);
+        jButtonCargar.setBounds(372, 552, 280, 70);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
         jLabel3.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanelCargarPartidaLayout = new javax.swing.GroupLayout(jPanelCargarPartida);
-        jPanelCargarPartida.setLayout(jPanelCargarPartidaLayout);
-        jPanelCargarPartidaLayout.setHorizontalGroup(
-            jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneCargar, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-            .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
-                .addGap(372, 372, 372)
-                .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanelCargarPartidaLayout.setVerticalGroup(
-            jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
-                .addComponent(jScrollPaneCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jButtonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
-            .addGroup(jPanelCargarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCargarPartidaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jPanelCargarPartida.add(jLabel3);
+        jLabel3.setBounds(0, 0, 1000, 700);
 
         TabbedMain.addTab("Cargar Partida", jPanelCargarPartida);
 
         jPanelBorrarPartida.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanelBorrarPartida.setLayout(null);
 
         jButtonBorrar.setText("Borrar");
         jButtonBorrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -415,6 +395,8 @@ public final class VistaPartidas extends javax.swing.JFrame {
                 jButtonBorrarActionPerformed(evt);
             }
         });
+        jPanelBorrarPartida.add(jButtonBorrar);
+        jButtonBorrar.setBounds(369, 555, 280, 70);
 
         jTableBorrar.setBackground(new java.awt.Color(0, 0, 0));
         jTableBorrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -431,37 +413,13 @@ public final class VistaPartidas extends javax.swing.JFrame {
         ));
         jScrollPaneBorrar.setViewportView(jTableBorrar);
 
+        jPanelBorrarPartida.add(jScrollPaneBorrar);
+        jScrollPaneBorrar.setBounds(0, 0, 1000, 500);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
         jLabel4.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanelBorrarPartidaLayout = new javax.swing.GroupLayout(jPanelBorrarPartida);
-        jPanelBorrarPartida.setLayout(jPanelBorrarPartidaLayout);
-        jPanelBorrarPartidaLayout.setHorizontalGroup(
-            jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBorrarPartidaLayout.createSequentialGroup()
-                .addGap(0, 369, Short.MAX_VALUE)
-                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(351, 351, 351))
-            .addComponent(jScrollPaneBorrar)
-            .addGroup(jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelBorrarPartidaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanelBorrarPartidaLayout.setVerticalGroup(
-            jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBorrarPartidaLayout.createSequentialGroup()
-                .addComponent(jScrollPaneBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
-            .addGroup(jPanelBorrarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelBorrarPartidaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jPanelBorrarPartida.add(jLabel4);
+        jLabel4.setBounds(0, 0, 1000, 700);
 
         TabbedMain.addTab("Borrar Partida", jPanelBorrarPartida);
 

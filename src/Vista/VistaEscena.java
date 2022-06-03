@@ -49,11 +49,8 @@ public class VistaEscena extends javax.swing.JFrame {
         cabecera1.insertarDatosPartida(controlador.getPartida());
         switch (opciones.size()) {
             case 1 -> {
-                footer1 botones =new footer1(controlador, this);
-                
-                jPanel1.add(botones).setBounds(0, 590, 1000, 115);  
-                
-                botones.mostrarboton(100);
+                 jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);
+                 
             }
             case 2 -> {
                 jPanel1.add(new footer2(controlador, this)).setBounds(0, 590, 1000, 115);
@@ -107,7 +104,7 @@ public class VistaEscena extends javax.swing.JFrame {
         texto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         texto.setInheritsPopupMenu(false);
         jPanel1.add(texto);
-        texto.setBounds(460, 260, 510, 300);
+        texto.setBounds(480, 260, 490, 300);
         jPanel1.add(cabecera1);
         cabecera1.setBounds(0, 0, 1000, 220);
 
