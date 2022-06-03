@@ -919,10 +919,7 @@ public final class Fichero {
         escribirObjetos(partida.getInfoObjetos(), usuario);
 
         // 5.Actualizar la última modificación
-        System.out.println("Se supone que actualizo la ultima mod");
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        System.out.println("Fecha: " + timestamp);
-        escribirEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
+        escribirEnFichero(Util.URL_ULTMA_MODIFICACION, partida.getFecha());
     }
 
     /**

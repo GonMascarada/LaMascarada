@@ -22,6 +22,7 @@ public class Partida {
     private ArrayList<Persona> personajes;
     private String usuario;
     private int dificultad;
+
     public Partida() {
     }
 
@@ -205,7 +206,7 @@ public class Partida {
         String resultado;
         resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso;
         resultado += ";" + sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
-        resultado += escena.getIdEscena() + ";" + usuario;
+        resultado += escena.getIdEscena() + ";" + usuario + ";" + dificultad;
         return resultado;
     }
 
