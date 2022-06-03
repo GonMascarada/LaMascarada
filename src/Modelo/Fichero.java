@@ -228,13 +228,13 @@ public final class Fichero {
         if (!archivo.exists()) {
             archivo.createNewFile();
         }
-            try {
-                FileWriter fw = new FileWriter(archivo);
-                fw.write(texto);
-                fw.close();
-            } catch (IOException e) {
-                System.out.println(e);
-            }        
+        try {
+            FileWriter fw = new FileWriter(archivo);
+            fw.write(texto);
+            fw.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -596,18 +596,6 @@ public final class Fichero {
         id++;
         lector.close();
         return id;
-    }
-
-    /**
-     * Devuelve, si hay, información extra de una escena por una habilidad.
-     *
-     * @param idEscena escena de la que se consulta si hay información extra.
-     * @param habilidades lista de habilidades que tiene el protagonista.
-     * @return el texto con la info extra.
-     */
-    private String getInfoExtra(int idEscena, HashMap<String, Boolean> habilidades) {
-        System.out.println("Estamos trabajando en ello.");
-        return "";
     }
 
     /**

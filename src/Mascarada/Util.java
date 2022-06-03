@@ -67,9 +67,10 @@ public final class Util {
     public static final int ATQ_VAM = 10;
     public static final int DEF_VAM = 4;
     public static final int VIDA_VAM = 20;
-    public static final int SED_MAX = 5;
-    public static final int SOSPECHA_MAX = 5;
-    public static final int PROGRESO_MAX = 5;
+    public static final int FACIL = 10;
+    public static final int NORMAL = 6;
+    public static final int DIFICIL = 4;
+    public static final int PESADILLA = 2;
     public static final int BIBLIOTECA = 154;
     public static final int PUB = 1000;
 
