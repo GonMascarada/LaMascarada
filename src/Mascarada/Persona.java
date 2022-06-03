@@ -202,7 +202,7 @@ public class Persona {
     }
     
     /**
-     * Funcion para la act
+     * Funcion para la actualizacion de stats trabajara conjuntamente con el metodo equipar y desequipar
      */
     
     private void actualizar(){
@@ -225,6 +225,37 @@ public class Persona {
             
         }
         
+        
+    }
+    
+    private void equipar (String nombre){
+      Equipo e;
+        
+        for (int i = 0; i < equipacion.size(); i++) {
+            e=equipacion.get(i);
+            if (e.isEnUso()==true && e.getNombre()!=nombre) {
+                e.setEnUso(false);
+            }
+            else if (e.getNombre().equalsIgnoreCase(nombre)&& e.isEnUso()==false) {
+                e.setEnUso(true);
+            }else{
+                break;
+            }
+        }
+        
+    }
+    private void desequipar (String nombre){
+        
+        Equipo e;
+        
+        for (int i = 0; i < equipacion.size(); i++) {
+            e=equipacion.get(i);
+            if (e.isEnUso()==true&& !e.getNombre().equalsIgnoreCase(nombre)) {
+                e.setEnUso(false);
+            }else{
+                break;
+            }
+        }
         
     }
             

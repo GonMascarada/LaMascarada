@@ -28,7 +28,7 @@ public class footer1 extends javax.swing.JPanel{
     private Controlador controlador;
     private VistaEscena vista;
     private ArrayList<Opcion> opciones;
-    private MouseEvent evt;
+    
 
 
     /**
@@ -46,17 +46,12 @@ public class footer1 extends javax.swing.JPanel{
         opcion1.setText(opciones.get(0).getTexto());
         opcion1.setForeground(Color.white);
         opcion1.setBackground(Color.black);
-        
+        opcion1.revalidate();
+        opcion1.repaint();
 
     }
     
-    public void mostrarboton(int a){
-        
-        for (int i = 0; i < a; i++) {
-            opcion1MouseEntered(evt);
-        }
-               
-    }
+   
     
    
 
@@ -72,6 +67,7 @@ public class footer1 extends javax.swing.JPanel{
         opcion1 = new javax.swing.JButton();
 
         setOpaque(false);
+        setLayout(null);
 
         opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Rojo1.png"))); // NOI18N
         opcion1.setBorder(null);
@@ -85,23 +81,8 @@ public class footer1 extends javax.swing.JPanel{
                 opcion1MouseEntered(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(344, 344, 344)
-                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(376, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        add(opcion1);
+        opcion1.setBounds(340, 20, 280, 78);
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcion1MouseClicked
