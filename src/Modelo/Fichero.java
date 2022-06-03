@@ -874,18 +874,17 @@ public final class Fichero {
      * @return una lista de parejas [condición, texto]
      * @throws java.io.IOException
      */
-    public static ArrayList<String[]> getTextos(int idEscena) throws IOException {
+    public static ArrayList<String> getTextos(int idEscena) throws IOException {
         InputStream inputStream = VistaPartidas.class.getResourceAsStream(Util.JAR_TEXTO_ESCENA);
         Scanner lector = new Scanner(inputStream);
         String[] linea;
-        ArrayList<String[]> textos = new ArrayList<>();
-        String[] texto = new String[2];
+        ArrayList<String> textos = new ArrayList<>();
+        String texto;
         lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             if (Integer.valueOf(linea[0]) == idEscena) {
-                texto[0] = linea[1];
-                texto[1] = linea[2];
+                texto = linea[1] +";"+linea[2];
                 textos.add(texto);
             }
         }
