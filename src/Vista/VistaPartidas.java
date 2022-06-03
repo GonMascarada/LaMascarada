@@ -32,9 +32,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Gonzalo López Fernández
  */
 public final class VistaPartidas extends javax.swing.JFrame {
-    
-    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
-    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+
+    ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     private final Controlador controlador;
     private final ArrayList<Clan> clanes;
@@ -51,26 +51,25 @@ public final class VistaPartidas extends javax.swing.JFrame {
      */
     public VistaPartidas(Controlador controlador, String usuario) throws IOException, ParseException {
         initComponents();
-        
+
         jButtonBorrar.setRolloverEnabled(true);
         jButtonBorrar.setIcon(botonRojo1);
         jButtonBorrar.setPressedIcon(botonRojo2);
         jButtonBorrar.setForeground(Color.white);
         jButtonBorrar.setBackground(Color.black);
-        
-        
+
         jButtonCargar.setRolloverEnabled(true);
         jButtonCargar.setIcon(botonRojo1);
         jButtonCargar.setPressedIcon(botonRojo2);
         jButtonCargar.setForeground(Color.white);
         jButtonCargar.setBackground(Color.black);
-        
+
         Crear.setRolloverEnabled(true);
         Crear.setIcon(botonRojo1);
         Crear.setPressedIcon(botonRojo2);
         Crear.setForeground(Color.white);
         Crear.setBackground(Color.black);
-        
+
         jCheckHabilidad1.setVisible(false);
         jCheckHabilidad2.setVisible(false);
         jCheckHabilidad3.setVisible(false);
@@ -604,7 +603,8 @@ public final class VistaPartidas extends javax.swing.JFrame {
         int[] seleccionados = jTableBorrar.getSelectedRows();
         for (int i = 0; i < seleccionados.length; i++) {
             try {
-                controlador.eliminarPartida(partidas.get(seleccionados[i]).getIdPartida());
+                Partida p = partidas.get(seleccionados[i]);
+                controlador.eliminarPartida(p.getUsuario(), p.getIdPartida());
             } catch (IOException ex) {
                 Logger.getLogger(VistaPartidas.class.getName()).log(Level.SEVERE, null, ex);
             }

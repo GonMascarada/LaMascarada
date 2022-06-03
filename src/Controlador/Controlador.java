@@ -157,7 +157,7 @@ public final class Controlador {
         boolean seguir;
 
         //1.Evaluar la opción que se acaba de tomar.
-        seguir = evaluarAccion(opcion);
+        seguir = evaluarAccion(opcion.getAccion());
         partida.sumarTiempo(opcion.getTiempo());
 
         // Si se tienen que seguir lanzando escenas. 
@@ -272,9 +272,11 @@ public final class Controlador {
      *
      * @param opcion la opción tomada.
      */
-    private boolean evaluarAccion(Opcion opcion) throws FileNotFoundException, IOException {
+    private boolean evaluarAccion(int accion) throws FileNotFoundException, IOException {
         boolean seguir = true;
-        switch (opcion.getAccion()) {
+        boolean aux1, aux2, aux3;
+        String habilidades;
+        switch (accion) {
             case Util.AC_PROGRESO -> {
                 try {
                     partida.setProgreso(partida.getProgreso() + 1);
@@ -283,6 +285,26 @@ public final class Controlador {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            case Util.AC_GUARDAR -> {
+                guardarPartida(false);
+            }
+            case Util.AC_SALIR -> {
+                try {
+                    seguir = false;
+                    new VistaPartidas(this, partida.getUsuario()).setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            case Util.AC_GUARDAR_Y_SALIR -> {
+                aux1 = evaluarAccion(Util.AC_GUARDAR);
+                aux2 = evaluarAccion(Util.AC_SALIR);
+                seguir = aux1 && aux2;
+            }
+            case Util.AC_CURAR -> {
+                partida.setVidaAlMaximo();
+            }
+
             case Util.AC_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }
@@ -329,22 +351,16 @@ public final class Controlador {
                     partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
                 }
             }
-            case Util.AC_FIN -> {
-                try {
-                    seguir = false;
-                    new VistaPartidas(this, partida.getUsuario()).setVisible(true);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            case Util.AC_OBTENER_LLAVE -> {
+                System.out.println("Vamos a obtener el llave");
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Llave");
+                    if (e.getNombre().equals("")) {
+                        System.out.println("Error al obtener el Llave, el npc no lo tiene.");
+                    }
+                    partida.getProtagonista().addObjeto(e);
+                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
-            }
-
-            case Util.AC_MOSTRAR_MAPA -> {
-                seguir = false;
-                new Mapa(this).setVisible(true);
-            }
-            case Util.AC_MOSTRAR_TIENDA -> {
-                seguir = false;
-                new VistaTienda(this).setVisible(true);
             }
             case Util.AC_OBTENER_MAPA -> {
                 System.out.println("Vamos a obtener el mapa");
@@ -357,7 +373,91 @@ public final class Controlador {
                     System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
+            case Util.AC_OBTENER_MASCARILLA -> {
+                System.out.println("Vamos a obtener el mascarilla");
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Mascarilla");
+                    if (e.getNombre().equals("")) {
+                        System.out.println("Error al obtener el mascarilla, el npc no lo tiene.");
+                    }
+                    partida.getProtagonista().addObjeto(e);
+                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
+                }
+            }
+            case Util.AC_OBTENER_PISTOLA -> {
+                System.out.println("Vamos a obtener el Pistola");
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Pistola");
+                    if (e.getNombre().equals("")) {
+                        System.out.println("Error al obtener el Pistola, el npc no lo tiene.");
+                    }
+                    partida.getProtagonista().addObjeto(e);
+                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
+                }
+            }
+            case Util.AC_OBTENER_NOTA -> { //No de un pnj
+                Equipo e = bbdd.getEquipo("Nota");
+                partida.getProtagonista().addObjeto(e);
+            }
+            case Util.AC_OBTENER_COLGANTE_ROJO -> { //No de un pnj
+                Equipo e = bbdd.getEquipo("Colgante Rojo");
+                partida.getProtagonista().addObjeto(e);
+            }
+            case Util.AC_OBTENER_LLAVE_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_LLAVE);
+                aux2 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2;
+            }
+            case Util.AC_OBTENER_MAPA_Y_AGRADAR_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
+                aux2 = evaluarAccion(Util.AC_AGRADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_OBTENER_MAPA_Y_ENFADAR_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
+                aux2 = evaluarAccion(Util.AC_ENFADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_OBTENER_MASCARILLA_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_MASCARILLA);
+                aux2 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2;
+            }
+            case Util.AC_OBTENER_NOTA_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_NOTA);
+                aux2 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2;
+            }
+            case Util.AC_LECTURA_MANOS -> {
+                String texto = bbdd.getInfoHabilidades(partida.getProtagonista().getHabilidades().split(";"));
+                new PopUpInfoExtra(texto).setVisible(true);
+            }
+            case Util.AC_LECTURA_MANOS_AGRADAR_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_LECTURA_MANOS);
+                aux2 = evaluarAccion(Util.AC_AGRADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_FIN -> {
+                try {
+                    seguir = false;
+                    new VistaPartidas(this, partida.getUsuario()).setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            case Util.AC_MOSTRAR_MAPA -> {
+                seguir = false;
+                new Mapa(this).setVisible(true);
+            }
+            case Util.AC_MOSTRAR_TIENDA -> {
+                seguir = false;
+                new VistaTienda(this).setVisible(true);
+            }
         }
+
         if (evaularMecanica()) {
             Escena e = bbdd.getEscena(Util.ES_MUERTE, partida.getIdPartida());
             partida.setEscena(e);
@@ -448,6 +548,7 @@ public final class Controlador {
      */
     private boolean evaluarCondicion(int condicion) {
         boolean cumplida = false;
+        boolean aux1, aux2, aux3;
         Escena escena = partida.getEscena();
         String clan = partida.getProtagonista().getClan().getNombre();
         switch (condicion) {
@@ -488,6 +589,11 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
+            case Util.SI_BRUJAH_O_VENTRUE -> {
+                if ((clan.equals("Brujah")) || (clan.equals("Ventrue"))) {
+                    cumplida = true;
+                }
+            }
             case Util.SI_MAPA -> {
                 System.out.println("Compruebo si tiene mapa.");
                 if (buscarEquipo("Mapa")) {
@@ -516,13 +622,6 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
-            case Util.SI_AZUCARILLO -> {
-                System.out.println("Compruebo si tiene Azucarillo.");
-                if (buscarEquipo("Azucarillo")) {
-                    System.out.println("Azucarillo encontrado.");
-                    cumplida = true;
-                }
-            }
             case Util.SI_PISTA -> {
                 System.out.println("Compruebo si tiene Nota.");
                 if (buscarEquipo("Nota")) {
@@ -530,6 +629,67 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
+            case Util.SI_MASCARILLA -> {
+                System.out.println("Compruebo si tiene Mascarilla.");
+                if (buscarEquipo("Mascarilla")) {
+                    System.out.println("Mascarilla encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_COLGANTE_ROJO -> {
+                System.out.println("Compruebo si tiene Colgante Rojo.");
+                if (buscarEquipo("Colgante Rojo")) {
+                    System.out.println("Colgante Rojo encontrado.");
+                    cumplida = true;
+                }
+            }
+            case Util.SI_NO_MASCARILLA -> {
+                cumplida = !evaluarCondicion(Util.SI_MASCARILLA);
+            }
+            case Util.SI_NO_MAPA -> {
+                cumplida = !evaluarCondicion(Util.SI_MAPA);
+            }
+            case Util.SI_NO_NOSFERATU -> {
+                cumplida = !evaluarCondicion(Util.SI_NOSFERATU);
+            }
+            case Util.SI_NOSFERATU_U_OTRO_EA -> {
+                //Ser nosferatu o estar contento o enfadado
+                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
+                aux2 = evaluarCondicion(Util.SI_AGRADADO);
+                aux3 = evaluarCondicion(Util.SI_ENFADADO);
+                cumplida = aux1 && (aux2 || aux3);
+            }
+            case Util.SI_NO_NOSFERATU_Y_PASS_Y_NO_AGRADADO -> {
+                //No ser nosferatu, tener la contrasña y el pnj no esté agradado
+                aux1 = evaluarCondicion(Util.SI_NO_NOSFERATU);
+                aux2 = evaluarCondicion(Util.SI_PASS);
+                aux3 = !evaluarCondicion(Util.SI_AGRADADO);
+                cumplida = aux1 && aux2 && aux3;
+            }
+            case Util.SI_NOSFERATU_Y_NO_MASCARILLA -> {
+                //Ser nosferatu y no tener mascarilla.
+                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
+                aux2 = !evaluarCondicion(Util.SI_MASCARILLA);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_NOSFERATU_Y_MASCARILLA -> {
+                //Ser nosferatu y tener mascarilla.
+                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
+                aux2 = evaluarCondicion(Util.SI_MASCARILLA);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_VENTRUE_Y_NO_PISTOLA -> {
+                //Ser Ventrue y no tener pistola.
+                aux1 = evaluarCondicion(Util.SI_VENTRUE);
+                aux2 = !evaluarCondicion(Util.SI_PISTA);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_TREMERE_Y_NO_COLGANTE_ROJO -> {
+                //Ser tremere y no tener colgante rojo.
+                aux1 = evaluarCondicion(Util.SI_TREMERE);
+                aux2 = !evaluarCondicion(Util.SI_COLGANTE_ROJO);
+                cumplida = aux1 && aux2;
+            }        
         }
         return cumplida;
     }
