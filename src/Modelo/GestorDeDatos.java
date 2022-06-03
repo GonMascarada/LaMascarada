@@ -1,8 +1,10 @@
 package Modelo;
 
 import Mascarada.Clan;
+import Mascarada.Equipo;
 import Mascarada.Escena;
 import Mascarada.Partida;
+import Mascarada.Util;
 import Mascarada.Vampire;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -130,6 +132,21 @@ public class GestorDeDatos {
     }
 
     /**
+     * Devuelve un objeto concreto dado su nombre.
+     *
+     * @param nombre
+     * @return
+     */
+    public Equipo getEquipo(String nombre) {
+        try {
+            return Fichero.getEquipo(nombre);
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /**
      * Devuleve una escena concreta.
      *
      * @param idEscena identificador de la escena.
@@ -143,6 +160,32 @@ public class GestorDeDatos {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    /**
+     * Devuelve la información sobre las dos habilidades.
+     *
+     * @param habilidades
+     * @return
+     */
+    public String getInfoHabilidades(String[] habilidades) {
+        String resultado = "";
+        try {
+            ArrayList<String> texto = Fichero.leerJar(Util.JAR_HABILIDAD, true);
+            String[] linea;
+            for (int i = 0; i < texto.size(); i++) {
+                linea = texto.get(i).split("");
+                if (linea[0].equals(habilidades[0])) {
+                    resultado = linea[0] + " - " + linea[1] + "\n";
+                } else if (linea[0].equals(habilidades[1])) {
+                    resultado = linea[0] + " - " + linea[1] + "\n";
+                }
+            }
+            Fichero.getListaClanes();
+        } catch (IOException ex) {
+            Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
     }
 
     /**
@@ -199,10 +242,9 @@ public class GestorDeDatos {
     public void guardarPartida(Partida partida, boolean nuevaPartida) throws SQLException {
         String usuario = partida.getUsuario();
         try {
-            if (usuario.equals("Local")) {
-                Fichero.guardarPartida(partida, true);
-            } else if (bd.isConectado()) {
-                Fichero.guardarPartida(partida, false);
+            Fichero.guardarPartida(partida);
+            if (bd.isConectado()) {
+                Fichero.guardarPartida(partida);
                 if (nuevaPartida) {
                     try {
                         bd.insertarPartida(partida);
@@ -245,4 +287,5 @@ public class GestorDeDatos {
     public boolean isConectado() {
         return bd.isConectado();
     }
+
 }

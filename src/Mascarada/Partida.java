@@ -315,4 +315,11 @@ public class Partida {
     public void setDificultad(int dificultad) {
         this.dificultad = dificultad;
     }
+
+    /**
+     * Pone la vida del protagonista al máximo.
+     */
+    public void setVidaAlMaximo() {
+        protagonista.setVidaActual(protagonista.getVidaMax());
+    }
 }

@@ -18,59 +18,45 @@ public class Mapa extends javax.swing.JFrame {
     private Controlador controlador;
     /**
      * Creates new form Mapa
+     * @param controlador
      */
     public Mapa(Controlador controlador) {
         initComponents();
         this.controlador= controlador;
         Util.centrar(this);
-        
-        callejon.setText("Callejon");
-        callejon.setForeground(Color.white);
-        callejon.setBackground(Color.black);
+      
          
-        biblioteca .setText("Biblioteca");
-        biblioteca.setForeground(Color.white);
-        biblioteca.setBackground(Color.black);
+        jButtonBiblioteca.setForeground(Color.white);
+        jButtonBiblioteca.setBackground(Color.black);
         
-        entrada.setText("Entrada pueblo");
-        entrada.setForeground(Color.white);
-        entrada.setBackground(Color.black);
+        jButtonColegio.setForeground(Color.white);
+        jButtonColegio.setBackground(Color.black);
         
-        colina.setText("Casa colina");
-        colina.setForeground(Color.white);
-        colina.setBackground(Color.black);
+        jButtonMansion.setForeground(Color.white);
+        jButtonMansion.setBackground(Color.black);
         
-        motel.setText("Motel");
-        motel.setForeground(Color.white);
-        motel.setBackground(Color.black);
+        jButtonMotel.setForeground(Color.white);
+        jButtonMotel.setBackground(Color.black);
+        jButtonCasaabAbandonada.setForeground(Color.white);
+        jButtonCasaabAbandonada.setBackground(Color.black);
         
-        casaabandonada.setText("Casa abandonada");
-        casaabandonada.setForeground(Color.white);
-        casaabandonada.setBackground(Color.black);
+        jButtonPub.setForeground(Color.white);
+        jButtonPub.setBackground(Color.black);
         
-        pub1.setText("Pub 1");
-        pub1.setForeground(Color.white);
-        pub1.setBackground(Color.black);
+        jButtonPeriodico.setForeground(Color.white);
+        jButtonPeriodico.setBackground(Color.black);
+
+        jButtonCallejonTienda.setForeground(Color.white);
+        jButtonCallejonTienda.setBackground(Color.black);
         
-        periodicoDentro.setText("Periodico dentro");
-        periodicoDentro.setForeground(Color.white);
-        periodicoDentro.setBackground(Color.black);
+        jButtonBar.setForeground(Color.white);
+        jButtonBar.setBackground(Color.black);
         
-        callejonTienda.setText("Callejon tienda");
-        callejonTienda.setForeground(Color.white);
-        callejonTienda.setBackground(Color.black);
+        jButtonIglesia.setForeground(Color.white);
+        jButtonIglesia.setBackground(Color.black);
         
-        pub2.setText("Pub 2");
-        pub2.setForeground(Color.white);
-        pub2.setBackground(Color.black);
-        
-        puertaIglesia.setText("Puerta iglesia");
-        puertaIglesia.setForeground(Color.white);
-        puertaIglesia.setBackground(Color.black);
-        
-        plazaCentral.setText("Plaza central");
-        plazaCentral.setForeground(Color.white);
-        plazaCentral.setBackground(Color.black);
+        jButtonPlazaCentral.setForeground(Color.white);
+        jButtonPlazaCentral.setBackground(Color.black);
         
 
     }
@@ -87,18 +73,17 @@ public class Mapa extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        callejon = new javax.swing.JButton();
-        biblioteca = new javax.swing.JButton();
-        entrada = new javax.swing.JButton();
-        colina = new javax.swing.JButton();
-        casaabandonada = new javax.swing.JButton();
-        pub1 = new javax.swing.JButton();
-        periodicoDentro = new javax.swing.JButton();
-        callejonTienda = new javax.swing.JButton();
-        pub2 = new javax.swing.JButton();
-        puertaIglesia = new javax.swing.JButton();
-        plazaCentral = new javax.swing.JButton();
-        motel = new javax.swing.JButton();
+        jButtonBiblioteca = new javax.swing.JButton();
+        jButtonColegio = new javax.swing.JButton();
+        jButtonMansion = new javax.swing.JButton();
+        jButtonCasaabAbandonada = new javax.swing.JButton();
+        jButtonPub = new javax.swing.JButton();
+        jButtonPeriodico = new javax.swing.JButton();
+        jButtonCallejonTienda = new javax.swing.JButton();
+        jButtonBar = new javax.swing.JButton();
+        jButtonIglesia = new javax.swing.JButton();
+        jButtonPlazaCentral = new javax.swing.JButton();
+        jButtonMotel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,63 +91,99 @@ public class Mapa extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        callejon.setText("Callejon");
-        jPanel1.add(callejon);
-        callejon.setBounds(690, 650, 80, 40);
-
-        biblioteca.setText("Biblioteca");
-        biblioteca.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBiblioteca.setText("Biblioteca");
+        jButtonBiblioteca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bibliotecaActionPerformed(evt);
+                jButtonBibliotecaActionPerformed(evt);
             }
         });
-        jPanel1.add(biblioteca);
-        biblioteca.setBounds(160, 210, 90, 50);
+        jPanel1.add(jButtonBiblioteca);
+        jButtonBiblioteca.setBounds(690, 600, 90, 50);
 
-        entrada.setText("Entrada pueblo");
-        jPanel1.add(entrada);
-        entrada.setBounds(840, 110, 130, 40);
-
-        colina.setText("Casa colina");
-        jPanel1.add(colina);
-        colina.setBounds(870, 550, 100, 40);
-
-        casaabandonada.setText("Casa abandonada");
-        jPanel1.add(casaabandonada);
-        casaabandonada.setBounds(860, 280, 130, 40);
-
-        pub1.setText("Pub 1");
-        jPanel1.add(pub1);
-        pub1.setBounds(310, 100, 70, 40);
-
-        periodicoDentro.setText("Periodico Dentro");
-        jPanel1.add(periodicoDentro);
-        periodicoDentro.setBounds(190, 560, 120, 40);
-
-        callejonTienda.setText("Callejon tienda");
-        jPanel1.add(callejonTienda);
-        callejonTienda.setBounds(140, 470, 120, 40);
-
-        pub2.setText("Pub 2");
-        jPanel1.add(pub2);
-        pub2.setBounds(790, 410, 80, 40);
-
-        puertaIglesia.setText("Puerta iglesia");
-        jPanel1.add(puertaIglesia);
-        puertaIglesia.setBounds(90, 360, 120, 40);
-
-        plazaCentral.setText("Plaza central");
-        jPanel1.add(plazaCentral);
-        plazaCentral.setBounds(550, 420, 120, 40);
-
-        motel.setText("Motel");
-        motel.addActionListener(new java.awt.event.ActionListener() {
+        jButtonColegio.setText("Colegio");
+        jButtonColegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                motelActionPerformed(evt);
+                jButtonColegioActionPerformed(evt);
             }
         });
-        jPanel1.add(motel);
-        motel.setBounds(390, 400, 90, 40);
+        jPanel1.add(jButtonColegio);
+        jButtonColegio.setBounds(840, 110, 130, 40);
+
+        jButtonMansion.setText("Mansión");
+        jPanel1.add(jButtonMansion);
+        jButtonMansion.setBounds(870, 550, 100, 40);
+
+        jButtonCasaabAbandonada.setText("Casa abandonada");
+        jButtonCasaabAbandonada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCasaabAbandonadaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonCasaabAbandonada);
+        jButtonCasaabAbandonada.setBounds(860, 280, 130, 40);
+
+        jButtonPub.setText("Pub");
+        jButtonPub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPubActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonPub);
+        jButtonPub.setBounds(310, 100, 70, 40);
+
+        jButtonPeriodico.setText("Periodico");
+        jButtonPeriodico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPeriodicoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonPeriodico);
+        jButtonPeriodico.setBounds(170, 530, 120, 40);
+
+        jButtonCallejonTienda.setText("Callejón");
+        jButtonCallejonTienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCallejonTiendaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonCallejonTienda);
+        jButtonCallejonTienda.setBounds(60, 80, 120, 40);
+
+        jButtonBar.setText("Sally´s");
+        jButtonBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonBar);
+        jButtonBar.setBounds(790, 410, 80, 40);
+
+        jButtonIglesia.setText("Iglesia");
+        jButtonIglesia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIglesiaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonIglesia);
+        jButtonIglesia.setBounds(180, 280, 120, 40);
+
+        jButtonPlazaCentral.setText("Plaza central");
+        jButtonPlazaCentral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPlazaCentralActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonPlazaCentral);
+        jButtonPlazaCentral.setBounds(520, 410, 120, 40);
+
+        jButtonMotel.setText("Motel");
+        jButtonMotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMotelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonMotel);
+        jButtonMotel.setBounds(310, 390, 90, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/mapa.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -183,15 +204,45 @@ public class Mapa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
-        // TODO add your handling code here:
-        controlador.cargarEscena(Util.BIBLIOTECA);
-        
-    }//GEN-LAST:event_bibliotecaActionPerformed
+    private void jButtonBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBibliotecaActionPerformed
+        controlador.cargarEscena(Util.ES_BIBLIOTECA);        
+    }//GEN-LAST:event_jButtonBibliotecaActionPerformed
 
-    private void motelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_motelActionPerformed
+    private void jButtonMotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMotelActionPerformed
+        controlador.cargarEscena(Util.ES_MOTEL); 
+    }//GEN-LAST:event_jButtonMotelActionPerformed
+
+    private void jButtonPubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPubActionPerformed
+        controlador.cargarEscena(Util.ES_PUB); 
+    }//GEN-LAST:event_jButtonPubActionPerformed
+
+    private void jButtonIglesiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIglesiaActionPerformed
+        controlador.cargarEscena(Util.ES_IGLESIA); 
+    }//GEN-LAST:event_jButtonIglesiaActionPerformed
+
+    private void jButtonCallejonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCallejonTiendaActionPerformed
+        controlador.cargarEscena(Util.ES_CALLEJON); 
+    }//GEN-LAST:event_jButtonCallejonTiendaActionPerformed
+
+    private void jButtonPeriodicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPeriodicoActionPerformed
+        controlador.cargarEscena(Util.ES_PERIODICO); 
+    }//GEN-LAST:event_jButtonPeriodicoActionPerformed
+
+    private void jButtonPlazaCentralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlazaCentralActionPerformed
+        controlador.cargarEscena(Util.ES_PLAZA); 
+    }//GEN-LAST:event_jButtonPlazaCentralActionPerformed
+
+    private void jButtonBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBarActionPerformed
+        controlador.cargarEscena(Util.ES_BAR); 
+    }//GEN-LAST:event_jButtonBarActionPerformed
+
+    private void jButtonCasaabAbandonadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCasaabAbandonadaActionPerformed
+        controlador.cargarEscena(Util.ES_CASA_ABANDONADA); 
+    }//GEN-LAST:event_jButtonCasaabAbandonadaActionPerformed
+
+    private void jButtonColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColegioActionPerformed
+        controlador.cargarEscena(Util.ES_COLEGIO); 
+    }//GEN-LAST:event_jButtonColegioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,19 +280,18 @@ public class Mapa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton biblioteca;
-    private javax.swing.JButton callejon;
-    private javax.swing.JButton callejonTienda;
-    private javax.swing.JButton casaabandonada;
-    private javax.swing.JButton colina;
-    private javax.swing.JButton entrada;
+    private javax.swing.JButton jButtonBar;
+    private javax.swing.JButton jButtonBiblioteca;
+    private javax.swing.JButton jButtonCallejonTienda;
+    private javax.swing.JButton jButtonCasaabAbandonada;
+    private javax.swing.JButton jButtonColegio;
+    private javax.swing.JButton jButtonIglesia;
+    private javax.swing.JButton jButtonMansion;
+    private javax.swing.JButton jButtonMotel;
+    private javax.swing.JButton jButtonPeriodico;
+    private javax.swing.JButton jButtonPlazaCentral;
+    private javax.swing.JButton jButtonPub;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton motel;
-    private javax.swing.JButton periodicoDentro;
-    private javax.swing.JButton plazaCentral;
-    private javax.swing.JButton pub1;
-    private javax.swing.JButton pub2;
-    private javax.swing.JButton puertaIglesia;
     // End of variables declaration//GEN-END:variables
 }

@@ -462,7 +462,7 @@ public final class Fichero {
      * @param string nombre del equipo.
      * @return
      */
-    private static Equipo getEquipo(String nombre) throws IOException {
+    public static Equipo getEquipo(String nombre) throws IOException {
         InputStream inputStream = VistaPartidas.class.getResourceAsStream(Util.JAR_EQUIPO);
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -898,10 +898,9 @@ public final class Fichero {
      * Guarda el estado actual de la partida.
      *
      * @param partida a guardar.
-     * @param local
      * @throws java.io.FileNotFoundException
      */
-    public static void guardarPartida(Partida partida, boolean local) throws FileNotFoundException, IOException {
+    public static void guardarPartida(Partida partida) throws FileNotFoundException, IOException {
         int id;
         String usuario = partida.getUsuario();
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
