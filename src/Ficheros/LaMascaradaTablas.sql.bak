@@ -79,7 +79,6 @@ CREATE TABLE IF NOT EXISTS Partida (
     UltimaPista VARCHAR(280),
     IdEscena INT,
     Usuario VARCHAR(20),
-	Dificultad VARCHAR(20),
     FOREIGN KEY (IdEscena) REFERENCES Escena(IdEscena),
     FOREIGN KEY (Usuario) REFERENCES Usuario(Usuario)
 );

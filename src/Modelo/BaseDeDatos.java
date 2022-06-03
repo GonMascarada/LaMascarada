@@ -177,6 +177,7 @@ public class BaseDeDatos {
         stmt.setString(7, partida.getUltimaPista());
         stmt.setInt(8, partida.getEscena().getIdEscena());
         stmt.setString(9, usuario);
+        stmt.setInt(10, partida.getDificultad());
         stmt.executeUpdate();
         stmt.close();
         // 2.Guardar los datos de los personajes, protagonista incluido.
@@ -225,7 +226,7 @@ public class BaseDeDatos {
 
         // 4.Actualizar la última modificación
         stmt = conn.prepareStatement(Util.UP_FECHA);
-        stmt.setTimestamp(1, timestamp);
+        stmt.setTimestamp(1, Timestamp.valueOf(partida.getFecha()));
         stmt.setString(2, partida.getUsuario());
         stmt.close();
     }
@@ -260,7 +261,8 @@ public class BaseDeDatos {
             linea += r.getInt("Sospecha") + ";";
             linea += r.getString("UltimaPista") + ";";
             linea += r.getInt("IdEscena") + ";";
-            linea += r.getString("Usuario");
+            linea += r.getString("Usuario") + ";";
+            linea += r.getString("Dificultad");
             Fichero.escribirTexto(Util.URL_PARTIDA, linea, true);
         }
         r.close();
@@ -287,7 +289,7 @@ public class BaseDeDatos {
         }
         r.close();
         stmt.close();
-        
+
         //Equipos
         stmt = conn.prepareStatement(Util.SE_EQ_PA_PE);
         stmt.setString(1, usuario);
@@ -331,24 +333,35 @@ public class BaseDeDatos {
 
         System.out.println("Local: " + local);
         System.out.println("BD: " + bd);
+        long diferencia = local.getTime() - bd.getTime();
+        System.out.println("Diferencia: " + diferencia);
         //Comparo las horas
-        if (local.after(bd)) {
-            System.out.println("After");
-            //Subo el local a la bd
-            //1. Borrar todos los datos de la partida
-            stmt = conn.prepareStatement(Util.DE_PARTIDA);
-            stmt.setString(1, usuario);
-            stmt.executeUpdate();
-            //2. Insertar en la bd los datos almacenados en ficheros
-            partidas = Fichero.getListaPartidas(usuario);
-            for (Partida partida : partidas) {
-                insertarPartida(partida);
+        if (diferencia > 30000) {
+            if (local.after(bd)) {
+                System.out.println("After");
+                //Subo el local a la bd
+                //1. Borrar todos los datos de la partida
+                stmt = conn.prepareStatement(Util.DE_PARTIDA);
+                stmt.setString(1, usuario);
+                stmt.executeUpdate();
+                //2. Insertar en la bd los datos almacenados en ficheros
+                partidas = Fichero.getListaPartidas(usuario);
+                for (Partida partida : partidas) {
+                    insertarPartida(partida);
+                }
+            } else if (local.before(bd)) {
+                System.out.println("Before");
+                // Bajo bd a local
+                seleccionarPartidas(usuario);
             }
-        } else if (local.before(bd)) {
-            System.out.println("Before");
-            // Bajo bd a local
-            seleccionarPartidas(usuario);
         }
+        local = new Timestamp(System.currentTimeMillis());
+        Fichero.escribirTexto(Util.URL_ULTMA_MODIFICACION, String.valueOf(local), false);
+        stmt = conn.prepareStatement(Util.UP_FECHA);
+        stmt.setTimestamp(1, local);
+        stmt.setString(2, usuario);
+        stmt.executeUpdate();
+        stmt.close();
     }
 
 }

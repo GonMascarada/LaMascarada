@@ -22,7 +22,7 @@ public final class Util {
     public static final String URL_PARTIDA_LOCAL = "C:\\Users\\Public\\Documents\\La Mascarada\\partida_local.csv";
     public static final String URL_ULTMA_MODIFICACION = "C:\\Users\\Public\\Documents\\La Mascarada\\ultimaModificacion.csv";
     public static final String URL_BD = "C:\\Users\\Public\\Documents\\La Mascarada\\bd.csv";
-    public static final String URL_INSERTS = "C:\\Users\\Public\\Documents\\La Mascarada\\script.sql";
+    public static final String URL_INSERTS = "C:\\Users\\Public\\Documents\\script.sql";
 
     //Url´s a los dicheros del JAR
     public static final String JAR_TEXTO_ESCENA = "/Ficheros/texto-escena.csv";
@@ -39,7 +39,7 @@ public final class Util {
     // Cabecera ficheros
     public static final String CABECERA_PERSONAJE = "﻿Nombre;Ataque;Defensa;VidaMax;Vida;Dinero;EstadoDeAnimo;NombreDeClan;Habilidad1;Habilidad2;IdPartida;Usuario";
     public static final String CABECERA_EQ_PA_PE = "﻿NombreEquipo;IdPartida;NombrePersonaje;EnUso;Usuario";
-    public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;Usuario";
+    public static final String CABECERA_PARTIDA = "﻿IdPartida;Fecha;Tiempo;Progreso;SedDeSangre;Sospecha;ÚltimaPista;IdEscena;Usuario;Dificultad";
     public static final String CABECERA_BD = "3306;;root";
 
     //Base de datos
@@ -47,7 +47,7 @@ public final class Util {
     public static final String TABLA = "/lamascarada";
 
     //Consultas
-    public static final String IN_PARTIDA = "INSERT INTO `lamascarada`.`partida` (`IdPartida`, `Fecha`, `Tiempo`, `Progreso`, `SedSangre`, `Sospecha`, `UltimaPista`, `IdEscena`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String IN_PARTIDA = "INSERT INTO `lamascarada`.`partida` (`IdPartida`, `Fecha`, `Tiempo`, `Progreso`, `SedSangre`, `Sospecha`, `UltimaPista`, `IdEscena`, `Usuario`, `Dificultad`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     public static final String IN_PERSONAJE = "INSERT INTO `personaje_en_partida` (`Nombre`, `Ataque`, `Defensa`, `VidaMax`, `Vida`, `Dinero`, `EstadoAnimo`, `NombreClan`, `NombreHabilidad1`, `NombreHabilidad2`, `IdPartida`, `Usuario`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     public static final String IN_EQ_PA_PE = "INSERT INTO `equipo_partida_personaje_en_partida` (`NombreEquipo`, `IdPartida`, `NombrePersonaje`, `EnUso`, `Usuario`) VALUES (?, ?, ?, ?, ?);";
     public static final String UP_FECHA = "UPDATE `usuario` SET `Ultima_Modificacion` = ? WHERE `usuario`.`Usuario` = ?;";

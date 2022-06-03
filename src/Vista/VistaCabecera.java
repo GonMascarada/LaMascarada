@@ -69,11 +69,11 @@ public class VistaCabecera extends javax.swing.JPanel {
         clan.setText(partida.getProtagonista().getClan().getNombre());
         hora.setText(partida.getFecha() + "");
         barraSangre.setValue(partida.getSedDeSangre());
-        barraSangre.setMaximum(Util.SED_MAX);
+        barraSangre.setMaximum(partida.getDificultad());
         barraProgreso.setValue(partida.getProgreso());
-        barraProgreso.setMaximum(Util.PROGRESO_MAX);
+        barraProgreso.setMaximum(partida.getDificultad());
         barraSospecha.setValue(partida.getSospecha());
-        barraSospecha.setMaximum(Util.SOSPECHA_MAX);
+        barraSospecha.setMaximum(partida.getDificultad());
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
         tiempoJugadoDato.setText(partida.getTiempo() + "");
