@@ -97,6 +97,7 @@ public final class Controlador {
      * @param clan del nuevo personaje.
      * @param nombre del nuevo personaje.
      * @param dificultad de la partida.
+     * @param usuario
      * @throws java.io.IOException
      */
     public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad, String usuario) throws IOException {
@@ -119,6 +120,17 @@ public final class Controlador {
         //Insertamos el usuario al que pertenece
         partida.setUsuario(usuario);
 
+        //Insertamos la dificultad
+        switch (dificultad) {
+            case "Facil" ->
+                partida.setDificultad(Util.FACIL);
+            case "Normal" ->
+                partida.setDificultad(Util.NORMAL);
+            case "Dificil" ->
+                partida.setDificultad(Util.DIFICIL);
+            case "Pesadilla" ->
+                partida.setDificultad(Util.PESADILLA);
+        }
         //Insertamos el texto correcto para esa escena.
         textos = bbdd.getTextos(partida.getEscena().getIdEscena());
         texto = getTextoCorrecto(textos);
@@ -201,7 +213,7 @@ public final class Controlador {
         try {
             // 1. Se eliminan los pnc´s que no han sufrido cambios.
             partida.borrarNpcsInalterados();
-            
+
             // 2. Se almacena todos los datos de la partida en la base de datos.
             bbdd.guardarPartida(partida, nuevaPartida);
         } catch (SQLException ex) {
@@ -271,12 +283,41 @@ public final class Controlador {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
             case Util.AC_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }
             case Util.AC_SEDSANGRE -> {
                 partida.setSedDeSangre(partida.getSedDeSangre() + 1);
+            }
+            case Util.AC_PELEAR -> {
+                String pelea = "";
+                int dañoProta, dañoEnemi;
+                Boolean turnoProta = false;
+                Vampire prota = partida.getProtagonista();
+                Persona enemi = partida.getEscena().getPnj();
+                String nomProta = prota.getNombre();
+                String nomEnemi = enemi.getNombre();
+                if (enemi instanceof Vampire vEnemi) {
+                    dañoProta = calcularDaño(prota.getAtaque(), vEnemi.getDefensa());
+                    dañoEnemi = calcularDaño(vEnemi.getAtaque(), prota.getDefensa());
+                } else {
+                    dañoProta = calcularDaño(prota.getAtaque(), enemi.getDefensa());
+                    dañoEnemi = calcularDaño(enemi.getAtaque(), prota.getDefensa());
+                }
+                if (Math.random() < 0.5) {
+                    turnoProta = true;
+                }
+                while ((prota.getVidaActual() > 0) && (enemi.getVidaActual() > 0)) {
+                    if (turnoProta) {
+                        pelea += nomProta + "(" + prota.getVidaActual() + "//" + prota.getVidaMax() + ") ha causado " + dañoProta + " puntos de daño.\n";
+                        enemi.setVidaActual(enemi.getVidaActual() - dañoProta);
+                    } else {
+                        pelea += nomEnemi + "(" + enemi.getVidaActual() + "//" + enemi.getVidaMax() + ") ha causado " + dañoEnemi + " puntos de daño.\n";
+                        prota.setVidaActual(prota.getVidaActual() - dañoEnemi);
+                    }
+                    turnoProta = !turnoProta;
+                }
+                new PopUpCombate(pelea).setVisible(true);
             }
             case Util.AC_AGRADAR -> {
                 if (partida.getEscena().hayPnj()) {
@@ -317,7 +358,40 @@ public final class Controlador {
                 }
             }
         }
+        if (evaularMecanica()) {
+            Escena e = bbdd.getEscena(Util.ES_MUERTE, partida.getIdPartida());
+            partida.setEscena(e);
+        }
         return seguir;
+    }
+
+    /**
+     * Evalua si uno de los valores de la mecánica ha alcanzado el máximo.
+     *
+     * @param valor true si se debe detener el juego, false en otro caso.
+     * @return
+     */
+    private boolean evaularMecanica() {
+        int dif = partida.getDificultad();
+        return (partida.getSedDeSangre() >= dif)
+                || (partida.getSospecha() >= dif)
+                || (partida.getProtagonista().getVidaActual() <= 0);
+    }
+
+    /**
+     * Calcula el daño que se hace en funcion del ataque del atacante y la
+     * defensa del defensor.
+     *
+     * @param ataque del atacante.
+     * @param defensa del defensor.
+     * @return
+     */
+    private int calcularDaño(int ataque, int defensa) {
+        int daño = ataque - defensa;
+        if (daño < 0) {
+            daño = 0;
+        }
+        return daño;
     }
 
     /**
@@ -535,8 +609,8 @@ public final class Controlador {
      * @return true si está disponible, false en otro caso.
      */
     public boolean comprobarNombreUsuario(String usuario) {
-        if(!usuario.equals("Local")){
-           return bbdd.comprobarNombreUsuario(usuario); 
+        if (!usuario.equals("Local")) {
+            return bbdd.comprobarNombreUsuario(usuario);
         }
         return false;
     }
@@ -551,7 +625,7 @@ public final class Controlador {
         bbdd.crearNuevoUsuario(usuario, pass);
     }
 
-    public void cargarEscena(int id){
+    public void cargarEscena(int id) {
         Escena escena = bbdd.getEscena(id, partida.getIdPartida());
         partida.setEscena(escena);
         lanzar();

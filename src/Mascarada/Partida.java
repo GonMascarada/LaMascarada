@@ -21,7 +21,7 @@ public class Partida {
     private String ultimaPista;
     private ArrayList<Persona> personajes;
     private String usuario;
-
+    private int dificultad;
     public Partida() {
     }
 
@@ -299,5 +299,19 @@ public class Partida {
      */
     public void sumarTiempo(int tiempo) {
         this.tiempo += tiempo;
+    }
+
+    /**
+     * @return the dificultad
+     */
+    public int getDificultad() {
+        return dificultad;
+    }
+
+    /**
+     * @param dificultad the dificultad to set
+     */
+    public void setDificultad(int dificultad) {
+        this.dificultad = dificultad;
     }
 }
