@@ -154,15 +154,16 @@ public class Persona {
      * adecuado para poder ser escritos en equipo-partida-personaje.csv
      *
      * @param idPartida
+     * @param usuario
      * @return
      */
-    public String getInfoEquipo(int idPartida) {
+    public String getInfoEquipo(int idPartida, String usuario) {
         String resultado = "";
         Equipo e;
         for (int i = 0; i < equipacion.size(); i++) {
             e = equipacion.get(i);
-            resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
-            resultado += nombre + ";" + e.isEnUso();
+            resultado = "\n" + e.getNombre() + ";" + idPartida + ";";
+            resultado += nombre + ";" + e.isEnUso()+ ";"+ usuario;
         }
         return resultado;
     }

@@ -172,13 +172,10 @@ public final class Controlador {
             partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
             //2.Pedir a la base de datos todos los posibles textos.
             textos = bbdd.getTextos(siguiente.getIdEscena());
-            for (int i = 0; i < textos.size(); i++) {
-                System.out.println("Texto " + i + ": " + textos.get(i));
-            }
+
             //3.Comprobar si se cumple alguna de las condiciones de los textos.
             //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
             texto = getTextoCorrecto(textos);
-            System.out.println("Texto a mostrar: " + texto);
             //3.1 Cambiamos -- por nombre del npc y ++ por el del protagonista.
             texto = texto.replace(".++", partida.getProtagonista().getNombre() + ": ");
             if (partida.getEscena().hayPnj()) {
@@ -279,7 +276,7 @@ public final class Controlador {
     private boolean evaluarAccion(int accion) throws FileNotFoundException, IOException {
         boolean seguir = true;
         boolean aux1, aux2, aux3;
-        String habilidades;
+
         switch (accion) {
             case Util.AC_PROGRESO -> {
                 try {
@@ -363,7 +360,6 @@ public final class Controlador {
                         System.out.println("Error al obtener el Llave, el npc no lo tiene.");
                     }
                     partida.getProtagonista().addObjeto(e);
-                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
             case Util.AC_OBTENER_MAPA -> {
@@ -374,7 +370,6 @@ public final class Controlador {
                         System.out.println("Error al obtener el mapa, el npc no lo tiene.");
                     }
                     partida.getProtagonista().addObjeto(e);
-                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
             case Util.AC_OBTENER_MASCARILLA -> {
@@ -385,7 +380,6 @@ public final class Controlador {
                         System.out.println("Error al obtener el mascarilla, el npc no lo tiene.");
                     }
                     partida.getProtagonista().addObjeto(e);
-                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
             case Util.AC_OBTENER_PISTOLA -> {
@@ -396,7 +390,6 @@ public final class Controlador {
                         System.out.println("Error al obtener el Pistola, el npc no lo tiene.");
                     }
                     partida.getProtagonista().addObjeto(e);
-                    System.out.println(partida.getProtagonista().getInfoEquipo(partida.getIdPartida()));
                 }
             }
             case Util.AC_OBTENER_NOTA -> { //No de un pnj
@@ -520,7 +513,7 @@ public final class Controlador {
                 new PopUpInfoExtra(texto).setVisible(true);
             } else if (evaluarCondicion(condicion)) {
                 texto = aux[1];
-            } revisar que se traiga la equipación de los pnj
+            }
             indice++;
         } while (indice < textos.size());
         return texto;
