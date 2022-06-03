@@ -103,7 +103,7 @@ public final class Controlador {
     public void iniciarNuevaPartida(Clan clan, String nombre, String dificultad, String usuario) throws IOException {
         String datos;
         Vampire vampire;
-        ArrayList<String[]> textos;
+        ArrayList<String> textos;
         Escena e;
         String texto;
 
@@ -117,7 +117,7 @@ public final class Controlador {
 
         //Pedimos a la base de datos una partida con todos los datos iniciales.
         partida = bbdd.iniciarNuevaPartida(vampire, usuario);
-        
+
         //Quitamos las opciones que no sean corrctas.
         e = partida.getEscena();
         e.setOpciones(evaluarOpciones(e.getOpciones()));
@@ -157,7 +157,7 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) throws IOException {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida());
-        ArrayList<String[]> textos;
+        ArrayList<String> textos;
         ArrayList<Opcion> opciones;
         String texto;
         boolean seguir;
@@ -172,15 +172,17 @@ public final class Controlador {
             partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
             //2.Pedir a la base de datos todos los posibles textos.
             textos = bbdd.getTextos(siguiente.getIdEscena());
-
+            for (int i = 0; i < textos.size(); i++) {
+                System.out.println("Texto " + i + ": " + textos.get(i));
+            }
             //3.Comprobar si se cumple alguna de las condiciones de los textos.
             //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
             texto = getTextoCorrecto(textos);
-
+            System.out.println("Texto a mostrar: " + texto);
             //3.1 Cambiamos -- por nombre del npc y ++ por el del protagonista.
-            texto = texto.replace("++", partida.getProtagonista().getNombre() + ": ");
+            texto = texto.replace(".++", partida.getProtagonista().getNombre() + ": ");
             if (partida.getEscena().hayPnj()) {
-                texto = texto.replace("--", partida.getEscena().getPnj().getNombre() + ": ");
+                texto = texto.replace(".--", partida.getEscena().getPnj().getNombre() + ": ");
             }
 
             //4.Insertar a la escena el texto
@@ -502,21 +504,25 @@ public final class Controlador {
      * @param textos lista cuyos campos son [condición, texto]
      * @return el texto oportuno.
      */
-    private String getTextoCorrecto(ArrayList<String[]> textos) {
+    private String getTextoCorrecto(ArrayList<String> textos) {
         String texto = "";
-        boolean encontrado = false;
+        String[] aux;
         int indice = 0;
         int condicion;
         do {
-            condicion = Integer.parseInt(textos.get(indice)[0]);
+            aux = textos.get(indice).split(";");
+            condicion = Integer.parseInt(aux[0]);
+            System.out.println("Condicion " + condicion);
             if (condicion == Util.SI_ESTANDAR) {
-                texto = textos.get(indice)[1];
+                texto = aux[1];
+            } else if (condicion == Util.SI_EXTRA) {
+                texto = aux[1];
+                new PopUpInfoExtra(texto).setVisible(true);
             } else if (evaluarCondicion(condicion)) {
-                texto = textos.get(indice)[1];
-                encontrado = true;
-            }
+                texto = aux[1];
+            } revisar que se traiga la equipación de los pnj
             indice++;
-        } while ((!encontrado) && (indice < textos.size()));
+        } while (indice < textos.size());
         return texto;
     }
 
@@ -526,15 +532,17 @@ public final class Controlador {
      * @param textos lista cuyos campos son [condición, texto]
      * @return el texto oportuno.
      */
-    private String getTextoExtra(ArrayList<String[]> textos) {
+    private String getTextoExtra(ArrayList<String> textos) {
         String texto = "";
         boolean encontrado = false;
         int indice = 0;
         int condicion;
+        String[] aux;
         do {
-            condicion = Integer.parseInt(textos.get(indice)[0]);
-            if (condicion == Util.SI_EXTRA) {
-                texto = textos.get(indice)[1];
+            aux = textos.get(indice).split(";");
+            condicion = Integer.parseInt(aux[0]);
+            if (condicion == Util.SI_ANIMALISMO) {
+                texto = aux[1];
                 encontrado = true;
             }
             indice++;

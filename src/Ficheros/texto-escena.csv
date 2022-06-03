@@ -21,8 +21,8 @@
 503;0;<html>.++No me importa quien eres, solo quiero un mapa del </br>pueblo..--Que tio mas borde…No me entretengas,</br> estoy trabajando.</html>
 510;0;<html>.--¡Anda! una cara nueva! Bienvenido a Sally´s, yo soy nombre del dueño, </br>soy el dueño del bar, también soy el cocinero y me gustaría ayudarte pero creo</br> que la más indicada es camarera, habla con ella si tienes alguna duda.</html>
 510;90;Ves que hace señas a la camarera para que hable contigo.
-520;91;<html>.--Este pueblo cada vez está peor, al igual que el café!.</html>
-520;90;No parece tener ganas de hablar.
+520;0;<html>.--Este pueblo cada vez está peor, al igual que el café!.</html>
+520;0;No parece tener ganas de hablar.
 521;0;<html>.++La verdad es que si, este café está malísimo, </br>deberían poner alguna galleta o algo al menos.</br>.--Oh! veo que eres nuevo, habla con camarera y que ella te diga los...lugares de interés del pueblo, si intenta ligar contigo no le hagas caso! lo hace con todo el mundo.++Gracias!</html>
 522;0;<html>.++Hay muchas cosas asquerosas en este bar, desde luego...</br>.--Eh! tranquilo, si vas buscando pelea deberias irte, no nos gustan</br> los forasteros engreidos…</html>
 750;0;<html>Ves luces y sombras moverse, así que supones que está </br>abierto y hay gente dentro.</html>
@@ -34,12 +34,12 @@
 755;0;<html>.++No te incumbe quien soy, dame la llave y punto.</br>.--Escucha chaval, no se quien eres ni qué has venido a hacer pero este es mi Motel</br> y aquí se me trata con respeto, deberías probar a ir al Pub, con esa actitud te darán una buena alli.</html>
 760;0;<html>.--Anda, una...cara nueva a estas horas? Bueno, dime </br>tu nombre y te daré una llave de una habitación.</html>
 761;11;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? Vengo de parte de Nosferatu ..--Oh...Entiendo, te diria de ir al Pub, pero siendo como el...Deberias pasarte por la habitacion 696, tenemos un huesped que quiza pueda...ayudarte con eso.</html>
-761;12;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? .--Te diria de ir al Pub, pero deberias pasarte por la habitacion 696, tenemos un huesped que quiza pueda ayudarte.</html>
+761;0;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? .--Te diria de ir al Pub, pero deberias pasarte por la habitacion 696, tenemos un huesped que quiza pueda ayudarte.</html>
 761;1;Llave obtenida.
 762;0;<html>Encuentras el cartel de la habitacion, pero por algun motivo el 9 del centro esta caido y parece que pone 666, curioso.</html>
 763;0;<html>Llamas a la puerta y una voz desde dentro dice, como esperando que llamases....--Si si, ya va...Despues de unos segundos un hombre te abre desde dentro, tiene los colmillos fuera y esta relamiendose la comisura de los labios..--Hooola! Me has pillado desayunando, dime, que puedo hacer por ti? Aunque bueno, estando aqui...supongo que querras una lectura de manos.</html>
 764;11;<html>Vuelves al vestibulo, la dueña te mira..--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir a la puerta de la iglesia.</html>
-764;12;<html>Vuelves al vestibulo, la dueña te mira..--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir al callejón.</html>
+764;0;<html>Vuelves al vestibulo, la dueña te mira..--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir al callejón.</html>
 770;0;<html>Llegas a un Motel, entrando por la puerta esta la recepcionista, que parece estar esperando algo..--Bienvenido al Motel, imagino que querras…Una habitación, no?.</html>
 771;0;<html>.--Claro! Pero la mas alejada la tiene el huésped de la habitación 696, tendrá que ser otra.++cualquiera me sirve, vengo de parte de Sally’s.--: Oh! Haberlo dicho antes! Tengo esta habitación para ti entonces. Te recomiendo ir al Pub, suele estar abierto a estas horas en caso de que quieras tomar algo.</html>
 771;1;Llave obtenida.

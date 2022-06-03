@@ -133,6 +133,7 @@ public final class Util {
     public static final int SI_PASS = 5; // Si se tiene una contraseña.  
     public static final int SI_LLAVE = 6;
     public static final int SI_NOTA = 7;
+    public static final int SI_ANIMALISMO = 8;
     public static final int SI_PISTA = 9;
     public static final int SI_NO_MAPA = 10;
     public static final int SI_MASCARILLA = 11;

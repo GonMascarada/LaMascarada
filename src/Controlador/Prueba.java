@@ -26,7 +26,7 @@ public class Prueba {
         
         Fichero.escribirInsertsBD();
 
-        //Fichero.comprobarConsistencia();
+        Fichero.comprobarConsistencia();
 
         //ArrayList<Partida> partidas = bd.getListaPartidas("Local");
         //ArrayList<Partida> partidas = bd.getListaPartidas("pablo");

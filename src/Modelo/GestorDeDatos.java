@@ -224,7 +224,7 @@ public class GestorDeDatos {
      * @param idEscena de la escena.
      * @return una lista de parejas [condición, texto]
      */
-    public ArrayList<String[]> getTextos(int idEscena) {
+    public ArrayList<String> getTextos(int idEscena) {
         try {
             return Fichero.getTextos(idEscena);
         } catch (IOException ex) {
