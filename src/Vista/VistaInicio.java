@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Util;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -19,6 +20,9 @@ import javax.swing.ImageIcon;
 public class VistaInicio extends javax.swing.JFrame {
 
     private final Controlador controlador;
+    
+    ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     /**
      * Creates new form VistaInicio
@@ -26,11 +30,12 @@ public class VistaInicio extends javax.swing.JFrame {
     public VistaInicio() throws IOException {
         initComponents();
         controlador = new Controlador();
-        ImageIcon imagen = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mapa.png"));
-        Image image = imagen.getImage();
-        Image newimg = image.getScaledInstance(jLabelFoto.getWidth(), jLabelFoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
-        imagen = new ImageIcon(newimg);
-        jLabelFoto.setIcon(imagen);
+        
+        jButtonComenzar.setIcon(botonRojo1);
+        jButtonComenzar.setPressedIcon(botonRojo2);
+        jButtonComenzar.setForeground(Color.white);
+        jButtonComenzar.setBackground(Color.black);
+        
         Util.centrar(this);
     }
 
@@ -51,11 +56,12 @@ public class VistaInicio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabelFoto.setText("jLabel1");
+        jLabelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/FotoMascaradaInicio.jpg"))); // NOI18N
 
         jButtonComenzar.setBackground(new java.awt.Color(51, 51, 51));
         jButtonComenzar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonComenzar.setText("Comenzar");
+        jButtonComenzar.setText("<HTML><B>COMENZAR</B></HTML>");
+        jButtonComenzar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonComenzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonComenzarActionPerformed(evt);
@@ -67,22 +73,23 @@ public class VistaInicio extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71))
+                        .addComponent(jLabelFoto)
+                        .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonComenzar)
-                        .addGap(160, 160, 160))))
+                        .addComponent(jButtonComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabelFoto)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonComenzar)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addComponent(jButtonComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
