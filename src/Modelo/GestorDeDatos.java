@@ -244,7 +244,6 @@ public class GestorDeDatos {
         try {
             Fichero.guardarPartida(partida);
             if (bd.isConectado()) {
-                Fichero.guardarPartida(partida);
                 if (nuevaPartida) {
                     try {
                         bd.insertarPartida(partida);

@@ -240,9 +240,9 @@ public class Partida {
      */
     public ArrayList<String> getInfoObjetos() {
         ArrayList<String> resultado = new ArrayList<>();
-        resultado.add(protagonista.getInfoEquipo(idPartida));
+        resultado.add(protagonista.getInfoEquipo(idPartida, usuario));
         for (int i = 0; i < personajes.size(); i++) {
-            resultado.add(personajes.get(i).getInfoEquipo(idPartida));
+            resultado.add(personajes.get(i).getInfoEquipo(idPartida, usuario));
         }
         return resultado;
     }
