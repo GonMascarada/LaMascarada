@@ -38,16 +38,12 @@ public class VistaTienda extends javax.swing.JFrame {
         String[] columnNames = {"Nombre", "Atributo", "Precio"};
         DefaultTableModel model = new DefaultTableModel(null, columnNames) {
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-
                 return false;
             }
         ;
-        };
-        
+        };        
         for (Equipo prod : equipos) {
-
             Object[] data = new Object[columnNames.length];
-
             data[0] = prod.getNombre();
             data[1] = prod.getAtributo();
             data[2] = prod.getPrecio();
@@ -155,7 +151,12 @@ public class VistaTienda extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         Salir.setText("Comprar");
-        cargarDatos(controlador.getPartida().getEscena().getPnj().getEquipacion());
+        if(controlador.getPartida().getEscena().hayPnj()){
+            cargarDatos(controlador.getPartida().getEscena().getPnj().getEquipacion());
+        } else {
+            System.out.println("No hay pnj en " + controlador.getPartida().getEscena().getIdEscena());
+        }
+        
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**

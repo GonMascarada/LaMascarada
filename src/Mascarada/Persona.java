@@ -162,9 +162,10 @@ public class Persona {
         Equipo e;
         for (int i = 0; i < equipacion.size(); i++) {
             e = equipacion.get(i);
-            resultado = "\n" + e.getNombre() + ";" + idPartida + ";";
+            resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
             resultado += nombre + ";" + e.isEnUso() + ";" + usuario;
         }
+        System.out.println("Añadido " + resultado);
         return resultado;
     }
 
