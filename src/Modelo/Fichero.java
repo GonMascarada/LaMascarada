@@ -138,9 +138,14 @@ public final class Fichero {
      * @return true si está disponible, false en otro caso.
      * @throws java.io.FileNotFoundException
      */
-    public static boolean comprobarNombrePersonaje(String nombre) throws FileNotFoundException {
-        File file = new File(Util.URL_PERSONAJE);
-        Scanner lector = new Scanner(file);
+    public static boolean comprobarNombrePersonaje(String nombre, String usuario) throws FileNotFoundException {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PERSONAJE_LOCAL);
+        } else {
+            f = new File(Util.URL_PERSONAJE);
+        }
+        Scanner lector = new Scanner(f);
         String[] linea;
         boolean disponible = true;
         String aux = nombre.replace(" ", "");
@@ -488,9 +493,14 @@ public final class Fichero {
      * @param idPartida de la partida en juego.
      * @return
      */
-    private static ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida) throws IOException {
-        File file = new File(Util.URL_EQ_PA_PE);
-        Scanner lector = new Scanner(file);
+    private static ArrayList<Equipo> getEquipos(String nombrePersonaje, int idPartida, String usuario) throws IOException {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_EQ_PA_PE_LOCAL);
+        } else {
+            f = new File(Util.URL_EQ_PA_PE);
+        }
+        Scanner lector = new Scanner(f);
 
         String[] linea;
         ArrayList<Equipo> equipos = new ArrayList<>();
@@ -542,7 +552,7 @@ public final class Fichero {
      * @return escena requerida.
      * @throws java.io.IOException
      */
-    public static Escena getEscena(int idEscena, int idPartida) throws IOException {
+    public static Escena getEscena(int idEscena, int idPartida, String usuario) throws IOException {
         InputStream inputStream = VistaPartidas.class.getResourceAsStream(Util.JAR_ESCENA);
         Scanner lector = new Scanner(inputStream);
         String[] linea;
@@ -559,7 +569,7 @@ public final class Fichero {
                 if (linea[2].equals("No")) {
                     escena = new Escena(linea, opciones);
                 } else {
-                    persona = getPNJ(linea[2], idPartida);
+                    persona = getPNJ(linea[2], idPartida, usuario);
                     escena = new Escena(linea, opciones, persona);
                 }
             }
@@ -578,10 +588,15 @@ public final class Fichero {
      * @return el mismo idPartida si se deben sobreescribir esos datos, o un
      * nuevo id donde hacerlo.
      */
-    private static int getIdGuardado(int idPartida, int progreso) throws FileNotFoundException {
+    private static int getIdGuardado(int idPartida, int progreso, String usuario) throws FileNotFoundException {
         int id = 0;
-        File file = new File(Util.URL_PARTIDA);
-        Scanner lector = new Scanner(file);
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PARTIDA_LOCAL);
+        } else {
+            f = new File(Util.URL_PARTIDA);
+        }
+        Scanner lector = new Scanner(f);
         String[] linea;
         lector.nextLine(); //Salta la cabecera del documento
         while (lector.hasNext()) {
@@ -659,9 +674,9 @@ public final class Fichero {
                 if (!partida.getUsuario().isBlank()) {
                     System.out.println("Supero el blank");
                     clan = getClan(linea[7]);
-                    vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida));
+                    vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida, usuario));
                     partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
-                    partida.setPersonajes(getPNJs(idPartida));
+                    partida.setPersonajes(getPNJs(idPartida, usuario));
                     partidas.add(partida); //Se añade la partida al listado.  
                 }
             }
@@ -740,9 +755,14 @@ public final class Fichero {
      * @param string
      * @return
      */
-    private static Persona getPNJ(String nombre, int idPartida) throws FileNotFoundException, IOException {
-        File file = new File(Util.URL_PERSONAJE);
-        Scanner lector = new Scanner(file);
+    private static Persona getPNJ(String nombre, int idPartida, String usuario) throws FileNotFoundException, IOException {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PERSONAJE_LOCAL);
+        } else {
+            f = new File(Util.URL_PERSONAJE);
+        }
+        Scanner lector = new Scanner(f);
         String[] linea;
         Persona persona = new Persona();
         Clan clan;
@@ -752,7 +772,7 @@ public final class Fichero {
         while ((lector.hasNext() && (!encontrado))) {
             linea = lector.nextLine().split(";");
             if ((linea[0].equals(nombre)) && (Integer.parseInt(linea[10]) == idPartida)) {
-                ArrayList<Equipo> equipos = getEquipos(linea[0], idPartida);
+                ArrayList<Equipo> equipos = getEquipos(linea[0], idPartida, usuario);
                 if (linea[7].equals("Humano")) {
                     persona = new Persona(linea, equipos);
                 } else {
@@ -773,9 +793,14 @@ public final class Fichero {
      * @return lista de Personas.
      * @throws IOException
      */
-    private static ArrayList<Persona> getPNJs(int idPartida) throws IOException {
-        File file = new File(Util.URL_PERSONAJE);
-        Scanner lector = new Scanner(file);
+    private static ArrayList<Persona> getPNJs(int idPartida, String usuario) throws IOException {
+        File f;
+        if (usuario.equals("Local")) {
+            f = new File(Util.URL_PERSONAJE_LOCAL);
+        } else {
+            f = new File(Util.URL_PERSONAJE);
+        }
+        Scanner lector = new Scanner(f);
         ArrayList<Persona> pnjs = new ArrayList<>();
         String[] linea;
         Clan clan;
@@ -785,7 +810,7 @@ public final class Fichero {
             linea = lector.nextLine().split(";");
             // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
             if (Integer.parseInt(linea[10]) == idPartida) {
-                ArrayList<Equipo> equipos = getEquipos(linea[0], idPartida);
+                ArrayList<Equipo> equipos = getEquipos(linea[0], idPartida, usuario);
                 if (linea[7].equals("Humano")) {
                     pnjs.add(new Persona(linea, equipos));
                 } else {
@@ -867,7 +892,7 @@ public final class Fichero {
                 partida.setSedDeSangre(Integer.parseInt(linea[4]));
                 partida.setSospecha(Integer.parseInt(linea[5]));
                 partida.setUltimaPista(linea[6]);
-                partida.setEscena(getEscena(Integer.parseInt(linea[7]), idPartida));
+                partida.setEscena(getEscena(Integer.parseInt(linea[7]), idPartida, usuario));
                 partida.setUsuario(linea[8]);
                 encontrado = true;
             }
@@ -913,7 +938,7 @@ public final class Fichero {
         String usuario = partida.getUsuario();
         // 1. Comprobar si hay que sobreescribir los datos de esta partidas.
         // O si tiene mayor progreso, crear una partida nueva.
-        id = getIdGuardado(partida.getIdPartida(), partida.getProgreso());
+        id = getIdGuardado(partida.getIdPartida(), partida.getProgreso(), partida.getUsuario());
         partida.setIdPartida(id);
 
         // 2.Guardar los datos de la partida.
@@ -945,7 +970,7 @@ public final class Fichero {
         // Insercción protagonista, primera escena e id.
         partida.setIdPartida(getNuevoIdPartida(usuario));
         partida.setProtagonista(protagonista);
-        primera = getEscena(0, partida.getIdPartida()); //Primera escena 
+        primera = getEscena(0, partida.getIdPartida(), usuario); //Primera escena 
         partida.setEscena(primera);
         // Insercción de la hora actual.
         partida.setFecha(String.valueOf(timestamp));

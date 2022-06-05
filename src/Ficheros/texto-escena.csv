@@ -22,7 +22,7 @@
 510;0;<html>.--¡Anda! una cara nueva! Bienvenido a Sally´s, yo soy nombre del dueño, </br>soy el dueño del bar, también soy el cocinero y me gustaría ayudarte pero creo</br> que la más indicada es camarera, habla con ella si tienes alguna duda.</html>
 510;90;Ves que hace señas a la camarera para que hable contigo.
 520;0;<html>.--Este pueblo cada vez está peor, al igual que el café!.</html>
-520;0;No parece tener ganas de hablar.
+520;1;No parece tener ganas de hablar.
 521;0;<html>.++La verdad es que si, este café está malísimo, </br>deberían poner alguna galleta o algo al menos.</br>.--Oh! veo que eres nuevo, habla con camarera y que ella te diga los...lugares de interés del pueblo, si intenta ligar contigo no le hagas caso! lo hace con todo el mundo.++Gracias!</html>
 522;0;<html>.++Hay muchas cosas asquerosas en este bar, desde luego...</br>.--Eh! tranquilo, si vas buscando pelea deberias irte, no nos gustan</br> los forasteros engreidos…</html>
 750;0;<html>Ves luces y sombras moverse, así que supones que está </br>abierto y hay gente dentro.</html>

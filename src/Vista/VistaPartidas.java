@@ -493,7 +493,7 @@ public final class VistaPartidas extends javax.swing.JFrame {
         int indice, contador;
         String error = "";
         try {
-            if (controlador.comprobarNombrePersonaje(jTextNombre.getText())) {
+            if (controlador.comprobarNombrePersonaje(jTextNombre.getText(), usuario)) {
                 indice = jListClanes.getSelectedIndex();
                 contador = 0;
                 if (indice != -1) {
