@@ -223,7 +223,7 @@ public final class Controlador {
     public void guardarPartida(boolean nuevaPartida) throws FileNotFoundException, IOException {
         try {
             // 1. Se eliminan los pnc´s que no han sufrido cambios.
-            partida.borrarNpcsInalterados();
+            //partida.borrarNpcsInalterados();
 
             // 2. Se almacena todos los datos de la partida en la base de datos.
             bbdd.guardarPartida(partida, nuevaPartida);
@@ -240,7 +240,9 @@ public final class Controlador {
      */
     public void cargarPartida(Partida partida) throws IOException {
         this.partida = partida;
-
+        Escena e = partida.getEscena();
+        e.setOpciones(evaluarOpciones(e.getOpciones()));
+        partida.setEscena(e);
         lanzar();
     }
 
@@ -291,6 +293,7 @@ public final class Controlador {
             case Util.AC_PROGRESO -> {
                 try {
                     partida.setProgreso(partida.getProgreso() + 1);
+                    
                     bbdd.guardarPartida(partida, false);
                 } catch (SQLException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -445,6 +448,9 @@ public final class Controlador {
             }
             case Util.AC_MOSTRAR_TIENDA -> {
                 seguir = false;
+                System.out.println("Vamos a comprar");
+                System.out.println("Escena "+ partida.getEscena().getIdEscena());
+                System.out.println(partida.getEscena().hayPnj());
                 new VistaTienda(this).setVisible(true);
             }
         }
@@ -599,6 +605,9 @@ public final class Controlador {
                 if (buscarEquipo("Contraseña")) {
                     cumplida = true;
                 }
+            }
+            case Util.SI_NO_PASS -> {
+                cumplida = !evaluarCondicion(Util.SI_PASS);
             }
             case Util.SI_LLAVE -> {
                 if (buscarEquipo("Llave")) {

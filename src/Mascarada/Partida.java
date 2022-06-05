@@ -206,7 +206,7 @@ public class Partida {
         String resultado;
         resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso;
         resultado += ";" + sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
-        resultado += escena.getIdEscena() + ";" + usuario + ";" + dificultad;
+        resultado += escena.getIdEscena()+ ";" + usuario + ";" + dificultad;
         return resultado;
     }
 
