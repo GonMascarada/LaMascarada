@@ -152,6 +152,7 @@ public class GestorDeDatos {
      *
      * @param idEscena identificador de la escena.
      * @param idPartida
+     * @param usuario
      * @return escena requerida.
      */
     public Escena getEscena(int idEscena, int idPartida, String usuario) {

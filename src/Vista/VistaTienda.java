@@ -69,7 +69,7 @@ public class VistaTienda extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,8 +116,8 @@ public class VistaTienda extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(6, 346, 970, 280);
-        jPanel1.add(jButton3);
-        jButton3.setBounds(250, 650, 448, 46);
+        jPanel1.add(Salir);
+        Salir.setBounds(250, 650, 448, 46);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -144,15 +144,13 @@ public class VistaTienda extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        jButton3.setText("Vender");
+        Salir.setText("Vender");
         cargarDatos(controlador.getPartida().getProtagonista().getEquipacion());
-
-
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        jButton3.setText("Comprar");
+        Salir.setText("Comprar");
         cargarDatos(controlador.getPartida().getEscena().getPnj().getEquipacion());
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -193,9 +191,9 @@ public class VistaTienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

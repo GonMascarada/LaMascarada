@@ -1,4 +1,4 @@
-﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente
+String texto;﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente
 0;Salir;0;0;0;Humano;1;1
 1;Ir al bar;0;32;20;Humano;0;500
 2;Ir al motel;0;60;20;Humano;0;750
@@ -104,13 +104,13 @@
 102;Volver;0;0;20;Humano;1754;1751
 103;Entrar;0;91;20;Humano;2000;2001
 104;Volver;50;0;20;Humano;2000;2000
-105;Comprar;9;91;20;Humano;2001;2001
+105;Comprar;51;91;20;Humano;2001;2001
 106;Salir;50;91;20;Humano;2001;2001
 107;Entrar;0;96;20;Humano;2000;2002
 108;Respuesta simpática;26;0;20;Humano;2002;2003
 109;Salir;50;0;20;Humano;2003;2000
 110;Entrar;0;95;20;Humano;2000;2004
-111;Comprar;9;95;20;Humano;2004;2000
+111;Comprar;51;95;20;Humano;2004;2000
 112;Volver;50;0;20;Humano;2250;2250
 113;Llamar a la puerta;0;0;20;Humano;2250;2251
 114;Ratatula;0;0;20;Humano;2251;2250

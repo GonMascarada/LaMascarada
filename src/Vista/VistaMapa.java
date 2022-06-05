@@ -12,7 +12,7 @@ import java.awt.Color;
  *
  * @author Alumno
  */
-public class Mapa extends javax.swing.JFrame {
+public class VistaMapa extends javax.swing.JFrame {
 
     
     private Controlador controlador;
@@ -20,7 +20,7 @@ public class Mapa extends javax.swing.JFrame {
      * Creates new form Mapa
      * @param controlador
      */
-    public Mapa(Controlador controlador) {
+    public VistaMapa(Controlador controlador) {
         initComponents();
         this.controlador= controlador;
         Util.centrar(this);
@@ -205,43 +205,53 @@ public class Mapa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBibliotecaActionPerformed
-        controlador.cargarEscena(Util.ES_BIBLIOTECA);        
+        controlador.cargarEscena(Util.ES_BIBLIOTECA);     
+        this.dispose();
     }//GEN-LAST:event_jButtonBibliotecaActionPerformed
 
     private void jButtonMotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMotelActionPerformed
-        controlador.cargarEscena(Util.ES_MOTEL); 
+        controlador.cargarEscena(Util.ES_MOTEL);
+        this.dispose();
     }//GEN-LAST:event_jButtonMotelActionPerformed
 
     private void jButtonPubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPubActionPerformed
-        controlador.cargarEscena(Util.ES_PUB); 
+        controlador.cargarEscena(Util.ES_PUB);
+        this.dispose();
     }//GEN-LAST:event_jButtonPubActionPerformed
 
     private void jButtonIglesiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIglesiaActionPerformed
         controlador.cargarEscena(Util.ES_IGLESIA); 
+        this.dispose();
     }//GEN-LAST:event_jButtonIglesiaActionPerformed
 
     private void jButtonCallejonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCallejonTiendaActionPerformed
         controlador.cargarEscena(Util.ES_CALLEJON); 
+        this.dispose();
     }//GEN-LAST:event_jButtonCallejonTiendaActionPerformed
 
     private void jButtonPeriodicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPeriodicoActionPerformed
         controlador.cargarEscena(Util.ES_PERIODICO); 
+        this.dispose();
     }//GEN-LAST:event_jButtonPeriodicoActionPerformed
 
     private void jButtonPlazaCentralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlazaCentralActionPerformed
         controlador.cargarEscena(Util.ES_PLAZA); 
+        this.dispose();
     }//GEN-LAST:event_jButtonPlazaCentralActionPerformed
 
     private void jButtonBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBarActionPerformed
         controlador.cargarEscena(Util.ES_BAR); 
+        this.dispose();
     }//GEN-LAST:event_jButtonBarActionPerformed
 
     private void jButtonCasaabAbandonadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCasaabAbandonadaActionPerformed
         controlador.cargarEscena(Util.ES_CASA_ABANDONADA); 
+        this.dispose();
     }//GEN-LAST:event_jButtonCasaabAbandonadaActionPerformed
 
     private void jButtonColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColegioActionPerformed
         controlador.cargarEscena(Util.ES_COLEGIO); 
+        this.dispose();
     }//GEN-LAST:event_jButtonColegioActionPerformed
 
     /**
@@ -261,20 +271,21 @@ public class Mapa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new Mapa().setVisible(true);
+                //new VistaMapa().setVisible(true);
             }
         });
     }
