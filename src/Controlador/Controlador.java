@@ -293,7 +293,6 @@ public final class Controlador {
             case Util.AC_PROGRESO -> {
                 try {
                     partida.setProgreso(partida.getProgreso() + 1);
-                    
                     bbdd.guardarPartida(partida, false);
                 } catch (SQLException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,7 +317,6 @@ public final class Controlador {
             case Util.AC_CURAR -> {
                 partida.setVidaAlMaximo();
             }
-
             case Util.AC_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }
@@ -356,14 +354,12 @@ public final class Controlador {
                 new PopUpCombate(pelea).setVisible(true);
             }
             case Util.AC_AGRADAR -> {
-                if (partida.getEscena().hayPnj()) {
-                    partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
-                }
+                System.out.println("Estado de animo antes: " + partida.getEscena().getPnj().getEstadoDeAnimo());
+                partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
+                System.out.println("Estado de animo despues: " + partida.getEscena().getPnj().getEstadoDeAnimo());
             }
             case Util.AC_ENFADAR -> {
-                if (partida.getEscena().hayPnj()) {
-                    partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
-                }
+                partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
             }
             case Util.AC_OBTENER_LLAVE -> {
                 if (partida.getEscena().hayPnj()) {
@@ -389,6 +385,19 @@ public final class Controlador {
                     partida.getProtagonista().addObjeto(e);
                 }
             }
+            case Util.AC_OBTENER_PASS -> {
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Contraseña");
+                    partida.getProtagonista().addObjeto(e);
+                }
+            }
+            case Util.AC_OBTENER_LECTURA -> {
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Lectura de manos");
+                    partida.getProtagonista().addObjeto(e);
+                }
+            }
+
             case Util.AC_OBTENER_NOTA -> { //No de un pnj
                 Equipo e = bbdd.getEquipo("Nota");
                 partida.getProtagonista().addObjeto(e);
@@ -448,9 +457,6 @@ public final class Controlador {
             }
             case Util.AC_MOSTRAR_TIENDA -> {
                 seguir = false;
-                System.out.println("Vamos a comprar");
-                System.out.println("Escena "+ partida.getEscena().getIdEscena());
-                System.out.println(partida.getEscena().hayPnj());
                 new VistaTienda(this).setVisible(true);
             }
         }
@@ -558,17 +564,15 @@ public final class Controlador {
                 cumplida = true;
             }
             case Util.SI_AGRADADO -> {
-                if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
-                        cumplida = true;
-                    }
+                if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
+                    System.out.println(escena.getPnj().getNombre() + " agradecido.");
+                    cumplida = true;
                 }
+                System.out.println(escena.getPnj().getNombre() + " NO agradecido.");
             }
             case Util.SI_ENFADADO -> {
-                if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
-                        cumplida = true;
-                    }
+                if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
+                    cumplida = true;
                 }
             }
             case Util.SI_BRUJAH -> {
@@ -634,6 +638,11 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
+            case Util.SI_LECTURA -> {
+                if (buscarEquipo("Lectura de manos")) {
+                    cumplida = true;
+                }
+            }
             case Util.SI_NO_MASCARILLA -> {
                 cumplida = !evaluarCondicion(Util.SI_MASCARILLA);
             }
@@ -657,22 +666,30 @@ public final class Controlador {
                 aux3 = !evaluarCondicion(Util.SI_AGRADADO);
                 cumplida = aux1 && aux2 && aux3;
             }
+            case Util.SI_NO_NOSFERATU_Y_PASS_Y_LECTURA -> {
+                //No ser nosferatu, tener la contrasña y el pnj no esté agradado
+                aux1 = evaluarCondicion(Util.SI_NO_NOSFERATU);
+                aux2 = evaluarCondicion(Util.SI_PASS);
+                aux3 = evaluarCondicion(Util.SI_LECTURA);
+                cumplida = aux1 && aux2 && aux3;
+            }
             case Util.SI_NOSFERATU_Y_NO_MASCARILLA -> {
                 //Ser nosferatu y no tener mascarilla.
                 aux1 = evaluarCondicion(Util.SI_NOSFERATU);
                 aux2 = !evaluarCondicion(Util.SI_MASCARILLA);
                 cumplida = aux1 && aux2;
             }
-            case Util.SI_NOSFERATU_Y_MASCARILLA -> {
-                //Ser nosferatu y tener mascarilla.
-                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
-                aux2 = evaluarCondicion(Util.SI_MASCARILLA);
-                cumplida = aux1 && aux2;
-            }
+            
             case Util.SI_VENTRUE_Y_NO_PISTOLA -> {
                 //Ser Ventrue y no tener pistola.
                 aux1 = evaluarCondicion(Util.SI_VENTRUE);
                 aux2 = !evaluarCondicion(Util.SI_PISTA);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_NOSFERATU_Y_MASCARILLA -> {
+                //Ser nosferatu y tener mascarilla.
+                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
+                aux2 = evaluarCondicion(Util.SI_MASCARILLA);
                 cumplida = aux1 && aux2;
             }
             case Util.SI_TREMERE_Y_NO_COLGANTE_ROJO -> {

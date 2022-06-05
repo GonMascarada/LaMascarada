@@ -34,10 +34,8 @@ public class VistaFicha extends javax.swing.JFrame {
         Util.centrar(this);
         this.controlador = controlador;
         if (esProtagonista) {
-            System.out.println("Prota");
             personaje = controlador.getPartida().getProtagonista();
         } else {
-            System.out.println("Pnj");
             personaje = controlador.getPartida().getEscena().getPnj();
             labelEstadoAnimo.setVisible(true);
             estadoAnimoDato.setVisible(true);
@@ -65,7 +63,6 @@ public class VistaFicha extends javax.swing.JFrame {
             habilidad1.setText(habiliades[0]);
             habilidad2.setText(habiliades[1]);
             clan.setText(vampire.getClan().getNombre());
-            System.out.println("Vampiro");
             ImageIcon ImagenEscena = new javax.swing.ImageIcon(getClass().getResource(vampire.getClan().getImagen()));
             Image image = ImagenEscena.getImage();
             Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
@@ -475,7 +472,6 @@ public class VistaFicha extends javax.swing.JFrame {
         Equipo e;
         int atq = 0, def = 0, vid = 0;
         ArrayList<Equipo> inventario = personaje.getEquipacion();
-        System.out.println("Inventario " + inventario.size());
         for (int i = 0; i < inventario.size(); i++) {
             e = inventario.get(i);
             if (e.getAtaque() != 0) {

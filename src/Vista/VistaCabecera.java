@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Partida;
+import Mascarada.Util;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class VistaCabecera extends javax.swing.JPanel {
         barraSangre.setValue(partida.getSedDeSangre());
         barraSangre.setMaximum(partida.getDificultad());
         barraProgreso.setValue(partida.getProgreso());
-        barraProgreso.setMaximum(partida.getDificultad());
+        barraProgreso.setMaximum(Util.PROGRESO_MAX);
         barraSospecha.setValue(partida.getSospecha());
         barraSospecha.setMaximum(partida.getDificultad());
         barraVida.setValue(partida.getProtagonista().getVidaActual());
