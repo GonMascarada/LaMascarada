@@ -606,6 +606,9 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
+            case Util.SI_NO_PASS -> {
+                cumplida = !evaluarCondicion(Util.SI_PASS);
+            }
             case Util.SI_LLAVE -> {
                 if (buscarEquipo("Llave")) {
                     cumplida = true;
