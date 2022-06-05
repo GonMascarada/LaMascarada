@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author Gonzalo López Fernández
  */
 public class GestorDeDatos {
-
+//tratra
     private BaseDeDatos bd;
 
     public GestorDeDatos() {
