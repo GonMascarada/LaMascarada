@@ -5,12 +5,16 @@
 package Vista;
 
 import Mascarada.Util;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Moru
  */
 public class PopUpCombate extends javax.swing.JFrame {
+      ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
 
     /**
      * Creates new form PopUpCombate
@@ -19,6 +23,10 @@ public class PopUpCombate extends javax.swing.JFrame {
         initComponents();
         Util.centrar(this);
         jTextAreaInfo.setText(texto);
+        jButton1.setRolloverEnabled(true);
+        jButton1.setIcon(botonRojo1);
+        jButton1.setPressedIcon(botonRojo2);
+        jButton1.setBackground(Color.black);
     }
 
     /**
@@ -34,6 +42,7 @@ public class PopUpCombate extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaInfo = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,13 +57,19 @@ public class PopUpCombate extends javax.swing.JFrame {
         jScrollPane1.setBounds(20, 40, 410, 210);
 
         jButton1.setText("Cerrar");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(180, 290, 75, 22);
+        jButton1.setBounds(110, 270, 250, 75);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 460, 360);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +126,7 @@ public class PopUpCombate extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaInfo;

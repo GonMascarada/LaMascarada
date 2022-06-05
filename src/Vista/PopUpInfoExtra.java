@@ -5,12 +5,17 @@
 package Vista;
 
 import Mascarada.Util;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Moru
  */
 public class PopUpInfoExtra extends javax.swing.JFrame {
+      ImageIcon botonRojo1=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+    
 
     /**
      * Creates new form PopUpCombate
@@ -28,6 +33,11 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
     public PopUpInfoExtra(String texto) {
         initComponents();
         InfoExtra.setText(texto);
+        InfoExtra.setForeground(Color.white);
+        jButton1.setRolloverEnabled(true);
+        jButton1.setIcon(botonRojo1);
+        jButton1.setPressedIcon(botonRojo2);
+        jButton1.setBackground(Color.black);
     }
 
     /**
@@ -41,6 +51,8 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         InfoExtra = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +60,18 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
 
         InfoExtra.setText("jLabel1");
         jPanel1.add(InfoExtra);
-        InfoExtra.setBounds(130, 130, 290, 90);
+        InfoExtra.setBounds(130, 80, 290, 90);
+
+        jButton1.setText("Cerrar");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jButton1);
+        jButton1.setBounds(140, 260, 280, 75);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 550, 350);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,6 +125,8 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel InfoExtra;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
