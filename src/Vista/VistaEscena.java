@@ -12,8 +12,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+
 
 /**
  *
@@ -50,16 +49,24 @@ public class VistaEscena extends javax.swing.JFrame {
         System.out.println("Opciones recibidas: " + opciones.size());
         switch (opciones.size()) {
             case 1 -> {
-                 jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);                 
+            footer1 foot1 = new footer1(controlador, this);
+                 jPanel1.add(foot1).setBounds(0, 590, 1000, 115);    
+                 jPanel1.setComponentZOrder(foot1, 1);
             }
             case 2 -> {
-                jPanel1.add(new footer2(controlador, this)).setBounds(0, 590, 1000, 115);
+                footer2 foot2 = new footer2(controlador, this);
+                 jPanel1.add(foot2).setBounds(0, 590, 1000, 115);    
+                 jPanel1.setComponentZOrder(foot2, 1);
             }
             case 3 -> {
-                jPanel1.add(new footer3(controlador, this)).setBounds(0, 590, 1000, 115);
+                footer3 foot3 = new footer3(controlador, this);
+                 jPanel1.add(foot3).setBounds(0, 590, 1000, 115);    
+                 jPanel1.setComponentZOrder(foot3, 1);
             }
             case 4 -> {
-                jPanel1.add(new footer4(controlador, this)).setBounds(0, 590, 1000, 115);
+                footer4 foot4 = new footer4(controlador, this);
+                 jPanel1.add(foot4).setBounds(0, 590, 1000, 115);    
+                 jPanel1.setComponentZOrder(foot4, 1);
             }
         }
 
