@@ -1,6 +1,6 @@
 ﻿Nombre;Descripción;Imagen;Habilidad1;Habilidad2;Habilidad3;Habilidad4
-Brujah;Individualistas, locuaces y turbulentos, violentos, sienten mucho afecto por la idea del cambio social.;/Imagenes/a.jpg;Potencia;Fortaleza;Celeridad;Presencia
-Tremere;Son arrogantes, cerrados, inteligentes y organizados.;/Imagenes/a.jpg;Celeridad;Dominación;Presencia;Auspex
-Nosferatu;"Su olor y aspecto son repulsivos, uno podría llegar a decir monstruosos, "No busco problemas, pero si vienen, me escondo de ellos.";/Imagenes/a.jpg;Potencia;Fortaleza;Protean;Animalismo
-Ventrue;Arrogantes, líderes, gozan de gran influencia tanto en el mundo de los mortales como en el de los no-muertos.;/Imagenes/a.jpg;Protean;Celeridad;Potencia;Auspex
+Brujah;Individualistas, locuaces y turbulentos, violentos, sienten mucho afecto por la idea del cambio social.;/Imagenes/Brujah.jpg;Potencia;Fortaleza;Celeridad;Presencia
+Tremere;Son arrogantes, cerrados, inteligentes y organizados.;/Imagenes/Tremere.jpg;Celeridad;Dominación;Presencia;Auspex
+Nosferatu;"Su olor y aspecto son repulsivos, uno podría llegar a decir monstruosos, "No busco problemas, pero si vienen, me escondo de ellos.";/Imagenes/Nosferatu.jpg;Potencia;Fortaleza;Protean;Animalismo
+Ventrue;Arrogantes, líderes, gozan de gran influencia tanto en el mundo de los mortales como en el de los no-muertos.;/Imagenes/Ventrue.jpg;Protean;Celeridad;Potencia;Auspex
 Humano;No;/Imagenes/a.jpg;No;No;No;No
