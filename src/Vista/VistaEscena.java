@@ -46,11 +46,11 @@ public class VistaEscena extends javax.swing.JFrame {
         texto.setText(escena.getTexto());
         texto.setIcon(FondoTexto);
         texto.setForeground(Color.white);
-        cabecera1.insertarDatosPartida(controlador.getPartida());
+        cabecera1.insertarDatosPartida(controlador);
+        System.out.println("Opciones recibidas: " + opciones.size());
         switch (opciones.size()) {
             case 1 -> {
-                 jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);
-                 
+                 jPanel1.add(new footer1(controlador, this)).setBounds(0, 590, 1000, 115);                 
             }
             case 2 -> {
                 jPanel1.add(new footer2(controlador, this)).setBounds(0, 590, 1000, 115);
@@ -79,7 +79,7 @@ public class VistaEscena extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         foto = new javax.swing.JLabel();
         texto = new javax.swing.JLabel();
-        cabecera1 = new Vista.VistaCabecera();
+        cabecera1 = new Vista.VistaCabecera(controlador);
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);

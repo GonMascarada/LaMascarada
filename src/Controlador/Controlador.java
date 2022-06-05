@@ -157,12 +157,11 @@ public final class Controlador {
      */
     public void escoger(Opcion opcion) throws IOException {
         Escena siguiente = bbdd.getEscena(opcion.getIdEscenaSiguiente(), partida.getIdPartida(), partida.getUsuario());
-        ArrayList<String> textos;
-        ArrayList<Opcion> opciones;
         String texto;
+        ArrayList<String> textos;
         boolean seguir;
 
-        //1.Evaluar la opción que se acaba de tomar.
+        // Evaluar la opción que se acaba de tomar.
         seguir = evaluarAccion(opcion.getAccion());
         partida.sumarTiempo(opcion.getTiempo());
 
@@ -170,30 +169,14 @@ public final class Controlador {
         // Puede que evaluarAccion haya lanzado ya una alternativa (tienda).
         if (seguir) {
             partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
-            //2.Pedir a la base de datos todos los posibles textos.
-            textos = bbdd.getTextos(siguiente.getIdEscena());
 
-            //3.Comprobar si se cumple alguna de las condiciones de los textos.
-            //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
-            texto = getTextoCorrecto(textos);
-            //3.1 Cambiamos -- por nombre del npc y ++ por el del protagonista.
-            texto = texto.replace(".++", partida.getProtagonista().getNombre() + ": ");
-            if (partida.getEscena().hayPnj()) {
-                texto = texto.replace(".--", partida.getEscena().getPnj().getNombre() + ": ");
-            }
+            //Comprueba los textos, inserta el adecuado y comprueba las opciones.
+            textos = evaularTextoYOpciones();
 
-            //4.Insertar a la escena el texto
-            partida.getEscena().setTexto(texto);
-
-            //5.Eliminar de la escena siguiente las opciones que no estén disponibles.
-            opciones = evaluarOpciones(partida.getEscena().getOpciones());
-
-            partida.getEscena().setOpciones(opciones);
-            System.out.println("Escena: " + partida.getEscena().getIdEscena() + " tiene " + partida.getEscena().getOpciones().size() + " opciones.");
-            // 6.Mostrar la escena.
+            // Mostrar la escena.
             lanzar();
 
-            // 7. Si se tiene dechercho, obtener info extra y mostrarla si hay.
+            // Si se tiene dechercho, obtener info extra y mostrarla si hay.
             if (comprobarAnimalismo()) {
                 texto = getTextoExtra(textos);
                 if (!texto.equals("")) {
@@ -202,6 +185,33 @@ public final class Controlador {
                 }
             }
         }
+    }
+
+    private ArrayList<String> evaularTextoYOpciones() {
+        ArrayList<String> textos;
+        ArrayList<Opcion> opciones;
+        Escena e = partida.getEscena();
+        String texto;
+        // Pedir a la base de datos todos los posibles textos.
+        textos = bbdd.getTextos(e.getIdEscena());
+
+        // Comprobar si se cumple alguna de las condiciones de los textos.
+        //IMPORTANTE, SOLO SE PUEDE CUMPLIR UNA ÚNICA CONDICION.
+        texto = getTextoCorrecto(textos);
+        // Cambiamos -- por nombre del npc y ++ por el del protagonista.
+        texto = texto.replace(".++", partida.getProtagonista().getNombre() + ": ");
+        if (partida.getEscena().hayPnj()) {
+            texto = texto.replace(".--", partida.getEscena().getPnj().getNombre() + ": ");
+        }
+        // Insertar a la escena el texto
+        partida.getEscena().setTexto(texto);
+
+        // Eliminar de la escena siguiente las opciones que no estén disponibles.
+        opciones = evaluarOpciones(partida.getEscena().getOpciones());
+
+        partida.getEscena().setOpciones(opciones);
+        System.out.println("Escena: " + partida.getEscena().getIdEscena() + " tiene " + partida.getEscena().getOpciones().size() + " opciones.");
+        return textos;
     }
 
     /**
@@ -353,42 +363,26 @@ public final class Controlador {
                 }
             }
             case Util.AC_OBTENER_LLAVE -> {
-                System.out.println("Vamos a obtener el llave");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Llave");
-                    if (e.getNombre().equals("")) {
-                        System.out.println("Error al obtener el Llave, el npc no lo tiene.");
-                    }
                     partida.getProtagonista().addObjeto(e);
                 }
             }
             case Util.AC_OBTENER_MAPA -> {
-                System.out.println("Vamos a obtener el mapa");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Mapa");
-                    if (e.getNombre().equals("")) {
-                        System.out.println("Error al obtener el mapa, el npc no lo tiene.");
-                    }
                     partida.getProtagonista().addObjeto(e);
                 }
             }
             case Util.AC_OBTENER_MASCARILLA -> {
-                System.out.println("Vamos a obtener el mascarilla");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Mascarilla");
-                    if (e.getNombre().equals("")) {
-                        System.out.println("Error al obtener el mascarilla, el npc no lo tiene.");
-                    }
                     partida.getProtagonista().addObjeto(e);
                 }
             }
             case Util.AC_OBTENER_PISTOLA -> {
-                System.out.println("Vamos a obtener el Pistola");
                 if (partida.getEscena().hayPnj()) {
                     Equipo e = partida.getEscena().getPnj().delObjeto("Pistola");
-                    if (e.getNombre().equals("")) {
-                        System.out.println("Error al obtener el Pistola, el npc no lo tiene.");
-                    }
                     partida.getProtagonista().addObjeto(e);
                 }
             }
@@ -447,7 +441,7 @@ public final class Controlador {
             }
             case Util.AC_MOSTRAR_MAPA -> {
                 seguir = false;
-                new Mapa(this).setVisible(true);
+                new VistaMapa(this).setVisible(true);
             }
             case Util.AC_MOSTRAR_TIENDA -> {
                 seguir = false;
@@ -505,7 +499,6 @@ public final class Controlador {
         do {
             aux = textos.get(indice).split(";");
             condicion = Integer.parseInt(aux[0]);
-            System.out.println("Condicion " + condicion);
             if (condicion == Util.SI_ESTANDAR) {
                 texto = aux[1];
             } else if (condicion == Util.SI_EXTRA) {
@@ -595,55 +588,40 @@ public final class Controlador {
             case Util.SI_BRUJAH_O_VENTRUE -> {
                 if ((clan.equals("Brujah")) || (clan.equals("Ventrue"))) {
                     cumplida = true;
-                    System.out.println("Soy brujah o ventrue");
                 }
             }
             case Util.SI_MAPA -> {
-                System.out.println("Compruebo si tiene mapa.");
                 if (buscarEquipo("Mapa")) {
-                    System.out.println("Mapa encontrado.");
                     cumplida = true;
                 }
             }
             case Util.SI_PASS -> {
-                System.out.println("Compruebo si tiene Contraseña.");
                 if (buscarEquipo("Contraseña")) {
-                    System.out.println("Contraseña encontrado.");
                     cumplida = true;
                 }
             }
             case Util.SI_LLAVE -> {
-                System.out.println("Compruebo si tiene Llave.");
                 if (buscarEquipo("Llave")) {
-                    System.out.println("Llave encontrado.");
                     cumplida = true;
                 }
             }
             case Util.SI_NOTA -> {
-                System.out.println("Compruebo si tiene Nota.");
                 if (buscarEquipo("Nota")) {
-                    System.out.println("Nota encontrado.");
                     cumplida = true;
                 }
             }
             case Util.SI_PISTA -> {
-                System.out.println("Compruebo si tiene Nota.");
                 if (buscarEquipo("Nota")) {
-                    System.out.println("Nota encontrado.");
                     cumplida = true;
                 }
             }
             case Util.SI_MASCARILLA -> {
-                System.out.println("Compruebo si tiene Mascarilla.");
                 if (buscarEquipo("Mascarilla")) {
-                    System.out.println("Mascarilla encontrado.");
                     cumplida = true;
                 }
             }
             case Util.SI_COLGANTE_ROJO -> {
-                System.out.println("Compruebo si tiene Colgante Rojo.");
                 if (buscarEquipo("Colgante Rojo")) {
-                    System.out.println("Colgante Rojo encontrado.");
                     cumplida = true;
                 }
             }
@@ -789,9 +767,15 @@ public final class Controlador {
         bbdd.crearNuevoUsuario(usuario, pass);
     }
 
+    /**
+     * Carga una escena en concreto.
+     *
+     * @param id
+     */
     public void cargarEscena(int id) {
         Escena escena = bbdd.getEscena(id, partida.getIdPartida(), partida.getUsuario());
         partida.setEscena(escena);
+        evaularTextoYOpciones();
         lanzar();
     }
 

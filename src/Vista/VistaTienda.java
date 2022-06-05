@@ -8,8 +8,10 @@ import Controlador.Controlador;
 import Mascarada.Equipo;
 import Mascarada.Partida;
 import Mascarada.Util;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.DefaultListSelectionModel;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,17 +22,48 @@ public class VistaTienda extends javax.swing.JFrame {
 
     private Controlador controlador;
     private Partida partida;
+    ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+    ImageIcon botonRojo3=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
+    ImageIcon botonRojo4=new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-4.png"));
+    
+
 
     /**
      * Creates new form Tienda
      */
     public VistaTienda(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         Util.centrar(this);
-        this.controlador = controlador;
+        
+        jButton1.setRolloverEnabled(true);
+        jButton1.setIcon(botonRojo1);
+        jButton1.setPressedIcon(botonRojo2);
+        jButton1.setForeground(Color.white);
+        jButton1.setBackground(Color.black);
+        
+        jButton2.setRolloverEnabled(true);
+        jButton2.setIcon(botonRojo1);
+        jButton2.setPressedIcon(botonRojo2);
+        jButton2.setForeground(Color.white);
+        jButton2.setBackground(Color.black);
+        
+        salir.setRolloverEnabled(true);
+        salir.setIcon(botonRojo1);
+        salir.setPressedIcon(botonRojo2);
+        salir.setForeground(Color.white);
+        salir.setBackground(Color.black);
+        
+        accion.setRolloverEnabled(true);
+        accion.setIcon(botonRojo1);
+        accion.setPressedIcon(botonRojo2);
+        accion.setForeground(Color.white);
+        accion.setBackground(Color.black);
+        
         
         jTable1.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        vistaCabecera1.insertarDatosPartida(partida);
+        vistaCabecera1.insertarDatosPartida(controlador);
     }
 
     public void cargarDatos(List<Equipo> equipos) {
@@ -67,12 +100,12 @@ public class VistaTienda extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        vistaCabecera1 = new Vista.VistaCabecera();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        accion = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,29 +113,29 @@ public class VistaTienda extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        jButton1.setText("Vender");
+        jButton1.setText("Tu inventario");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(632, 271, 247, 57);
-        jPanel1.add(vistaCabecera1);
-        vistaCabecera1.setBounds(-10, 0, 1000, 220);
+        jButton1.setBounds(630, 260, 280, 75);
 
         jLabel1.setText("Tienda");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(452, 226, 188, 33);
 
-        jButton2.setText("Comprar");
+        jButton2.setText("Inventario del NPC");
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(82, 271, 247, 57);
+        jButton2.setBounds(80, 260, 280, 78);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,8 +152,25 @@ public class VistaTienda extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(6, 346, 970, 280);
-        jPanel1.add(jButton3);
-        jButton3.setBounds(250, 650, 448, 46);
+
+        accion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        accion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accionMouseClicked(evt);
+            }
+        });
+        jPanel1.add(accion);
+        accion.setBounds(50, 640, 353, 40);
+
+        salir.setText("Salir");
+        salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(salir);
+        salir.setBounds(540, 640, 353, 40);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -147,17 +197,26 @@ public class VistaTienda extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        jButton3.setText("Vender");
+        accion.setText("Vender");
         cargarDatos(controlador.getPartida().getProtagonista().getEquipacion());
-
-
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        jButton3.setText("Comprar");
+        accion.setText("Comprar");
         cargarDatos(controlador.getPartida().getEscena().getPnj().getEquipacion());
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void accionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accionMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_accionMouseClicked
+
+    private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
+        // TODO add your handling code here:
+        controlador.cargarEscena(Util.ES_CALLEJON);
+        this.dispose();
+    }//GEN-LAST:event_salirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -196,14 +255,14 @@ public class VistaTienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton accion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private Vista.VistaCabecera vistaCabecera1;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

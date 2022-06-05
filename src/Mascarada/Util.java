@@ -71,6 +71,9 @@ public final class Util {
     public static final int NORMAL = 6;
     public static final int DIFICIL = 4;
     public static final int PESADILLA = 2;
+    public static final int ARMA = 0;
+    public static final int ARMADURA =1;
+    public static final int AMULERTO = 2;
 
     // Escenas predefinidas
     public static final int ES_MUERTE = 2;

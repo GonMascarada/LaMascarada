@@ -163,7 +163,7 @@ public class Persona {
         for (int i = 0; i < equipacion.size(); i++) {
             e = equipacion.get(i);
             resultado = "\n" + e.getNombre() + ";" + idPartida + ";";
-            resultado += nombre + ";" + e.isEnUso()+ ";"+ usuario;
+            resultado += nombre + ";" + e.isEnUso() + ";" + usuario;
         }
         return resultado;
     }
@@ -201,65 +201,71 @@ public class Persona {
         equipacion.add(equipo);
         cambiado = true;
     }
-    
+
     /**
-     * Funcion para la actualizacion de stats trabajara conjuntamente con el metodo equipar y desequipar
+     * Funcion para la actualizacion de stats trabajara conjuntamente con el
+     * metodo equipar y desequipar
      */
-    
-    private void actualizar(){
-        Equipo e = null;
-        
-        for (int i = 0; i < equipacion.size(); i++) {
-            e=equipacion.get(i);
-            if (e.isEnUso()==true&&e.getAtaque()!=0) {
-                ataque=Util.ATQ_VAM+e.getAtaque();
-            }else if (e.isEnUso()==true&&e.getDefensa()!=0) {
-                defensa=Util.VIDA_VAM+e.getDefensa();
-            }else if (e.isEnUso()==true&&e.getVida()!=0) {
-                vidaMax=Util.DEF_VAM+e.getDefensa();
-                if (vidaActual>vidaMax) {
-                    vidaActual=vidaMax;
-                }
-            }else{
-                break;
-            }
-            
-        }
-        
-        
-    }
-    
-    private void equipar (String nombre){
-      Equipo e;
-        
-        for (int i = 0; i < equipacion.size(); i++) {
-            e=equipacion.get(i);
-            if (e.isEnUso()==true && e.getNombre()!=nombre) {
-                e.setEnUso(false);
-            }
-            else if (e.getNombre().equalsIgnoreCase(nombre)&& e.isEnUso()==false) {
-                e.setEnUso(true);
-            }else{
-                break;
-            }
-        }
-        
-    }
-    private void desequipar (String nombre){
-        
+    private void actualizar() {
         Equipo e;
-        
         for (int i = 0; i < equipacion.size(); i++) {
-            e=equipacion.get(i);
-            if (e.isEnUso()==true&& !e.getNombre().equalsIgnoreCase(nombre)) {
-                e.setEnUso(false);
-            }else{
-                break;
+            e = equipacion.get(i);
+            if (e.isEnUso()) {
+                if (e.getAtaque() != 0) {
+                    ataque = Util.ATQ_VAM + e.getAtaque();
+                } else if (e.getDefensa() != 0) {
+                    defensa = Util.DEF_VAM + e.getDefensa();
+                } else if (e.getVida() != 0) {
+                    vidaMax = Util.VIDA_VAM + e.getVida();
+                    if (vidaActual > vidaMax) {
+                        vidaActual = vidaMax;
+                    }
+                }
             }
         }
-        
     }
-            
-            
-    
+
+    /**
+     * Pone un solo objeto en uso de un tipo.
+     *
+     * @param nombre
+     * @param tipo
+     */
+    public void equipar(String nombre, int tipo) {
+        Equipo e;
+        for (int i = 0; i < equipacion.size(); i++) {
+            e = equipacion.get(i);
+            switch (tipo) {
+                case Util.ARMA -> {
+                    if (e.getAtaque() != 0) {
+                        if (e.getNombre().equals(nombre)) {
+                            equipacion.get(i).setEnUso(true);
+                        } else {
+                            equipacion.get(i).setEnUso(false);
+                        }
+                    }
+                }
+                case Util.ARMADURA -> {
+                    if (e.getDefensa() != 0) {
+                        if (e.getNombre().equals(nombre)) {
+                            equipacion.get(i).setEnUso(true);
+                        } else {
+                            equipacion.get(i).setEnUso(false);
+                        }
+                    }
+                }
+                case Util.AMULERTO -> {
+                    if (e.getVida() != 0) {
+                        if (e.getNombre().equals(nombre)) {
+                            equipacion.get(i).setEnUso(true);
+                        } else {
+                            equipacion.get(i).setEnUso(false);
+                        }
+                    }
+                }
+            }
+        }
+        actualizar();
+    }
+
 }

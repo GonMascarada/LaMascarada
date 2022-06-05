@@ -4,8 +4,8 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import Mascarada.Partida;
-import Mascarada.Util;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
@@ -19,20 +19,18 @@ import javax.swing.ImageIcon;
  */
 public class VistaCabecera extends javax.swing.JPanel {
 
-     
-    private Partida partida;
+    private Controlador controlador;
 
     ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1-4.png"));
     ImageIcon botonRojo2 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2-4.png"));
 
     /**
      * origin Creates new form CabeceraImport
+     *
+     * @param controlador
      */
-    public VistaCabecera() {
-        
+    public VistaCabecera(Controlador controlador) {
         initComponents();
-        
-        
         barraProgreso.setForeground(Color.white);
         barraSangre.setForeground(Color.red);
         barraSospecha.setForeground(Color.blue);
@@ -58,10 +56,11 @@ public class VistaCabecera extends javax.swing.JPanel {
     /**
      * Inserta y muestra los datos más relevantes de una partida.
      *
-     * @param partida Objeto con la información sobre una partida.
+     * @param controlador
      */
-    public void insertarDatosPartida(Partida partida) {
-        this.partida = partida;
+    public void insertarDatosPartida(Controlador controlador) {
+        Partida partida = controlador.getPartida();
+        this.controlador = controlador;
         nombre.setText(partida.getProtagonista().getNombre());
         String[] habiliades = partida.getProtagonista().getHabilidades().split(";");
         habilidad1.setText(habiliades[0]);
@@ -225,10 +224,9 @@ public class VistaCabecera extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fichapersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fichapersonajeMouseClicked
-
         VistaFicha ficha;
         try {
-            ficha = new VistaFicha(partida.getProtagonista());
+            ficha = new VistaFicha(controlador, true);
             ficha.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(VistaCabecera.class.getName()).log(Level.SEVERE, null, ex);
@@ -236,7 +234,13 @@ public class VistaCabecera extends javax.swing.JPanel {
     }//GEN-LAST:event_fichapersonajeMouseClicked
 
     private void fichapersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fichapersonajeActionPerformed
-        // TODO add your handling code here:
+        VistaFicha ficha;
+        try {
+            ficha = new VistaFicha(controlador, true);
+            ficha.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(VistaCabecera.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_fichapersonajeActionPerformed
 
 

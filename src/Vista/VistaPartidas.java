@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.Controlador;
@@ -580,14 +576,11 @@ public final class VistaPartidas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarMouseClicked
-        // TODO add your handling code here:
 
-        System.out.println("Trabajando en la carga de partidas");
     }//GEN-LAST:event_jButtonCargarMouseClicked
 
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
         // TODO add your handling code here:
-        System.out.println("Trabajando en el borrado de partidas");
     }//GEN-LAST:event_jButtonBorrarMouseClicked
 
     /**
