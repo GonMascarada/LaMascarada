@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Equipo;
+import Mascarada.Partida;
 import Mascarada.Util;
 import java.util.List;
 import javax.swing.DefaultListSelectionModel;
@@ -18,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class VistaTienda extends javax.swing.JFrame {
 
     private Controlador controlador;
+    private Partida partida;
 
     /**
      * Creates new form Tienda
@@ -28,6 +30,7 @@ public class VistaTienda extends javax.swing.JFrame {
         this.controlador = controlador;
         
         jTable1.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        vistaCabecera1.insertarDatosPartida(partida);
     }
 
     public void cargarDatos(List<Equipo> equipos) {
