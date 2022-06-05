@@ -38,6 +38,7 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
         jButton1.setIcon(botonRojo1);
         jButton1.setPressedIcon(botonRojo2);
         jButton1.setBackground(Color.black);
+        jButton1.setForeground(Color.white);
     }
 
     /**
@@ -64,6 +65,11 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
 
         jButton1.setText("Cerrar");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(140, 260, 280, 75);
 
@@ -86,6 +92,11 @@ public class PopUpInfoExtra extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
