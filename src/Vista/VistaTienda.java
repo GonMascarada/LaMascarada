@@ -25,12 +25,13 @@ public class VistaTienda extends javax.swing.JFrame {
      * Creates new form Tienda
      */
     public VistaTienda(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         Util.centrar(this);
-        this.controlador = controlador;
+        
         
         jTable1.setSelectionMode(DefaultListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        vistaCabecera1.insertarDatosPartida(partida);
+        vistaCabecera1.insertarDatosPartida(controlador);
     }
 
     public void cargarDatos(List<Equipo> equipos) {
@@ -67,7 +68,7 @@ public class VistaTienda extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        vistaCabecera1 = new Vista.VistaCabecera();
+        vistaCabecera1 = new Vista.VistaCabecera(controlador);
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();

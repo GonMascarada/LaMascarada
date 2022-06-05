@@ -6,7 +6,6 @@ package Vista;
 
 import Controlador.Controlador;
 import Mascarada.Partida;
-import Mascarada.Util;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
