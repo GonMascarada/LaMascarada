@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Util.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
@@ -14,6 +15,9 @@
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/Fichero.java</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Ficheros/equipo-partida-personaje.csv</file>
             <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaFicha.java</file>
+=======
+            <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/VistaTienda.java</file>
+>>>>>>> a00161c6398fb64508c9c2c4c3224fa2fe9fbea3
         </group>
     </open-files>
 </project-private>
