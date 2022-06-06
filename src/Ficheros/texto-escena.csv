@@ -1,6 +1,5 @@
 ﻿IdEscena;Condición;Texto
 0;0;<html>Eres un Vampiro, no puede darte el sol y te alimentas de sangre, la mascarada es el nombre del secreto que os oculta de los humanos, romper la mascarada significa la muerte. Tu objetivo es encontrar al Antiguo del pueblo, un Vampiro muy poderoso y matarlo. Pero primero tendrás que encontrar su escondite.</html>
-0;1;<html>Arrastra el ratón por la zona de abajo para descubrir tus posibilidades.</html>
 1;0;<html>¡Felicidades!</br>Has conseguido derrocar al antiguo, ahora Blood Town es tuya.</html>
 2;0;<html>Una pena, no lo has logrado.</html>
 3;0;<html>.--Bueno bueno, ¿que tenemos por aquí? Un forastero rarito eh? ¿Qué te trae a este pueblo?</html>
@@ -10,6 +9,7 @@
 7;0;<html>Golpeas los barrotes un par de veces y escuchas como en la celda de al lado alguien también los golpea, imitando el sonido..--No te va a servir de nada, estos polis son corruptos hasta la médula, pero cuando se les cruza el cable…Son demasiado defensores de la ley.</html>
 8;0;<html>.++Quien eres?..--Hola, me llamo Leo, llevo aquí encerrado un mes y no tiene pinta de que vaya a salir pronto.</html>
 9;0;<html>.++Hola Leo, yo me llamo .++, vengo…a visitar el pueblo..--Si, ya, como todo el mundo…Escucha, tengo un plan para salir de aquí pero necesito  alguien fuerte, crees que podrás ayudarme?.</html>
+9;8;<html>Esta mucho mas tranquilo de lo que aparenta, pero dice la verdad.</html>
 10;0;<html>.--Bien, he visto que un ladrillo de la celda que nos separa está suelto, creo que entre los dos podremos sacarlo y cargar juntos contra la pared de tu celda, la que da al exterior podremos salir. Estas paredes son finas pero no lo suficiente como para que solo yo pueda escapar. ¿Me has entendido?.</html>
 11;0;<html>Empujais juntos el ladrillo, que hace que la pared se desplome, quizá fuese un ladrillo de carga.. --Genial! Que te vaya bien, yo me voy de este pueblucho!.Leo se mete en el humo mientras la pared se desploma, encuentras la salida a la calle y no lo ves por ningún lado.</html>
 500;0;<html>El primer lugar que visitas es un bar con un cartel que dice SALLY´S en grande, cerca de la puerta hay otro que pone SE BUSCA PERSONAL , ves que no esta muy concurrido...</html>
@@ -44,6 +44,7 @@
 771;0;<html>.--Claro! Pero la mas alejada la tiene el huésped de la habitación 696, tendrá que ser otra.++cualquiera me sirve, vengo de parte de Sally’s.--: Oh! Haberlo dicho antes! Tengo esta habitación para ti entonces. Te recomiendo ir al Pub, suele estar abierto a estas horas en caso de que quieras tomar algo.</html>
 771;1;Llave obtenida.
 1000;0;<html>--Hola, cara nueva, te apetece tomar algo?</html>
+1000;8;<html>Vampiro</br>10 Generacion</br>Tremere</br>Inofensivo.</html>
 1001;0;<html>++Gracias, pero el alcohol no me…sienta bien.</html>
 1001;91;<html>++Gracias, pero el alcohol no me…sienta bien.--Bueno, igualmente creo que hay alguien que te ha echado </br>el ojo, en la mesa del fondo.</html>
 1002;0;<html>.--Por cierto, en el fondo tenemos un reservado, </br>la contraseña es contraseña, deberias poder…saciar tu hambre alli.</html>
@@ -62,6 +63,7 @@
 1256;0;<html>.++No se si conoceras al cazavampiros, pero le he puesto </br> tras tu pista, y ahora mismo viene aquí para matarte..--Perfecto, me encargaré primero de ti y luego de él.</html>
 1257;0;<html>.++Si me acoges como vástago te seré fiel.--Se que me quieres derrocar, y eso jamás sucederá.</html>
 1500;0;<html>Parece vacio, es probable que cierre temprano.</html>
+1500;8;<html>En efecto, esta vacio.</html>
 1501;0;<html>Aparentemente no hay nadie, las luces y los ordenadores están apagados.</html>
 1502;0;<html>No encuentras mas que papeles de oficina.</html>
 1503;0;<html>Encuentras una gelatina con una grapadora dentro, mejor </br>dejarla donde esta.</html>

@@ -57,9 +57,42 @@ public class Vampire extends Persona {
         return resultado;
     }
 
+    /**
+     * Comprueba si se tiene la habilidad de Celeridad.
+     *
+     * @return true si la tiene, false en otro caso.
+     */
     public boolean tieneCeleridad() {
-        if(clan.getHabilidades().containsKey("Celeridad")){
-            if(clan.getHabilidades().get("Celeridad")){
+        if (clan.getHabilidades().containsKey("Celeridad")) {
+            if (clan.getHabilidades().get("Celeridad")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Comprueba si se tiene la habilidad de Auspex.
+     *
+     * @return true si la tiene, false en otro caso.
+     */
+    public boolean tieneAuspex() {
+        if (clan.getHabilidades().containsKey("Animalismo")) {
+            if (clan.getHabilidades().get("Animalismo")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Comprueba si se tiene la habilidad de Animalismo.
+     *
+     * @return true si la tiene, false en otro caso.
+     */
+    public boolean tieneAnimalismo() {
+        if (clan.getHabilidades().containsKey("Auspex")) {
+            if (clan.getHabilidades().get("Auspex")) {
                 return true;
             }
         }

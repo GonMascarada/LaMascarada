@@ -175,9 +175,15 @@ public final class Controlador {
 
             // Mostrar la escena.
             lanzar();
+            
+            if(partida.getProtagonista().tieneAuspex()){
+                if (siguiente.hayPnj()){
+                    new VistaFicha(this, false).setVisible(true);
+                }
+            }
 
             // Si se tiene dechercho, obtener info extra y mostrarla si hay.
-            if (comprobarAnimalismo()) {
+            if (partida.getProtagonista().tieneAnimalismo()) {
                 texto = getTextoExtra(textos);
                 if (!texto.equals("")) {
                     PopUpInfoExtra ventana = new PopUpInfoExtra(texto);
@@ -719,26 +725,6 @@ public final class Controlador {
             indice++;
         }
         return encontrado;
-    }
-
-    /**
-     * Comprueba si el protagonista tiene la habilidad de animalismo.
-     *
-     * @return true si tiene la habilidad, false en otro caso.
-     */
-    private boolean comprobarAnimalismo() {
-        Clan clan = partida.getProtagonista().getClan();
-        HashMap<String, Boolean> habilidades;
-        boolean derecho = false;
-        if (clan.getNombre().equals("Nosferatu")) {
-            habilidades = clan.getHabilidades();
-            if (habilidades.containsKey("Animalismo")) {
-                if (habilidades.get("Animalismo")) {
-                    return true;
-                }
-            }
-        }
-        return derecho;
     }
 
     /**
