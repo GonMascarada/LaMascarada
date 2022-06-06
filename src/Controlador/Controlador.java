@@ -160,7 +160,7 @@ public final class Controlador {
         String texto;
         ArrayList<String> textos;
         boolean seguir;
-
+partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
         // Evaluar la opción que se acaba de tomar.
         seguir = evaluarAccion(opcion.getAccion());
         partida.sumarTiempo(opcion.getTiempo());
@@ -249,6 +249,21 @@ public final class Controlador {
         Escena e = partida.getEscena();
         e.setOpciones(evaluarOpciones(e.getOpciones()));
         partida.setEscena(e);
+        System.out.println("Reviso partida");
+        System.out.println(partida.getProtagonista().getNombre());
+        System.out.println(partida.getEscena().getIdEscena());
+        System.out.println(partida.getEscena().getImagen());
+        System.out.println(partida.getEscena().hayPnj());
+        System.out.println(partida.getIdPartida());
+        System.out.println(partida.getFecha());
+        System.out.println(partida.getTiempo());
+        System.out.println(partida.getProgreso());
+        System.out.println(partida.getPersonajes().size());
+        System.out.println(partida.getUsuario());
+        System.out.println(partida.getDificultad());
+        
+        
+       // System.out.println(partida.get);
         lanzar();
     }
 
@@ -298,7 +313,7 @@ public final class Controlador {
         switch (accion) {
             case Util.AC_PROGRESO -> {
                 try {
-                    partida.setProgreso(partida.getProgreso() + 1);
+                    partida.setProgreso(partida.getProgreso() + 1);                
                     bbdd.guardarPartida(partida, false);
                 } catch (SQLException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -360,9 +375,7 @@ public final class Controlador {
                 new PopUpCombate(pelea).setVisible(true);
             }
             case Util.AC_AGRADAR -> {
-                System.out.println("Estado de animo antes: " + partida.getEscena().getPnj().getEstadoDeAnimo());
                 partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
-                System.out.println("Estado de animo despues: " + partida.getEscena().getPnj().getEstadoDeAnimo());
             }
             case Util.AC_ENFADAR -> {
                 partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
@@ -411,6 +424,11 @@ public final class Controlador {
             case Util.AC_OBTENER_COLGANTE_ROJO -> { //No de un pnj
                 Equipo e = bbdd.getEquipo("Colgante Rojo");
                 partida.getProtagonista().addObjeto(e);
+            }            
+            case Util.AC_OBTENER_PASS_Y_PROGRESO -> { 
+                aux1 = evaluarAccion(Util.AC_OBTENER_PASS);
+                aux2 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2;
             }
             case Util.AC_OBTENER_LLAVE_Y_PROGRESO -> {
                 aux1 = evaluarAccion(Util.AC_OBTENER_LLAVE);
@@ -744,7 +762,7 @@ public final class Controlador {
             }
             case Util.SI_BRUJAH_Y_NO_PISTOLA -> {
                 aux1 = evaluarCondicion(Util.SI_BRUJAH);
-                aux2 = evaluarCondicion(Util.SI_PISTOLA);
+                aux2 = !evaluarCondicion(Util.SI_PISTOLA);
                 cumplida = aux1 && aux2;
             }
         }

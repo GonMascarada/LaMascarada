@@ -597,6 +597,7 @@ public final class Fichero {
      */
     private static int getIdGuardado(int idPartida, int progreso, String usuario) throws FileNotFoundException {
         int id = 0;
+        ArrayList<Integer> ids = new ArrayList();
         File f;
         if (usuario.equals("Local")) {
             f = new File(Util.URL_PARTIDA_LOCAL);
@@ -609,15 +610,19 @@ public final class Fichero {
         while (lector.hasNext()) {
             linea = lector.nextLine().split(";");
             id = Integer.parseInt(linea[0]);
-            if (id == idPartida) {
-                if (Integer.parseInt(linea[3]) == progreso) {
+            if ((linea[8].equals(usuario))) {
+                ids.add(id);
+                if ((id == idPartida) && (Integer.parseInt(linea[3]) == progreso)) {
                     return idPartida;
                 }
             }
         }
-        id++;
         lector.close();
-        return id;
+        Collections.sort(ids);
+        if (ids.isEmpty()) {
+            return 0;
+        }
+        return  ids.get(ids.size() - 1) + 1;
     }
 
     /**

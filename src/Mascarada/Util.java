@@ -125,6 +125,7 @@ public final class Util {
     public static final int AC_OBTENER_MASCARILLA = 31;
     public static final int AC_OBTENER_NOTA = 32;
     public static final int AC_OBTENER_LECTURA = 33;
+    public static final int AC_OBTENER_PASS_Y_PROGRESO = 34;
 
     public static final int AC_MOSTRAR_MAPA = 50;
     public static final int AC_MOSTRAR_TIENDA = 51;

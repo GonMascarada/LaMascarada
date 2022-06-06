@@ -1,8 +1,8 @@
 ﻿﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente
-0;Salir;0;0;0;Humano;1;1
 1;Ir al bar;0;32;20;Humano;0;500
 2;Ir al motel;0;60;20;Humano;0;750
 3;Continuar;0;90;20;Humano;0;3
+0;Salir;0;0;0;Humano;1;1
 4;Mentir;0;0;20;Humano;3;4
 5;Ser hostil;0;0;20;Humano;4;5
 6;Continuar;0;0;20;Humano;5;6
@@ -22,9 +22,9 @@
 20;Respuesta normal;20;10;20;Humano;501;502
 21;Respuesta simpática;20;10;20;Humano;501;502
 22;Respuesta agresiva;21;10;20;Humano;501;503
+25;Hablar con otra persona;0;4;20;Humano;501;500
 23;Hablar con otra persona;0;0;20;Humano;502;500
 24;Hablar con otra persona;0;0;20;Humano;503;500
-25;Hablar con otra persona;0;4;20;Humano;501;500
 26;Hablar con otra persona;0;0;20;Humano;510;500
 27;Respuesta normal;0;91;20;Humano;520;521
 28;Respuesta simpática;7;91;20;Humano;520;521
@@ -58,12 +58,12 @@
 56;Salir del juego;4;0;20;Humano;780;780
 57;Usar el mapa;50;0;20;Humano;780;780
 58;Hablar con el camarero;0;13;20;Humano;1000;1001
-59;Continuar hablando;0;0;20;Humano;1001;1002
-60;Continuar hablando;14;0;20;Humano;1002;1003
 61;Hablar con el camarero;0;5;20;Humano;1000;1004
 62;Hablar con un cliente;0;5;20;Humano;1000;1005
 63;Hablar con el vidente;25;95;60;Humano;1000;1000
 64;Ir al reservado;6;5;60;Humano;1000;1006
+59;Continuar hablando;0;0;20;Humano;1001;1002
+60;Continuar hablando;34;0;20;Humano;1002;1003
 65;Agradecerselo;0;0;20;Humano;1003;1000
 66;Volver;0;0;20;Humano;1004;1000
 67;Insultar;5;0;20;Humano;1004;1000
@@ -91,7 +91,7 @@
 89;Volver;50;0;20;Humano;1500;1500
 90;Buscar en las estanterías;0;0;20;Humano;1501;1502
 91;Buscar en los escritorios;0;0;20;Humano;1501;1503
-92;Buscar en la oficina del jefe;0;14;20;Humano;1501;1504
+92;Buscar en la oficina del jefe;0;6;20;Humano;1501;1504
 93;Buscar en la oficina del jefe;0;7;20;Humano;1501;1505
 94;Usar el mapa;50;0;20;Humano;1501;1501
 95;Volver;0;0;20;Humano;1502;1501
@@ -109,12 +109,12 @@
 107;Volver;0;0;20;Humano;1754;1751
 108;Entrar;0;91;20;Humano;2000;2001
 109;Volver;50;0;20;Humano;2000;2000
+112;Entrar;0;96;20;Humano;2000;2002
+115;Entrar;0;95;20;Humano;2000;2004
 110;Comprar;51;91;20;Humano;2001;2001
 111;Salir;50;91;20;Humano;2001;2001
-112;Entrar;0;96;20;Humano;2000;2002
 113;Respuesta simpática;26;0;20;Humano;2002;2003
 114;Salir;50;0;20;Humano;2003;2000
-115;Entrar;0;95;20;Humano;2000;2004
 116;Comprar;51;95;20;Humano;2004;2000
 117;Volver;50;0;20;Humano;2250;2250
 118;Llamar a la puerta;0;0;20;Humano;2250;2251
