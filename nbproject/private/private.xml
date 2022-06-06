@@ -3,8 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Util.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaEscena.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/GestorDeDatos.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaTienda.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Partida.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/BaseDeDatos.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Mascarada/Escena.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Modelo/Fichero.java</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Ficheros/equipo-partida-personaje.csv</file>
+            <file>file:/C:/Users/glf19/OneDrive%20-%20Educacyl/Proyecto/LaMascaradaV1/src/Vista/VistaFicha.java</file>
+=======
             <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/VistaTienda.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/Moru/Documents/La%20Mascarada/src/Vista/VistaEscena.java</file>
+=======
+>>>>>>> a00161c6398fb64508c9c2c4c3224fa2fe9fbea3
+>>>>>>> c0a19d2ec7acbfeb684638b6e015c550586a6c00
         </group>
     </open-files>
 </project-private>

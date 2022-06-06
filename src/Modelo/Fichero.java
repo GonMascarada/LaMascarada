@@ -668,11 +668,9 @@ public final class Fichero {
             linea = aux.split(";");
             // Si el estado de animo es PROTAGONISTA recuperaremos su partida.
             if (Integer.valueOf(linea[6]) == Util.EA_PROTAGONISTA) {
-                System.out.println("Encuentro un prota: " + linea[0]);
                 idPartida = Integer.parseInt(linea[10]);
                 partida = getPartida(idPartida, usuario); //Nos devuelve la partida sin el vampiro protagonista.
                 if (!partida.getUsuario().isBlank()) {
-                    System.out.println("Supero el blank");
                     clan = getClan(linea[7]);
                     vampire = new Vampire(clan, linea, getEquipos(linea[0], idPartida, usuario));
                     partida.setProtagonista(vampire); //Le añadimos el personaje que acabamos de buscar.
@@ -882,9 +880,7 @@ public final class Fichero {
         lector.nextLine(); //Salta la cabecera del documento
         while ((lector.hasNext() && (!encontrado))) {
             linea = lector.nextLine().split(";");
-            System.out.println("Pruebo partidas");
             if ((Integer.parseInt(linea[0]) == idPartida) && (linea[8].equals(usuario))) {
-                System.out.println("Encuentro partida para user " + usuario);
                 partida.setIdPartida(Integer.parseInt(linea[0]));
                 partida.setFecha(linea[1]); //Revisar
                 partida.setTiempo(Integer.parseInt(linea[2]));

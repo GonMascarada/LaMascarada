@@ -46,7 +46,6 @@ public class VistaEscena extends javax.swing.JFrame {
         texto.setIcon(FondoTexto);
         texto.setForeground(Color.white);
         cabecera1.insertarDatosPartida(controlador);
-        System.out.println("Opciones recibidas: " + opciones.size());
         switch (opciones.size()) {
             case 1 -> {
             footer1 foot1 = new footer1(controlador, this);
@@ -136,7 +135,7 @@ public class VistaEscena extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        System.out.println("Dew");
+
     }//GEN-LAST:event_formWindowClosed
 
     /**

@@ -165,7 +165,6 @@ public class Persona {
             resultado += "\n" + e.getNombre() + ";" + idPartida + ";";
             resultado += nombre + ";" + e.isEnUso() + ";" + usuario;
         }
-        System.out.println("Añadido " + resultado);
         return resultado;
     }
 

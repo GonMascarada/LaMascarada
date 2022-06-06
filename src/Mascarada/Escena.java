@@ -88,4 +88,11 @@ public class Escena {
             return false;
         }
     }
+
+    /**
+     * @param pnj the pnj to set
+     */
+    public void setPnj(Persona pnj) {
+        this.pnj = pnj;
+    }
 }

@@ -114,6 +114,7 @@ public class VistaTienda extends javax.swing.JFrame {
         boton = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -144,6 +145,8 @@ public class VistaTienda extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(80, 270, 284, 70);
 
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -158,7 +161,7 @@ public class VistaTienda extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(6, 346, 970, 280);
+        jScrollPane1.setBounds(6, 346, 970, 240);
 
         boton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         boton.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +189,12 @@ public class VistaTienda extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(-10, 0, 1000, 700);
 
+        jLabelError.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelError.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelError.setText("jLabel3");
+        jPanel1.add(jLabelError);
+        jLabelError.setBounds(400, 610, 170, 16);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,22 +215,28 @@ public class VistaTienda extends javax.swing.JFrame {
         // TODO add your handling code here:
         boton.setText("Vender");
         cargarDatos(comprador.getEquipacion());
+        jLabelError.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         boton.setText("Comprar");
         cargarDatos(vendedor.getEquipacion());
+        jLabelError.setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         String objeto = (String) modelo.getValueAt(jTable1.getSelectedRow(), 0);
         int precio = 12;
+        jLabelError.setVisible(false);
         if (boton.getText().equals("Comprar")) {
             if (comprador.getDinero() > precio) {
                 comprador.addObjeto(vendedor.delObjeto(objeto));
                 comprador.setDinero(comprador.getDinero() - precio);
+            } else {
+                jLabelError.setText("No tienes suficiente dinero.");
+                jLabelError.setVisible(true);
             }
             controlador.getPartida().setProtagonista(comprador);
             ArrayList<Persona> pjs = controlador.getPartida().getPersonajes();
@@ -296,6 +311,7 @@ public class VistaTienda extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

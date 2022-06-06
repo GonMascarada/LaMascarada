@@ -206,7 +206,7 @@ public class Partida {
         String resultado;
         resultado = idPartida + ";" + fecha + ";" + tiempo + ";" + progreso;
         resultado += ";" + sedDeSangre + ";" + sospecha + ";" + ultimaPista + ";";
-        resultado += escena.getIdEscena()+ ";" + usuario + ";" + dificultad;
+        resultado += escena.getIdEscena() + ";" + usuario + ";" + dificultad;
         return resultado;
     }
 
@@ -299,6 +299,11 @@ public class Partida {
      * @param tiempo a añadir.
      */
     public void sumarTiempo(int tiempo) {
+        if (protagonista.tieneCeleridad()) {
+            if (tiempo >= 5) {
+                tiempo -= 5;
+            }
+        }
         this.tiempo += tiempo;
     }
 
@@ -321,5 +326,37 @@ public class Partida {
      */
     public void setVidaAlMaximo() {
         protagonista.setVidaActual(protagonista.getVidaMax());
+    }
+
+    /**
+     * Cambia la cantidad de minutos a una "fecha"
+     *
+     * @return
+     */
+    public String getTiempoEfectivo() {
+        int dias, horas, minutos, resto;
+        String resultado = "";
+        //calculo de días (8 horas de noche)
+        if (tiempo >= 480) {
+            dias = tiempo / 480;
+            resto = tiempo % 480;
+            if (dias == 1) {
+                resultado = "1 día y ";
+            } else {
+                resultado = dias + " días y ";
+            }
+        } else {
+            resto = tiempo;
+        }
+        horas = resto / 60;
+        resultado += horas + ":";
+        minutos = resto % 60;
+        if(minutos == 0){
+            resultado += "00";
+        } else {
+            resultado += minutos;
+        }
+        
+        return resultado;
     }
 }
