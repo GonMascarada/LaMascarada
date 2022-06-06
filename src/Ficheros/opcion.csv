@@ -41,9 +41,9 @@
 39;Respuesta normal;22;31;20;Humano;752;753;
 40;Respuesta simpática;22;31;20;Humano;752;754;
 41;Respuesta agresiva;23;31;20;Humano;752;755;
-42;Usar el mapa;0;31;20;Humano;753;753;
-43;Usar el mapa;0;31;20;Humano;754;754;
-44;Usar el mapa;0;31;20;Humano;755;755;
+42;Usar el mapa;50;31;20;Humano;753;753;
+43;Usar el mapa;50;31;20;Humano;754;754;
+44;Usar el mapa;50;31;20;Humano;755;755;
 45;Decir tu nombre;15;90;20;Humano;760;761;
 46;Ir al Pub;50;0;20;Humano;761;761;
 47;Ir a la habitación 696;0;0;20;Humano;761;762;
