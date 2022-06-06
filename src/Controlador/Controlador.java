@@ -417,11 +417,28 @@ public final class Controlador {
                 aux2 = evaluarAccion(Util.AC_PROGRESO);
                 seguir = aux1 && aux2;
             }
+            case Util.AC_OBTENER_LLAVE_Y_AGRADAR_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_LLAVE);
+                aux2 = evaluarAccion(Util.AC_AGRADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_OBTENER_LLAVE_Y_ENFADAR_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_LLAVE);
+                aux2 = evaluarAccion(Util.AC_ENFADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
             case Util.AC_OBTENER_MAPA_Y_AGRADAR_Y_PROGRESO -> {
                 aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
                 aux2 = evaluarAccion(Util.AC_AGRADAR);
                 aux3 = evaluarAccion(Util.AC_PROGRESO);
                 seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_OBTENER_MAPA_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux3;
             }
             case Util.AC_OBTENER_MAPA_Y_ENFADAR_PROGRESO -> {
                 aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
