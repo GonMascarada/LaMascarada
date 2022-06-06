@@ -5,6 +5,7 @@ import Mascarada.Equipo;
 import Mascarada.Persona;
 import Mascarada.Util;
 import Mascarada.Vampire;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ import javax.swing.ImageIcon;
  * @author Gonzalo López Fernández
  */
 public class VistaFicha extends javax.swing.JFrame {
+    ImageIcon botonRojo1 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo1.png"));
+    ImageIcon botonRojo2 = new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Rojo2.png"));
+
 
     private Controlador controlador;
     private Persona personaje;
@@ -32,12 +36,17 @@ public class VistaFicha extends javax.swing.JFrame {
     public VistaFicha(Controlador controlador, boolean esProtagonista) throws IOException {
         initComponents();
         Util.centrar(this);
+        
+        jButtonsSalir.setRolloverEnabled(true);
+        jButtonsSalir.setIcon(botonRojo1);
+        jButtonsSalir.setPressedIcon(botonRojo2);
+        jButtonsSalir.setForeground(Color.white);
+        jButtonsSalir.setBackground(Color.black);
+        
         this.controlador = controlador;
         if (esProtagonista) {
-            System.out.println("Prota");
             personaje = controlador.getPartida().getProtagonista();
         } else {
-            System.out.println("Pnj");
             personaje = controlador.getPartida().getEscena().getPnj();
             labelEstadoAnimo.setVisible(true);
             estadoAnimoDato.setVisible(true);
@@ -65,7 +74,6 @@ public class VistaFicha extends javax.swing.JFrame {
             habilidad1.setText(habiliades[0]);
             habilidad2.setText(habiliades[1]);
             clan.setText(vampire.getClan().getNombre());
-            System.out.println("Vampiro");
             ImageIcon ImagenEscena = new javax.swing.ImageIcon(getClass().getResource(vampire.getClan().getImagen()));
             Image image = ImagenEscena.getImage();
             Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
@@ -136,6 +144,7 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(420, 50, 110, 30);
 
+        objetoEspecial.setForeground(new java.awt.Color(255, 255, 255));
         objetoEspecial.setText("Objetos Especiales");
         jPanel1.add(objetoEspecial);
         objetoEspecial.setBounds(800, 270, 120, 20);
@@ -150,7 +159,7 @@ public class VistaFicha extends javax.swing.JFrame {
         habilidad1.setForeground(new java.awt.Color(255, 255, 255));
         habilidad1.setText("Habilidad1");
         jPanel1.add(habilidad1);
-        habilidad1.setBounds(260, 80, 120, 20);
+        habilidad1.setBounds(240, 80, 120, 20);
 
         jListEspecial.setBackground(new java.awt.Color(0, 0, 0));
         jListEspecial.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,14 +239,17 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(jScrollPane4);
         jScrollPane4.setBounds(520, 300, 200, 350);
 
+        amuletos.setForeground(new java.awt.Color(255, 255, 255));
         amuletos.setText("Amuletos");
         jPanel1.add(amuletos);
         amuletos.setBounds(560, 270, 120, 20);
 
+        ataque.setForeground(new java.awt.Color(255, 255, 255));
         ataque.setText("Objetos de Ataque");
         jPanel1.add(ataque);
         ataque.setBounds(70, 270, 120, 20);
 
+        defensivo.setForeground(new java.awt.Color(255, 255, 255));
         defensivo.setText("Objetos Defensivos");
         jPanel1.add(defensivo);
         defensivo.setBounds(320, 270, 120, 20);
@@ -257,13 +269,13 @@ public class VistaFicha extends javax.swing.JFrame {
         habilidad2.setForeground(new java.awt.Color(255, 255, 255));
         habilidad2.setText("Habilidad2");
         jPanel1.add(habilidad2);
-        habilidad2.setBounds(260, 110, 120, 20);
+        habilidad2.setBounds(240, 110, 120, 20);
 
         dinero.setBackground(new java.awt.Color(0, 0, 0));
         dinero.setForeground(new java.awt.Color(255, 255, 255));
         dinero.setText("Dinero");
         jPanel1.add(dinero);
-        dinero.setBounds(230, 150, 50, 20);
+        dinero.setBounds(240, 150, 50, 20);
 
         labelEstadoAnimo.setBackground(new java.awt.Color(0, 0, 0));
         labelEstadoAnimo.setForeground(new java.awt.Color(255, 255, 255));
@@ -314,7 +326,9 @@ public class VistaFicha extends javax.swing.JFrame {
         jPanel1.add(vidaDato);
         vidaDato.setBounds(570, 110, 110, 30);
 
+        jButtonsSalir.setForeground(new java.awt.Color(255, 255, 255));
         jButtonsSalir.setText("Salir");
+        jButtonsSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonsSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonsSalirMouseClicked(evt);
@@ -326,9 +340,9 @@ public class VistaFicha extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonsSalir);
-        jButtonsSalir.setBounds(730, 60, 210, 60);
+        jButtonsSalir.setBounds(680, 50, 275, 79);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoEscenas.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(1, 0, 1000, 700);
@@ -475,7 +489,6 @@ public class VistaFicha extends javax.swing.JFrame {
         Equipo e;
         int atq = 0, def = 0, vid = 0;
         ArrayList<Equipo> inventario = personaje.getEquipacion();
-        System.out.println("Inventario " + inventario.size());
         for (int i = 0; i < inventario.size(); i++) {
             e = inventario.get(i);
             if (e.getAtaque() != 0) {

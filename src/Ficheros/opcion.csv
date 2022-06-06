@@ -1,158 +1,158 @@
-String texto;﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente
-0;Salir;0;0;0;Humano;1;1
-1;Ir al bar;0;32;20;Humano;0;500
-2;Ir al motel;0;60;20;Humano;0;750
-3;Continuar;0;90;20;Humano;0;3
-4;Mentir;0;0;20;Humano;3;4
-5;Ser hostil;0;0;20;Humano;4;5
-6;Continuar;0;0;20;Humano;5;6
-7;Gritar;0;0;20;Humano;6;6
-8;Golpear los barrotes;0;0;20;Humano;6;7
-9;¿Quién eres?;0;0;20;Humano;7;8
-10;Saludar;0;0;20;Humano;8;9
-11;Sí;0;0;20;Humano;9;10
-12;No;0;0;20;Humano;9;6
-13;Sí;0;0;20;Humano;10;11
-14;No;0;0;20;Humano;10;10
-15;Huir;0;0;20;Humano;11;500
-16;Hablar con la camarera;0;0;20;Humano;500;501
-17;Hablar con el dueño;0;0;20;Humano;500;510
-18;Hablar con un cliente;0;0;20;Humano;500;520
-19;Usar el mapa;50;4;20;Humano;500;500
-20;Respuesta normal;20;10;20;Humano;501;502
-21;Respuesta simpática;20;10;20;Humano;501;502
-22;Respuesta agresiva;21;10;20;Humano;501;503
-23;Hablar con otra persona;0;0;20;Humano;502;500
-24;Hablar con otra persona;0;0;20;Humano;503;500
-25;Hablar con otra persona;0;4;20;Humano;501;500
-26;Hablar con otra persona;0;0;20;Humano;510;500
-27;Respuesta normal;0;91;20;Humano;520;521
-28;Respuesta simpática;7;91;20;Humano;520;521
-29;Respuesta agresiva;7;91;20;Humano;520;522
-30;Hablar con otra persona;8;92;20;Humano;520;500
-31;Hablar con otra persona;0;0;20;Humano;521;500
-32;Hablar con otra persona;0;0;20;Humano;522;500
-33;Entrar;0;31;20;Humano;750;751
-34;Entrar;0;93;20;Humano;750;760
-35;Entrar;0;62;20;Humano;750;770
-36;Entrar;0;6;20;Humano;750;780
-37;Volver;50;0;20;Humano;750;750
-38;Decir tu nombre;0;31;20;Humano;751;752
-39;Respuesta normal;22;31;20;Humano;752;753
-40;Respuesta simpática;22;31;20;Humano;752;754
-41;Respuesta agresiva;23;31;20;Humano;752;755
-42;Usar el mapa;0;31;20;Humano;753;753
-43;Usar el mapa;0;31;20;Humano;754;754
-44;Usar el mapa;0;31;20;Humano;755;755
-45;Decir tu nombre;15;90;20;Humano;760;761
-46;Ir al Pub;50;0;20;Humano;761;761
-47;Ir a la habitación 696;0;0;20;Humano;761;762
-48;Llamar a la puerta;0;0;20;Humano;762;763
-49;Hacer lectura de manos;24;0;60;Humano;763;764
-50;Usar el mapa;50;0;20;Humano;764;764
-51;Respuesta normal;15;0;20;Humano;770;771
-52;Respuesta simpática;15;0;20;Humano;770;771
-53;Dar las gracias y salir;50;0;20;Humano;771;771
-54;Guardar;2;0;20;Humano;780;780
-55;Guardar y salir;3;0;20;Humano;780;780
-56;Salir del juego;4;0;20;Humano;780;780
-57;Hablar con el camarero;0;13;20;Humano;1000;1001
-58;Continuar hablando;0;0;20;Humano;1001;1002
-59;Continuar hablando;14;0;20;Humano;1002;1003
-60;Hablar con el camarero;0;5;20;Humano;1000;1004
-61;Hablar con un cliente;0;5;20;Humano;1000;1005
-62;Hablar con el vidente;25;94;60;Humano;1000;1000
-63;Ir al reservado;6;5;60;Humano;1000;1006
-64;Agradecerselo;0;0;20;Humano;1003;1000
-65;Volver;0;0;20;Humano;1004;1000
-66;Insultar;5;0;20;Humano;1004;1000
-67;Volver;0;0;20;Humano;1005;1000
-68;Salir del reservado;0;0;20;Humano;1006;1000
-69;Acercarse;0;0;20;Humano;1250;1251
-70;Volver;50;0;20;Humano;1250;1250
-71;Ir al jardín delantero;0;0;20;Humano;1251;1252
-72;Ir al jardín trasero;0;0;20;Humano;1251;1253
-73;Volver a la entrada;0;0;20;Humano;1252;1250
-74;Volver;0;0;20;Humano;1253;1250
-75;Usar entrada secreta;0;7;20;Humano;1253;1254
-76;Entrar;0;0;20;Humano;1254;1255
-77;Salir;50;0;20;Humano;1254;1254
-78;Llamar a la mascrilla;26;90;20;Humano;1255;1
-79;Tender una trampa;0;0;;Tremere;1255;1256
-80;Atacar;5;0;;Brujah;1255;1
-81;Sobornar;0;0;;Ventrue;1255;1257
-82;Pelear;5;0;20;Humano;1256;1
-83;Pelear;5;0;20;Humano;1257;1
-84;Entrar;0;0;20;Humano;1500;1501
-85;Volver;50;0;20;Humano;1500;1500
-86;Buscar en las estanterías;0;0;20;Humano;1501;1502
-87;Buscar en los escritorios;0;0;20;Humano;1501;1503
-88;Buscar en la oficina del jefe;0;14;20;Humano;1501;1504
-89;Buscar en la oficina del jefe;0;7;20;Humano;1501;1505
-90;Volver;0;0;20;Humano;1502;1501
-91;Volver;0;0;20;Humano;1503;1501
-92;Volver;16;0;20;Humano;1504;1501
-93;Volver;0;0;20;Humano;1505;1501
-94;Entrar;0;0;20;Humano;1750;1751
-95;Volver;50;0;20;Humano;1750;1750
-96;Buscar en las estanterías;0;0;20;Humano;1751;1752
-97;Sentarte en una mesa;0;4;20;Humano;1751;1753
-98;Sentarte en una mesa;13;10;20;Humano;1751;1754
-99;Salir;50;0;20;Humano;1751;1751
-100;Volver;0;0;20;Humano;1752;1751
-101;Volver;0;0;20;Humano;1753;1751
-102;Volver;0;0;20;Humano;1754;1751
-103;Entrar;0;91;20;Humano;2000;2001
-104;Volver;50;0;20;Humano;2000;2000
-105;Comprar;51;91;20;Humano;2001;2001
-106;Salir;50;91;20;Humano;2001;2001
-107;Entrar;0;96;20;Humano;2000;2002
-108;Respuesta simpática;26;0;20;Humano;2002;2003
-109;Salir;50;0;20;Humano;2003;2000
-110;Entrar;0;95;20;Humano;2000;2004
-111;Comprar;51;95;20;Humano;2004;2000
-112;Volver;50;0;20;Humano;2250;2250
-113;Llamar a la puerta;0;0;20;Humano;2250;2251
-114;Ratatula;0;0;20;Humano;2251;2250
-115;Contraseña;0;0;20;Humano;2251;2250
-116;1234;0;0;20;Humano;2251;2250
-117;Mostrar la mascarilla;0;95;20;Humano;2251;2252
-118;Entrar;0;0;20;Humano;2252;2253
-119;Irte;50;0;20;Humano;2252;2252
-120;Aceptar los terminos y condiciones;50;0;20;Humano;2253;2253
-121;Analizar a los demas;0;0;20;Humano;2253;2254
-122;Continuar;0;0;20;Humano;2254;2253
-123;Volver;50;0;20;Humano;2500;2500
-124;Entrar;0;33;20;Humano;2500;2501
-125;Saludar;0;0;20;Humano;2501;2502
-126;Continuar;0;0;20;Humano;2502;2503
-127;Aceptar;0;0;20;Humano;2503;2500
-128;Volver;50;0;20;Humano;2750;2750
-129;Acercarse;0;121;20;Humano;2750;2751
-130;Seguirle el rollo;0;0;20;Humano;2751;2752
-131;Pi;0;0;20;Humano;2752;2752
-132;120;0;0;20;Humano;2752;2753
-133;e;0;0;20;Humano;2752;2752
-134;Pipipi;0;0;20;Humano;2752;2752
-135;Molly;0;0;20;Humano;2753;2752
-136;Sally;0;0;20;Humano;2753;2754
-137;Nely;0;0;20;Humano;2753;2752
-138;Maricarmen;0;0;20;Humano;2753;2752
-139;42;0;0;20;Humano;2754;2752
-140;Ninguna;0;0;20;Humano;2754;2752
-141;2;0;0;20;Humano;2754;2755
-142;Todas las respuestas son correctas;0;0;20;Humano;2754;2752
-143;666;0;0;20;Humano;2755;2752
-144;999;0;0;20;Humano;2755;2752
-145;969;0;0;20;Humano;2755;2752
-146;696;0;0;20;Humano;2755;2756
-147;Aceptar;0;0;20;Humano;2756;2750
-148;Volver;50;0;20;Humano;3000;3000
-149;Colarse;0;63;20;Humano;3000;3001
-150;Acercarse;0;0;20;Humano;3001;3002
-151;Buscar en el comedor;0;0;20;Humano;3002;3003
-152;Buscar en las aulas;0;0;20;Humano;3002;3003
-153;Buscar en el patio;0;0;20;Humano;3002;3003
-154;Buscar en el gimnasio;0;0;20;Humano;3002;3003
-155;Recogerlo y seguir;0;0;20;Humano;3003;3004
-156;Salir;50;0;20;Humano;3004;3004
+﻿﻿IdOpcion;Texto;Acción;Condición;Tiempo;NombreClan;IdEscena;IdEscenaSiguiente
+0;Salir;0;0;0;Humano;1;1;
+1;Ir al bar;0;32;20;Humano;0;500;
+2;Ir al motel;0;60;20;Humano;0;750;
+3;Continuar;0;90;20;Humano;0;3;
+4;Mentir;0;0;20;Humano;3;4;
+5;Ser hostil;0;0;20;Humano;4;5;
+6;Continuar;0;0;20;Humano;5;6;
+7;Gritar;0;0;20;Humano;6;6;
+8;Golpear los barrotes;0;0;20;Humano;6;7;
+9;¿Quién eres?;0;0;20;Humano;7;8;
+10;Saludar;0;0;20;Humano;8;9;
+11;Sí;0;0;20;Humano;9;10;
+12;No;0;0;20;Humano;9;6;
+13;Sí;0;0;20;Humano;10;11;
+14;No;0;0;20;Humano;10;10;
+15;Huir;0;0;20;Humano;11;500;
+16;Hablar con la camarera;0;0;20;Humano;500;501;
+17;Hablar con el dueño;0;0;20;Humano;500;510;
+18;Hablar con un cliente;0;0;20;Humano;500;520;
+19;Usar el mapa;50;4;20;Humano;500;500;
+20;Respuesta normal;20;10;20;Humano;501;502;
+21;Respuesta simpática;20;10;20;Humano;501;502;
+22;Respuesta agresiva;21;10;20;Humano;501;503;
+23;Hablar con otra persona;0;0;20;Humano;502;500;
+24;Hablar con otra persona;0;0;20;Humano;503;500;
+25;Hablar con otra persona;0;4;20;Humano;501;500;
+26;Hablar con otra persona;0;0;20;Humano;510;500;
+27;Respuesta normal;0;91;20;Humano;520;521;
+28;Respuesta simpática;7;91;20;Humano;520;521;
+29;Respuesta agresiva;7;91;20;Humano;520;522;
+30;Hablar con otra persona;8;92;20;Humano;520;500;
+31;Hablar con otra persona;0;0;20;Humano;521;500;
+32;Hablar con otra persona;0;0;20;Humano;522;500;
+33;Entrar;0;31;20;Humano;750;751;
+34;Entrar;0;93;20;Humano;750;760;
+35;Entrar;0;62;20;Humano;750;770;
+36;Entrar;0;6;20;Humano;750;780;
+37;Volver;50;0;20;Humano;750;750;
+38;Decir tu nombre;0;31;20;Humano;751;752;
+39;Respuesta normal;22;31;20;Humano;752;753;
+40;Respuesta simpática;22;31;20;Humano;752;754;
+41;Respuesta agresiva;23;31;20;Humano;752;755;
+42;Usar el mapa;50;31;20;Humano;753;753;
+43;Usar el mapa;50;31;20;Humano;754;754;
+44;Usar el mapa;50;31;20;Humano;755;755;
+45;Decir tu nombre;15;90;20;Humano;760;761;
+46;Ir al Pub;50;0;20;Humano;761;761;
+47;Ir a la habitación 696;0;0;20;Humano;761;762;
+48;Llamar a la puerta;0;0;20;Humano;762;763;
+49;Hacer lectura de manos;24;0;60;Humano;763;764;
+50;Usar el mapa;50;0;20;Humano;764;764;
+51;Respuesta normal;15;0;20;Humano;770;771;
+52;Respuesta simpática;15;0;20;Humano;770;771;
+53;Dar las gracias y salir;50;0;20;Humano;771;771;
+54;Guardar;2;0;20;Humano;780;780;
+55;Guardar y salir;3;0;20;Humano;780;780;
+56;Salir del juego;4;0;20;Humano;780;780;
+57;Hablar con el camarero;0;13;20;Humano;1000;1001;
+58;Continuar hablando;0;0;20;Humano;1001;1002;
+59;Continuar hablando;14;0;20;Humano;1002;1003;
+60;Hablar con el camarero;0;5;20;Humano;1000;1004;
+61;Hablar con un cliente;0;5;20;Humano;1000;1005;
+62;Hablar con el vidente;25;95;60;Humano;1000;1000;
+63;Ir al reservado;6;5;60;Humano;1000;1006;
+64;Agradecerselo;0;0;20;Humano;1003;1000;
+65;Volver;0;0;20;Humano;1004;1000;
+66;Insultar;5;0;20;Humano;1004;1000;
+67;Volver;0;0;20;Humano;1005;1000;
+68;Salir del reservado;0;0;20;Humano;1006;1000;
+69;Acercarse;0;0;20;Humano;1250;1251;
+70;Volver;50;0;20;Humano;1250;1250;
+71;Ir al jardín delantero;0;0;20;Humano;1251;1252;
+72;Ir al jardín trasero;0;0;20;Humano;1251;1253;
+73;Volver a la entrada;0;0;20;Humano;1252;1250;
+74;Volver;0;0;20;Humano;1253;1250;
+75;Usar entrada secreta;0;7;20;Humano;1253;1254;
+76;Entrar;0;0;20;Humano;1254;1255;
+77;Salir;50;0;20;Humano;1254;1254;
+78;Llamar a la mascrilla;26;90;20;Humano;1255;1;
+79;Tender una trampa;0;0;;Tremere;1255;1256;
+80;Atacar;5;0;;Brujah;1255;1;
+81;Sobornar;0;0;;Ventrue;1255;1257;
+82;Pelear;5;0;20;Humano;1256;1;
+83;Pelear;5;0;20;Humano;1257;1;
+84;Entrar;0;0;20;Humano;1500;1501;
+85;Volver;50;0;20;Humano;1500;1500;
+86;Buscar en las estanterías;0;0;20;Humano;1501;1502;
+87;Buscar en los escritorios;0;0;20;Humano;1501;1503;
+88;Buscar en la oficina del jefe;0;14;20;Humano;1501;1504;
+89;Buscar en la oficina del jefe;0;7;20;Humano;1501;1505;
+90;Volver;0;0;20;Humano;1502;1501;
+91;Volver;0;0;20;Humano;1503;1501;
+92;Volver;16;0;20;Humano;1504;1501;
+93;Volver;0;0;20;Humano;1505;1501;
+94;Entrar;0;0;20;Humano;1750;1751;
+95;Volver;50;0;20;Humano;1750;1750;
+96;Buscar en las estanterías;0;0;20;Humano;1751;1752;
+97;Sentarte en una mesa;0;4;20;Humano;1751;1753;
+98;Sentarte en una mesa;13;10;20;Humano;1751;1754;
+99;Salir;50;0;20;Humano;1751;1751;
+100;Volver;0;0;20;Humano;1752;1751;
+101;Volver;0;0;20;Humano;1753;1751;
+102;Volver;0;0;20;Humano;1754;1751;
+103;Entrar;0;91;20;Humano;2000;2001;
+104;Volver;50;0;20;Humano;2000;2000;
+105;Comprar;51;91;20;Humano;2001;2001;
+106;Salir;50;91;20;Humano;2001;2001;
+107;Entrar;0;96;20;Humano;2000;2002;
+108;Respuesta simpática;26;0;20;Humano;2002;2003;
+109;Salir;50;0;20;Humano;2003;2000;
+110;Entrar;0;95;20;Humano;2000;2004;
+111;Comprar;51;95;20;Humano;2004;2000;
+112;Volver;50;0;20;Humano;2250;2250;
+113;Llamar a la puerta;0;0;20;Humano;2250;2251;
+114;Ratatula;0;0;20;Humano;2251;2250;
+115;Contraseña;0;0;20;Humano;2251;2250;
+116;1234;0;0;20;Humano;2251;2250;
+117;Mostrar la mascarilla;0;95;20;Humano;2251;2252;
+118;Entrar;0;0;20;Humano;2252;2253;
+119;Irte;50;0;20;Humano;2252;2252;
+120;Aceptar los terminos y condiciones;50;0;20;Humano;2253;2253;
+121;Analizar a los demas;0;0;20;Humano;2253;2254;
+122;Continuar;0;0;20;Humano;2254;2253;
+123;Volver;50;0;20;Humano;2500;2500;
+124;Entrar;0;33;20;Humano;2500;2501;
+125;Saludar;0;0;20;Humano;2501;2502;
+126;Continuar;0;0;20;Humano;2502;2503;
+127;Aceptar;0;0;20;Humano;2503;2500;
+128;Volver;50;0;20;Humano;2750;2750;
+129;Acercarse;0;121;20;Humano;2750;2751;
+130;Seguirle el rollo;0;0;20;Humano;2751;2752;
+131;Pi;0;0;20;Humano;2752;2752;
+132;120;0;0;20;Humano;2752;2753;
+133;e;0;0;20;Humano;2752;2752;
+134;Pipipi;0;0;20;Humano;2752;2752;
+135;Molly;0;0;20;Humano;2753;2752;
+136;Sally;0;0;20;Humano;2753;2754;
+137;Nely;0;0;20;Humano;2753;2752;
+138;Maricarmen;0;0;20;Humano;2753;2752;
+139;42;0;0;20;Humano;2754;2752;
+140;Ninguna;0;0;20;Humano;2754;2752;
+141;2;0;0;20;Humano;2754;2755;
+142;Todas las respuestas son correctas;0;0;20;Humano;2754;2752;
+143;666;0;0;20;Humano;2755;2752;
+144;999;0;0;20;Humano;2755;2752;
+145;969;0;0;20;Humano;2755;2752;
+146;696;0;0;20;Humano;2755;2756;
+147;Aceptar;0;0;20;Humano;2756;2750;
+148;Volver;50;0;20;Humano;3000;3000;
+149;Colarse;0;63;20;Humano;3000;3001;
+150;Acercarse;0;0;20;Humano;3001;3002;
+151;Buscar en el comedor;0;0;20;Humano;3002;3003;
+152;Buscar en las aulas;0;0;20;Humano;3002;3003;
+153;Buscar en el patio;0;0;20;Humano;3002;3003;
+154;Buscar en el gimnasio;0;0;20;Humano;3002;3003;
+155;Recogerlo y seguir;0;0;20;Humano;3003;3004;
+156;Salir;50;0;20;Humano;3004;3004;

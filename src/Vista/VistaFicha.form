@@ -67,6 +67,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="objetoEspecial">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Objetos Especiales"/>
           </Properties>
           <Constraints>
@@ -103,7 +106,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="260" y="80" width="120" height="20"/>
+              <AbsoluteConstraints x="240" y="80" width="120" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -265,6 +268,9 @@
         </Container>
         <Component class="javax.swing.JLabel" name="amuletos">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Amuletos"/>
           </Properties>
           <Constraints>
@@ -275,6 +281,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="ataque">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Objetos de Ataque"/>
           </Properties>
           <Constraints>
@@ -285,6 +294,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="defensivo">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Objetos Defensivos"/>
           </Properties>
           <Constraints>
@@ -336,7 +348,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="260" y="110" width="120" height="20"/>
+              <AbsoluteConstraints x="240" y="110" width="120" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -352,7 +364,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="230" y="150" width="50" height="20"/>
+              <AbsoluteConstraints x="240" y="150" width="50" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -497,7 +509,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonsSalir">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonsSalirMouseClicked"/>
@@ -505,14 +521,14 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="730" y="60" width="210" height="60"/>
+              <AbsoluteConstraints x="680" y="50" width="275" height="79"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/fondoEscenas.jpg"/>
+              <Image iconType="3" name="/Vista/fondoplano.jpg"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

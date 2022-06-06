@@ -178,9 +178,9 @@ public class GestorDeDatos {
             for (int i = 0; i < texto.size(); i++) {
                 linea = texto.get(i).split("");
                 if (linea[0].equals(habilidades[0])) {
-                    resultado = linea[0] + " - " + linea[1] + "\n";
+                    resultado += linea[0] + " - " + linea[1] + "\n";
                 } else if (linea[0].equals(habilidades[1])) {
-                    resultado = linea[0] + " - " + linea[1] + "\n";
+                    resultado += linea[0] + " - " + linea[1] + "\n";
                 }
             }
             Fichero.getListaClanes();

@@ -331,14 +331,10 @@ public class BaseDeDatos {
         bd = r.getTimestamp("Ultima_Modificacion");
         stmt.close();
 
-        System.out.println("Local: " + local);
-        System.out.println("BD: " + bd);
         long diferencia = local.getTime() - bd.getTime();
-        System.out.println("Diferencia: " + diferencia);
         //Comparo las horas
         if (diferencia > 30000) {
             if (local.after(bd)) {
-                System.out.println("After");
                 //Subo el local a la bd
                 //1. Borrar todos los datos de la partida
                 stmt = conn.prepareStatement(Util.DE_PARTIDA);
@@ -350,7 +346,6 @@ public class BaseDeDatos {
                     insertarPartida(partida);
                 }
             } else if (local.before(bd)) {
-                System.out.println("Before");
                 // Bajo bd a local
                 seleccionarPartidas(usuario);
             }

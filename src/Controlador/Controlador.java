@@ -176,8 +176,14 @@ public final class Controlador {
             // Mostrar la escena.
             lanzar();
 
+            if (partida.getProtagonista().tieneAuspex()) {
+                if (siguiente.hayPnj()) {
+                    new VistaFicha(this, false).setVisible(true);
+                }
+            }
+
             // Si se tiene dechercho, obtener info extra y mostrarla si hay.
-            if (comprobarAnimalismo()) {
+            if (partida.getProtagonista().tieneAnimalismo()) {
                 texto = getTextoExtra(textos);
                 if (!texto.equals("")) {
                     PopUpInfoExtra ventana = new PopUpInfoExtra(texto);
@@ -293,7 +299,6 @@ public final class Controlador {
             case Util.AC_PROGRESO -> {
                 try {
                     partida.setProgreso(partida.getProgreso() + 1);
-                    
                     bbdd.guardarPartida(partida, false);
                 } catch (SQLException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,7 +323,6 @@ public final class Controlador {
             case Util.AC_CURAR -> {
                 partida.setVidaAlMaximo();
             }
-
             case Util.AC_SOSPECHA -> {
                 partida.setSospecha(partida.getSospecha() + 1);
             }
@@ -356,14 +360,12 @@ public final class Controlador {
                 new PopUpCombate(pelea).setVisible(true);
             }
             case Util.AC_AGRADAR -> {
-                if (partida.getEscena().hayPnj()) {
-                    partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
-                }
+                System.out.println("Estado de animo antes: " + partida.getEscena().getPnj().getEstadoDeAnimo());
+                partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_AGRADECIDO);
+                System.out.println("Estado de animo despues: " + partida.getEscena().getPnj().getEstadoDeAnimo());
             }
             case Util.AC_ENFADAR -> {
-                if (partida.getEscena().hayPnj()) {
-                    partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
-                }
+                partida.getEscena().getPnj().setEstadoDeAnimo(Util.EA_ENFADADO);
             }
             case Util.AC_OBTENER_LLAVE -> {
                 if (partida.getEscena().hayPnj()) {
@@ -389,6 +391,19 @@ public final class Controlador {
                     partida.getProtagonista().addObjeto(e);
                 }
             }
+            case Util.AC_OBTENER_PASS -> {
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Contraseña");
+                    partida.getProtagonista().addObjeto(e);
+                }
+            }
+            case Util.AC_OBTENER_LECTURA -> {
+                if (partida.getEscena().hayPnj()) {
+                    Equipo e = partida.getEscena().getPnj().delObjeto("Lectura de manos");
+                    partida.getProtagonista().addObjeto(e);
+                }
+            }
+
             case Util.AC_OBTENER_NOTA -> { //No de un pnj
                 Equipo e = bbdd.getEquipo("Nota");
                 partida.getProtagonista().addObjeto(e);
@@ -402,11 +417,28 @@ public final class Controlador {
                 aux2 = evaluarAccion(Util.AC_PROGRESO);
                 seguir = aux1 && aux2;
             }
+            case Util.AC_OBTENER_LLAVE_Y_AGRADAR_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_LLAVE);
+                aux2 = evaluarAccion(Util.AC_AGRADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_OBTENER_LLAVE_Y_ENFADAR_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_LLAVE);
+                aux2 = evaluarAccion(Util.AC_ENFADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
             case Util.AC_OBTENER_MAPA_Y_AGRADAR_Y_PROGRESO -> {
                 aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
                 aux2 = evaluarAccion(Util.AC_AGRADAR);
                 aux3 = evaluarAccion(Util.AC_PROGRESO);
                 seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_OBTENER_MAPA_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux3;
             }
             case Util.AC_OBTENER_MAPA_Y_ENFADAR_PROGRESO -> {
                 aux1 = evaluarAccion(Util.AC_OBTENER_MAPA);
@@ -448,9 +480,6 @@ public final class Controlador {
             }
             case Util.AC_MOSTRAR_TIENDA -> {
                 seguir = false;
-                System.out.println("Vamos a comprar");
-                System.out.println("Escena "+ partida.getEscena().getIdEscena());
-                System.out.println(partida.getEscena().hayPnj());
                 new VistaTienda(this).setVisible(true);
             }
         }
@@ -558,17 +587,15 @@ public final class Controlador {
                 cumplida = true;
             }
             case Util.SI_AGRADADO -> {
-                if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
-                        cumplida = true;
-                    }
+                if (escena.getPnj().getEstadoDeAnimo() == Util.EA_AGRADECIDO) {
+                    System.out.println(escena.getPnj().getNombre() + " agradecido.");
+                    cumplida = true;
                 }
+                System.out.println(escena.getPnj().getNombre() + " NO agradecido.");
             }
             case Util.SI_ENFADADO -> {
-                if (escena.hayPnj()) {
-                    if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
-                        cumplida = true;
-                    }
+                if (escena.getPnj().getEstadoDeAnimo() == Util.EA_ENFADADO) {
+                    cumplida = true;
                 }
             }
             case Util.SI_BRUJAH -> {
@@ -634,6 +661,16 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
+            case Util.SI_LECTURA -> {
+                if (buscarEquipo("Lectura de manos")) {
+                    cumplida = true;
+                }
+            }
+            case Util.SI_PISTOLA -> {
+                if (buscarEquipo("Pistola")) {
+                    cumplida = true;
+                }
+            }
             case Util.SI_NO_MASCARILLA -> {
                 cumplida = !evaluarCondicion(Util.SI_MASCARILLA);
             }
@@ -657,10 +694,24 @@ public final class Controlador {
                 aux3 = !evaluarCondicion(Util.SI_AGRADADO);
                 cumplida = aux1 && aux2 && aux3;
             }
+            case Util.SI_NO_NOSFERATU_Y_PASS_Y_LECTURA -> {
+                //No ser nosferatu, tener la contrasña y el pnj no esté agradado
+                aux1 = evaluarCondicion(Util.SI_NO_NOSFERATU);
+                aux2 = evaluarCondicion(Util.SI_PASS);
+                aux3 = evaluarCondicion(Util.SI_LECTURA);
+                cumplida = aux1 && aux2 && aux3;
+            }
             case Util.SI_NOSFERATU_Y_NO_MASCARILLA -> {
                 //Ser nosferatu y no tener mascarilla.
                 aux1 = evaluarCondicion(Util.SI_NOSFERATU);
                 aux2 = !evaluarCondicion(Util.SI_MASCARILLA);
+                cumplida = aux1 && aux2;
+            }
+
+            case Util.SI_VENTRUE_Y_NO_PISTOLA -> {
+                //Ser Ventrue y no tener pistola.
+                aux1 = evaluarCondicion(Util.SI_VENTRUE);
+                aux2 = !evaluarCondicion(Util.SI_PISTOLA);
                 cumplida = aux1 && aux2;
             }
             case Util.SI_NOSFERATU_Y_MASCARILLA -> {
@@ -669,16 +720,31 @@ public final class Controlador {
                 aux2 = evaluarCondicion(Util.SI_MASCARILLA);
                 cumplida = aux1 && aux2;
             }
-            case Util.SI_VENTRUE_Y_NO_PISTOLA -> {
-                //Ser Ventrue y no tener pistola.
-                aux1 = evaluarCondicion(Util.SI_VENTRUE);
-                aux2 = !evaluarCondicion(Util.SI_PISTA);
-                cumplida = aux1 && aux2;
-            }
             case Util.SI_TREMERE_Y_NO_COLGANTE_ROJO -> {
                 //Ser tremere y no tener colgante rojo.
                 aux1 = evaluarCondicion(Util.SI_TREMERE);
                 aux2 = !evaluarCondicion(Util.SI_COLGANTE_ROJO);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_NOSFERATU_Y_NO_LLAVE -> {
+                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
+                aux2 = !evaluarCondicion(Util.SI_LLAVE);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_TREMERE_Y_NO_LLAVE -> {
+                aux1 = evaluarCondicion(Util.SI_TREMERE);
+                aux2 = !evaluarCondicion(Util.SI_LLAVE);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_BRUJAH_O_VENTRUE_Y_NO_LLAVE -> {
+                aux1 = evaluarCondicion(Util.SI_BRUJAH);
+                aux2 = evaluarCondicion(Util.SI_VENTRUE);
+                aux3 = !evaluarCondicion(Util.SI_LLAVE);
+                cumplida = (aux1 || aux2) && aux3;
+            }
+            case Util.SI_BRUJAH_Y_NO_PISTOLA -> {
+                aux1 = evaluarCondicion(Util.SI_BRUJAH);
+                aux2 = evaluarCondicion(Util.SI_PISTOLA);
                 cumplida = aux1 && aux2;
             }
         }
@@ -702,26 +768,6 @@ public final class Controlador {
             indice++;
         }
         return encontrado;
-    }
-
-    /**
-     * Comprueba si el protagonista tiene la habilidad de animalismo.
-     *
-     * @return true si tiene la habilidad, false en otro caso.
-     */
-    private boolean comprobarAnimalismo() {
-        Clan clan = partida.getProtagonista().getClan();
-        HashMap<String, Boolean> habilidades;
-        boolean derecho = false;
-        if (clan.getNombre().equals("Nosferatu")) {
-            habilidades = clan.getHabilidades();
-            if (habilidades.containsKey("Animalismo")) {
-                if (habilidades.get("Animalismo")) {
-                    return true;
-                }
-            }
-        }
-        return derecho;
     }
 
     /**

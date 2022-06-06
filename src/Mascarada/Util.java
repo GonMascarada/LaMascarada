@@ -71,8 +71,9 @@ public final class Util {
     public static final int NORMAL = 6;
     public static final int DIFICIL = 4;
     public static final int PESADILLA = 2;
+    public static final int PROGRESO_MAX = 5;
     public static final int ARMA = 0;
-    public static final int ARMADURA =1;
+    public static final int ARMADURA = 1;
     public static final int AMULERTO = 2;
 
     // Escenas predefinidas
@@ -123,6 +124,7 @@ public final class Util {
     public static final int AC_OBTENER_MAPA = 30;
     public static final int AC_OBTENER_MASCARILLA = 31;
     public static final int AC_OBTENER_NOTA = 32;
+    public static final int AC_OBTENER_LECTURA = 33;
 
     public static final int AC_MOSTRAR_MAPA = 50;
     public static final int AC_MOSTRAR_TIENDA = 51;
@@ -143,6 +145,8 @@ public final class Util {
     public static final int SI_NO_MASCARILLA = 12;
     public static final int SI_NO_PASS = 13;
     public static final int SI_COLGANTE_ROJO = 14;
+    public static final int SI_LECTURA = 15;
+    public static final int SI_PISTOLA = 16;
     public static final int SI_BRUJAH = 30;
     public static final int SI_BRUJAH_O_VENTRUE_Y_NO_LLAVE = 31;
     public static final int SI_BRUJAH_O_VENTRUE = 32;
@@ -158,6 +162,7 @@ public final class Util {
     public static final int SI_NO_NOSFERATU_Y_PASS_Y_NO_AGRADADO = 94;
     public static final int SI_NOSFERATU_Y_MASCARILLA = 95;
     public static final int SI_NOSFERATU_Y_NO_MASCARILLA = 96;
+    public static final int SI_NO_NOSFERATU_Y_PASS_Y_LECTURA = 97;
     public static final int SI_VENTRUE = 120;
     public static final int SI_VENTRUE_Y_NO_PISTOLA = 121;
 

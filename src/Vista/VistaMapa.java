@@ -120,7 +120,7 @@ public class VistaMapa extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonCasaabAbandonada);
-        jButtonCasaabAbandonada.setBounds(860, 280, 130, 40);
+        jButtonCasaabAbandonada.setBounds(840, 280, 150, 40);
 
         jButtonPub.setText("Pub");
         jButtonPub.addActionListener(new java.awt.event.ActionListener() {
