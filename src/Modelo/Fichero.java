@@ -212,10 +212,17 @@ public final class Fichero {
      * @param idPartida
      * @throws java.io.IOException
      */
-    public static void eliminarPartida(int idPartida) throws IOException {
-        borrarPorFiltro(Util.URL_PARTIDA, idPartida, 0);
-        borrarPorFiltro(Util.URL_PERSONAJE, idPartida, 10);
-        borrarPorFiltro(Util.URL_EQ_PA_PE, idPartida, 1);
+    public static void eliminarPartida(String usuario, int idPartida) throws IOException {
+        if (usuario.equals("Local")) {
+            borrarPorFiltro(Util.URL_PARTIDA_LOCAL, idPartida, 0);
+            borrarPorFiltro(Util.URL_PERSONAJE_LOCAL, idPartida, 10);
+            borrarPorFiltro(Util.URL_EQ_PA_PE_LOCAL, idPartida, 1);
+        } else {
+            borrarPorFiltro(Util.URL_PARTIDA, idPartida, 0);
+            borrarPorFiltro(Util.URL_PERSONAJE, idPartida, 10);
+            borrarPorFiltro(Util.URL_EQ_PA_PE, idPartida, 1);
+        }
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         escribirEnFichero(Util.URL_ULTMA_MODIFICACION, String.valueOf(timestamp));
     }
