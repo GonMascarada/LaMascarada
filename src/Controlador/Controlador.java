@@ -175,9 +175,9 @@ public final class Controlador {
 
             // Mostrar la escena.
             lanzar();
-            
-            if(partida.getProtagonista().tieneAuspex()){
-                if (siguiente.hayPnj()){
+
+            if (partida.getProtagonista().tieneAuspex()) {
+                if (siguiente.hayPnj()) {
                     new VistaFicha(this, false).setVisible(true);
                 }
             }
@@ -649,6 +649,11 @@ public final class Controlador {
                     cumplida = true;
                 }
             }
+            case Util.SI_PISTOLA -> {
+                if (buscarEquipo("Pistola")) {
+                    cumplida = true;
+                }
+            }
             case Util.SI_NO_MASCARILLA -> {
                 cumplida = !evaluarCondicion(Util.SI_MASCARILLA);
             }
@@ -685,11 +690,11 @@ public final class Controlador {
                 aux2 = !evaluarCondicion(Util.SI_MASCARILLA);
                 cumplida = aux1 && aux2;
             }
-            
+
             case Util.SI_VENTRUE_Y_NO_PISTOLA -> {
                 //Ser Ventrue y no tener pistola.
                 aux1 = evaluarCondicion(Util.SI_VENTRUE);
-                aux2 = !evaluarCondicion(Util.SI_PISTA);
+                aux2 = !evaluarCondicion(Util.SI_PISTOLA);
                 cumplida = aux1 && aux2;
             }
             case Util.SI_NOSFERATU_Y_MASCARILLA -> {
@@ -706,19 +711,24 @@ public final class Controlador {
             }
             case Util.SI_NOSFERATU_Y_NO_LLAVE -> {
                 aux1 = evaluarCondicion(Util.SI_NOSFERATU);
-                aux2 = !evaluarCondicion(Util.SI_LLAVE);                
+                aux2 = !evaluarCondicion(Util.SI_LLAVE);
                 cumplida = aux1 && aux2;
             }
             case Util.SI_TREMERE_Y_NO_LLAVE -> {
                 aux1 = evaluarCondicion(Util.SI_TREMERE);
-                aux2 = !evaluarCondicion(Util.SI_LLAVE);                
+                aux2 = !evaluarCondicion(Util.SI_LLAVE);
                 cumplida = aux1 && aux2;
             }
             case Util.SI_BRUJAH_O_VENTRUE_Y_NO_LLAVE -> {
-                aux1 = evaluarCondicion(Util.SI_BRUJAH);                
+                aux1 = evaluarCondicion(Util.SI_BRUJAH);
                 aux2 = evaluarCondicion(Util.SI_VENTRUE);
                 aux3 = !evaluarCondicion(Util.SI_LLAVE);
                 cumplida = (aux1 || aux2) && aux3;
+            }
+            case Util.SI_BRUJAH_Y_NO_PISTOLA -> {
+                aux1 = evaluarCondicion(Util.SI_BRUJAH);
+                aux2 = evaluarCondicion(Util.SI_PISTOLA);
+                cumplida = aux1 && aux2;
             }
         }
         return cumplida;
