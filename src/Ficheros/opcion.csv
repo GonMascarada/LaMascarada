@@ -2,7 +2,7 @@
 1;Ir al bar;0;32;20;Humano;0;500;;
 2;Ir al motel;0;60;20;Humano;0;750;;
 3;Continuar;0;90;20;Humano;0;3;;
-0;Salir;0;0;0;Humano;1;1;;
+0;Salir;3;0;0;Humano;1;1;
 4;Mentir;0;0;20;Humano;3;4;;
 5;Ser hostil;0;0;20;Humano;4;5;;
 6;Continuar;0;0;20;Humano;5;6;;
@@ -79,12 +79,12 @@
 77;Volver a la entrada;0;0;20;Humano;1252;1250;;
 78;Volver;0;0;20;Humano;1253;1250;;
 79;Usar entrada secreta;0;7;20;Humano;1253;1254;;
-80;Entrar;0;0;20;Humano;1254;1255;;
-81;Salir;50;0;20;Humano;1254;1254;;
-82;Llamar a la mascrilla;26;90;20;Humano;1255;1;;
-83;Tender una trampa;0;0;;Tremere;1255;1256;;
-84;Atacar;5;0;;Brujah;1255;1;;
-85;Sobornar;0;0;;Ventrue;1255;1257;;
+80;Entrar;0;0;20;Humano;1254;1255;
+81;Salir;50;0;20;Humano;1254;1254;
+82;Llamar a la mascrilla;26;90;20;Humano;1255;1;
+83;Tender una trampa;0;0;20;Tremere;1255;1256;;
+84;Atacar;5;0;20;Brujah;1255;1;;
+85;Sobornar;0;0;20;Ventrue;1255;1257;;
 86;Pelear;5;0;20;Humano;1256;1;;
 87;Pelear;5;0;20;Humano;1257;1;;
 88;Entrar;0;0;20;Humano;1500;1501;;

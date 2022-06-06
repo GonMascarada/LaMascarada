@@ -128,9 +128,9 @@ public final class Util {
     public static final int AC_OBTENER_PASS_Y_PROGRESO = 34;
     public static final int AC_LECTURA_MANOS_AC_OBTENER_LECTURA_Y_PROGRESO = 35;
     
-
     public static final int AC_MOSTRAR_MAPA = 50;
     public static final int AC_MOSTRAR_TIENDA = 51;
+    
 
     // Condiciones de las opciones y los textos de las escenas
     public static final int SI_ESTANDAR = 0; // El texto normal
