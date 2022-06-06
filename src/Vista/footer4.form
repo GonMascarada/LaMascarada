@@ -22,15 +22,15 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="opcion1" min="-2" pref="353" max="-2" attributes="0"/>
+                  <Component id="opcion1" min="-2" pref="336" max="-2" attributes="0"/>
                   <Component id="opcion2" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="220" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="opcion3" min="-2" pref="355" max="-2" attributes="0"/>
-                  <Component id="opcion4" pref="0" max="32767" attributes="0"/>
+              <EmptySpace pref="250" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="opcion3" alignment="1" min="-2" pref="332" max="-2" attributes="0"/>
+                  <Component id="opcion4" alignment="1" min="-2" pref="332" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,9 +38,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="opcion1" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="opcion3" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="opcion1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="opcion3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">

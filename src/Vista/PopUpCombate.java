@@ -21,7 +21,8 @@ public class PopUpCombate extends javax.swing.JFrame {
      */
     public PopUpCombate(String texto) {
         initComponents();
-        Util.centrar(this);
+        
+       
         jTextAreaInfo.setText(texto);
         jButton1.setRolloverEnabled(true);
         jButton1.setIcon(botonRojo1);
@@ -45,17 +46,22 @@ public class PopUpCombate extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setLayout(null);
 
         jTextAreaInfo.setEditable(false);
+        jTextAreaInfo.setBackground(new java.awt.Color(0, 0, 0));
         jTextAreaInfo.setColumns(20);
+        jTextAreaInfo.setForeground(new java.awt.Color(255, 255, 255));
         jTextAreaInfo.setRows(5);
         jScrollPane1.setViewportView(jTextAreaInfo);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 40, 410, 210);
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cerrar");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +70,7 @@ public class PopUpCombate extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(110, 270, 250, 75);
+        jButton1.setBounds(100, 270, 270, 75);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondoplano.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");

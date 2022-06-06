@@ -110,6 +110,11 @@ public class VistaMapa extends javax.swing.JFrame {
         jButtonColegio.setBounds(840, 110, 130, 40);
 
         jButtonMansion.setText("Mansión");
+        jButtonMansion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMansionActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonMansion);
         jButtonMansion.setBounds(870, 550, 100, 40);
 
@@ -253,6 +258,11 @@ public class VistaMapa extends javax.swing.JFrame {
         controlador.cargarEscena(Util.ES_COLEGIO); 
         this.dispose();
     }//GEN-LAST:event_jButtonColegioActionPerformed
+
+    private void jButtonMansionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMansionActionPerformed
+        controlador.cargarEscena(Util.ES_CASA_COLINA); 
+        this.dispose();
+    }//GEN-LAST:event_jButtonMansionActionPerformed
 
     /**
      * @param args the command line arguments
