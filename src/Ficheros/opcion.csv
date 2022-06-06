@@ -130,7 +130,7 @@
 128;Volver;50;0;20;Humano;2500;2500;;
 129;Entrar;0;33;20;Humano;2500;2501;;
 130;Saludar;0;0;20;Humano;2501;2502;;
-131;Continuar;0;0;20;Humano;2502;2503;;
+131;Continuar;27;0;20;Humano;2502;2503;;
 132;Aceptar;0;0;20;Humano;2503;2500;;
 133;Volver;50;0;20;Humano;2750;2750;;
 134;Acercarse;0;121;20;Humano;2750;2751;;
