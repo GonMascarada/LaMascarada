@@ -56,4 +56,13 @@ public class Vampire extends Persona {
         resultado += clan.getNombre() + ";" + clan.getHabilidadesObtenidas();
         return resultado;
     }
+
+    public boolean tieneCeleridad() {
+        if(clan.getHabilidades().containsKey("Celeridad")){
+            if(clan.getHabilidades().get("Celeridad")){
+                return true;
+            }
+        }
+        return false;
+    }
 }

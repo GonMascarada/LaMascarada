@@ -40,13 +40,13 @@ public class VistaCabecera extends javax.swing.JPanel {
         clan.setForeground(Color.white);
         habilidad1.setForeground(Color.white);
         habilidad2.setForeground(Color.white);
-        hora.setForeground(Color.white);
+        tiempoDato.setForeground(Color.white);
         horaActual.setForeground(Color.white);
         sospecha.setForeground(Color.white);
         sedSangre.setForeground(Color.white);
         progreso.setForeground(Color.white);
         tiempoJugado.setForeground(Color.white);
-        tiempoJugadoDato.setForeground(Color.white);
+        dineroDato.setForeground(Color.white);
         vida.setForeground(Color.white);
         fichapersonaje.setForeground(Color.white);
         fichapersonaje.setBackground(Color.black);
@@ -67,7 +67,7 @@ public class VistaCabecera extends javax.swing.JPanel {
         habilidad1.setText(habiliades[0]);
         habilidad2.setText(habiliades[1]);
         clan.setText(partida.getProtagonista().getClan().getNombre());
-        hora.setText(partida.getFecha() + "");
+        tiempoDato.setText(partida.getTiempoEfectivo() + "");
         barraSangre.setValue(partida.getSedDeSangre());
         barraSangre.setMaximum(partida.getDificultad());
         barraProgreso.setValue(partida.getProgreso());
@@ -76,7 +76,7 @@ public class VistaCabecera extends javax.swing.JPanel {
         barraSospecha.setMaximum(partida.getDificultad());
         barraVida.setValue(partida.getProtagonista().getVidaActual());
         barraVida.setMaximum(partida.getProtagonista().getVidaMax());
-        tiempoJugadoDato.setText(partida.getTiempo() + "");
+        dineroDato.setText(partida.getProtagonista().getDinero() + "");
         ImageIcon ImagenEscena = new javax.swing.ImageIcon(getClass().getResource(partida.getProtagonista().getClan().getImagen()));
         Image image = ImagenEscena.getImage();
         Image newimg = image.getScaledInstance(foto.getWidth(), foto.getHeight(), java.awt.Image.SCALE_SMOOTH);
@@ -100,7 +100,7 @@ public class VistaCabecera extends javax.swing.JPanel {
         clan = new javax.swing.JLabel();
         habilidad1 = new javax.swing.JLabel();
         habilidad2 = new javax.swing.JLabel();
-        hora = new javax.swing.JLabel();
+        tiempoDato = new javax.swing.JLabel();
         horaActual = new javax.swing.JLabel();
         sedSangre = new javax.swing.JLabel();
         barraSangre = new javax.swing.JProgressBar();
@@ -111,7 +111,7 @@ public class VistaCabecera extends javax.swing.JPanel {
         progreso = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
         tiempoJugado = new javax.swing.JLabel();
-        tiempoJugadoDato = new javax.swing.JLabel();
+        dineroDato = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
 
         setOpaque(false);
@@ -138,7 +138,7 @@ public class VistaCabecera extends javax.swing.JPanel {
 
         foto.setText("Foto");
         jPanel1.add(foto);
-        foto.setBounds(0, 10, 210, 200);
+        foto.setBounds(10, 10, 210, 200);
 
         nombre.setText("Nombre");
         jPanel1.add(nombre);
@@ -156,13 +156,13 @@ public class VistaCabecera extends javax.swing.JPanel {
         jPanel1.add(habilidad2);
         habilidad2.setBounds(270, 110, 120, 30);
 
-        hora.setText("xx:xx");
-        jPanel1.add(hora);
-        hora.setBounds(330, 140, 60, 30);
+        tiempoDato.setText("xx:xx");
+        jPanel1.add(tiempoDato);
+        tiempoDato.setBounds(330, 140, 170, 30);
 
-        horaActual.setText("Hora:");
+        horaActual.setText("Tiempo:");
         jPanel1.add(horaActual);
-        horaActual.setBounds(270, 140, 30, 30);
+        horaActual.setBounds(270, 140, 60, 30);
 
         sedSangre.setText("Sed de sangre:");
         jPanel1.add(sedSangre);
@@ -200,13 +200,13 @@ public class VistaCabecera extends javax.swing.JPanel {
         jPanel1.add(barraProgreso);
         barraProgreso.setBounds(630, 140, 250, 30);
 
-        tiempoJugado.setText("Tiempo jugado:");
+        tiempoJugado.setText("Dinero:");
         jPanel1.add(tiempoJugado);
         tiempoJugado.setBounds(270, 170, 90, 30);
 
-        tiempoJugadoDato.setText("xx:xx");
-        jPanel1.add(tiempoJugadoDato);
-        tiempoJugadoDato.setBounds(370, 170, 60, 30);
+        dineroDato.setText("xx:xx");
+        jPanel1.add(dineroDato);
+        dineroDato.setBounds(320, 170, 180, 30);
 
         fondoCabecera.setText("jLabel1");
         jPanel1.add(fondoCabecera);
@@ -251,20 +251,20 @@ public class VistaCabecera extends javax.swing.JPanel {
     private javax.swing.JProgressBar barraSospecha;
     private javax.swing.JProgressBar barraVida;
     private javax.swing.JLabel clan;
+    private javax.swing.JLabel dineroDato;
     private javax.swing.JButton fichapersonaje;
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel habilidad1;
     private javax.swing.JLabel habilidad2;
-    private javax.swing.JLabel hora;
     private javax.swing.JLabel horaActual;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel progreso;
     private javax.swing.JLabel sedSangre;
     private javax.swing.JLabel sospecha;
+    private javax.swing.JLabel tiempoDato;
     private javax.swing.JLabel tiempoJugado;
-    private javax.swing.JLabel tiempoJugadoDato;
     private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 
