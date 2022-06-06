@@ -115,7 +115,7 @@ public class GestorDeDatos {
      */
     public void eliminarPartida(String usuario, int idPartida) throws SQLException {
         try {
-            Fichero.eliminarPartida(idPartida);
+            Fichero.eliminarPartida(usuario, idPartida);            
             bd.sincronizar(usuario);
         } catch (IOException | ParseException ex) {
             Logger.getLogger(GestorDeDatos.class.getName()).log(Level.SEVERE, null, ex);
