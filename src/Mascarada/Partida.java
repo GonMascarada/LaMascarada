@@ -180,6 +180,7 @@ public class Partida {
      */
     public void setUltimaPista(String ultimaPista) {
         this.ultimaPista = ultimaPista;
+        this.ultimaPista = "Estamos trabajando en ello";
     }
 
     /**

@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS Equipo (
 CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje_En_Partida (
 	NombreEquipo VARCHAR(20),
     IdPartida INT,
-    NombrePersonaje VARCHAR(10),
+    NombrePersonaje VARCHAR(20),
     EnUso BOOLEAN,
 	Usuario VARCHAR(20),
     PRIMARY KEY (NombreEquipo, IdPartida, NombrePersonaje, Usuario),
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje_En_Partida (
 
 CREATE TABLE IF NOT EXISTS Equipo_Partida_Personaje (
 	NombreEquipo VARCHAR(20),
-    NombrePersonaje VARCHAR(10),
+    NombrePersonaje VARCHAR(20),
     EnUso BOOLEAN,
     PRIMARY KEY (NombreEquipo, NombrePersonaje),
     FOREIGN KEY (NombreEquipo) REFERENCES Equipo(Nombre),
