@@ -416,7 +416,6 @@ partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
                     partida.getProtagonista().addObjeto(e);
                 }
             }
-
             case Util.AC_OBTENER_NOTA -> { //No de un pnj
                 Equipo e = bbdd.getEquipo("Nota");
                 partida.getProtagonista().addObjeto(e);
@@ -763,6 +762,11 @@ partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
             case Util.SI_BRUJAH_Y_NO_PISTOLA -> {
                 aux1 = evaluarCondicion(Util.SI_BRUJAH);
                 aux2 = !evaluarCondicion(Util.SI_PISTOLA);
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_LLAVE_Y_NO_NOTA -> {
+                aux1 = evaluarCondicion(Util.SI_LLAVE);
+                aux2 = !evaluarCondicion(Util.SI_NOTA);
                 cumplida = aux1 && aux2;
             }
         }

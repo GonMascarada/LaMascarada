@@ -148,6 +148,7 @@ public final class Util {
     public static final int SI_COLGANTE_ROJO = 14;
     public static final int SI_LECTURA = 15;
     public static final int SI_PISTOLA = 16;
+    public static final int SI_LLAVE_Y_NO_NOTA = 17;
     public static final int SI_BRUJAH = 30;
     public static final int SI_BRUJAH_O_VENTRUE_Y_NO_LLAVE = 31;
     public static final int SI_BRUJAH_O_VENTRUE = 32;
