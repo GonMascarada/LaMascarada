@@ -171,19 +171,16 @@ public class GestorDeDatos {
      * @return
      */
     public String getInfoHabilidades(String[] habilidades) {
-        System.out.println("Hab1: " + habilidades[0]);
-        System.out.println("Hab2: " + habilidades[1]);
         String resultado = "";
         try {
             ArrayList<String> texto = Fichero.leerJar(Util.JAR_HABILIDAD, true);
             String[] linea;
             for (int i = 0; i < texto.size(); i++) {
-                linea = texto.get(i).split("");
-                System.out.println("Leo "+ linea[0]);
+                linea = texto.get(i).split(";");
                 if (linea[0].equals(habilidades[0])) {
-                    resultado += linea[0] + " - " + linea[1] + "\n";
+                    resultado += "<html>"+linea[0] + " - " + linea[1] + "</br>";
                 } else if (linea[0].equals(habilidades[1])) {
-                    resultado += linea[0] + " - " + linea[1] + "\n";
+                    resultado += "</br>"+linea[0] + " - " + linea[1] + "</html>";
                 }
             }
             Fichero.getListaClanes();

@@ -410,11 +410,9 @@ partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
                     partida.getProtagonista().addObjeto(e);
                 }
             }
-            case Util.AC_OBTENER_LECTURA -> {
-                if (partida.getEscena().hayPnj()) {
-                    Equipo e = partida.getEscena().getPnj().delObjeto("Lectura de manos");
-                    partida.getProtagonista().addObjeto(e);
-                }
+            case Util.AC_OBTENER_LECTURA -> {//No de un pnj
+                Equipo e = bbdd.getEquipo("Lectura de manos");
+                partida.getProtagonista().addObjeto(e);
             }
             case Util.AC_OBTENER_NOTA -> { //No de un pnj
                 Equipo e = bbdd.getEquipo("Nota");
@@ -480,6 +478,12 @@ partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
             case Util.AC_LECTURA_MANOS_AGRADAR_Y_PROGRESO -> {
                 aux1 = evaluarAccion(Util.AC_LECTURA_MANOS);
                 aux2 = evaluarAccion(Util.AC_AGRADAR);
+                aux3 = evaluarAccion(Util.AC_PROGRESO);
+                seguir = aux1 && aux2 && aux3;
+            }
+            case Util.AC_LECTURA_MANOS_AC_OBTENER_LECTURA_Y_PROGRESO -> {
+                aux1 = evaluarAccion(Util.AC_LECTURA_MANOS);
+                aux2 = evaluarAccion(Util.AC_OBTENER_LECTURA);
                 aux3 = evaluarAccion(Util.AC_PROGRESO);
                 seguir = aux1 && aux2 && aux3;
             }
@@ -711,11 +715,10 @@ partida.setEscena(siguiente); //Actualizamos a la siguiente escena.
                 aux3 = !evaluarCondicion(Util.SI_AGRADADO);
                 cumplida = aux1 && aux2 && aux3;
             }
-            case Util.SI_NO_NOSFERATU_Y_PASS_Y_LECTURA -> {
-                //No ser nosferatu, tener la contrasña y el pnj no esté agradado
+            case Util.SI_NO_NOSFERATU_Y_PASS_Y_NO_LECTURA -> {
                 aux1 = evaluarCondicion(Util.SI_NO_NOSFERATU);
                 aux2 = evaluarCondicion(Util.SI_PASS);
-                aux3 = evaluarCondicion(Util.SI_LECTURA);
+                aux3 = !evaluarCondicion(Util.SI_LECTURA);
                 cumplida = aux1 && aux2 && aux3;
             }
             case Util.SI_NOSFERATU_Y_NO_MASCARILLA -> {

@@ -126,6 +126,8 @@ public final class Util {
     public static final int AC_OBTENER_NOTA = 32;
     public static final int AC_OBTENER_LECTURA = 33;
     public static final int AC_OBTENER_PASS_Y_PROGRESO = 34;
+    public static final int AC_LECTURA_MANOS_AC_OBTENER_LECTURA_Y_PROGRESO = 35;
+    
 
     public static final int AC_MOSTRAR_MAPA = 50;
     public static final int AC_MOSTRAR_TIENDA = 51;
@@ -164,7 +166,7 @@ public final class Util {
     public static final int SI_NO_NOSFERATU_Y_PASS_Y_NO_AGRADADO = 94;
     public static final int SI_NOSFERATU_Y_MASCARILLA = 95;
     public static final int SI_NOSFERATU_Y_NO_MASCARILLA = 96;
-    public static final int SI_NO_NOSFERATU_Y_PASS_Y_LECTURA = 97;
+    public static final int SI_NO_NOSFERATU_Y_PASS_Y_NO_LECTURA = 97;
     public static final int SI_VENTRUE = 120;
     public static final int SI_VENTRUE_Y_NO_PISTOLA = 121;
 
