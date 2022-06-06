@@ -3,20 +3,20 @@
 1;0;<html>¡Felicidades!</br>Has conseguido derrocar al antiguo, ahora Blood Town es tuya.</html>
 2;0;<html>Una pena, no lo has logrado.</html>
 3;0;<html>.--Bueno bueno, ¿que tenemos por aquí? Un forastero rarito eh? ¿Qué te trae a este pueblo?</html>
-4;0;<html>.++Vengo de paso, he conseguido trabajo en la ciudad de al lado y quería visitar este pueblo..--De verdad crees que iba a tragarme eso? ¡Con esa cara no te contrata nadie! Vienes arrestado hasta que sepamos cuales son tus intenciones en este pueblo.</html>
+4;0;<html>.++Vengo de paso, he conseguido trabajo en la ciudad de al lado y quería visitar este pueblo. </br>.--De verdad crees que iba a tragarme eso? ¡Con esa cara no te contrata nadie! Vienes arrestado hasta que sepamos </br> cuales son tus intenciones en este pueblo.</html>
 5;0;<html>...</html>
 6;0;<html>Te diste un fuerte golpe en la cabeza viniendo hacia el pueblo y despiertas en el calabozo.</html>
-7;0;<html>Golpeas los barrotes un par de veces y escuchas como en la celda de al lado alguien también los golpea, imitando el sonido..--No te va a servir de nada, estos polis son corruptos hasta la médula, pero cuando se les cruza el cable…Son demasiado defensores de la ley.</html>
-8;0;<html>.++Quien eres?..--Hola, me llamo Leo, llevo aquí encerrado un mes y no tiene pinta de que vaya a salir pronto.</html>
-9;0;<html>.++Hola Leo, yo me llamo .++, vengo…a visitar el pueblo..--Si, ya, como todo el mundo…Escucha, tengo un plan para salir de aquí pero necesito  alguien fuerte, crees que podrás ayudarme?.</html>
+7;0;<html>Golpeas los barrotes un par de veces y escuchas como en la celda de al lado alguien también los golpea, imitando el sonido. </br>.--No te va a servir de nada, estos polis son corruptos hasta la médula, pero cuando se les cruza el  </br>cable…Son demasiado defensores de la ley.</html>
+8;0;<html>.++Quien eres?. </br>.--Hola, me llamo Leo, llevo aquí encerrado un mes y no tiene pinta de que vaya a salir pronto.</html>
+9;0;<html>.++Hola Leo, yo me llamo .++, vengo…a visitar el pueblo. </br>.--Si, ya, como todo el mundo…Escucha, tengo un plan para salir de aquí pero necesito  alguien fuerte, crees que podrás ayudarme?.</html>
 9;8;<html>Esta mucho mas tranquilo de lo que aparenta, pero dice la verdad.</html>
-10;0;<html>.--Bien, he visto que un ladrillo de la celda que nos separa está suelto, creo que entre los dos podremos sacarlo y cargar juntos contra la pared de tu celda, la que da al exterior podremos salir. Estas paredes son finas pero no lo suficiente como para que solo yo pueda escapar. ¿Me has entendido?.</html>
-11;0;<html>Empujais juntos el ladrillo, que hace que la pared se desplome, quizá fuese un ladrillo de carga.. --Genial! Que te vaya bien, yo me voy de este pueblucho!.Leo se mete en el humo mientras la pared se desploma, encuentras la salida a la calle y no lo ves por ningún lado.</html>
+10;0;<html>.--Bien, he visto que un ladrillo de la celda que nos separa está suelto, creo que entre los dos podremos sacarlo  </br>y cargar juntos contra la pared de tu celda, la que da al exterior podremos salir </br>. Estas paredes son finas pero no lo suficiente como para que solo yo pueda escapar. ¿Me has entendido?.</html>
+11;0;<html>Empujais juntos el ladrillo, que hace que la pared se desplome, quizá fuese un ladrillo de carga. </br>. --Genial! Que te vaya bien, yo me voy de este pueblucho!. </br>.Leo se mete en el humo mientras la pared se desploma, encuentras la salida a la calle y no lo ves por ningún lado.</html>
 500;0;<html>El primer lugar que visitas es un bar con un cartel que dice SALLY´S en grande, cerca de la puerta hay otro que pone SE BUSCA PERSONAL , ves que no esta muy concurrido...</html>
-500;90;<html>Te encuentras de frente con un bar en el que al cartel de Sally´s le falta la S, por lo demas esta muy concurrido, la camarera está visiblemente asustada, quizá sea por tu aspecto..--Oh…esto…quieres…tomar algo?</html>
+500;90;<html>Te encuentras de frente con un bar en el que al cartel de Sally´s le falta la S, por lo demas esta muy concurrido, la camarera está visiblemente asustada, quizá sea por tu aspecto. </br>.--Oh…esto…quieres…tomar algo?</html>
 501;0;<html>.--Hola forastero, estás buscando..algo </br>en particular?</html>
 501;4;Ves a Sally muy ocupada, mejor no molestarla.
-502;0;<html>.++Hola! soy nuevo en el pueblo y me preguntaba si </br>alguien como tú me podria guiar por el pueblo.</br>.--Oh! Haberlo dicho antes! Yo soy Sally encantada! Toma, un mapa de la ciudad, he marcado los sitios de interés aunque ahora todo está cerrado por la hora que es, si no tienes ni idea de donde ir te recomiendo el Motel del pueblo.Me encantaría acompañarte pero estoy hasta arriba de trabajo, aunque claro, si quieres esperar a que salga te acompañare…encantada..++Un placer Sally! Yo soy .++, estoy aqui por las historias de terror del pueblo, son verdad?..--Son todo mentiras! Jamás ha pasado nada raro en este pueblo, es muy tranquilo..++De acuerdo! Ire al Motel a ver si hay alguna habitacion libre para mi..--Nos veremos pronto!</html>
+502;0;<html>.++Hola! soy nuevo en el pueblo y me preguntaba si </br>alguien como tú me podria guiar por el pueblo.</br>.--Oh! Haberlo dicho antes! Yo soy Sally encantada! Toma, un mapa de la ciudad, he marcado los sitios de interés aunque ahora todo está cerrado por la hora que es, si no tienes ni idea de donde ir te recomiendo el Motel del pueblo.Me encantaría acompañarte pero estoy hasta arriba de trabajo, aunque claro, si quieres esperar a que salga te acompañare…encantada. </br>.++Un placer Sally! Yo soy .++, estoy aqui por las historias de terror del pueblo, son verdad?. </br>.--Son todo mentiras! Jamás ha pasado nada raro en este pueblo, es muy tranquilo. </br>.++De acuerdo! Ire al Motel a ver si hay alguna habitacion libre para mi. </br>.--Nos veremos pronto!</html>
 502;1;Mapa obtenido.
 503;0;<html>.++No me importa quien eres, solo quiero un mapa del </br>pueblo..--Que tio mas borde…No me entretengas,</br> estoy trabajando.</html>
 510;0;<html>.--¡Anda! una cara nueva! Bienvenido a Sally´s, yo soy nombre del dueño, </br>soy el dueño del bar, también soy el cocinero y me gustaría ayudarte pero creo</br> que la más indicada es camarera, habla con ella si tienes alguna duda.</html>
@@ -29,30 +29,29 @@
 751;0;<html>.--Anda, una cara nueva a estas horas? Bueno, dime </br>tu nombre y te daré una llave de una habitación.</html>
 752;0;<html>Ves cómo apunta tu nombre.</html>
 752;1;Llave obtenida.
-753;0;<html>.++Hola, me gustaria ir al Pueblo..--Tonterías, no </br>tienes donde ir a estas horas!...Bueno, el Pub debería estar abierto ya, </br>te recomiendo ir, la contraseña es contraseña.</html>
-754;0;<html>.++Mucho gusto! mi nombre es .++, </br>¿conoces algún sitio al que ir a estas horas?..--¡Mucho gusto! El Pub debería</br> estar abierto ahora y..bueno, te recomiendo que tengas esto te da pistola, úsala solo como medida de seguridad, están pasando cosas raras últimamente en el pueblo.</html>
+753;0;<html>.++Hola, me gustaria ir al Pueblo. </br>.--Tonterías, no tienes donde ir a estas horas!...Bueno, el Pub debería estar abierto ya, </br>te recomiendo ir, la contraseña es contraseña.</html>
+754;0;<html>.++Mucho gusto! mi nombre es .++, </br>¿conoces algún sitio al que ir a estas horas?. </br>.--¡Mucho gusto! El Pub debería</br> estar abierto ahora y..bueno, te recomiendo que vayas con cuidado, están pasando cosas raras últimamente en el pueblo.</html>
 755;0;<html>.++No te incumbe quien soy, dame la llave y punto.</br>.--Escucha chaval, no se quien eres ni qué has venido a hacer pero este es mi Motel</br> y aquí se me trata con respeto, deberías probar a ir al Pub, con esa actitud te darán una buena alli.</html>
 760;0;<html>.--Anda, una...cara nueva a estas horas? Bueno, dime </br>tu nombre y te daré una llave de una habitación.</html>
-761;11;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? Vengo de parte de Nosferatu ..--Oh...Entiendo, te diria de ir al Pub, pero siendo como el...Deberias pasarte por la habitacion 696, tenemos un huesped que quiza pueda...ayudarte con eso.</html>
-761;0;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? .--Te diria de ir al Pub, pero deberias pasarte por la habitacion 696, tenemos un huesped que quiza pueda ayudarte.</html>
+761;11;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? Vengo de parte de Nosferatu . </br>.--Oh...Entiendo, te diria de ir al Pub, pero siendo como el...Deberias pasarte por la habitacion 696, tenemos un  </br>huesped que quiza pueda...ayudarte con eso.</html>
+761;0;<html>.++Hola, me gustaria ir al pueblo, alguna recomendacion? </br> .--Te diria de ir al Pub, pero deberias pasarte por la habitacion 696, tenemos un huesped que quiza pueda ayudarte.</html>
 761;1;Llave obtenida.
 762;0;<html>Encuentras el cartel de la habitacion, pero por algun motivo el 9 del centro esta caido y parece que pone 666, curioso.</html>
-763;0;<html>Llamas a la puerta y una voz desde dentro dice, como esperando que llamases....--Si si, ya va...Despues de unos segundos un hombre te abre desde dentro, tiene los colmillos fuera y esta relamiendose la comisura de los labios..--Hooola! Me has pillado desayunando, dime, que puedo hacer por ti? Aunque bueno, estando aqui...supongo que querras una lectura de manos.</html>
-764;11;<html>Vuelves al vestibulo, la dueña te mira..--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir a la puerta de la iglesia.</html>
-764;0;<html>Vuelves al vestibulo, la dueña te mira..--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir al callejón.</html>
-770;0;<html>Llegas a un Motel, entrando por la puerta esta la recepcionista, que parece estar esperando algo..--Bienvenido al Motel, imagino que querras…Una habitación, no?.</html>
-771;0;<html>.--Claro! Pero la mas alejada la tiene el huésped de la habitación 696, tendrá que ser otra.++cualquiera me sirve, vengo de parte de Sally’s.--: Oh! Haberlo dicho antes! Tengo esta habitación para ti entonces. Te recomiendo ir al Pub, suele estar abierto a estas horas en caso de que quieras tomar algo.</html>
+763;0;<html>Llamas a la puerta y una voz desde dentro dice, como esperando que llamases... </br>.--Si si, ya va...Despues de unos segundos un hombre te abre desde dentro, tiene los colmillos fuera y esta relamiendose la comisura de los labios </br>..--Hooola! Me has pillado desayunando, dime, que </br> puedo hacer por ti? Aunque bueno, estando aqui...supongo que querras una lectura de manos.</html>
+764;11;<html>Vuelves al vestibulo, la dueña te mira. </br>.--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir a la puerta de la iglesia.</html>
+764;0;<html>Vuelves al vestibulo, la dueña te mira. </br>.--Bien, espero que tu visita al huesped haya sido...fructifera, si no sabes donde ir deberias probar ir al callejón.</html>
+770;0;<html>Llegas a un Motel, entrando por la puerta esta la recepcionista, que parece estar esperando algo. </br>.--Bienvenido al Motel, imagino que querras…Una habitación, no?.</html>
+771;0;<html>.--Claro! Pero la mas alejada la tiene el huésped de la habitación 696, tendrá que ser otra. </br>.++cualquiera me sirve, vengo de parte de Sally’s. </br>.--: Oh! Haberlo dicho antes! Tengo esta habitación para ti entonces. Te recomiendo ir al Pub, suele estar abierto a estas horas en caso de que quieras tomar algo.</html>
 771;1;Llave obtenida.
-780;0;<html>Disfrute de la noche</html>
 1000;0;<html>--Hola, cara nueva, te apetece tomar algo?</html>
 1000;8;<html>Vampiro</br>10 Generacion</br>Tremere</br>Inofensivo.</html>
 1001;0;<html>++Gracias, pero el alcohol no me…sienta bien.</html>
-1001;91;<html>++Gracias, pero el alcohol no me…sienta bien.--Bueno, igualmente creo que hay alguien que te ha echado </br>el ojo, en la mesa del fondo.</html>
+1001;91;<html>++Gracias, pero el alcohol no me…sienta bien, </br>.--Bueno, igualmente creo que hay alguien que te ha echado </br>el ojo, en la mesa del fondo.</html>
 1002;0;<html>.--Por cierto, en el fondo tenemos un reservado, </br>la contraseña es contraseña, deberias poder…saciar tu hambre alli.</html>
 1002;1;Contraseña obtenida.
 1003;0;<html>.++Oh, ten cuidado con los humanos del Pueblo, </br>si sospechan demasiado de ti puede que llamen a un Cazavampiros, </br>ya ha pasado y el último que salió mal parado entró en reposo hace 10 años.</html>
 1004;0;<html>Ves que el camarero que está muy ocupado, </br>mejor no molestarle.</html>
-1005;0;<html>.--Este sitio es un antro, lo único que parece merecer la pena es el camarero, deberías hablar con él, si no desde aquí veo que </br>alguien en esa mesa del fondo te lleva mirando desde que entraste, a lo mejor quiere algo[Ni siquiera te mira, solo mira al camarero, como si estuviese esperando a ser atendido.</html>
+1005;0;<html>.--Este sitio es un antro, lo único que parece merecer la pena es el camarero, deberías hablar con él, si no desde aquí veo que </br>alguien en esa mesa del fondo te lleva mirando desde que entraste, a lo mejor quiere algo (ni siquiera te mira, solo mira al camarero, como si estuviese esperando a ser atendido).</html>
 1006;0;<html>En el reservado encuentras un pequeño frigorífico, </br>el cual contiene bolsas de sangre fresca de las que te alimentas.</html>
 1250;0;<html>Una mansión en la colina del pueblo, hay mucha niebla y</br> parece antigua.</html>
 1251;0;<html>Parece cerrada a cal y canto.</html>
@@ -61,8 +60,8 @@
 1254;0;<html>La puerta se abre con dificultad, a pesar de tener una </br>fuerza muy superior a la de los humanos, quizá lleva</br> sin abrirse mucho tiempo.</html>
 1254;1;<html>Antes de entrar te informamos de que este es un punto</br> de no retorno, si entras no podras volver.</html>
 1255;0;<html>.--Vaya, ¿qué tenemos por aquí?.</html>
-1256;0;<html>.++No se si conoceras al cazavampiros, pero le he puesto </br> tras tu pista, y ahora mismo viene aquí para matarte..--Perfecto, me encargaré primero de ti y luego de él.</html>
-1257;0;<html>.++Si me acoges como vástago te seré fiel.--Se que me quieres derrocar, y eso jamás sucederá.</html>
+1256;0;<html>.++No se si conoceras al cazavampiros, pero le he puesto </br> tras tu pista, y ahora mismo viene aquí para matarte. </br>.--Perfecto, me encargaré primero de ti y luego de él.</html>
+1257;0;<html>.++Si me acoges como vástago te seré fiel. </br>.--Se que me quieres derrocar, y eso jamás sucederá.</html>
 1500;0;<html>Parece vacio, es probable que cierre temprano.</html>
 1500;8;<html>En efecto, esta vacio.</html>
 1501;0;<html>Aparentemente no hay nadie, las luces y los ordenadores están apagados.</html>
@@ -71,7 +70,7 @@
 1504;0;<html>Obtienes nota, que estaba debajo de una gelatina con una </br>taza dentro...humanos.</html>
 1505;0;<html>Recuerdas esa taza metida en la gelatina y </br>prefieres no volver a entrar.</html>
 1750;0;<html>A pesar de las altas horas de la madrugada parece abierta.</html>
-1751;0;<html>En la blibioteca encuentras a un hombre que intuyes que es el dueño,intentas hablarle pero no te dirige la mirada así que entras sin más</html>
+1751;0;<html>En la blibioteca encuentras a un hombre que intuyes que es el dueño,intentas  </br> hablarle pero no te dirige la mirada así que entras sin más</html>
 1752;0;<html>Vaya, parece que aquí tenian ese estupendo libro de programación, que pena que ya te lo habías comprado.</html>
 1753;0;<html>Parece que esta mesa hace mucho tiempo que no se usa.</html>
 1754;0;<html>Encuentras lo que parece ser un mapa de la zona, al cual decides hacer una foto para usarlo.</html>
@@ -79,21 +78,21 @@
 2000;0;<html>Ves una sombra escabullirse hacia dentro del callejón.</html>
 2001;0;<html>.--HOMBRE! ¡QUE SORPRESA! OTRO VAMPIRO POR AQUÍ, hace mucho que no viene ninguno de nosotros por este pueblo.¿Necesitas algo?</html>
 2002;0;<html>--PERO BUENO, hAberLo diCho antEs, no sabia que eras un Nosferatu también! Soy yo quien te dio la nota, pero no sabia que eras de mi mismo Clan! ¡Qué sorpresa!.</html>
-2003;0;<html>.++¡Mira! Que bien, así tengo a alguien que me ayude..--Bueno, es difícil pero yo creo que con unos amigos que tengo podremos conseguirlo, pasate por la iglesia de noche e introduce esto por la rendija.</html>
+2003;0;<html>.++¡Mira! Que bien, así tengo a alguien que me ayude. </br>.--Bueno, es difícil pero yo creo que con unos amigos que tengo podremos conseguirlo, pasate por la iglesia de noche e introduce esto por la rendija.</html>
 2004;0;<html>Hola. ¿Necesitas algo?</html>
 2250;0;<html>La iglesia está completamente cerrada, aun que se oyen ruidos dentro.</html>
 2251;0;<html>Escuchas una voz desde el interior que dice: Contraseña.</html>
 2252;0;<html>Adelante puedes pasar.</html>
-2253;0;<html>La puerta se abre y ves reunidos a un grupo de 4 personas, la voz misteriosa resulta ser Nosferatu..--¡Anda! ¡Has venido! No te esperábamos.(El Nosferatu señala a las demás personas que están en la sala)---Nuestro plan lleva siendo el mismo que el tuyo durante muchos años, solo que no… Avanzamos tanto, somos de una generación tan baja que aunque el Antiguo esté debilitado no creo que podamos pelear contra él, qué tal si nos echas una mano?.</html>
-2254;0;<html>Uno de ello lleva una armadura metálica. Otro de ellos porta un traje de buzo. Hay un jugador de futbol y el Nosferatu que te habla.</html>
+2253;0;<html>La puerta se abre y ves reunidos a un grupo de 4 personas, la voz misteriosa resulta ser Nosferatu. </br>.--¡Anda! ¡Has venido! No te esperábamos.(El Nosferatu señala a las demás personas que están en la sala). </br>.--Nuestro plan lleva siendo el mismo que el tuyo durante muchos años, solo que no… Avanzamos tanto,  </br>somos de una generación tan baja que aunque el Antiguo esté debilitado no creo que podamos  </br>pelear contra él, qué tal si nos echas una mano?.</html>
+2254;0;<html>Uno de ello lleva una armadura metálica </br>. Otro de ellos porta un traje de buzo </br>. Hay un jugador de futbol y el Nosferatu que te habla.</html>
 2500;0;<html>Una casa abandonada, no parece que haya nada relevante.</html>
 2501;0;<html>.--Hola!!!! UN AMIGO POR FIN!!!!!! oH nada más y nada </br>menos que un BRUJAH, quien lo diría!! un Vampiro nuevo en el pueblo.</html>
-2502;0;<html>.++Hola! me han hablado de ti en el Pub, deberias tener </br>mas cuidado con donde te dejas ver.--Oh sí sí, tienes razón, desde lo que pasó</br> con Norman debemos tener cuidado..++Norman? dices el Antiguo que había en el pueblo?.--Lo conoces?! éramos muy amigos pero llevo tiempo sin saber nada de él.</html>
+2502;0;<html>.++Hola! me han hablado de ti en el Pub, deberias tener </br>mas cuidado con donde te dejas ver. </br>.--Oh sí sí, tienes razón, desde lo que pasó</br> con Norman debemos tener cuidado. </br>.++Norman? dices el Antiguo que había en el pueblo?. </br>.--Lo conoces?! éramos muy amigos pero llevo tiempo sin saber nada de él.</html>
 2503;0;<html>Gracias por pasarte a saludar. Toma.</html>
 2503;1;Pistola obtenida.
 2750;0;<html>Una agradable plaza de pueblo, vacía a estas horas de la madrugada.</html>
-2751;0;<html>A acercarte, una chica te para,.--Hola, veo que no eres...normal, ultimamente he tratado mucho con gente como tu, tengo ciertas preguntas para ti.</html>
-2752;0;<html>.++De acuerdo, de que se trata?..--Te hare 3 preguntas, contesta bien a las 3 y conseguiras un regalo..++De acuerdo, vamos a ver esas preguntas.¿Cuál es el factorial de 5?</html>
+2751;0;<html>A acercarte, una chica te para. </br>.--Hola, veo que no eres...normal, ultimamente he tratado mucho con </br> gente como tu, tengo ciertas preguntas para ti.</html>
+2752;0;<html>.++De acuerdo, de que se trata? .</br>.--Te hare 3 preguntas, contesta bien a las 3 y conseguiras un regalo. </br>.++De acuerdo, vamos a ver esas preguntas.¿Cuál es el factorial de 5?</html>
 2753;0;<html>¿Cuál es el nombre de la camarera del bar?</html>
 2754;0;<html>¿Cuántas motos lunares tiene Pi-zeria?</html>
 2755;0;<html>¿En qué habitación se ospeda el Vidente?</html>
@@ -101,7 +100,7 @@
 2756;1;Pistola obtenida.
 3000;0;<html>El colegio, obviamente, está cerrado a estas horas.</html>
 3001;0;<html>Una voz extraña llega desde una puerta, suena como un sollozo de un niño.</html>
-3002;0;<html>Entras por la puerta y en mitad del pasillo escuchas detras de una puerta lo que parece un niño en el suelo llorando, cuando te escucha para llorar..--: Se-señor? Me ha parecido verte en el bar y creo que podrías ayudarme, no encuentro a mis padres y el ultimo sitio donde los vi fue en el Colegio, mi madre llevaba un colgante rojo brillante, estoy seguro de que siguen allí pero no los encuentro. ¿Podrías ayudarme?</html>
+3002;0;<html>Entras por la puerta y en mitad del pasillo escuchas detras de una puerta lo que parece un niño en el suelo llorando, cuando te escucha para llorar. </br>.-- Se-señor? Me ha parecido verte en el bar y creo que podrías ayudarme, no encuentro a mis padres y el ultimo sitio donde los vi fue en el Colegio, mi madre llevaba un colgante rojo brillante, estoy seguro de que siguen allí pero no los encuentro. ¿Podrías ayudarme?</html>
 3003;0;<html>En mitad de un pasillo encuentras un enorme charco de sangre y un colgante tirado en el.</html>
 3003;1;Colgante obtenido.
 3004;0;<html>Vuelves donde el niño y te encuentras otro charco de sangre.</html>
