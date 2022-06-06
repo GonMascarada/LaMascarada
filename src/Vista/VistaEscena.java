@@ -35,7 +35,6 @@ public class VistaEscena extends javax.swing.JFrame {
         this.controlador = controlador;
         this.escena = controlador.getPartida().getEscena();
         ArrayList<Opcion> opciones = escena.getOpciones();
-        System.out.println("FOto requerida " + controlador.getPartida().getEscena().getImagen());
         ImageIcon ImagenEscena=new javax.swing.ImageIcon(getClass().getResource(controlador.getPartida().getEscena().getImagen()));
         Image image = ImagenEscena.getImage();
         Image newimg = image.getScaledInstance( foto.getWidth(),foto.getHeight(),  java.awt.Image.SCALE_SMOOTH); 
