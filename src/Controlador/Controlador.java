@@ -704,6 +704,22 @@ public final class Controlador {
                 aux2 = !evaluarCondicion(Util.SI_COLGANTE_ROJO);
                 cumplida = aux1 && aux2;
             }
+            case Util.SI_NOSFERATU_Y_NO_LLAVE -> {
+                aux1 = evaluarCondicion(Util.SI_NOSFERATU);
+                aux2 = !evaluarCondicion(Util.SI_LLAVE);                
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_TREMERE_Y_NO_LLAVE -> {
+                aux1 = evaluarCondicion(Util.SI_TREMERE);
+                aux2 = !evaluarCondicion(Util.SI_LLAVE);                
+                cumplida = aux1 && aux2;
+            }
+            case Util.SI_BRUJAH_O_VENTRUE_Y_NO_LLAVE -> {
+                aux1 = evaluarCondicion(Util.SI_BRUJAH);                
+                aux2 = evaluarCondicion(Util.SI_VENTRUE);
+                aux3 = !evaluarCondicion(Util.SI_LLAVE);
+                cumplida = (aux1 || aux2) && aux3;
+            }
         }
         return cumplida;
     }
